@@ -14,29 +14,21 @@
 <li><a href="#Features">3. Features</a>
 <ul class="sectlevel2">
 <li><a href="#viewing-help-code-help-code">3.1. Viewing help : <code>help</code></a></li>
-<li><a href="#adding-a-category-code-add-cat-code">3.2. Adding a Category : <code>add cat</code></a></li>
-<li><a href="#editing-a-category-code-edit-cat-code">3.3. Editing a Category : <code>edit cat</code></a></li>
-<li><a href="#deleting-a-category-code-del-cat-code">3.4. Deleting a Category : <code>del cat</code></a></li>
-<li><a href="#adding-an-activity-add-act">3.5. Adding an Activity : add act</a></li>
-<li><a href="#listing-all-activities-code-list-act-code">3.6. Listing all Activities : <code>list act</code></a></li>
-<li><a href="#editing-an-activity-code-edit-act-code">3.7. Editing an Activity : <code>edit act</code></a></li>
-<li><a href="#deleting-an-activity-code-del-act-code">3.8. Deleting an Activity : <code>del act</code></a></li>
-<li><a href="#adding-a-slot-code-add-slot-code">3.9. Adding a Slot : <code>add slot</code></a></li>
-<li><a href="#listing-slots-code-list-slot-code">3.10. Listing Slots: <code>list slot</code></a></li>
-<li><a href="#editing-a-slot-code-edit-slot-code">3.11. Editing a Slot: <code>edit slot</code></a></li>
-<li><a href="#delete-slots-code-del-slot-code">3.12. Delete slots: <code>del slot</code></a></li>
-<li><a href="#locating-categories-activities-tags-code-find-code">3.13. Locating Categories/Activities/tags: <code>find</code></a></li>
-<li><a href="#deleting-a-categories-activities-tags-shorthand-code-del-code">3.14. Deleting a Categories/Activities/tags (shorthand) : <code>del</code></a></li>
-<li><a href="#view-the-planner-code-view-code">3.15. View the Planner : <code>view</code></a></li>
-<li><a href="#listing-previous-inputted-commands-code-history-code">3.16. Listing previous inputted commands : <code>history</code></a></li>
-<li><a href="#undoing-previous-command-code-undo-code">3.17. Undoing previous command : <code>undo</code></a></li>
-<li><a href="#redoing-the-previously-undone-command-code-redo-code">3.18. Redoing the previously undone command : <code>redo</code></a></li>
-<li><a href="#wipe-all-data-wipe">3.19. Wipe all data : wipe</a></li>
-<li><a href="#exiting-the-program-code-exit-code">3.20. Exiting the program : <code>exit</code></a></li>
-<li><a href="#saving-the-data">3.21. Saving the data</a></li>
-<li><a href="#encrypting-data-files-code-coming-in-v2-0-code">3.22. Encrypting data files <code>[coming in v2.0]</code></a></li>
-<li><a href="#importing-ics-formated-files-code-coming-in-v2-0-code">3.23. Importing .ics formated files <code>[coming in v2.0]</code></a></li>
-<li><a href="#exporting-ics-formated-files-code-coming-in-v2-0-code">3.24. Exporting .ics formated files <code>[coming in v2.0]</code></a></li>
+<li><a href="#adding-slots-code-add-code">3.2. Adding Slots : <code>add</code></a></li>
+<li><a href="#listing-slots-code-list-code">3.3. Listing Slots: <code>list</code></a></li>
+<li><a href="#editing-slots-code-edit-code">3.4. Editing Slots: <code>edit</code></a></li>
+<li><a href="#delete-slots-code-del-code">3.5. Delete Slots: <code>del</code></a></li>
+<li><a href="#locating-slots-code-find-code">3.6. Locating Slots: <code>find</code></a></li>
+<li><a href="#view-the-planner-code-view-code">3.7. View the Planner : <code>view</code></a></li>
+<li><a href="#listing-previous-inputted-commands-code-history-code">3.8. Listing previous inputted commands : <code>history</code></a></li>
+<li><a href="#undoing-previous-command-code-undo-code">3.9. Undoing previous command : <code>undo</code></a></li>
+<li><a href="#redoing-the-previously-undone-command-code-redo-code">3.10. Redoing the previously undone command : <code>redo</code></a></li>
+<li><a href="#wipe-all-data-wipe">3.11. Wipe all data : wipe</a></li>
+<li><a href="#exiting-the-program-code-exit-code">3.12. Exiting the program : <code>exit</code></a></li>
+<li><a href="#saving-the-data">3.13. Saving the data</a></li>
+<li><a href="#encrypting-data-files-code-coming-in-v2-0-code">3.14. Encrypting data files <code>[coming in v2.0]</code></a></li>
+<li><a href="#importing-ics-formated-files-code-coming-in-v2-0-code">3.15. Importing .ics formated files <code>[coming in v2.0]</code></a></li>
+<li><a href="#exporting-ics-formated-files-code-coming-in-v2-0-code">3.16. Exporting .ics formated files <code>[coming in v2.0]</code></a></li>
 </ul>
 </li>
 <li><a href="#faq">4. FAQ</a></li>
@@ -48,9 +40,10 @@
 <h2 id="introduction"><a class="link" href="#introduction">1. Introduction</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><strong>PlanMySem</strong> is a CLI (Command Line Interface) scheduling/calendar application that targets NUS students and staff who prefer to use a desktop application for managing their schedule/calendar.
-More importantly, <strong>PlanMySem</strong> is optimized for those who prefer to work with a Command Line Interface (CLI) and/or are learning to work more efficiently with CLI tools.
-Additionally, unlike traditional calendar/scheduling applications, <strong>PlanMySem</strong> utilizes minimal resources on the user’s machine while still allowing the user to view their schedules swiftly and efficiently.</p>
+<p>PlanMySem is a CLI (Command Line Interface) scheduling/calendar application that targets NUS students and staff who prefer to use a desktop application for managing their schedule/calendar. PlanMySem automatically creates a calendar and synchronises it according to the NUS academic calendar for a particular semester.</p>
+</div>
+<div class="paragraph">
+<p>PlanMySem is optimized for those who prefer to work with a Command Line Interface (CLI) and/or are learning to work more efficiently with CLI tools. Additionally, unlike traditional calendar/scheduling applications, PlanMySem utilizes minimal resources on the user’s machine while still allowing the user to view their schedules swiftly and efficiently.</p>
 </div>
 </div>
 </div>
@@ -153,43 +146,14 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 </div>
 </li>
 <li>
-<p><code>a/</code>: <em>Activity’s</em> name.</p>
+<p><code>d/</code>: Date.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>e.g. Add <em>Slot</em>: <code>add slot a/ACTIVITY_NAME d/DAY t/TIME [r/norecess] [r/noreading] [r/nonormal] [r/recess] [r/reading] [r/normal] [tag/TAG]&#8230;&#8203;</code></p>
+<p>Format: <code>01-01</code>, <code>2019-01-02</code></p>
 </li>
 <li>
-<p>The <code>a/</code> here refers to the <em>activity</em> in which to add the <em>slot</em> to.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><code>c/</code>: <em>Category</em> name</p>
-<div class="ulist">
-<ul>
-<li>
-<p>e.g. <code>List Slots: list slot [c/CATEGORY_NAME]&#8230;&#8203; [a/ACTIVITY_NAME]&#8230;&#8203;</code></p>
-</li>
-<li>
-<p>The <code>c/</code> here refers to the <em>category</em> in which the <em>slots</em> are listed from.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><code>d/</code>: Day.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Format: <code>Monday | Tuesday | Wednesday | Thursday | Friday</code></p>
-</li>
-<li>
-<p>e.g. Add <em>slot</em>: <code>add slot a/ACTIVITY_NAME d/DAY t/TIME [r/norecess] [r/noreading] [r/nonormal] [r/recess] [r/reading] [r/normal] [tag/TAG]&#8230;&#8203;</code></p>
-</li>
-<li>
-<p>The <code>d/</code> here refers to the day in which to add the <em>slot</em> to.</p>
+<p>e.g. Add <em>slot</em>: <code>add slot d/DATE t/TIME [r/norecess] [r/noreading] [r/nonormal] [r/recess] [r/reading] [r/normal] [tag/TAG]&#8230;&#8203;</code></p>
 </li>
 </ul>
 </div>
@@ -202,7 +166,7 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <p>Format: 24-Hour in the form of “hhmm-hhmm” or 12-Hour format in the form of <code>HOUR+AM|PM-Hour+AM|PM</code></p>
 </li>
 <li>
-<p>e.g. Add <em>slot</em>: <code>add slot a/ACTIVITY_NAME d/DAY t/TIME [r/norecess] [r/noreading] [r/nonormal] [r/recess] [r/reading] [r/normal] [tag/TAG]&#8230;&#8203;</code></p>
+<p>e.g. Add: <code>add d/DATE t/TIME [r/norecess] [r/noreading] [r/nonormal] [r/recess] [r/reading] [r/normal] [tag/TAG]&#8230;&#8203;</code></p>
 </li>
 <li>
 <p>The <code>t/</code> here refers to the time in which to add the <em>slot</em> to.</p>
@@ -215,7 +179,7 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <div class="ulist">
 <ul>
 <li>
-<p>e.g. Add <em>slot</em>: <code>add slot a/ACTIVITY_NAME d/DAY t/TIME [r/norecess] [r/noreading] [r/nonormal] [r/recess] [r/reading] [r/normal] [tag/TAG]&#8230;&#8203;</code></p>
+<p>e.g. Add: <code>add d/DATE t/TIME [r/norecess] [r/noreading] [r/nonormal] [r/recess] [r/reading] [r/normal] [tag/TAG]&#8230;&#8203;</code></p>
 </li>
 <li>
 <p>The <code>tag/</code> here refers the <em>tags</em> to attach to the <em>slot</em>.</p>
@@ -231,7 +195,7 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <p>Format: <code>norecess | noreading | nonormal | recess | reading | normal</code></p>
 </li>
 <li>
-<p>e.g. Add <em>slot</em>: <code>add slot a/ACTIVITY_NAME d/DAY t/TIME [r/norecess] [r/noreading] [r/nonormal] [r/recess] [r/reading] [r/normal] [tag/TAG]&#8230;&#8203;</code></p>
+<p>e.g. Add: <code>add d/DATE t/TIME [r/norecess] [r/noreading] [r/nonormal] [r/recess] [r/reading] [r/normal] [tag/TAG]&#8230;&#8203;</code></p>
 </li>
 <li>
 <p>The <code>r/</code> here refers to the recurrence of the <em>slot</em>.</p>
@@ -241,29 +205,12 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 </li>
 <li>
 <p><code>nn/</code>: New name of the object at hand.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>e.g. Edit <em>category</em>: <code>edit cat n/NAME nn/NEW_NAME</code></p>
 </li>
 <li>
-<p>The <code>nn/</code> here refers to the new name for the <em>category</em> specified.</p>
-</li>
-</ul>
-</div>
+<p><code>nd/</code>: New Date</p>
 </li>
 <li>
-<p><code>nc/</code>: New <em>category</em> name.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>e.g. Edit <em>Activity</em>: <code>edit act n/NAME [nn/NEW_NAME] [nc/NEW_CATEGORY]</code></p>
-</li>
-<li>
-<p>The <code>nc/</code> here refers to the new <em>category</em> name of which the <em>activity</em> should belong to.</p>
-</li>
-</ul>
-</div>
+<p><code>nt/</code>: New Time</p>
 </li>
 </ul>
 </div>
@@ -276,197 +223,10 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 </div>
 </div>
 <div class="sect2">
-<h3 id="adding-a-category-code-add-cat-code"><a class="link" href="#adding-a-category-code-add-cat-code">3.2. Adding a Category : <code>add cat</code></a></h3>
-<div class="paragraph">
-<p>Add a <em>category</em> to the planner.<br>
-Format: <code>add cat n/NAME [n/MORE_NAMES]&#8230;&#8203;</code></p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>add cat n/Sports</code><br>
-Add a <em>category</em> called "Sports".</p>
-</li>
-<li>
-<p><code>add cat n/Sports n/Interest Groups</code><br>
-Add two <em>categories</em> called "Sports" and "Interest Groups".</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="editing-a-category-code-edit-cat-code"><a class="link" href="#editing-a-category-code-edit-cat-code">3.3. Editing a Category : <code>edit cat</code></a></h3>
-<div class="paragraph">
-<p>Edit a Category.<br>
-Format: <code>edit cat n/NAME nn/NEW_NAME</code></p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>edit cat n/Sports nn/Frisbee</code>
-Rename the <em>category</em> "Sports" to "Frisbee".</p>
-</li>
-<li>
-<p><code>edit cat n/Interest Groups nn/CCA</code>
-Rename the <em>category</em> "Interest Groups" to "CCA".</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="deleting-a-category-code-del-cat-code"><a class="link" href="#deleting-a-category-code-del-cat-code">3.4. Deleting a Category : <code>del cat</code></a></h3>
-<div class="paragraph">
-<p>Delete a category<br>
-Format: <code>del cat n/NAME [n/MORE_NAMES]&#8230;&#8203;</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Deleting a <em>category</em> will delete all associated <em>activities</em> as well as <em>slots</em>.</p>
-</li>
-<li>
-<p>When multiple <em>categories</em> are selected, a prompt will appear to confirm the action.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>del cat n/Sports n/Frisbee</code><br>
-Delete both the <em>categories</em> 'Sports' and 'Frisbee' and all <em>activities</em> and <em>slots</em> associated with them.</p>
-</li>
-<li>
-<p><code>del cat n/Interest Groups</code><br>
-Delete the <em>category</em> 'Sports' and all <em>activities</em> and <em>slots</em> associated with it.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="adding-an-activity-add-act"><a class="link" href="#adding-an-activity-add-act">3.5. Adding an Activity : add act</a></h3>
-<div class="paragraph">
-<p>Add an <em>activity</em> to the planner.<br>
-Format: <code>add act n/NAME c/CATEGORY</code></p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>An <em>activity</em> must belong to a <em>category</em>.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>add act n/Frisbee c/Sports</code><br>
-Add an <em>activity</em> named "Frisbee" to the <em>category</em> "Sports".</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="listing-all-activities-code-list-act-code"><a class="link" href="#listing-all-activities-code-list-act-code">3.6. Listing all Activities : <code>list act</code></a></h3>
-<div class="paragraph">
-<p>List all <em>activities</em> in the planner.<br>
-Format: <code>list act</code></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="editing-an-activity-code-edit-act-code"><a class="link" href="#editing-an-activity-code-edit-act-code">3.7. Editing an Activity : <code>edit act</code></a></h3>
-<div class="paragraph">
-<p>Edit an Activity.<br>
-Format: <code>edit act n/NAME [nn/NEW_NAME] [nc/NEW_CATEGORY]</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Editing an <em>activity</em> allows the renaming of it&#8217;s name and or changing the <em>category</em> it belongs to; hence, either and or <code>nn/</code> and <code>nc/</code> can be specified in one command.</p>
-</li>
-<li>
-<p>Minimum of one option have to be specified.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>When editing an <em>activity</em> such that a new <em>category</em> is replacing the current <em>category</em>, the new <em>category</em> have to been already created.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>edit act n/Frisbee nn/Barefoots nc/Sports</code><br>
-The existing <em>activity</em> <code>Frisbee</code> is renamed to <code>Barefoots</code> and is moved from some <em>category</em> to the <em>category</em> <code>Sports</code>.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="deleting-an-activity-code-del-act-code"><a class="link" href="#deleting-an-activity-code-del-act-code">3.8. Deleting an Activity : <code>del act</code></a></h3>
-<div class="paragraph">
-<p>Delete an <em>activity</em> from the planner.<br>
-Format: <code>del act n/NAME [n/MORE_NAMES]&#8230;&#8203;</code></p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>del act n/Frisbee</code><br>
-Delete the <em>activity</em> "Frisbee".</p>
-</li>
-<li>
-<p><code>del act n/Frisbee n/Basketball</code><br>
-Delete the <em>activities</em> "Frisbee" and "Basketball".</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="adding-a-slot-code-add-slot-code"><a class="link" href="#adding-a-slot-code-add-slot-code">3.9. Adding a Slot : <code>add slot</code></a></h3>
+<h3 id="adding-slots-code-add-code"><a class="link" href="#adding-slots-code-add-code">3.2. Adding Slots : <code>add</code></a></h3>
 <div class="paragraph">
 <p>Add a <em>slot</em> to the planner.<br>
-Format: <code>add slot a/ACTIVITY_NAME d/DAY t/TIME [r/norecess] [r/noreading] [r/nonormal] [r/recess] [r/reading] [r/normal] [tag/TAG]&#8230;&#8203;</code></p>
+Format: <code>add slot d/DATE t/TIME d/DURATION [r/norecess] [r/noreading] [r/nonormal] [r/recess] [r/reading] [r/normal] [tag/TAG]&#8230;&#8203;</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -474,7 +234,7 @@ Format: <code>add slot a/ACTIVITY_NAME d/DAY t/TIME [r/norecess] [r/noreading] [
 <div class="ulist">
 <ul>
 <li>
-<p><code>add slot a/Sport d/monday t/0800-0900 tag/Frisbee tag/Tembusu College</code><br>
+<p><code>add d/01-01 t/0800-0900 tag/Frisbee tag/Tembusu College</code><br>
 Add a <em>slot</em> to the <em>activity</em> "Sport" on monday, from 0800hrs to 0900hrs with the tags "Frisbee" and "Tembusu College".</p>
 </li>
 <li>
@@ -490,16 +250,9 @@ Do the same but additionally, recurse the slot on recess and reading week.</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>The <code>a/ACTIVITY_NAME</code> option is mandatory as a <em>slot</em> must belong to an <em>activity</em>.<br></p>
-</li>
-<li>
-<p>The default for recurrence is no recess week and no reading week.
+<div class="paragraph">
+<p>The default for recurrence is no recess week and no reading week.<br>
 If the recurrence options are not defined, then there the <em>slot</em> will recurse every week except recess week and reading week.</p>
-</li>
-</ol>
 </div>
 </td>
 </tr>
@@ -507,10 +260,10 @@ If the recurrence options are not defined, then there the <em>slot</em> will rec
 </div>
 </div>
 <div class="sect2">
-<h3 id="listing-slots-code-list-slot-code"><a class="link" href="#listing-slots-code-list-slot-code">3.10. Listing Slots: <code>list slot</code></a></h3>
+<h3 id="listing-slots-code-list-code"><a class="link" href="#listing-slots-code-list-code">3.3. Listing Slots: <code>list</code></a></h3>
 <div class="paragraph">
-<p>List all <em>slots</em> in the planner belonging to a <em>category</em>/<em>activity</em>.<br>
-Format: <code>list slot [c/CATEGORY_NAME]&#8230;&#8203; [a/ACTIVITY_NAME]&#8230;&#8203;</code></p>
+<p>List all <em>slots</em> in the planner.<br>
+Format: <code>list</code></p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -535,22 +288,28 @@ Format: <code>list slot [c/CATEGORY_NAME]&#8230;&#8203; [a/ACTIVITY_NAME]&#8230;
 <p><code>list slot</code><br>
 List all <em>slots</em> in the planner.</p>
 </li>
-<li>
-<p><code>list slot c/Modules</code><br>
-List all slots in the <em>category</em> "Modules".</p>
-</li>
-<li>
-<p><code>list slot c/Sport c/Interest Group</code><br>
-List all slots in either the <em>category</em> "Sport" or the <em>category</em> "Interest Group".</p>
-</li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="editing-a-slot-code-edit-slot-code"><a class="link" href="#editing-a-slot-code-edit-slot-code">3.11. Editing a Slot: <code>edit slot</code></a></h3>
+<h3 id="editing-slots-code-edit-code"><a class="link" href="#editing-slots-code-edit-code">3.4. Editing Slots: <code>edit</code></a></h3>
 <div class="paragraph">
 <p>Edit a <em>slot</em>.<br>
-Format: <code>edit slot n/ACTIVITY_NAME d/DAY t/TIME [nd/NEW_DAY] [nt/NEW_TIME] [r/norecess] [r/noreading] [r/nonormal] [r/recess] [r/reading] [r/normal]</code></p>
+Format: <code>edit d/DATE t/TIME [nd/NEW_DATE] [nt/NEW_TIME] [r/norecess] [r/noreading] [r/nonormal] [r/recess] [r/reading] [r/normal]</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>If the date and time specified does not correspond directly to a slot, the nearest slot will be selected for editing.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -558,38 +317,17 @@ Format: <code>edit slot n/ACTIVITY_NAME d/DAY t/TIME [nd/NEW_DAY] [nt/NEW_TIME] 
 <div class="ulist">
 <ul>
 <li>
-<p><code>edit slot n/Sport d/monday t/0800-0900 nd/tuesday nt/0900-1000</code><br>
-Select the <em>slot</em> on 0800-0900hrs Monday and change it&#8217;s day from Monday to Tuesday and it&#8217;s time from "0800-0900" to "0900-1000".</p>
-</li>
-<li>
-<p><code>edit slot n/Sport d/monday t/0800-0900 r/recess r/reading</code><br>
-Select the <em>slot</em> on 0800-0900hrs Monday and set it to recurse on recess and reading week.</p>
-</li>
-<li>
-<p><code>edit slot n/Sport d/monday t/0800-0900 nd/tuesday nt/0900-1000 r/recess r/reading</code><br>
-Select the <em>slot</em> on 0800-0900hrs Monday and change it&#8217;s day from Monday to Tuesday, it&#8217;s time from "0800-0900" to "0900-1000" and set it to recurse on recess and reading week.</p>
+<p><code>edit d/01-01 t/0800 nd/01-03 nt/0900</code><br>
+Select the <em>slot</em> on the first of January, at 0800hrs and change it&#8217;s date to the Third of January and it&#8217;s time to 0900hrs.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="delete-slots-code-del-slot-code"><a class="link" href="#delete-slots-code-del-slot-code">3.12. Delete slots: <code>del slot</code></a></h3>
+<h3 id="delete-slots-code-del-code"><a class="link" href="#delete-slots-code-del-code">3.5. Delete Slots: <code>del</code></a></h3>
 <div class="paragraph">
 <p>Deleting <em>slots</em>.<br>
-Format: <code>del slot a/ACTIVITY_NAME d/DAY t/TIME</code></p>
-</div>
-<div class="paragraph">
-<p>Example:</p>
-</div>
-<div class="paragraph">
-<p>*</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="locating-categories-activities-tags-code-find-code"><a class="link" href="#locating-categories-activities-tags-code-find-code">3.13. Locating Categories/Activities/tags: <code>find</code></a></h3>
-<div class="paragraph">
-<p>Find all <em>categories</em>/<em>activities</em>/<em>tag</em> whose name contains any of the given keywords.<br>
-Format: <code>find k/KEYWORD [k/MORE_KEYWORDS]&#8230;&#8203; [c/CATEGORY_NAME] [a/ACTIVITY_NAME] [tag/TAG_NAME]</code></p>
+Format: `del [d/DATE]&#8230;&#8203; [t/TIME]&#8230;&#8203; [t/TAG]&#8230;&#8203; `</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -599,7 +337,8 @@ Format: <code>find k/KEYWORD [k/MORE_KEYWORDS]&#8230;&#8203; [c/CATEGORY_NAME] [
 </td>
 <td class="content">
 <div class="paragraph">
-<p>If the option to find by <em>category</em> or <em>activity</em> or <em>tag</em> is given, then the result will filter by those only.</p>
+<p>All slots that strictly fits all the options given will be deleted.<br>
+This is useful for deleting a whole "category" of slots, such as an entire module&#8217;s lab sessions.</p>
 </div>
 </td>
 </tr>
@@ -608,15 +347,23 @@ Format: <code>find k/KEYWORD [k/MORE_KEYWORDS]&#8230;&#8203; [c/CATEGORY_NAME] [
 <div class="paragraph">
 <p>Example:</p>
 </div>
-<div class="paragraph">
-<p>*</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>del d/01-03 t/0800</code><br>
+Delete the slot located on the 3th of January, 0800hrs.</p>
+</li>
+<li>
+<p>TODO</p>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="deleting-a-categories-activities-tags-shorthand-code-del-code"><a class="link" href="#deleting-a-categories-activities-tags-shorthand-code-del-code">3.14. Deleting a Categories/Activities/tags (shorthand) : <code>del</code></a></h3>
+<h3 id="locating-slots-code-find-code"><a class="link" href="#locating-slots-code-find-code">3.6. Locating Slots: <code>find</code></a></h3>
 <div class="paragraph">
-<p>Delete a <em>category</em>/<em>activity</em>/<em>slot</em>/<em>tag</em>.<br>
-Format: <code>del [c/CATEGORY]&#8230;&#8203; [a/ACTIVITY]&#8230;&#8203; [tag/TAG]&#8230;&#8203;</code></p>
+<p>Find all <em>slots</em> whose name and or tags contains any of the given keywords.<br>
+Format: <code>find [n/SLOT_NAMES]&#8230;&#8203; [tag/TAG]&#8230;&#8203;</code></p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -626,7 +373,7 @@ Format: <code>del [c/CATEGORY]&#8230;&#8203; [a/ACTIVITY]&#8230;&#8203; [tag/TAG
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Deleting a <em>category</em> or <em>activity</em> will delete all <em>slots</em> under them as well. Deleting a <em>tag</em> will not delete the <em>slots</em> associated with them.</p>
+<p>TODO</p>
 </div>
 </td>
 </tr>
@@ -635,12 +382,16 @@ Format: <code>del [c/CATEGORY]&#8230;&#8203; [a/ACTIVITY]&#8230;&#8203; [tag/TAG
 <div class="paragraph">
 <p>Example:</p>
 </div>
-<div class="paragraph">
-<p>*</p>
+<div class="ulist">
+<ul>
+<li>
+<p>TODO</p>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="view-the-planner-code-view-code"><a class="link" href="#view-the-planner-code-view-code">3.15. View the Planner : <code>view</code></a></h3>
+<h3 id="view-the-planner-code-view-code"><a class="link" href="#view-the-planner-code-view-code">3.7. View the Planner : <code>view</code></a></h3>
 <div class="paragraph">
 <p>View the planner according to day/week/month. <br>
 Format: <code>view day DATE | view week WEEK | view month MONTH | view all</code></p>
@@ -669,19 +420,31 @@ Format: <code>view day DATE | view week WEEK | view month MONTH | view all</code
 <div class="paragraph">
 <p>Example:</p>
 </div>
-<div class="paragraph">
-<p>*</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>view day</code></p>
+</li>
+<li>
+<p><code>view day 1-03</code><br>
+View the first of January.</p>
+</li>
+<li>
+<p><code>view all</code><br>
+all the details in the planner.</p>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="listing-previous-inputted-commands-code-history-code"><a class="link" href="#listing-previous-inputted-commands-code-history-code">3.16. Listing previous inputted commands : <code>history</code></a></h3>
+<h3 id="listing-previous-inputted-commands-code-history-code"><a class="link" href="#listing-previous-inputted-commands-code-history-code">3.8. Listing previous inputted commands : <code>history</code></a></h3>
 <div class="paragraph">
 <p>View the history of commands previously inputted.<br>
 Format: history</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">3.17. Undoing previous command : <code>undo</code></a></h3>
+<h3 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">3.9. Undoing previous command : <code>undo</code></a></h3>
 <div class="paragraph">
 <p>Restories the planner to the state before the previous command was executed.<br>
 Format: <code>undo</code></p>
@@ -702,14 +465,14 @@ Format: <code>undo</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="redoing-the-previously-undone-command-code-redo-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code">3.18. Redoing the previously undone command : <code>redo</code></a></h3>
+<h3 id="redoing-the-previously-undone-command-code-redo-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code">3.10. Redoing the previously undone command : <code>redo</code></a></h3>
 <div class="paragraph">
 <p>Reverses the most recent <code>undo</code> command.<br>
 Format: <code>redo</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="wipe-all-data-wipe"><a class="link" href="#wipe-all-data-wipe">3.19. Wipe all data : wipe</a></h3>
+<h3 id="wipe-all-data-wipe"><a class="link" href="#wipe-all-data-wipe">3.11. Wipe all data : wipe</a></h3>
 <div class="paragraph">
 <p>Wipe all data stored on the planner.<br>
 Format: <code>wipe PlanMySem</code></p>
@@ -737,32 +500,32 @@ Format: <code>wipe PlanMySem</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.20. Exiting the program : <code>exit</code></a></h3>
+<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.12. Exiting the program : <code>exit</code></a></h3>
 <div class="paragraph">
 <p>Exits the program.<br>
 Format: <code>exit</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.21. Saving the data</a></h3>
+<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.13. Saving the data</a></h3>
 <div class="paragraph">
 <p>Planner data are saved in the hard disk automatically after any command that changes the data is executed. + There is no need to save manually.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">3.22. Encrypting data files <code>[coming in v2.0]</code></a></h3>
+<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">3.14. Encrypting data files <code>[coming in v2.0]</code></a></h3>
 <div class="paragraph">
 <p><em>{explain how the user can enable/disable data encryption}</em></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="importing-ics-formated-files-code-coming-in-v2-0-code"><a class="link" href="#importing-ics-formated-files-code-coming-in-v2-0-code">3.23. Importing .ics formated files <code>[coming in v2.0]</code></a></h3>
+<h3 id="importing-ics-formated-files-code-coming-in-v2-0-code"><a class="link" href="#importing-ics-formated-files-code-coming-in-v2-0-code">3.15. Importing .ics formated files <code>[coming in v2.0]</code></a></h3>
 <div class="paragraph">
 <p><em>{explain how the user can enable/disable data encryption}</em></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="exporting-ics-formated-files-code-coming-in-v2-0-code"><a class="link" href="#exporting-ics-formated-files-code-coming-in-v2-0-code">3.24. Exporting .ics formated files <code>[coming in v2.0]</code></a></h3>
+<h3 id="exporting-ics-formated-files-code-coming-in-v2-0-code"><a class="link" href="#exporting-ics-formated-files-code-coming-in-v2-0-code">3.16. Exporting .ics formated files <code>[coming in v2.0]</code></a></h3>
 <div class="paragraph">
 <p><em>{explain how the user can enable/disable data encryption}</em></p>
 </div>
@@ -866,4 +629,4 @@ e.g.<code>view day 01/04/2019</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-02-25 19:19:25 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-02-26 03:21:42 UTC</div></div></div></body></html>
