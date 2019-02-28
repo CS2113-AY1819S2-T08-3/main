@@ -17,7 +17,7 @@ public class HistoryCommand extends CommandP {
     public static final String MESSAGE_NO_HISTORY = "You have not yet entered any commands.";
 
     /**
-     * 
+     *
      * @param history
      * @return CommandResultP with a list of previousCommands
      */

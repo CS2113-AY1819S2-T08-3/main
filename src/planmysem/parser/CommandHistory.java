@@ -18,7 +18,6 @@ public class CommandHistory {
     public CommandHistory(CommandHistory commandHistory) {
         userInputHistory.addAll(commandHistory.userInputHistory);
     }
-
     /**
      * Appends {@code userInput} to the list of user input entered.
      */
