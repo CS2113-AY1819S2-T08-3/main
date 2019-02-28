@@ -38,6 +38,7 @@ import planmysem.data.tag.Tag;
 import planmysem.storage.StorageFile;
 
 
+
 public class LogicTest {
 
     /**
@@ -76,19 +77,18 @@ public class LogicTest {
     /**
      * Executes the command and confirms that the result message is correct.
      * Both the 'address book' and the 'last shown list' are expected to be empty.
-     *
      * @see #assertCommandBehavior(String, String, AddressBook, boolean, List)
      */
     private void assertCommandBehavior(String inputCommand, String expectedMessage) throws Exception {
-        assertCommandBehavior(inputCommand, expectedMessage, AddressBook.empty(), false, Collections.emptyList());
+        assertCommandBehavior(inputCommand, expectedMessage, AddressBook.empty(),false, Collections.emptyList());
     }
 
     /**
      * Executes the command and confirms that the result message is correct and
      * also confirms that the following three parts of the Logic object's state are as expected:<br>
-     * - the internal address book data are same as those in the {@code expectedAddressBook} <br>
-     * - the internal 'last shown list' matches the {@code expectedLastList} <br>
-     * - the storage file content matches data in {@code expectedAddressBook} <br>
+     *      - the internal address book data are same as those in the {@code expectedAddressBook} <br>
+     *      - the internal 'last shown list' matches the {@code expectedLastList} <br>
+     *      - the storage file content matches data in {@code expectedAddressBook} <br>
      */
     private void assertCommandBehavior(String inputCommand,
                                        String expectedMessage,
@@ -102,7 +102,7 @@ public class LogicTest {
         //Confirm the result contains the right data
         assertEquals(expectedMessage, r.feedbackToUser);
         assertEquals(r.getRelevantPersons().isPresent(), isRelevantPersonsExpected);
-        if (isRelevantPersonsExpected) {
+        if(isRelevantPersonsExpected){
             assertEquals(lastShownList, r.getRelevantPersons().get());
         }
 
@@ -143,25 +143,25 @@ public class LogicTest {
     public void execute_add_invalidArgsFormat() throws Exception {
         String expectedMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE);
         assertCommandBehavior(
-                "addDay wrong args wrong args", expectedMessage);
+                "add wrong args wrong args", expectedMessage);
         assertCommandBehavior(
-                "addDay Valid Name 12345 e/valid@email.butNoPhonePrefix a/valid, address", expectedMessage);
+                "add Valid Name 12345 e/valid@email.butNoPhonePrefix a/valid, address", expectedMessage);
         assertCommandBehavior(
-                "addDay Valid Name p/12345 valid@email.butNoPrefix a/valid, address", expectedMessage);
+                "add Valid Name p/12345 valid@email.butNoPrefix a/valid, address", expectedMessage);
         assertCommandBehavior(
-                "addDay Valid Name p/12345 e/valid@email.butNoAddressPrefix valid, address", expectedMessage);
+                "add Valid Name p/12345 e/valid@email.butNoAddressPrefix valid, address", expectedMessage);
     }
 
     @Test
     public void execute_add_invalidPersonData() throws Exception {
         assertCommandBehavior(
-                "addDay []\\[;] p/12345 e/valid@e.mail a/valid, address", Name.MESSAGE_NAME_CONSTRAINTS);
+                "add []\\[;] p/12345 e/valid@e.mail a/valid, address", Name.MESSAGE_NAME_CONSTRAINTS);
         assertCommandBehavior(
-                "addDay Valid Name p/not_numbers e/valid@e.mail a/valid, address", Phone.MESSAGE_PHONE_CONSTRAINTS);
+                "add Valid Name p/not_numbers e/valid@e.mail a/valid, address", Phone.MESSAGE_PHONE_CONSTRAINTS);
         assertCommandBehavior(
-                "addDay Valid Name p/12345 e/notAnEmail a/valid, address", Email.MESSAGE_EMAIL_CONSTRAINTS);
+                "add Valid Name p/12345 e/notAnEmail a/valid, address", Email.MESSAGE_EMAIL_CONSTRAINTS);
         assertCommandBehavior(
-                "addDay Valid Name p/12345 e/valid@e.mail a/valid, address t/invalid_-[.tag", Tag.MESSAGE_TAG_CONSTRAINTS);
+                "add Valid Name p/12345 e/valid@e.mail a/valid, address t/invalid_-[.tag", Tag.MESSAGE_TAG_CONSTRAINTS);
 
     }
 
@@ -235,7 +235,6 @@ public class LogicTest {
     /**
      * Confirms the 'invalid argument index number behaviour' for the given command
      * targeting a single person in the last shown list, using visible index.
-     *
      * @param commandWord to test assuming it targets a single person in the last shown list based on visible index.
      */
     private void assertInvalidIndexBehaviorForCommand(String commandWord) throws Exception {
@@ -480,7 +479,7 @@ public class LogicTest {
     /**
      * A utility class to generate test data.
      */
-    class TestDataHelper {
+    class TestDataHelper{
 
         Person adam() throws Exception {
             Name name = new Name("Adam Brown");
@@ -498,7 +497,7 @@ public class LogicTest {
          * Running this function with the same parameter values guarantees the returned person will have the same state.
          * Each unique seed will generate a unique Person object.
          *
-         * @param seed               used to generate the person data field values
+         * @param seed used to generate the person data field values
          * @param isAllFieldsPrivate determines if private-able fields (phone, email, address) will be private
          */
         Person generatePerson(int seed, boolean isAllFieldsPrivate) throws Exception {
@@ -511,13 +510,11 @@ public class LogicTest {
             );
         }
 
-        /**
-         * Generates the correct addDay command based on the person given
-         */
+        /** Generates the correct add command based on the person given */
         String generateAddCommand(Person p) {
             StringJoiner cmd = new StringJoiner(" ");
 
-            cmd.add("addDay");
+            cmd.add("add");
 
             cmd.add(p.getName().toString());
             cmd.add((p.getPhone().isPrivate() ? "pp/" : "p/") + p.getPhone());
@@ -525,7 +522,7 @@ public class LogicTest {
             cmd.add((p.getAddress().isPrivate() ? "pa/" : "a/") + p.getAddress());
 
             Set<Tag> tags = p.getTags();
-            for (Tag t : tags) {
+            for(Tag t: tags){
                 cmd.add("t/" + t.tagName);
             }
 
@@ -534,11 +531,10 @@ public class LogicTest {
 
         /**
          * Generates an AddressBook with auto-generated persons.
-         *
          * @param isPrivateStatuses flags to indicate if all contact details of respective persons should be set to
          *                          private.
          */
-        AddressBook generateAddressBook(Boolean... isPrivateStatuses) throws Exception {
+        AddressBook generateAddressBook(Boolean... isPrivateStatuses) throws Exception{
             AddressBook addressBook = new AddressBook();
             addToAddressBook(addressBook, isPrivateStatuses);
             return addressBook;
@@ -547,7 +543,7 @@ public class LogicTest {
         /**
          * Generates an AddressBook based on the list of Persons given.
          */
-        AddressBook generateAddressBook(List<Person> persons) throws Exception {
+        AddressBook generateAddressBook(List<Person> persons) throws Exception{
             AddressBook addressBook = new AddressBook();
             addToAddressBook(addressBook, persons);
             return addressBook;
@@ -555,20 +551,19 @@ public class LogicTest {
 
         /**
          * Adds auto-generated Person objects to the given AddressBook
-         *
-         * @param addressBook       The AddressBook to which the Persons will be added
+         * @param addressBook The AddressBook to which the Persons will be added
          * @param isPrivateStatuses flags to indicate if all contact details of generated persons should be set to
          *                          private.
          */
-        void addToAddressBook(AddressBook addressBook, Boolean... isPrivateStatuses) throws Exception {
+        void addToAddressBook(AddressBook addressBook, Boolean... isPrivateStatuses) throws Exception{
             addToAddressBook(addressBook, generatePersonList(isPrivateStatuses));
         }
 
         /**
          * Adds the given list of Persons to the given AddressBook
          */
-        void addToAddressBook(AddressBook addressBook, List<Person> personsToAdd) throws Exception {
-            for (Person p : personsToAdd) {
+        void addToAddressBook(AddressBook addressBook, List<Person> personsToAdd) throws Exception{
+            for(Person p: personsToAdd){
                 addressBook.addPerson(p);
             }
         }
@@ -576,9 +571,9 @@ public class LogicTest {
         /**
          * Creates a list of Persons based on the give Person objects.
          */
-        List<Person> generatePersonList(Person... persons) throws Exception {
+        List<Person> generatePersonList(Person... persons) throws Exception{
             List<Person> personList = new ArrayList<>();
-            for (Person p : persons) {
+            for(Person p: persons){
                 personList.add(p);
             }
             return personList;
@@ -586,14 +581,13 @@ public class LogicTest {
 
         /**
          * Generates a list of Persons based on the flags.
-         *
          * @param isPrivateStatuses flags to indicate if all contact details of respective persons should be set to
          *                          private.
          */
-        List<Person> generatePersonList(Boolean... isPrivateStatuses) throws Exception {
+        List<Person> generatePersonList(Boolean... isPrivateStatuses) throws Exception{
             List<Person> persons = new ArrayList<>();
             int i = 1;
-            for (Boolean p : isPrivateStatuses) {
+            for(Boolean p: isPrivateStatuses){
                 persons.add(generatePerson(i++, p));
             }
             return persons;

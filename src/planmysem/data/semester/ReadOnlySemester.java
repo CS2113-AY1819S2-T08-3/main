@@ -11,7 +11,7 @@ public interface ReadOnlySemester {
     String getName();
     String getAcademicYear();
     HashMap<LocalDate, Day> getDays();
-    String getStartDate();
-    String getEndDate();
+    LocalDate getStartDate();
+    LocalDate getEndDate();
     int getNoOfWeeks();
 }

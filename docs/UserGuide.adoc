@@ -85,7 +85,8 @@ Format: `help`
 === Adding Slots : `add`
 
 Add a _slot_ to the planner. +
-Format: `add slot d/DATE t/TIME d/DURATION [r/norecess] [r/noreading] [r/nonormal] [r/recess] [r/reading] [r/normal] [tag/TAG]...`
+Format: `add NAME st/START_TIME et/END_TIME|DURATION [date/DATE|DAY_OF_WEEK] +
+[l/LOCATION] [d/DESCRIPTION] [r/recess|norecess] [r/reading|noreading] [r/normal|nonormal] [t/TAG]...`
 
 Examples:
 

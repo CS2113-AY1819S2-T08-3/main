@@ -8,7 +8,8 @@ import planmysem.data.exception.IllegalValueException;
  */
 public class Location {
     public static final String EXAMPLE = "NUS COM2 04-22";
-    public static final String MESSAGE_NAME_CONSTRAINTS = "Slot's location should be spaces or alphanumeric characters";
+    public static final String MESSAGE_NAME_CONSTRAINTS =
+            "Slot's location should be spaces or alphanumeric characters";
     public static final String NAME_VALIDATION_REGEX = "[\\p{Alnum} ]+";
 
     private String value;

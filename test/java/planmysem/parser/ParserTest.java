@@ -34,32 +34,6 @@ public class ParserTest {
 
     private Parser parser;
 
-    private static Person generateTestPerson() {
-        try {
-            return new Person(
-                    new Name(Name.EXAMPLE),
-                    new Phone(Phone.EXAMPLE, true),
-                    new Email(Email.EXAMPLE, false),
-                    new Address(Address.EXAMPLE, true),
-                    new HashSet<>(Arrays.asList(new Tag("tag1"), new Tag("tag2"), new Tag("tag3")))
-            );
-        } catch (IllegalValueException ive) {
-            throw new RuntimeException("test person data should be valid by definition");
-        }
-    }
-
-    private static String convertPersonToAddCommandString(ReadOnlyPerson person) {
-        String addCommand = "addDay "
-                + person.getName().fullName
-                + (person.getPhone().isPrivate() ? " pp/" : " p/") + person.getPhone().value
-                + (person.getEmail().isPrivate() ? " pe/" : " e/") + person.getEmail().value
-                + (person.getAddress().isPrivate() ? " pa/" : " a/") + person.getAddress().value;
-        for (Tag tag : person.getTags()) {
-            addCommand += " t/" + tag.tagName;
-        }
-        return addCommand;
-    }
-
     @Before
     public void setup() {
         parser = new Parser();
@@ -67,7 +41,7 @@ public class ParserTest {
 
     @Test
     public void emptyInput_returnsIncorrect() {
-        final String[] emptyInputs = {"", "  ", "\n  \n"};
+        final String[] emptyInputs = { "", "  ", "\n  \n" };
         final String resultMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, HelpCommand.MESSAGE_USAGE);
         parseAndAssertIncorrectWithMessage(resultMessage, emptyInputs);
     }
@@ -112,14 +86,14 @@ public class ParserTest {
 
     @Test
     public void deleteCommand_noArgs() {
-        final String[] inputs = {"delete", "delete "};
+        final String[] inputs = { "delete", "delete " };
         final String resultMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteCommand.MESSAGE_USAGE);
         parseAndAssertIncorrectWithMessage(resultMessage, inputs);
     }
 
     @Test
     public void deleteCommand_argsIsNotSingleNumber() {
-        final String[] inputs = {"delete notAnumber ", "delete 8*wh12", "delete 1 2 3 4 5"};
+        final String[] inputs = { "delete notAnumber ", "delete 8*wh12", "delete 1 2 3 4 5" };
         final String resultMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteCommand.MESSAGE_USAGE);
         parseAndAssertIncorrectWithMessage(resultMessage, inputs);
     }
@@ -134,14 +108,14 @@ public class ParserTest {
 
     @Test
     public void viewCommand_noArgs() {
-        final String[] inputs = {"view", "view "};
+        final String[] inputs = { "view", "view " };
         final String resultMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, ViewCommand.MESSAGE_USAGE);
         parseAndAssertIncorrectWithMessage(resultMessage, inputs);
     }
 
     @Test
     public void viewCommand_argsIsNotSingleNumber() {
-        final String[] inputs = {"view notAnumber ", "view 8*wh12", "view 1 2 3 4 5"};
+        final String[] inputs = { "view notAnumber ", "view 8*wh12", "view 1 2 3 4 5" };
         final String resultMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, ViewCommand.MESSAGE_USAGE);
         parseAndAssertIncorrectWithMessage(resultMessage, inputs);
     }
@@ -156,7 +130,7 @@ public class ParserTest {
 
     @Test
     public void viewAllCommand_noArgs() {
-        final String[] inputs = {"viewall", "viewall "};
+        final String[] inputs = { "viewall", "viewall " };
         final String resultMessage =
                 String.format(MESSAGE_INVALID_COMMAND_FORMAT, ViewAllCommand.MESSAGE_USAGE);
         parseAndAssertIncorrectWithMessage(resultMessage, inputs);
@@ -164,7 +138,7 @@ public class ParserTest {
 
     @Test
     public void viewAllCommand_argsIsNotSingleNumber() {
-        final String[] inputs = {"viewall notAnumber ", "viewall 8*wh12", "viewall 1 2 3 4 5"};
+        final String[] inputs = { "viewall notAnumber ", "viewall 8*wh12", "viewall 1 2 3 4 5" };
         final String resultMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, ViewAllCommand.MESSAGE_USAGE);
         parseAndAssertIncorrectWithMessage(resultMessage, inputs);
     }
@@ -195,7 +169,7 @@ public class ParserTest {
 
     @Test
     public void findCommand_validArgs_parsedCorrectly() {
-        final String[] keywords = {"key1", "key2", "key3"};
+        final String[] keywords = { "key1", "key2", "key3" };
         final Set<String> keySet = new HashSet<>(Arrays.asList(keywords));
 
         final String input = "find " + String.join(" ", keySet);
@@ -206,7 +180,7 @@ public class ParserTest {
 
     @Test
     public void findCommand_duplicateKeys_parsedCorrectly() {
-        final String[] keywords = {"key1", "key2", "key3"};
+        final String[] keywords = { "key1", "key2", "key3" };
         final Set<String> keySet = new HashSet<>(Arrays.asList(keywords));
 
         // duplicate every keyword
@@ -217,21 +191,21 @@ public class ParserTest {
     }
 
     /**
-     * Test addDay person command
+     * Test add person command
      */
 
     @Test
     public void addCommand_invalidArgs() {
         final String[] inputs = {
-                "addDay",
-                "addDay ",
-                "addDay wrong args format",
+                "add",
+                "add ",
+                "add wrong args format",
                 // no phone prefix
-                String.format("addDay $s $s e/$s a/$s", Name.EXAMPLE, Phone.EXAMPLE, Email.EXAMPLE, Address.EXAMPLE),
+                String.format("add $s $s e/$s a/$s", Name.EXAMPLE, Phone.EXAMPLE, Email.EXAMPLE, Address.EXAMPLE),
                 // no email prefix
-                String.format("addDay $s p/$s $s a/$s", Name.EXAMPLE, Phone.EXAMPLE, Email.EXAMPLE, Address.EXAMPLE),
+                String.format("add $s p/$s $s a/$s", Name.EXAMPLE, Phone.EXAMPLE, Email.EXAMPLE, Address.EXAMPLE),
                 // no address prefix
-                String.format("addDay $s p/$s e/$s $s", Name.EXAMPLE, Phone.EXAMPLE, Email.EXAMPLE, Address.EXAMPLE)
+                String.format("add $s p/$s e/$s $s", Name.EXAMPLE, Phone.EXAMPLE, Email.EXAMPLE, Address.EXAMPLE)
         };
         final String resultMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE);
         parseAndAssertIncorrectWithMessage(resultMessage, inputs);
@@ -248,7 +222,7 @@ public class ParserTest {
         final String invalidTagArg = "t/invalid_-[.tag";
 
         // address can be any string, so no invalid address
-        final String addCommandFormatString = "addDay $s $s $s a/" + Address.EXAMPLE;
+        final String addCommandFormatString = "add $s $s $s a/" + Address.EXAMPLE;
 
         // test each incorrect person data field argument individually
         final String[] inputs = {
@@ -287,6 +261,32 @@ public class ParserTest {
         assertEquals(result.getPerson(), testPerson);
     }
 
+    private static Person generateTestPerson() {
+        try {
+            return new Person(
+                    new Name(Name.EXAMPLE),
+                    new Phone(Phone.EXAMPLE, true),
+                    new Email(Email.EXAMPLE, false),
+                    new Address(Address.EXAMPLE, true),
+                    new HashSet<>(Arrays.asList(new Tag("tag1"), new Tag("tag2"), new Tag("tag3")))
+            );
+        } catch (IllegalValueException ive) {
+            throw new RuntimeException("test person data should be valid by definition");
+        }
+    }
+
+    private static String convertPersonToAddCommandString(ReadOnlyPerson person) {
+        String addCommand = "add "
+                + person.getName().fullName
+                + (person.getPhone().isPrivate() ? " pp/" : " p/") + person.getPhone().value
+                + (person.getEmail().isPrivate() ? " pe/" : " e/") + person.getEmail().value
+                + (person.getAddress().isPrivate() ? " pa/" : " a/") + person.getAddress().value;
+        for (Tag tag : person.getTags()) {
+            addCommand += " t/" + tag.tagName;
+        }
+        return addCommand;
+    }
+
     /**
      * Utility methods
      */
@@ -304,7 +304,7 @@ public class ParserTest {
     /**
      * Utility method for parsing input and asserting the class/type of the returned command object.
      *
-     * @param input                to be parsed
+     * @param input to be parsed
      * @param expectedCommandClass expected class of returned command
      * @return the parsed command object
      */

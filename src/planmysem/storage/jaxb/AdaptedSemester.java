@@ -42,8 +42,14 @@ public class AdaptedSemester {
     public AdaptedSemester(ReadOnlySemester source) {
         name = source.getName();
         academicYear = source.getAcademicYear();
-        startDate = source.getStartDate();
-        endDate = source.getEndDate();
+        // TODO: remove when initialization of semester is complete
+        if (startDate == null || endDate == null) {
+            startDate = null;
+            endDate = null;
+        } else {
+            startDate = source.getStartDate().toString();
+            endDate = source.getEndDate().toString();
+        }
         noOfWeeks = source.getNoOfWeeks();
 
         days = new HashMap<>();
@@ -84,11 +90,18 @@ public class AdaptedSemester {
         final String endDate = this.endDate;
         final int noOfWeeks = this.noOfWeeks;
 
-        final HashMap<LocalDate, Day> days = new HashMap<LocalDate, Day>();
+        final HashMap<LocalDate, Day> days = new HashMap<>();
         for (Map.Entry<LocalDate, AdaptedDay> day : this.days.entrySet()) {
             days.put(day.getKey(), day.getValue().toModelType());
         }
 
-        return new Semester(name, academicYear, days, startDate, endDate, noOfWeeks);
+        // TODO: remove after initialization of semester is complete.
+        if (startDate == null || endDate == null) {
+            return new Semester(name, academicYear, days, null, null, noOfWeeks);
+        } else {
+            return new Semester(name, academicYear, days,
+                    LocalDate.parse(startDate), LocalDate.parse(endDate), noOfWeeks);
+        }
+
     }
 }

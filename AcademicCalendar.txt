@@ -1,0 +1,52 @@
+1:Vacation
+2:Vacation
+3:Week 1
+4:Week 2
+5:Week 3
+6:Week 4
+7:Week 5
+8:Week 6
+9:Recess Week
+10:Week 7
+11:Week 8
+12:Week 9
+13:Week 10
+14:Week 11
+15:Week 12
+16:Week 13
+17:Reading Week
+18:Examination Week
+19:Examination Week
+20:Vacation
+21:Vacation
+22:Vacation
+23:Vacation
+24:Vacation
+25:Vacation
+26:Vacation
+27:Vacation
+28:Vacation
+29:Vacation
+30:Vacation
+31:Vacation
+32:Orientation Week
+33:Week 1
+34:Week 2
+35:Week 3
+36:Week 4
+37:Week 5
+38:Week 6
+39:Recess Week
+40:Week 7
+41:Week 8
+42:Week 9
+43:Week 10
+44:Week 11
+45:Week 12
+46:Week 13
+47:Reading Week
+48:Examination Week
+49:Examination Week
+50:Vacation
+51:Vacation
+52:Vacation

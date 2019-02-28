@@ -97,7 +97,7 @@ public class StorageFileP {
      */
     public Planner load() throws StorageOperationException {
         try (final Reader fileReader =
-                     new BufferedReader(new FileReader(path.toFile()))) {
+                new BufferedReader(new FileReader(path.toFile()))) {
 
             final Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
             final AdaptedPlanner loaded = (AdaptedPlanner) unmarshaller.unmarshal(fileReader);

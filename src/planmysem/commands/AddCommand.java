@@ -18,7 +18,7 @@ import planmysem.data.tag.Tag;
  */
 public class AddCommand extends Command {
 
-    public static final String COMMAND_WORD = "addDay";
+    public static final String COMMAND_WORD = "add";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ":\n" + "Adds a person to the address book. "
             + "Contact details can be marked private by prepending 'p' to the prefix.\n\t"

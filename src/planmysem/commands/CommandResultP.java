@@ -17,7 +17,7 @@ public class CommandResultP {
     public final String feedbackToUser;
 
     /**
-     * The list of persons that was produced by the command
+     * The list of days that was produced by the command
      */
     private final HashMap<LocalDate, ? extends ReadOnlyDay> days;
 

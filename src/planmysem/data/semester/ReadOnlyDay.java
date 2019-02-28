@@ -15,5 +15,4 @@ public interface ReadOnlyDay {
     public String getDay();
 
     public ArrayList<Slot> getSlots();
-
 }
