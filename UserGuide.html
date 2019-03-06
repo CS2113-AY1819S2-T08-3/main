@@ -102,6 +102,9 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <div class="sect1">
 <h2 id="Features"><a class="link" href="#Features">3. Features</a></h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>This section displays the current implemented features as well as features that will be implemented in the future.</p>
+</div>
 <div class="exampleblock">
 <div class="content">
 <div class="paragraph">
@@ -110,109 +113,199 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <div class="ulist">
 <ul>
 <li>
-<p>Words in UPPER_CASE are the parameters to be supplied by the user e.g. in <code>add act NAME</code>, <code>NAME</code> is a parameter which can be used as the name of the activity.</p>
+<p>Words in UPPER_CASE are the parameters to be supplied by the user e.g. in <code>t/TAG</code>, <code>TAG</code> is a parameter which can be used as the name of the tag.</p>
 </li>
 <li>
-<p>Items in square brackets are optional e.g add act NAME <code>[c/NAME]</code> can be used as add act frisbee c/sports or as add act frisbee.</p>
+<p>Items in square brackets are optional. e.g add act NAME <code>[c/NAME]</code>.</p>
 </li>
 <li>
-<p>Items with <code>…</code> after them can be used multiple times including zero times e.g. <code>[t/TAG]…</code> can be used as   (i.e. 0 times), <code>t/lab</code>, <code>t/important</code>, <code>t/tough</code> etc.</p>
+<p>Items with <code>…</code> after them can be used multiple times including zero times e.g. <code>[t/TAG]…</code> can be used as   (i.e. 0 times), <code>t/lab</code>, <code>t/lecture</code>, <code>t/tutorial</code> etc.</p>
 </li>
 <li>
-<p>Parameters can be in any order e.g. if the command specifies <code>c/NAME</code>, <code>t/TAG</code>, <code>t/TAG</code>, <code>c/NAME</code> is also acceptable.</p>
+<p>Parameters can be in any order e.g. if the command specifies <code>st/START_TIME et/END_TIME d/DATE</code>, then both <code>et/09:00 st/08:00 d/2-13-2019</code> and <code>et/09:00 d/2-13-2019 st/08:00</code> is also acceptable.</p>
 </li>
 </ul>
 </div>
-</div>
-</div>
-<div class="exampleblock">
-<div class="content">
 <div class="paragraph">
-<p><strong>Option Format</strong></p>
+<p><strong>Paramters</strong></p>
 </div>
+<div class="paragraph">
+<p>Parameters in PlanMySem were designed to be, short and easy to memorise. Once familarised with, they should be intuitive to use.
+Below is the list of parameters for users such as yourself to jump right into grasping the system.</p>
+</div>
+<div class="hdlist">
+<table>
+<tr>
+<td class="hdlist1">
+<strong>Parameter</strong>
+</td>
+<td class="hdlist2">
+<p><strong>Description</strong></p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+<code>n/</code>
+</td>
+<td class="hdlist2">
+<p>Name specific to the object at hand</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+<code>d/</code>
+</td>
+<td class="hdlist2">
+<p>Date / Day of week<br>
+Format:<br></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>n/</code>: Name specific to the object at hand.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>e.g. Add <em>Category</em>: <code>add cat n/NAME [n/MORE_NAMES]&#8230;&#8203;</code></p>
+<p>Dates: <code>01-01</code>, <code>2019-01-02</code></p>
 </li>
 <li>
-<p>The <code>n/</code> here refers to the <em>category</em> name.</p>
+<p>Day of Week: <code>Monday</code>, <code>mon</code>, <code>1</code></p>
 </li>
 </ul>
 </div>
-</li>
-<li>
-<p><code>d/</code>: Date.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+<code>st/</code>
+</td>
+<td class="hdlist2">
+<p>Start Time
+Format:<br></p>
 <div class="ulist">
 <ul>
 <li>
-<p>Format: <code>01-01</code>, <code>2019-01-02</code></p>
+<p>24-Hour: <code>hh:mm-hh:mm</code></p>
 </li>
 <li>
-<p>e.g. Add <em>slot</em>: <code>add slot d/DATE t/TIME [r/norecess] [r/noreading] [r/nonormal] [r/recess] [r/reading] [r/normal] [tag/TAG]&#8230;&#8203;</code></p>
+<p>12-Hour: <code>HOUR+AM|PM-Hour+AM|PM</code></p>
 </li>
 </ul>
 </div>
-</li>
-<li>
-<p><code>t/</code>: Time.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+<code>et/</code>
+</td>
+<td class="hdlist2">
+<p>End Time / duration<br>
+Format:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Format: 24-Hour in the form of “hhmm-hhmm” or 12-Hour format in the form of <code>HOUR+AM|PM-Hour+AM|PM</code></p>
+<p>24-Hour in the form of “hh:mm-hh:mm”. e.g. <code>23:00</code></p>
 </li>
 <li>
-<p>e.g. Add: <code>add d/DATE t/TIME [r/norecess] [r/noreading] [r/nonormal] [r/recess] [r/reading] [r/normal] [tag/TAG]&#8230;&#8203;</code></p>
+<p>12-Hour format in the form of <code>HOUR+AM|PM-Hour+AM|PM</code>. e.g. <code>12:30am</code></p>
 </li>
 <li>
-<p>The <code>t/</code> here refers to the time in which to add the <em>slot</em> to.</p>
+<p>Duration of the event in minutes. e.g. <code>60</code> represents 60 minutes</p>
 </li>
 </ul>
 </div>
-</li>
-<li>
-<p><code>tag/</code>: Tag.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+<code>r/</code>
+</td>
+<td class="hdlist2">
+<p>recurrence
+Format:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>e.g. Add: <code>add d/DATE t/TIME [r/norecess] [r/noreading] [r/nonormal] [r/recess] [r/reading] [r/normal] [tag/TAG]&#8230;&#8203;</code></p>
+<p>Select/deselect recess week: <code>recess</code>, 'norecess'</p>
 </li>
 <li>
-<p>The <code>tag/</code> here refers the <em>tags</em> to attach to the <em>slot</em>.</p>
+<p>Select/deselect reading week: <code>reading</code>, <code>noreading</code></p>
+</li>
+<li>
+<p>Select/deselect normal weeks: <code>normal</code>, <code>nonormal</code></p>
 </li>
 </ul>
 </div>
-</li>
-<li>
-<p><code>r/</code>: recurrence</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Format: <code>norecess | noreading | nonormal | recess | reading | normal</code></p>
-</li>
-<li>
-<p>e.g. Add: <code>add d/DATE t/TIME [r/norecess] [r/noreading] [r/nonormal] [r/recess] [r/reading] [r/normal] [tag/TAG]&#8230;&#8203;</code></p>
-</li>
-<li>
-<p>The <code>r/</code> here refers to the recurrence of the <em>slot</em>.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><code>nn/</code>: New name of the object at hand.</p>
-</li>
-<li>
-<p><code>nd/</code>: New Date</p>
-</li>
-<li>
-<p><code>nt/</code>: New Time</p>
-</li>
-</ul>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+<code>l/</code>
+</td>
+<td class="hdlist2">
+<p>Location</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+<code>des/</code>
+</td>
+<td class="hdlist2">
+<p>Description</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+<code>t/</code>
+</td>
+<td class="hdlist2">
+<p>Tag</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+<code>nn/</code>
+</td>
+<td class="hdlist2">
+<p>New name of the object at hand.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+<code>nd/</code>
+</td>
+<td class="hdlist2">
+<p>New Date</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+<code>nst/</code>
+</td>
+<td class="hdlist2">
+<p>New Start Time</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+<code>net/</code>
+</td>
+<td class="hdlist2">
+<p>New End Time</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+<code>nl/</code>
+</td>
+<td class="hdlist2">
+<p>New Location</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+<code>ndes/</code>
+</td>
+<td class="hdlist2">
+<p>New Description</p>
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
@@ -226,8 +319,8 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <h3 id="adding-slots-code-add-code"><a class="link" href="#adding-slots-code-add-code">3.2. Adding Slots : <code>add</code></a></h3>
 <div class="paragraph">
 <p>Add a <em>slot</em> to the planner.<br>
-Format: <code>add NAME st/START_TIME et/END_TIME|DURATION [date/DATE|DAY_OF_WEEK]<br>
-[l/LOCATION] [d/DESCRIPTION] [r/recess|norecess] [r/reading|noreading] [r/normal|nonormal] [t/TAG]&#8230;&#8203;</code></p>
+Format: <code>add NAME d/DATE|DAY_OF_WEEK st/START_TIME et/END_TIME|DURATION<br>
+[l/LOCATION] [des/DESCRIPTION] [r/recess|norecess] [r/reading|noreading] [r/normal|nonormal] [t/TAG]&#8230;&#8203;</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -235,7 +328,7 @@ Format: <code>add NAME st/START_TIME et/END_TIME|DURATION [date/DATE|DAY_OF_WEEK
 <div class="ulist">
 <ul>
 <li>
-<p><code>add d/01-01 t/0800-0900 tag/Frisbee tag/Tembusu College</code><br>
+<p><code>add CS2113T Tutorial d/mon st/08:00 et/09:00 des/Attending: John, Tan, Lee t/Frisbee t/Tembusu College</code><br>
 Add a <em>slot</em> to the <em>activity</em> "Sport" on monday, from 0800hrs to 0900hrs with the tags "Frisbee" and "Tembusu College".</p>
 </li>
 <li>
@@ -630,4 +723,4 @@ e.g.<code>view day 01/04/2019</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-03 18:13:03 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-06 16:10:15 UTC</div></div></div></body></html>
