@@ -148,7 +148,7 @@ Below is the list of parameters for users such as yourself to jump right into gr
 <code>n/</code>
 </td>
 <td class="hdlist2">
-<p>Name specific to the object at hand</p>
+<p><strong>Name specific to the object at hand.</strong></p>
 </td>
 </tr>
 <tr>
@@ -156,7 +156,7 @@ Below is the list of parameters for users such as yourself to jump right into gr
 <code>d/</code>
 </td>
 <td class="hdlist2">
-<p>Date / Day of week<br>
+<p><strong>Date / Day of week.</strong><br>
 Format:<br></p>
 <div class="ulist">
 <ul>
@@ -175,15 +175,15 @@ Format:<br></p>
 <code>st/</code>
 </td>
 <td class="hdlist2">
-<p>Start Time
+<p><strong>Start Time.</strong>
 Format:<br></p>
 <div class="ulist">
 <ul>
 <li>
-<p>24-Hour: <code>hh:mm-hh:mm</code></p>
+<p>24-Hour: <code>hh:mm</code></p>
 </li>
 <li>
-<p>12-Hour: <code>HOUR+AM|PM-Hour+AM|PM</code></p>
+<p>12-Hour: <code>hh:mm+AM|PM</code></p>
 </li>
 </ul>
 </div>
@@ -194,15 +194,15 @@ Format:<br></p>
 <code>et/</code>
 </td>
 <td class="hdlist2">
-<p>End Time / duration<br>
+<p><strong>End Time / duration.</strong><br>
 Format:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>24-Hour in the form of “hh:mm-hh:mm”. e.g. <code>23:00</code></p>
+<p>24-Hour in the form of “hh:mm”. e.g. <code>23:00</code></p>
 </li>
 <li>
-<p>12-Hour format in the form of <code>HOUR+AM|PM-Hour+AM|PM</code>. e.g. <code>12:30am</code></p>
+<p>12-Hour format in the form of <code>hh:mm+AM|PM</code>. e.g. <code>12:30am</code></p>
 </li>
 <li>
 <p>Duration of the event in minutes. e.g. <code>60</code> represents 60 minutes</p>
@@ -216,18 +216,18 @@ Format:</p>
 <code>r/</code>
 </td>
 <td class="hdlist2">
-<p>recurrence
+<p><strong>recurrence.</strong><br>
 Format:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Select/deselect recess week: <code>recess</code>, 'norecess'</p>
+<p>Select/deselect recess week: <code>recess</code></p>
 </li>
 <li>
-<p>Select/deselect reading week: <code>reading</code>, <code>noreading</code></p>
+<p>Select/deselect reading week: <code>reading</code></p>
 </li>
 <li>
-<p>Select/deselect normal weeks: <code>normal</code>, <code>nonormal</code></p>
+<p>Select/deselect past dates: <code>past</code></p>
 </li>
 </ul>
 </div>
@@ -238,7 +238,7 @@ Format:</p>
 <code>l/</code>
 </td>
 <td class="hdlist2">
-<p>Location</p>
+<p><strong>Location.</strong></p>
 </td>
 </tr>
 <tr>
@@ -246,7 +246,7 @@ Format:</p>
 <code>des/</code>
 </td>
 <td class="hdlist2">
-<p>Description</p>
+<p><strong>Description.</strong></p>
 </td>
 </tr>
 <tr>
@@ -254,7 +254,7 @@ Format:</p>
 <code>t/</code>
 </td>
 <td class="hdlist2">
-<p>Tag</p>
+<p><strong>Tag.</strong></p>
 </td>
 </tr>
 <tr>
@@ -262,7 +262,7 @@ Format:</p>
 <code>nn/</code>
 </td>
 <td class="hdlist2">
-<p>New name of the object at hand.</p>
+<p><strong>New name of the object at hand.</strong></p>
 </td>
 </tr>
 <tr>
@@ -270,7 +270,7 @@ Format:</p>
 <code>nd/</code>
 </td>
 <td class="hdlist2">
-<p>New Date</p>
+<p><strong>New Date.</strong></p>
 </td>
 </tr>
 <tr>
@@ -278,7 +278,7 @@ Format:</p>
 <code>nst/</code>
 </td>
 <td class="hdlist2">
-<p>New Start Time</p>
+<p><strong>New Start Time.</strong></p>
 </td>
 </tr>
 <tr>
@@ -286,7 +286,7 @@ Format:</p>
 <code>net/</code>
 </td>
 <td class="hdlist2">
-<p>New End Time</p>
+<p><strong>New End Time.</strong></p>
 </td>
 </tr>
 <tr>
@@ -294,7 +294,7 @@ Format:</p>
 <code>nl/</code>
 </td>
 <td class="hdlist2">
-<p>New Location</p>
+<p><strong>New Location.</strong></p>
 </td>
 </tr>
 <tr>
@@ -302,7 +302,7 @@ Format:</p>
 <code>ndes/</code>
 </td>
 <td class="hdlist2">
-<p>New Description</p>
+<p><strong>New Description.</strong></p>
 </td>
 </tr>
 </table>
@@ -320,7 +320,7 @@ Format:</p>
 <div class="paragraph">
 <p>Add a <em>slot</em> to the planner.<br>
 Format: <code>add NAME d/DATE|DAY_OF_WEEK st/START_TIME et/END_TIME|DURATION<br>
-[l/LOCATION] [des/DESCRIPTION] [r/recess|norecess] [r/reading|noreading] [r/normal|nonormal] [t/TAG]&#8230;&#8203;</code></p>
+[l/LOCATION] [des/DESCRIPTION] [r/recess] [r/reading] [r/past] [t/TAG]&#8230;&#8203;</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -345,8 +345,7 @@ Do the same but additionally, recurse the slot on recess and reading week.</p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>The default for recurrence is no recess week and no reading week.<br>
-If the recurrence options are not defined, then there the <em>slot</em> will recurse every week except recess week and reading week.</p>
+<p>If no recurrence parameters are specified then only the nearest day or the specified date is selected.</p>
 </div>
 </td>
 </tr>
@@ -723,4 +722,4 @@ e.g.<code>view day 01/04/2019</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-09 10:55:17 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-10 17:16:51 UTC</div></div></div></body></html>
