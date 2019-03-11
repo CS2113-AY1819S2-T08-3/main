@@ -11,21 +11,21 @@ import planmysem.data.slot.Slot;
 
 
 /**
- * Finds and lists all slots in planner whose tag contains any of the argument keywords.
+ * Finds all slots and tags in planner whose name directly matches any of the argument keywords.
  * Keyword matching is case sensitive.
  */
-public class ListCommandP extends CommandP {
+public class FindCommandP extends CommandP {
 
-    public static final String COMMAND_WORD = "find";
+    public static final String COMMAND_WORD = "list";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ":\n" + "Lists all slots whose tags contain any of "
-            + "the specified keywords (case-sensitive).\n\t"
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ":\n" + "Finds all slots and tags which directly "
+            + "matches the specified keywords (case-sensitive).\n\t"
             + "Parameters: KEYWORD [MORE_KEYWORDS]...\n\t"
-            + "Example: " + COMMAND_WORD + " CS1010 tutorial lab";
+            + "Example: " + COMMAND_WORD + " CS2113T";
 
     private final Set<String> keywords;
 
-    public ListCommandP(Set<String> keywords) {
+    public FindCommandP(Set<String> keywords) {
         this.keywords = keywords;
     }
 
