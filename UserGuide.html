@@ -14,16 +14,16 @@
 <li><a href="#Features">3. Features</a>
 <ul class="sectlevel2">
 <li><a href="#viewing-help-code-help-code">3.1. Viewing help : <code>help</code></a></li>
-<li><a href="#adding-slots-code-add-code">3.2. Adding Slots : <code>add</code></a></li>
-<li><a href="#listing-slots-code-list-code">3.3. Listing Slots: <code>list</code></a></li>
-<li><a href="#editing-slots-code-edit-code">3.4. Editing Slots: <code>edit</code></a></li>
-<li><a href="#delete-slots-code-del-code">3.5. Delete Slots: <code>del</code></a></li>
-<li><a href="#locating-slots-code-find-code">3.6. Locating Slots: <code>find</code></a></li>
+<li><a href="#adding-slots-code-add-code-code-a-code">3.2. Adding Slots : <code>add</code> / <code>a</code></a></li>
+<li><a href="#editing-slots-code-edit-code-code-e-code">3.3. Editing Slots: <code>edit</code> / <code>e</code></a></li>
+<li><a href="#delete-slots-code-delete-code-code-del-code-code-d-code">3.4. Delete Slots: <code>delete</code> / <code>del</code> / <code>d</code></a></li>
+<li><a href="#listing-slots-code-list-code-code-l-code">3.5. Listing Slots: <code>list</code> / <code>l</code></a></li>
+<li><a href="#locating-slots-code-find-code-code-f-code">3.6. Locating Slots: <code>find</code> / <code>f</code></a></li>
 <li><a href="#view-the-planner-code-view-code">3.7. View the Planner : <code>view</code></a></li>
 <li><a href="#listing-previous-inputted-commands-code-history-code">3.8. Listing previous inputted commands : <code>history</code></a></li>
 <li><a href="#undoing-previous-command-code-undo-code">3.9. Undoing previous command : <code>undo</code></a></li>
 <li><a href="#redoing-the-previously-undone-command-code-redo-code">3.10. Redoing the previously undone command : <code>redo</code></a></li>
-<li><a href="#wipe-all-data-wipe">3.11. Wipe all data : wipe</a></li>
+<li><a href="#clear-all-data-clear">3.11. Clear all data : clear</a></li>
 <li><a href="#exiting-the-program-code-exit-code">3.12. Exiting the program : <code>exit</code></a></li>
 <li><a href="#saving-the-data">3.13. Saving the data</a></li>
 <li><a href="#encrypting-data-files-code-coming-in-v2-0-code">3.14. Encrypting data files <code>[coming in v2.0]</code></a></li>
@@ -40,7 +40,10 @@
 <h2 id="introduction"><a class="link" href="#introduction">1. Introduction</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>PlanMySem is a CLI (Command Line Interface) scheduling/calendar application that targets NUS students and staff who prefer to use a desktop application for managing their schedule/calendar. PlanMySem automatically creates a calendar and synchronises it according to the NUS academic calendar for a particular semester.</p>
+<p>PlanMySem is a CLI (Command Line Interface) scheduling/calendar application that targets NUS students and staff who prefer to use a desktop application for managing their schedule/calendar.
+PlanMySem automatically creates a planner that is synchronised according to the NUS academic calendar for the current semester and enables easy creation, editing and deleting of items.
+Special weeks such as recess week and reading week are taken into account within our unique recursion system.
+Items can then be efficiently managed via the intuitive tagging system.</p>
 </div>
 <div class="paragraph">
 <p>PlanMySem is optimized for those who prefer to work with a Command Line Interface (CLI) and/or are learning to work more efficiently with CLI tools. Additionally, unlike traditional calendar/scheduling applications, PlanMySem utilizes minimal resources on the user’s machine while still allowing the user to view their schedules swiftly and efficiently.</p>
@@ -113,7 +116,7 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <div class="ulist">
 <ul>
 <li>
-<p>Words in UPPER_CASE are the parameters to be supplied by the user e.g. in <code>t/TAG</code>, <code>TAG</code> is a parameter which can be used as the name of the tag.</p>
+<p>Words in UPPER_CASE are the parameters to be supplied by the user. E.g. in <code>t/TAG</code>, <code>TAG</code> is a parameter which can be used as the name of the tag.</p>
 </li>
 <li>
 <p>Items in square brackets are optional. e.g add act NAME <code>[c/NAME]</code>.</p>
@@ -221,13 +224,19 @@ Format:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Select/deselect recess week: <code>recess</code></p>
+<p>Select normal weeks: <code>normal</code></p>
 </li>
 <li>
-<p>Select/deselect reading week: <code>reading</code></p>
+<p>Select recess week: <code>recess</code></p>
 </li>
 <li>
-<p>Select/deselect past dates: <code>past</code></p>
+<p>Select reading week: <code>reading</code></p>
+</li>
+<li>
+<p>Select examination weeks: <code>exam</code></p>
+</li>
+<li>
+<p>Select past dates: <code>past</code></p>
 </li>
 </ul>
 </div>
@@ -316,26 +325,20 @@ Format:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="adding-slots-code-add-code"><a class="link" href="#adding-slots-code-add-code">3.2. Adding Slots : <code>add</code></a></h3>
+<h3 id="adding-slots-code-add-code-code-a-code"><a class="link" href="#adding-slots-code-add-code-code-a-code">3.2. Adding Slots : <code>add</code> / <code>a</code></a></h3>
 <div class="paragraph">
-<p>Add a <em>slot</em> to the planner.<br>
-Format: <code>add NAME d/DATE|DAY_OF_WEEK st/START_TIME et/END_TIME|DURATION<br>
-[l/LOCATION] [des/DESCRIPTION] [r/recess] [r/reading] [r/past] [t/TAG]&#8230;&#8203;</code></p>
+<p>Add <em>slots</em> to the planner.<br>
+Format: <code>add n/NAME d/DATE_OR_DAY_OF_WEEK st/START_TIME et/END_TIME_OR_DURATION<br>
+[l/LOCATION] [des/DESCRIPTION] [r/normal] [r/recess] [r/reading] [r/exam] [r/past] [t/TAG]&#8230;&#8203;</code></p>
 </div>
 <div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>add CS2113T Tutorial d/mon st/08:00 et/09:00 des/Attending: John, Tan, Lee t/Frisbee t/Tembusu College</code><br>
-Add a <em>slot</em> to the <em>activity</em> "Sport" on monday, from 0800hrs to 0900hrs with the tags "Frisbee" and "Tembusu College".</p>
-</li>
-<li>
-<p><code>add slot a/Interest Group d/monday t/0800-0900 r/recess r/reading tag/Tembusu College tag/Barefoots</code><br>
-Do the same but additionally, recurse the slot on recess and reading week.</p>
-</li>
-</ul>
+<p>Examples:
+* <code>add n/CS2113T Tutorial d/mon st/08:00 et/09:00 des/Topic: Sequence Diagram t/CS2113T t/Tutorial</code><br>
+Add a <em>slot</em>, named "CS2113T Tutorial" on the coming monday, from 0800hrs to 0900hrs with the tags "CS2113T" and "Tutorial".
+* <code>add n/CS2113T Tutorial d/mon st/08:00 et/09:00 des/Topic: Sequence Diagram t/CS2113T t/Tutorial r/recess r/reading</code><br>
+Do the same but additionally, recurse the slot on recess and reading week.
+* <code>add n/CS2113T Tutorial d/mon st/08:00 et/09:00 des/Topic: Sequence Diagram t/CS2113T t/Tutorial r/normal</code><br>
+Do the same but recurse the slot on "normal", instructional, weeks.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -345,7 +348,7 @@ Do the same but additionally, recurse the slot on recess and reading week.</p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>If no recurrence parameters are specified then only the nearest day or the specified date is selected.</p>
+<p>You may add single slots by neglecting the recurrence parameters.</p>
 </div>
 </td>
 </tr>
@@ -353,42 +356,21 @@ Do the same but additionally, recurse the slot on recess and reading week.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="listing-slots-code-list-code"><a class="link" href="#listing-slots-code-list-code">3.3. Listing Slots: <code>list</code></a></h3>
+<h3 id="editing-slots-code-edit-code-code-e-code"><a class="link" href="#editing-slots-code-edit-code-code-e-code">3.3. Editing Slots: <code>edit</code> / <code>e</code></a></h3>
 <div class="paragraph">
-<p>List all <em>slots</em> in the planner.<br>
-Format: <code>list</code></p>
+<p>Edit <em>slots</em>.</p>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>If no <em>categories</em> or <em>activities</em> are specified, then all <em>slots</em> will be listed.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
-<p><code>list slot</code><br>
-List all <em>slots</em> in the planner.</p>
+<p>Edit <em>slot(s)</em> which contains certain <em>tag</em>(s).<br>
+Format: <code>edit t/TAG&#8230;&#8203; [nn/NEW_NAME] [nst/NEW_START_TIME] [net/NEW_END_TIME|DURATION] [nl/NEW_LOCATION] [nd/NEW_DESCRIPTION] [nt/NEW_TAG]&#8230;&#8203;</code></p>
 </li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="editing-slots-code-edit-code"><a class="link" href="#editing-slots-code-edit-code">3.4. Editing Slots: <code>edit</code></a></h3>
-<div class="paragraph">
-<p>Edit a <em>slot</em>.<br>
-Format: <code>edit d/DATE t/TIME [nd/NEW_DATE] [nt/NEW_TIME] [r/norecess] [r/noreading] [r/nonormal] [r/recess] [r/reading] [r/normal]</code></p>
+<li>
+<p>Edit specific <em>slot</em> via the <code>list</code> command.<br>
+Format: <code>edit INDEX [nn/NEW_NAME] [nd/NEW_DATE] [nst/NEW_START_TIME] [net/NEW_END_TIME|DURATION] [nl/NEW_LOCATION] [nd/NEW_DESCRIPTION] [nt/NEW_TAG]&#8230;&#8203;</code></p>
+</li>
+</ol>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -398,7 +380,8 @@ Format: <code>edit d/DATE t/TIME [nd/NEW_DATE] [nt/NEW_TIME] [r/norecess] [r/nor
 </td>
 <td class="content">
 <div class="paragraph">
-<p>If the date and time specified does not correspond directly to a slot, the nearest slot will be selected for editing.</p>
+<p>You are not able to edit a slot&#8217;s date when selecting via <em>tags</em>.
+To edit a <em>slot</em>'s date, you may use the <code>list</code> or <code>find</code> command and select specific <em>slots</em> via index.</p>
 </div>
 </td>
 </tr>
@@ -410,17 +393,29 @@ Format: <code>edit d/DATE t/TIME [nd/NEW_DATE] [nt/NEW_TIME] [r/norecess] [r/nor
 <div class="ulist">
 <ul>
 <li>
-<p><code>edit d/01-01 t/0800 nd/01-03 nt/0900</code><br>
-Select the <em>slot</em> on the first of January, at 0800hrs and change it&#8217;s date to the Third of January and it&#8217;s time to 0900hrs.</p>
+<p><code>edit t/CS2113T t/Tutorial nl/COM2 04-01</code><br>
+Edit slots that contain tags "CS2113T" and "Tutorial", set these <em>slot&#8217;s</em> location to "COM2 04-01".</p>
+</li>
+<li>
+<p><code>edit 1 des/Topic: Sequence Diagram</code><br>
+Edit the first item from the previous result of the <code>list</code> or <code>find</code> command.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="delete-slots-code-del-code"><a class="link" href="#delete-slots-code-del-code">3.5. Delete Slots: <code>del</code></a></h3>
-<div class="paragraph">
-<p>Deleting <em>slots</em>.<br>
-Format: `del [d/DATE]&#8230;&#8203; [t/TIME]&#8230;&#8203; [t/TAG]&#8230;&#8203; `</p>
+<h3 id="delete-slots-code-delete-code-code-del-code-code-d-code"><a class="link" href="#delete-slots-code-delete-code-code-del-code-code-d-code">3.4. Delete Slots: <code>delete</code> / <code>del</code> / <code>d</code></a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Delete <em>slot(s)</em> which contains certain <em>tag</em>(s).<br>
+Format: <code>delete t/TAG&#8230;&#8203;</code></p>
+</li>
+<li>
+<p>Delete <em>slot</em> via the <code>list</code> command.<br>
+Format: <code>delete INDEX</code></p>
+</li>
+</ol>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -430,33 +425,65 @@ Format: `del [d/DATE]&#8230;&#8203; [t/TIME]&#8230;&#8203; [t/TAG]&#8230;&#8203;
 </td>
 <td class="content">
 <div class="paragraph">
-<p>All slots that strictly fits all the options given will be deleted.<br>
-This is useful for deleting a whole "category" of slots, such as an entire module&#8217;s lab sessions.</p>
+<p>You may delete a specific slot by using the <code>list</code> or <code>find</code> command and select the specific <em>slot</em> via index.</p>
 </div>
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>Example:</p>
+<p>Examples:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>del d/01-03 t/0800</code><br>
-Delete the slot located on the 3th of January, 0800hrs.</p>
+<p><code>delete t/CS2113T t/Tutorial</code><br>
+Delete <em>slots</em> that contain tags "CS2113T" and "Tutorial".</p>
 </li>
 <li>
-<p>TODO</p>
+<p><code>list delete 2</code><br>
+Delete the second <em>slot</em> shown via the <code>list</code> command.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="locating-slots-code-find-code"><a class="link" href="#locating-slots-code-find-code">3.6. Locating Slots: <code>find</code></a></h3>
+<h3 id="listing-slots-code-list-code-code-l-code"><a class="link" href="#listing-slots-code-list-code-code-l-code">3.5. Listing Slots: <code>list</code> / <code>l</code></a></h3>
 <div class="paragraph">
-<p>Find all <em>slots</em> whose name and or tags contains any of the given keywords.<br>
-Format: <code>find [n/SLOT_NAMES]&#8230;&#8203; [tag/TAG]&#8230;&#8203;</code></p>
+<p>List <em>slots</em> in the planner.<br>
+Format: <code>list [past] [next] [all]</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>If you do not specify a keyword, then the <code>all</code> keyword will be used and all <em>slots</em> will be listed.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>list next</code><br>
+List all <em>slots</em> that has yet to occurred in the planner.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="locating-slots-code-find-code-code-f-code"><a class="link" href="#locating-slots-code-find-code-code-f-code">3.6. Locating Slots: <code>find</code> / <code>f</code></a></h3>
+<div class="paragraph">
+<p>Find all <em>slots</em> that have a similar name and or contains specified <em>tags</em>.<br>
+Format: <code>find [n/SLOT_NAMES] [t/TAG]&#8230;&#8203;</code></p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -565,31 +592,10 @@ Format: <code>redo</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="wipe-all-data-wipe"><a class="link" href="#wipe-all-data-wipe">3.11. Wipe all data : wipe</a></h3>
+<h3 id="clear-all-data-clear"><a class="link" href="#clear-all-data-clear">3.11. Clear all data : clear</a></h3>
 <div class="paragraph">
-<p>Wipe all data stored on the planner.<br>
-Format: <code>wipe PlanMySem</code></p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>This can be used to restart the planner.</p>
-</li>
-<li>
-<p>The user will be prompted for a confirmation.</p>
-</li>
-</ul>
-</div>
-</td>
-</tr>
-</table>
+<p>Clear all data stored on the planner.<br>
+Format: <code>clear</code></p>
 </div>
 </div>
 <div class="sect2">
@@ -722,4 +728,4 @@ e.g.<code>view day 01/04/2019</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-11 15:47:31 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-15 11:59:52 UTC</div></div></div></body></html>
