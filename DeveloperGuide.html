@@ -30,9 +30,10 @@
 <li><a href="#implementation">3. Implementation</a>
 <ul class="sectlevel2">
 <li><a href="#undo-redo-feature">3.1. Undo/Redo feature</a></li>
-<li><a href="#proposed-data-encryption">3.2. [Proposed] Data Encryption</a></li>
-<li><a href="#logging">3.3. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.4. Configuration</a></li>
+<li><a href="#data-encryption">3.2. Data Encryption</a></li>
+<li><a href="#exporting-ics-file">3.3. Exporting .ics file</a></li>
+<li><a href="#logging">3.4. Logging</a></li>
+<li><a href="#Implementation-Configuration">3.5. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a>
@@ -789,20 +790,75 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect2">
-<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">3.2. [Proposed] Data Encryption</a></h3>
+<h3 id="data-encryption"><a class="link" href="#data-encryption">3.2. Data Encryption</a></h3>
 <div class="paragraph">
-<p><em>{Explain here how the data encryption feature will be implemented}</em></p>
+<p>The storage file "PlanMySem.txt" is encrypted to prevent easy access of the user&#8217;s calendar.
+We are encrypting and decrypting the data using the Java Cypher class.
+This feature is implemented through creating a Encryptor that contains encrypt and decrypt methods. The encrypt method takes a String object as an argument and returns a encrypted String object. The decrypt method takes in a String object as an argument and returns the decrypted message as a String object.</p>
+</div>
+<div class="paragraph">
+<p>Currently, the encryption is done using AES/ECB/PKCS5Padding. The key used for encryption is a placeholder key and the encrption mode is Electronic Codebook(ECB). In future updates, the key will be generated uniquely and Cipher Block Chaining(CBC) with a Initialization Vector(IV) will be used instead to improve security.</p>
+</div>
+<div class="paragraph">
+<p>Encryption of the data is done automatically before the file is saved. In the implmentation, the AdaptedPlanner object is first marshalled into a StringWriter before being encrypted and written into the file. This is to ensure that the data is JAXB formatted and the save algorithm is unaffected.
+Similarly, decryption of the data is done automatically before it is loaded. In the implementation, the file is read and decrypted and parsed into a StringReader object. The StringReader object is then unmarshalled and loaded. This is to ensure that the file is converted back into a JAXB object before being loaded and the load algorithm is unaffected.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.3. Logging</a></h3>
+<h3 id="exporting-ics-file"><a class="link" href="#exporting-ics-file">3.3. Exporting .ics file</a></h3>
+<div class="paragraph">
+<p>The user can export the current planner into a .ics file to use in external calendar applications. The .ics file will contain the names of the slots in the SUMMARY field and the descriptions in the DESCRIPTION field. This command automatically exports into the main directory and names the file “PlanMySem.ics”. Future updates can include user input to allow saving the file in another directory and naming the file.
+We have chosen to use the iCalendar format due to its popularity and it’s use in applications such as Google Calendar, Microsoft Outlook and Nusmods.</p>
+</div>
+<div class="paragraph">
+<p>In our implementation, we have chosen not to export the tags into the .ics file. This is because iCalendar does not have in-built tag fields. This means that other other applications that import .ics will not be able to use the tags.</p>
+</div>
+<div class="sect4">
+<h5 id="aspect-exporting-tags-into-ics-file"><a class="link" href="#aspect-exporting-tags-into-ics-file">Aspect: Exporting tags into .ics file.</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Ignore tags when exporting.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easier to implement as iCalendar does not have in-built tag fields.</p>
+</li>
+<li>
+<p>Cons: Not all the information about the slots will be retained.</p>
+</li>
+<li>
+<p>Reason for choice: We do not have much control over other applications, and importing and exporting .ics within PlanMySem can be done using the storage .txt file.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Use the notes field and a tag identifier to save the tags.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: All the information from the semester will be exported.</p>
+</li>
+<li>
+<p>Cons: Requires other applications to be coded to read these tag identifiers and also to store and use the tags in their functions.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="logging"><a class="link" href="#logging">3.4. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.4, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.5, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -833,7 +889,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.4. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.5. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g user prefs file location, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -2531,4 +2587,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-17 17:26:30 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-17 17:45:59 UTC</div></div></div></body></html>
