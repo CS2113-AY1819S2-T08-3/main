@@ -1,4 +1,4 @@
-= PlanMySem - Developer Guide
+﻿= PlanMySem - Developer Guide
 :site-section: DeveloperGuide
 :toc:
 :toc-title:
@@ -226,6 +226,15 @@ The `Storage` component,
 * can save `UserPref` objects in json format and read it back.
 * can save the Address Book data in json format and read it back.
 
+[[Design-Planner]]
+=== Planner component
+
+*API* : link:{repoURL}/src/planmysem/data/Planner.java[`Planner.java`]
+
+The `Planner` component,
+
+* can initialise and hold a `Semester` object.
+
 [[Design-Commons]]
 === Common classes
 
@@ -234,6 +243,37 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 == Implementation
 
 This section describes some noteworthy details on how certain features are implemented.
+
+=== Month/Week/Day View feature
+==== Planned Implementation
+
+The month/week/day view mechanism is facilitated by `PlannerView`.
+It extends `Planner` with different calendar views, stored internally as `monthView`, `weekView` and `dayView`.
+Additionally, it implements the following operations:
+
+* `PlannerView.displayMonthView()` - Displays the current semester in a monthly calendar view.
+* `PlannerView.displayWeekView()` - Displays the current semester in a weekly calendar view.
+* `PlannerView.displayDayView()` - Displays the current semester in a daily calendar view.
+
+Given below is an example usage scenario and how the month/week/day view feature behaves at each step.
+
+Step 1. The user launches the application for the first time. The `PlannerView` will be initialized with the contents in the `Planner`. The `Planner` might contain a `Semester` which is empty or a `Semester` populated with slots after reading `PlanMySem.txt`.
+
+Step 2. The user executes `add n/CS2113T Tutorial ...` to add a new slot to the planner. The `add` command would add a new `Slot` to the `Semester` of the `Planner`.
+
+Step 3. The user executes `view month March` command to view the calendar for March. The `view` command calls `PlannerView.displayMonthView()`, which loads the data the updated `Semester` from the `Planner` into `monthView`.
+
+
+==== Design Considerations
+
+===== Aspect: How a type of view is initialised or updated
+
+* **Alternative 1 (current choice):** Initialised from `Planner` only upon `view` command.
+** Pros: Easy to implement. Less operations performed by the program.
+* **Alternative 2:** Updated upon any `add`/`edit`/`delete` slot command.
+** Pros: `PlannerView` is always updated.
+** Cons: Large amount of extra operations.
+
 
 // tag::undoredo[]
 === Undo/Redo feature
@@ -315,12 +355,36 @@ image::UndoRedoActivityDiagram.png[width="650"]
 ** Cons: Requires dealing with commands that have already been undone: We must remember to skip these commands. Violates Single Responsibility Principle and Separation of Concerns as `HistoryManager` now needs to do two different things.
 // end::undoredo[]
 
-// tag::dataencryption[]
-=== [Proposed] Data Encryption
 
-_{Explain here how the data encryption feature will be implemented}_
+=== Data Encryption
 
-// end::dataencryption[]
+The storage file "PlanMySem.txt" is encrypted to prevent easy access of the user's calendar. 
+We are encrypting and decrypting the data using the Java Cypher class.
+This feature is implemented through creating a Encryptor that contains encrypt and decrypt methods. The encrypt method takes a String object as an argument and returns a encrypted String object. The decrypt method takes in a String object as an argument and returns the decrypted message as a String object.
+
+Currently, the encryption is done using AES/ECB/PKCS5Padding. The key used for encryption is a placeholder key and the encrption mode is Electronic Codebook(ECB). In future updates, the key will be generated uniquely and Cipher Block Chaining(CBC) with a Initialization Vector(IV) will be used instead to improve security.
+
+Encryption of the data is done automatically before the file is saved. In the implmentation, the AdaptedPlanner object is first marshalled into a StringWriter before being encrypted and written into the file. This is to ensure that the data is JAXB formatted and the save algorithm is unaffected.
+Similarly, decryption of the data is done automatically before it is loaded. In the implementation, the file is read and decrypted and parsed into a StringReader object. The StringReader object is then unmarshalled and loaded. This is to ensure that the file is converted back into a JAXB object before being loaded and the load algorithm is unaffected.
+
+
+=== Exporting .ics file
+
+The user can export the current planner into a .ics file to use in external calendar applications. The .ics file will contain the names of the slots in the SUMMARY field and the descriptions in the DESCRIPTION field. This command automatically exports into the main directory and names the file “PlanMySem.ics”. Future updates can include user input to allow saving the file in another directory and naming the file. 
+We have chosen to use the iCalendar format due to its popularity and it’s use in applications such as Google Calendar, Microsoft Outlook and Nusmods. 
+
+In our implementation, we have chosen not to export the tags into the .ics file. This is because iCalendar does not have in-built tag fields. This means that other other applications that import .ics will not be able to use the tags. 
+
+===== Aspect: Exporting tags into .ics file.
+
+* **Alternative 1 (current choice):** Ignore tags when exporting.
+** Pros: Easier to implement as iCalendar does not have in-built tag fields.
+** Cons: Not all the information about the slots will be retained.
+** Reason for choice: We do not have much control over other applications, and importing and exporting .ics within PlanMySem can be done using the storage .txt file.
+* **Alternative 2:** Use the notes field and a tag identifier to save the tags.
+** Pros: All the information from the semester will be exported.
+** Cons: Requires other applications to be coded to read these tag identifiers and also to store and use the tags in their functions.
+
 
 === Logging
 
@@ -841,7 +905,7 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 |`* * *` |user |view all slots on a certain day |conveniently view my planner for the day
 |`* * *` |user |view all slots on a certain week |conveniently view my planner for the week
 |`* * *` |user |view all slots on a certain month |conveniently view my planner for the month
-|`* * *` |user |add details to a slot |record information related to the slot 
+|`* * *` |user |add details to a slot |record information related to the slot
 |`* *` |user |view the planner in a graphic calendar format|easily view my schedule for the day/week/month/semester
 |`* *` |user |view a slot |view the details of a specific activity I am looking for
 |`* *` |user |remove tags on a time slot |remove unused/ unnecessary tags from an activity*
@@ -880,7 +944,7 @@ User case ends.
 === Use Case: List and Delete a Module
 . User inputs the command to list all modules he/she is enrolled in.
 . System lists all the modules.
-. User selects the intended module from the list and inputs the delete command along with the module name for deletion. 
+. User selects the intended module from the list and inputs the delete command along with the module name for deletion.
 +
 Use case ends.
 
@@ -889,6 +953,14 @@ Use case ends.
 . System returns module name and it’s color attribute.
 . User renames the module or changes the color attribute.
 . System reflects the renamed module and/or the changed color for the module.
++
+Use case ends.
+
+=== Use Case: Export planner
+. User inputs command to export the planner.
+. System converts planner to .ics format.
+. System saves .ics file in the main directory as "PlanMySem.ics".
+. System displays confirmation message.
 +
 Use case ends.
 
@@ -940,7 +1012,7 @@ _{More to be added}_
 . The system should respond relatively quickly to user commands so as to not make the user wait around; this is an advantage of using PlanMySem.
 . The system should take up relatively little space on the local machine so as to cater to all students and OS.
 . The system should be easy to use, intuitive and simple, such that any student regardless of past experience with calendar/scheduling softwares is able to use it.
-. The system should be flexible to allow all kinds of schedules that target users might have. 
+. The system should be flexible to allow all kinds of schedules that target users might have.
 . The data should be encrypted to prevent private data from being accessed.
 
 [appendix]

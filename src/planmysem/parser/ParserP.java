@@ -19,6 +19,7 @@ import planmysem.commands.CommandP;
 import planmysem.commands.DeleteCommandP;
 import planmysem.commands.EditCommandP;
 import planmysem.commands.ExitCommandP;
+import planmysem.commands.ExportCommandP;
 import planmysem.commands.FindCommand;
 import planmysem.commands.HelpCommand;
 import planmysem.commands.HelpCommandP;
@@ -84,6 +85,9 @@ public class ParserP {
         case EditCommandP.COMMAND_WORD:
         case EditCommandP.COMMAND_WORD_SHORT:
             return prepareEdit(arguments);
+
+        case ExportCommandP.COMMAND_WORD:
+            return new ExportCommandP();
 
         case DeleteCommandP.COMMAND_WORD:
         case DeleteCommandP.COMMAND_WORD_ALT:

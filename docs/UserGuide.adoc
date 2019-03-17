@@ -1,4 +1,4 @@
-= PlanMySem - User Guide
+﻿= PlanMySem - User Guide
 :site-section: UserGuide
 :toc:
 :toc-title:
@@ -198,16 +198,23 @@ Format: `view day DATE | view week WEEK | view month MONTH | view all`
 [NOTE]
 ====
 . If no date is given, the current date is assumed.
-. If the `all` option is specified, the planner will not be displayed, instead all the details in the planner will be displayed.====
+. If the `all` option is specified, the planner will not be displayed, instead all the details in the planner will be displayed.
 ====
 
 Example:
 
-* `view day`
-* `view day 1-03` +
-View the first of January.
+* `view day` +
+View planner for the current date.
+* `view day 01/03/2019` +
+View planner for the first of March.
+* `view week 7` +
+View planner for week 7 of the academic calendar.
+* `view week recess` +
+View planner for recess week of the academic calendar.
+* `view month March` +
+View planner for the month of March.
 * `view all` +
-all the details in the planner.
+View all the details in the planner.
 
 
 === Listing previous inputted commands : `history`
@@ -244,11 +251,12 @@ Format: `exit`
 
 Planner data is saved in the hard disk automatically after any command that changes the data is executed. + There is no need to save manually.
 
-// tag::dataencryption[]
-=== Encrypting data files `[coming in v2.0]`
 
-_{explain how the user can enable/disable data encryption}_
-// end::dataencryption[]
+=== Encrypting/decrypting data files
+
+Planner data is automatically encrypted before saving. There is no need to encrypt the data manually.
+
+Planner data is automatically decrypted before loading. There is no need to decrypt the data manually.
 
 // tag::importICS[]
 === Importing .ics formated files `[coming in v2.0]`
@@ -257,12 +265,16 @@ _{explain how the user can enable/disable data encryption}_
 _{explain how the user can import .ics formatted files}_
 // end::importICS[]
 
-// tag::exportICS[]
-=== Exporting .ics formated files `[coming in v2.0]`
+=== Exporting .ics formated files: `export`
 
+Exports planner as a .ics file.
+Format: `export`
 
-_{explain how the user can export .ics formatted files}_
-// end::exportICS[]
+[NOTE]
+====
+The exported file is named "PlanMySem.ics" and is saved in the main directory.
+====
+
 
 == FAQ
 
@@ -302,7 +314,7 @@ e.g.`del c/CS2113T a/frisbee t/hard module`
 * *View planner* : `view day [DATE] | view week [WEEK] | view month [MONTH]` +
 e.g.`view day 01/04/2019`
 * *View all details* : `view all` +
-e.g.`view day 01/04/2019`
+e.g.`view all`
 * *View history* : `history`
 * *Undo previous command* : `undo`
 * *Redo previously undone co* : `redo`
