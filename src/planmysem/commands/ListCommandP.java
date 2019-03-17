@@ -1,14 +1,13 @@
 package planmysem.commands;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
+import java.time.LocalDate;
+import java.util.*;
+
+import javafx.util.Pair;
 
 import planmysem.data.semester.Day;
+import planmysem.data.slot.ReadOnlySlot;
 import planmysem.data.slot.Slot;
-
 
 /**
  * Finds and lists all slots in planner whose name contains any of the argument keywords.
@@ -18,49 +17,67 @@ public class ListCommandP extends CommandP {
 
     public static final String COMMAND_WORD = "list";
     public static final String COMMAND_WORD_SHORT = "l";
-
+    
+    public static final String MESSAGE_SUCCESS = "%1$s Slots listed.\n%2$s";
+    public static final String MESSAGE_SUCCESS_NONE= "0 Slots listed.\n";
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Lists all slots."
             + "\n\tOptional Parameters: [past] [next] [all]"
             + "\n\tDefault: list all"
             + "\n\tExample: " + COMMAND_WORD + " CS1010 tutorial lab";
 
-    private final Set<String> keywords;
+    private final String name;
 
-    public ListCommandP(Set<String> keywords) {
-        this.keywords = keywords;
+    public ListCommandP(String name) {
+        this.name = name;
     }
-
-    /**
-     * Returns copy of keywords in this command.
-     */
-    public Set<String> getKeywords() {
-        return new HashSet<>(keywords);
-    }
-
+    
     @Override
     public CommandResultP execute() {
-        String result = getSlotsWithTag(keywords).stream().map(Object::toString)
-                .collect(Collectors.joining(", "));
-        return new CommandResultP(result);
-    }
+        final List<Pair<LocalDate, ? extends ReadOnlySlot>> relevantSlots = new ArrayList<>();
+        List<Slot> matchedSlots = new ArrayList<>();
+        LocalDate date;
 
-    /**
-     * Retrieve all slot in the semesters of the planner whose slots contain some of the specified keywords.
-     *
-     * @param keywords for searching
-     * @return list of persons found
-     */
-    private List<Slot> getSlotsWithTag(Set<String> keywords) {
-        List<Slot> test = new ArrayList<>();
-        for (Day days : planner.getSemester().getDays().values()) {
-            for (Slot slots : days.getSlots()) {
-                for (String keyword : keywords) {
-                    if (slots.getName().value.equalsIgnoreCase(keyword)) {
-                        test.add(slots);
-                    }
+        for (Map.Entry<LocalDate, Day> entry : planner.getSemester().getDays().entrySet()) {
+            for (Slot slots : entry.getValue().getSlots()) {
+                if (slots.getName().value.equalsIgnoreCase(name)) {
+                    matchedSlots.add(slots);
+                    date = entry.getKey();
+                    relevantSlots.add(new Pair<>(date, slots));
                 }
             }
         }
-        return test;
+        
+        if (matchedSlots.isEmpty()) {
+            return new CommandResultP(MESSAGE_SUCCESS_NONE);
+        }
+        setData(this.planner,relevantSlots);
+        
+        return new CommandResultP(String.format(MESSAGE_SUCCESS, matchedSlots.size(), craftSuccessMessage(relevantSlots)));
+    }
+    
+    /**
+     * Craft success message.
+     */
+    private String craftSuccessMessage(List<Pair<LocalDate, ? extends ReadOnlySlot>> result) {
+        int count = 1;
+        StringBuilder sb = new StringBuilder();
+
+        for (Pair<LocalDate, ? extends ReadOnlySlot> pair : result) {
+            sb.append("\n");
+            sb.append(count + ".\t");
+            sb.append("Name: ");
+            sb.append(pair.getValue().getName().toString());
+            sb.append(",\n\t");
+            sb.append("Date: ");
+            sb.append(pair.getKey().toString());
+            sb.append(",\n\t");
+            sb.append("Start Time: ");
+            sb.append(pair.getValue().getStartTime());
+            sb.append("\n");
+            count++;
+        }
+        return sb.toString();
     }
 }
+
+

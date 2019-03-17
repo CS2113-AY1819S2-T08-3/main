@@ -1,0 +1,1002 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Planner>
+    <semester>
+        <name>Sem 2</name>
+        <academicYear>AY2018/2019</academicYear>
+        <startDate>2019-01-14</startDate>
+        <endDate>2019-05-12</endDate>
+        <noOfWeeks>17</noOfWeeks>
+        <days>
+            <entry>
+                <key>2019-02-09</key>
+                <value>
+                    <dayOfWeek>SATURDAY</dayOfWeek>
+                    <weekType>Week 4</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-02-08</key>
+                <value>
+                    <dayOfWeek>FRIDAY</dayOfWeek>
+                    <weekType>Week 4</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-02-07</key>
+                <value>
+                    <dayOfWeek>THURSDAY</dayOfWeek>
+                    <weekType>Week 4</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-02-06</key>
+                <value>
+                    <dayOfWeek>WEDNESDAY</dayOfWeek>
+                    <weekType>Week 4</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-02-05</key>
+                <value>
+                    <dayOfWeek>TUESDAY</dayOfWeek>
+                    <weekType>Week 4</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-02-04</key>
+                <value>
+                    <dayOfWeek>MONDAY</dayOfWeek>
+                    <weekType>Week 4</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-02-03</key>
+                <value>
+                    <dayOfWeek>SUNDAY</dayOfWeek>
+                    <weekType>Week 3</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-02-02</key>
+                <value>
+                    <dayOfWeek>SATURDAY</dayOfWeek>
+                    <weekType>Week 3</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-02-01</key>
+                <value>
+                    <dayOfWeek>FRIDAY</dayOfWeek>
+                    <weekType>Week 3</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-01-31</key>
+                <value>
+                    <dayOfWeek>THURSDAY</dayOfWeek>
+                    <weekType>Week 3</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-01-30</key>
+                <value>
+                    <dayOfWeek>WEDNESDAY</dayOfWeek>
+                    <weekType>Week 3</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-04-30</key>
+                <value>
+                    <dayOfWeek>TUESDAY</dayOfWeek>
+                    <weekType>Examination Week</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-04-20</key>
+                <value>
+                    <dayOfWeek>SATURDAY</dayOfWeek>
+                    <weekType>Week 13</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-04-21</key>
+                <value>
+                    <dayOfWeek>SUNDAY</dayOfWeek>
+                    <weekType>Week 13</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-04-22</key>
+                <value>
+                    <dayOfWeek>MONDAY</dayOfWeek>
+                    <weekType>Reading Week</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-04-23</key>
+                <value>
+                    <dayOfWeek>TUESDAY</dayOfWeek>
+                    <weekType>Reading Week</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-04-24</key>
+                <value>
+                    <dayOfWeek>WEDNESDAY</dayOfWeek>
+                    <weekType>Reading Week</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-04-25</key>
+                <value>
+                    <dayOfWeek>THURSDAY</dayOfWeek>
+                    <weekType>Reading Week</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-04-26</key>
+                <value>
+                    <dayOfWeek>FRIDAY</dayOfWeek>
+                    <weekType>Reading Week</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-04-27</key>
+                <value>
+                    <dayOfWeek>SATURDAY</dayOfWeek>
+                    <weekType>Reading Week</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-04-28</key>
+                <value>
+                    <dayOfWeek>SUNDAY</dayOfWeek>
+                    <weekType>Reading Week</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-04-29</key>
+                <value>
+                    <dayOfWeek>MONDAY</dayOfWeek>
+                    <weekType>Examination Week</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-02-19</key>
+                <value>
+                    <dayOfWeek>TUESDAY</dayOfWeek>
+                    <weekType>Week 6</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-02-18</key>
+                <value>
+                    <dayOfWeek>MONDAY</dayOfWeek>
+                    <weekType>Week 6</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-02-17</key>
+                <value>
+                    <dayOfWeek>SUNDAY</dayOfWeek>
+                    <weekType>Week 5</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-02-16</key>
+                <value>
+                    <dayOfWeek>SATURDAY</dayOfWeek>
+                    <weekType>Week 5</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-02-15</key>
+                <value>
+                    <dayOfWeek>FRIDAY</dayOfWeek>
+                    <weekType>Week 5</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-02-14</key>
+                <value>
+                    <dayOfWeek>THURSDAY</dayOfWeek>
+                    <weekType>Week 5</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-02-13</key>
+                <value>
+                    <dayOfWeek>WEDNESDAY</dayOfWeek>
+                    <weekType>Week 5</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-02-12</key>
+                <value>
+                    <dayOfWeek>TUESDAY</dayOfWeek>
+                    <weekType>Week 5</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-02-11</key>
+                <value>
+                    <dayOfWeek>MONDAY</dayOfWeek>
+                    <weekType>Week 5</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-02-10</key>
+                <value>
+                    <dayOfWeek>SUNDAY</dayOfWeek>
+                    <weekType>Week 4</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-05-01</key>
+                <value>
+                    <dayOfWeek>WEDNESDAY</dayOfWeek>
+                    <weekType>Examination Week</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-05-02</key>
+                <value>
+                    <dayOfWeek>THURSDAY</dayOfWeek>
+                    <weekType>Examination Week</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-05-03</key>
+                <value>
+                    <dayOfWeek>FRIDAY</dayOfWeek>
+                    <weekType>Examination Week</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-05-04</key>
+                <value>
+                    <dayOfWeek>SATURDAY</dayOfWeek>
+                    <weekType>Examination Week</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-05-05</key>
+                <value>
+                    <dayOfWeek>SUNDAY</dayOfWeek>
+                    <weekType>Examination Week</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-05-06</key>
+                <value>
+                    <dayOfWeek>MONDAY</dayOfWeek>
+                    <weekType>Examination Week</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-05-07</key>
+                <value>
+                    <dayOfWeek>TUESDAY</dayOfWeek>
+                    <weekType>Examination Week</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-05-08</key>
+                <value>
+                    <dayOfWeek>WEDNESDAY</dayOfWeek>
+                    <weekType>Examination Week</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-05-09</key>
+                <value>
+                    <dayOfWeek>THURSDAY</dayOfWeek>
+                    <weekType>Examination Week</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-02-28</key>
+                <value>
+                    <dayOfWeek>THURSDAY</dayOfWeek>
+                    <weekType>Recess Week</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-02-27</key>
+                <value>
+                    <dayOfWeek>WEDNESDAY</dayOfWeek>
+                    <weekType>Recess Week</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-02-26</key>
+                <value>
+                    <dayOfWeek>TUESDAY</dayOfWeek>
+                    <weekType>Recess Week</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-02-25</key>
+                <value>
+                    <dayOfWeek>MONDAY</dayOfWeek>
+                    <weekType>Recess Week</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-02-24</key>
+                <value>
+                    <dayOfWeek>SUNDAY</dayOfWeek>
+                    <weekType>Week 6</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-02-23</key>
+                <value>
+                    <dayOfWeek>SATURDAY</dayOfWeek>
+                    <weekType>Week 6</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-02-22</key>
+                <value>
+                    <dayOfWeek>FRIDAY</dayOfWeek>
+                    <weekType>Week 6</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-02-21</key>
+                <value>
+                    <dayOfWeek>THURSDAY</dayOfWeek>
+                    <weekType>Week 6</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-02-20</key>
+                <value>
+                    <dayOfWeek>WEDNESDAY</dayOfWeek>
+                    <weekType>Week 6</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-05-10</key>
+                <value>
+                    <dayOfWeek>FRIDAY</dayOfWeek>
+                    <weekType>Examination Week</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-05-11</key>
+                <value>
+                    <dayOfWeek>SATURDAY</dayOfWeek>
+                    <weekType>Examination Week</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-03-01</key>
+                <value>
+                    <dayOfWeek>FRIDAY</dayOfWeek>
+                    <weekType>Recess Week</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-03-02</key>
+                <value>
+                    <dayOfWeek>SATURDAY</dayOfWeek>
+                    <weekType>Recess Week</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-03-03</key>
+                <value>
+                    <dayOfWeek>SUNDAY</dayOfWeek>
+                    <weekType>Recess Week</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-03-04</key>
+                <value>
+                    <dayOfWeek>MONDAY</dayOfWeek>
+                    <weekType>Week 7</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-03-05</key>
+                <value>
+                    <dayOfWeek>TUESDAY</dayOfWeek>
+                    <weekType>Week 7</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-03-06</key>
+                <value>
+                    <dayOfWeek>WEDNESDAY</dayOfWeek>
+                    <weekType>Week 7</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-03-07</key>
+                <value>
+                    <dayOfWeek>THURSDAY</dayOfWeek>
+                    <weekType>Week 7</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-03-08</key>
+                <value>
+                    <dayOfWeek>FRIDAY</dayOfWeek>
+                    <weekType>Week 7</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-03-09</key>
+                <value>
+                    <dayOfWeek>SATURDAY</dayOfWeek>
+                    <weekType>Week 7</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-03-10</key>
+                <value>
+                    <dayOfWeek>SUNDAY</dayOfWeek>
+                    <weekType>Week 7</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-03-11</key>
+                <value>
+                    <dayOfWeek>MONDAY</dayOfWeek>
+                    <weekType>Week 8</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-03-12</key>
+                <value>
+                    <dayOfWeek>TUESDAY</dayOfWeek>
+                    <weekType>Week 8</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-03-13</key>
+                <value>
+                    <dayOfWeek>WEDNESDAY</dayOfWeek>
+                    <weekType>Week 8</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-03-14</key>
+                <value>
+                    <dayOfWeek>THURSDAY</dayOfWeek>
+                    <weekType>Week 8</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-03-15</key>
+                <value>
+                    <dayOfWeek>FRIDAY</dayOfWeek>
+                    <weekType>Week 8</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-03-16</key>
+                <value>
+                    <dayOfWeek>SATURDAY</dayOfWeek>
+                    <weekType>Week 8</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-03-17</key>
+                <value>
+                    <dayOfWeek>SUNDAY</dayOfWeek>
+                    <weekType>Week 8</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-03-18</key>
+                <value>
+                    <dayOfWeek>MONDAY</dayOfWeek>
+                    <weekType>Week 9</weekType>
+                    <slots>
+                        <name>CS1010</name>
+                        <duration>60</duration>
+                        <startTime>08:00</startTime>
+                        <tags>lab</tags>
+                    </slots>
+                    <slots>
+                        <name>CS2030</name>
+                        <duration>60</duration>
+                        <startTime>12:00</startTime>
+                        <tags>tutorial</tags>
+                    </slots>
+                    <slots>
+                        <name>CS2101</name>
+                        <duration>180</duration>
+                        <startTime>11:00</startTime>
+                        <tags>lab</tags>
+                    </slots>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-03-19</key>
+                <value>
+                    <dayOfWeek>TUESDAY</dayOfWeek>
+                    <weekType>Week 9</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-03-20</key>
+                <value>
+                    <dayOfWeek>WEDNESDAY</dayOfWeek>
+                    <weekType>Week 9</weekType>
+                    <slots>
+                        <name>CS2113T</name>
+                        <duration>60</duration>
+                        <startTime>11:00</startTime>
+                        <tags>lab</tags>
+                    </slots>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-03-21</key>
+                <value>
+                    <dayOfWeek>THURSDAY</dayOfWeek>
+                    <weekType>Week 9</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-03-22</key>
+                <value>
+                    <dayOfWeek>FRIDAY</dayOfWeek>
+                    <weekType>Week 9</weekType>
+                    <slots>
+                        <name>CS2113T</name>
+                        <duration>180</duration>
+                        <startTime>09:00</startTime>
+                        <tags>lab</tags>
+                    </slots>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-03-23</key>
+                <value>
+                    <dayOfWeek>SATURDAY</dayOfWeek>
+                    <weekType>Week 9</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-03-24</key>
+                <value>
+                    <dayOfWeek>SUNDAY</dayOfWeek>
+                    <weekType>Week 9</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-03-25</key>
+                <value>
+                    <dayOfWeek>MONDAY</dayOfWeek>
+                    <weekType>Week 10</weekType>
+                    <slots>
+                        <name>CS2113T Tutorial</name>
+                        <description>Topic: Sequence Diagram</description>
+                        <duration>60</duration>
+                        <startTime>08:00</startTime>
+                        <tags>Tutorial</tags>
+                        <tags>CS2113T</tags>
+                    </slots>
+                    <slots>
+                        <name>CS2113T Tutorial</name>
+                        <description>Topic: Sequence Diagram</description>
+                        <duration>60</duration>
+                        <startTime>08:00</startTime>
+                        <tags>Tutorial</tags>
+                        <tags>CS2113T</tags>
+                    </slots>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-03-26</key>
+                <value>
+                    <dayOfWeek>TUESDAY</dayOfWeek>
+                    <weekType>Week 10</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-03-27</key>
+                <value>
+                    <dayOfWeek>WEDNESDAY</dayOfWeek>
+                    <weekType>Week 10</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-03-28</key>
+                <value>
+                    <dayOfWeek>THURSDAY</dayOfWeek>
+                    <weekType>Week 10</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-03-29</key>
+                <value>
+                    <dayOfWeek>FRIDAY</dayOfWeek>
+                    <weekType>Week 10</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-01-19</key>
+                <value>
+                    <dayOfWeek>SATURDAY</dayOfWeek>
+                    <weekType>Week 1</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-01-18</key>
+                <value>
+                    <dayOfWeek>FRIDAY</dayOfWeek>
+                    <weekType>Week 1</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-01-17</key>
+                <value>
+                    <dayOfWeek>THURSDAY</dayOfWeek>
+                    <weekType>Week 1</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-01-16</key>
+                <value>
+                    <dayOfWeek>WEDNESDAY</dayOfWeek>
+                    <weekType>Week 1</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-01-15</key>
+                <value>
+                    <dayOfWeek>TUESDAY</dayOfWeek>
+                    <weekType>Week 1</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-01-14</key>
+                <value>
+                    <dayOfWeek>MONDAY</dayOfWeek>
+                    <weekType>Week 1</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-03-30</key>
+                <value>
+                    <dayOfWeek>SATURDAY</dayOfWeek>
+                    <weekType>Week 10</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-03-31</key>
+                <value>
+                    <dayOfWeek>SUNDAY</dayOfWeek>
+                    <weekType>Week 10</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-04-01</key>
+                <value>
+                    <dayOfWeek>MONDAY</dayOfWeek>
+                    <weekType>Week 11</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-04-02</key>
+                <value>
+                    <dayOfWeek>TUESDAY</dayOfWeek>
+                    <weekType>Week 11</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-04-03</key>
+                <value>
+                    <dayOfWeek>WEDNESDAY</dayOfWeek>
+                    <weekType>Week 11</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-04-04</key>
+                <value>
+                    <dayOfWeek>THURSDAY</dayOfWeek>
+                    <weekType>Week 11</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-04-05</key>
+                <value>
+                    <dayOfWeek>FRIDAY</dayOfWeek>
+                    <weekType>Week 11</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-04-06</key>
+                <value>
+                    <dayOfWeek>SATURDAY</dayOfWeek>
+                    <weekType>Week 11</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-04-07</key>
+                <value>
+                    <dayOfWeek>SUNDAY</dayOfWeek>
+                    <weekType>Week 11</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-04-08</key>
+                <value>
+                    <dayOfWeek>MONDAY</dayOfWeek>
+                    <weekType>Week 12</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-04-09</key>
+                <value>
+                    <dayOfWeek>TUESDAY</dayOfWeek>
+                    <weekType>Week 12</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-01-29</key>
+                <value>
+                    <dayOfWeek>TUESDAY</dayOfWeek>
+                    <weekType>Week 3</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-01-28</key>
+                <value>
+                    <dayOfWeek>MONDAY</dayOfWeek>
+                    <weekType>Week 3</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-01-27</key>
+                <value>
+                    <dayOfWeek>SUNDAY</dayOfWeek>
+                    <weekType>Week 2</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-01-26</key>
+                <value>
+                    <dayOfWeek>SATURDAY</dayOfWeek>
+                    <weekType>Week 2</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-01-25</key>
+                <value>
+                    <dayOfWeek>FRIDAY</dayOfWeek>
+                    <weekType>Week 2</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-01-24</key>
+                <value>
+                    <dayOfWeek>THURSDAY</dayOfWeek>
+                    <weekType>Week 2</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-01-23</key>
+                <value>
+                    <dayOfWeek>WEDNESDAY</dayOfWeek>
+                    <weekType>Week 2</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-01-22</key>
+                <value>
+                    <dayOfWeek>TUESDAY</dayOfWeek>
+                    <weekType>Week 2</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-01-21</key>
+                <value>
+                    <dayOfWeek>MONDAY</dayOfWeek>
+                    <weekType>Week 2</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-01-20</key>
+                <value>
+                    <dayOfWeek>SUNDAY</dayOfWeek>
+                    <weekType>Week 1</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-04-10</key>
+                <value>
+                    <dayOfWeek>WEDNESDAY</dayOfWeek>
+                    <weekType>Week 12</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-04-11</key>
+                <value>
+                    <dayOfWeek>THURSDAY</dayOfWeek>
+                    <weekType>Week 12</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-04-12</key>
+                <value>
+                    <dayOfWeek>FRIDAY</dayOfWeek>
+                    <weekType>Week 12</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-04-13</key>
+                <value>
+                    <dayOfWeek>SATURDAY</dayOfWeek>
+                    <weekType>Week 12</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-04-14</key>
+                <value>
+                    <dayOfWeek>SUNDAY</dayOfWeek>
+                    <weekType>Week 12</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-04-15</key>
+                <value>
+                    <dayOfWeek>MONDAY</dayOfWeek>
+                    <weekType>Week 13</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-04-16</key>
+                <value>
+                    <dayOfWeek>TUESDAY</dayOfWeek>
+                    <weekType>Week 13</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-04-17</key>
+                <value>
+                    <dayOfWeek>WEDNESDAY</dayOfWeek>
+                    <weekType>Week 13</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-04-18</key>
+                <value>
+                    <dayOfWeek>THURSDAY</dayOfWeek>
+                    <weekType>Week 13</weekType>
+                </value>
+            </entry>
+            <entry>
+                <key>2019-04-19</key>
+                <value>
+                    <dayOfWeek>FRIDAY</dayOfWeek>
+                    <weekType>Week 13</weekType>
+                </value>
+            </entry>
+        </days>
+        <recessDays>2019-03-01</recessDays>
+        <recessDays>2019-02-28</recessDays>
+        <recessDays>2019-03-02</recessDays>
+        <recessDays>2019-02-27</recessDays>
+        <recessDays>2019-03-03</recessDays>
+        <recessDays>2019-02-26</recessDays>
+        <recessDays>2019-02-25</recessDays>
+        <readingDays>2019-04-22</readingDays>
+        <readingDays>2019-04-23</readingDays>
+        <readingDays>2019-04-24</readingDays>
+        <readingDays>2019-04-25</readingDays>
+        <readingDays>2019-04-26</readingDays>
+        <readingDays>2019-04-27</readingDays>
+        <readingDays>2019-04-28</readingDays>
+        <normalDays>2019-02-09</normalDays>
+        <normalDays>2019-02-08</normalDays>
+        <normalDays>2019-02-07</normalDays>
+        <normalDays>2019-02-06</normalDays>
+        <normalDays>2019-02-05</normalDays>
+        <normalDays>2019-02-04</normalDays>
+        <normalDays>2019-02-03</normalDays>
+        <normalDays>2019-02-02</normalDays>
+        <normalDays>2019-02-01</normalDays>
+        <normalDays>2019-01-31</normalDays>
+        <normalDays>2019-01-30</normalDays>
+        <normalDays>2019-04-20</normalDays>
+        <normalDays>2019-04-21</normalDays>
+        <normalDays>2019-03-10</normalDays>
+        <normalDays>2019-03-11</normalDays>
+        <normalDays>2019-03-12</normalDays>
+        <normalDays>2019-03-13</normalDays>
+        <normalDays>2019-03-14</normalDays>
+        <normalDays>2019-03-15</normalDays>
+        <normalDays>2019-03-16</normalDays>
+        <normalDays>2019-03-17</normalDays>
+        <normalDays>2019-03-18</normalDays>
+        <normalDays>2019-03-19</normalDays>
+        <normalDays>2019-02-19</normalDays>
+        <normalDays>2019-02-18</normalDays>
+        <normalDays>2019-02-17</normalDays>
+        <normalDays>2019-02-16</normalDays>
+        <normalDays>2019-02-15</normalDays>
+        <normalDays>2019-02-14</normalDays>
+        <normalDays>2019-02-13</normalDays>
+        <normalDays>2019-02-12</normalDays>
+        <normalDays>2019-02-11</normalDays>
+        <normalDays>2019-02-10</normalDays>
+        <normalDays>2019-03-20</normalDays>
+        <normalDays>2019-03-21</normalDays>
+        <normalDays>2019-03-22</normalDays>
+        <normalDays>2019-03-23</normalDays>
+        <normalDays>2019-03-24</normalDays>
+        <normalDays>2019-03-25</normalDays>
+        <normalDays>2019-03-26</normalDays>
+        <normalDays>2019-03-27</normalDays>
+        <normalDays>2019-03-28</normalDays>
+        <normalDays>2019-03-29</normalDays>
+        <normalDays>2019-01-19</normalDays>
+        <normalDays>2019-01-18</normalDays>
+        <normalDays>2019-01-17</normalDays>
+        <normalDays>2019-01-16</normalDays>
+        <normalDays>2019-01-15</normalDays>
+        <normalDays>2019-01-14</normalDays>
+        <normalDays>2019-02-24</normalDays>
+        <normalDays>2019-02-23</normalDays>
+        <normalDays>2019-02-22</normalDays>
+        <normalDays>2019-02-21</normalDays>
+        <normalDays>2019-02-20</normalDays>
+        <normalDays>2019-03-30</normalDays>
+        <normalDays>2019-03-31</normalDays>
+        <normalDays>2019-04-01</normalDays>
+        <normalDays>2019-04-02</normalDays>
+        <normalDays>2019-04-03</normalDays>
+        <normalDays>2019-04-04</normalDays>
+        <normalDays>2019-04-05</normalDays>
+        <normalDays>2019-04-06</normalDays>
+        <normalDays>2019-04-07</normalDays>
+        <normalDays>2019-04-08</normalDays>
+        <normalDays>2019-04-09</normalDays>
+        <normalDays>2019-01-29</normalDays>
+        <normalDays>2019-01-28</normalDays>
+        <normalDays>2019-01-27</normalDays>
+        <normalDays>2019-01-26</normalDays>
+        <normalDays>2019-01-25</normalDays>
+        <normalDays>2019-01-24</normalDays>
+        <normalDays>2019-01-23</normalDays>
+        <normalDays>2019-01-22</normalDays>
+        <normalDays>2019-01-21</normalDays>
+        <normalDays>2019-01-20</normalDays>
+        <normalDays>2019-04-10</normalDays>
+        <normalDays>2019-04-11</normalDays>
+        <normalDays>2019-04-12</normalDays>
+        <normalDays>2019-04-13</normalDays>
+        <normalDays>2019-04-14</normalDays>
+        <normalDays>2019-04-15</normalDays>
+        <normalDays>2019-04-16</normalDays>
+        <normalDays>2019-03-04</normalDays>
+        <normalDays>2019-04-17</normalDays>
+        <normalDays>2019-03-05</normalDays>
+        <normalDays>2019-04-18</normalDays>
+        <normalDays>2019-03-06</normalDays>
+        <normalDays>2019-04-19</normalDays>
+        <normalDays>2019-03-07</normalDays>
+        <normalDays>2019-03-08</normalDays>
+        <normalDays>2019-03-09</normalDays>
+        <examDays>2019-04-30</examDays>
+        <examDays>2019-05-10</examDays>
+        <examDays>2019-05-11</examDays>
+        <examDays>2019-05-01</examDays>
+        <examDays>2019-05-02</examDays>
+        <examDays>2019-05-03</examDays>
+        <examDays>2019-05-04</examDays>
+        <examDays>2019-05-05</examDays>
+        <examDays>2019-05-06</examDays>
+        <examDays>2019-05-07</examDays>
+        <examDays>2019-04-29</examDays>
+        <examDays>2019-05-08</examDays>
+        <examDays>2019-05-09</examDays>
+    </semester>
+</Planner>

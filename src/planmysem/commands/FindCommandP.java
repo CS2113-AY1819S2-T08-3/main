@@ -16,7 +16,7 @@ import planmysem.data.slot.Slot;
  */
 public class FindCommandP extends CommandP {
 
-    public static final String COMMAND_WORD = "list";
+    public static final String COMMAND_WORD = "find";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ":\n" + "Finds all slots and tags which directly "
             + "matches the specified keywords (case-sensitive).\n\t"

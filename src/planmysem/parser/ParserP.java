@@ -295,24 +295,29 @@ public class ParserP {
     }
 
     /**
-     * Parses arguments in the context of the add Slot command.
+     * Parses arguments in the context of the list command.
      *
      * @param args full command args string
      * @return the prepared command
      */
     private CommandP prepareList(String args) {
         HashMap<String, Set<String>> arguments = getParametersWithArguments(args);
-
-
-        // Validate arg string format
-        if (args.isEmpty() || arguments.isEmpty()) {
+        String name = getFirstInSet(arguments.get(PARAMETER_NAME)); 
+        if (name == null || name.trim().isEmpty()) {
             return new IncorrectCommandP(String.format(MESSAGE_INVALID_COMMAND_FORMAT, ListCommandP.MESSAGE_USAGE));
         }
+//        Set<String> keywords = new HashSet<>() ;
+//        keywords.add(name);
+        
+        // Validate arg string format
+//        if (args.isEmpty() || arguments.isEmpty()) {
+//            return new IncorrectCommandP(String.format(MESSAGE_INVALID_COMMAND_FORMAT, ListCommandP.MESSAGE_USAGE));
+//        }
 
         // TODO: prepare list
         //        try {
         // TODO: add exception handling
-        return new ListCommandP(arguments.get(PARAMETER_START_TIME));
+        return new ListCommandP(name);
         //        } catch (IllegalValueException ive) {
         //            return new IncorrectCommandP(ive.getMessage());
         //        }
