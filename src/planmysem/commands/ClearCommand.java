@@ -1,19 +1,19 @@
 package planmysem.commands;
 
 /**
- * Clears the address book.
+ * Clears the planner.
  */
 public class ClearCommand extends Command {
 
     public static final String COMMAND_WORD = "clear";
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ":\n" + "Clears address book permanently.\n\t"
-            + "Example: " + COMMAND_WORD;
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Clears the planner permanently."
+            + "\n\tExample: " + COMMAND_WORD;
 
-    public static final String MESSAGE_SUCCESS = "Address book has been cleared!";
+    public static final String MESSAGE_SUCCESS = "The Planner has been cleared!";
 
     @Override
     public CommandResult execute() {
-        addressBook.clear();
+        planner.clearSlots();
         return new CommandResult(MESSAGE_SUCCESS);
     }
 }

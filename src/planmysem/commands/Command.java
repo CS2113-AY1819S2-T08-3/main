@@ -2,65 +2,77 @@ package planmysem.commands;
 
 import static planmysem.ui.Gui.DISPLAYED_INDEX_OFFSET;
 
+import java.time.LocalDate;
 import java.util.List;
 
+import javafx.util.Pair;
 import planmysem.common.Messages;
-import planmysem.data.AddressBook;
-import planmysem.data.person.ReadOnlyPerson;
+import planmysem.data.Planner;
+import planmysem.data.slot.ReadOnlySlot;
 
 /**
  * Represents an executable command.
  */
 public abstract class Command {
-    protected AddressBook addressBook;
-    protected List<? extends ReadOnlyPerson> relevantPersons;
+    protected Planner planner;
+    protected List<Pair<LocalDate, ? extends ReadOnlySlot>> relevantSlots;
     private int targetIndex = -1;
+
+    /**
+     * @param slots last visible listing index of the target person
+     */
+    //    public Command(List<Pair<LocalDate, ? extends ReadOnlySlot>> slots) {
+    //        this.relevantSlots = slots;
+    //    }
 
     /**
      * @param targetIndex last visible listing index of the target person
      */
     public Command(int targetIndex) {
-        this.setTargetIndex(targetIndex);
+        this.targetIndex = targetIndex;
     }
 
     protected Command() {
     }
 
     /**
-     * Constructs a feedback message to summarise an operation that displayed a listing of persons.
-     *
-     * @param personsDisplayed used to generate summary
-     * @return summary message for persons displayed
-     */
-    public static String getMessageForPersonListShownSummary(List<? extends ReadOnlyPerson> personsDisplayed) {
-        return String.format(Messages.MESSAGE_PERSONS_LISTED_OVERVIEW, personsDisplayed.size());
-    }
-
-    /**
      * Executes the command and returns the result.
      */
-    public CommandResult execute() {
-        throw new UnsupportedOperationException("This method should be implement in child classes");
-    }
+    public abstract CommandResult execute();
 
-    //Note: it is better to make the execute() method abstract, by replacing the above method with the line below:
-    //public abstract CommandResult execute();
+    /**
+     * Constructs a feedback message to summarise an operation that displayed a listing of persons.
+     *
+     * @param slots used to generate summary
+     * @return summary message for persons displayed
+     */
+    public static String getMessageForSlotsListShownSummary(List<Pair<LocalDate, ? extends ReadOnlySlot>> slots) {
+        return String.format(Messages.MESSAGE_PERSONS_LISTED_OVERVIEW, slots.size());
+    }
 
     /**
      * Supplies the data the command will operate on.
      */
-    public void setData(AddressBook addressBook, List<? extends ReadOnlyPerson> relevantPersons) {
-        this.addressBook = addressBook;
-        this.relevantPersons = relevantPersons;
+    public void setData(Planner planner, List<Pair<LocalDate, ? extends ReadOnlySlot>> slots) {
+        this.planner = planner;
+        this.relevantSlots = slots;
     }
 
     /**
-     * Extracts the the target person in the last shown list from the given arguments.
+     * Extracts the the target Day in the last shown list from the given arguments.
      *
      * @throws IndexOutOfBoundsException if the target index is out of bounds of the last viewed listing
      */
-    protected ReadOnlyPerson getTargetPerson() throws IndexOutOfBoundsException {
-        return relevantPersons.get(getTargetIndex() - DISPLAYED_INDEX_OFFSET);
+    protected List<Pair<LocalDate, ? extends ReadOnlySlot>> getTargetSlots() throws IndexOutOfBoundsException {
+        return relevantSlots;
+    }
+
+    protected Pair<LocalDate, ? extends ReadOnlySlot> getTargetSlot(int index) throws IndexOutOfBoundsException {
+        return relevantSlots.get(index);
+    }
+
+    protected Pair<LocalDate, ? extends ReadOnlySlot> getTargetSlot() throws IndexOutOfBoundsException {
+        return relevantSlots.get(targetIndex - DISPLAYED_INDEX_OFFSET);
     }
 
     public int getTargetIndex() {

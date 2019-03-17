@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javafx.util.Pair;
-import planmysem.data.person.ReadOnlyPerson;
 import planmysem.data.slot.ReadOnlySlot;
 
 /**
@@ -66,17 +65,6 @@ public class Formatter {
             sb.append(LINE_PREFIX + m.replace("\n", LS + LINE_PREFIX) + LS);
         }
         return sb.toString();
-    }
-
-    /**
-     * Formats the given list of persons for displaying to the user.
-     */
-    public String format(List<? extends ReadOnlyPerson> persons) {
-        final List<String> formattedPersons = new ArrayList<>();
-        for (ReadOnlyPerson person : persons) {
-            formattedPersons.add(person.getAsTextHidePrivate());
-        }
-        return format(asIndexedList(formattedPersons));
     }
 
     /**

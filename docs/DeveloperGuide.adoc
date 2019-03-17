@@ -358,7 +358,7 @@ image::UndoRedoActivityDiagram.png[width="650"]
 
 === Data Encryption
 
-The storage file "PlanMySem.txt" is encrypted to prevent easy access of the user's calendar. 
+The storage file "PlanMySem.txt" is encrypted to prevent easy access of the user's calendar.
 We are encrypting and decrypting the data using the Java Cypher class.
 This feature is implemented through creating a Encryptor that contains encrypt and decrypt methods. The encrypt method takes a String object as an argument and returns a encrypted String object. The decrypt method takes in a String object as an argument and returns the decrypted message as a String object.
 
@@ -370,10 +370,10 @@ Similarly, decryption of the data is done automatically before it is loaded. In 
 
 === Exporting .ics file
 
-The user can export the current planner into a .ics file to use in external calendar applications. The .ics file will contain the names of the slots in the SUMMARY field and the descriptions in the DESCRIPTION field. This command automatically exports into the main directory and names the file “PlanMySem.ics”. Future updates can include user input to allow saving the file in another directory and naming the file. 
-We have chosen to use the iCalendar format due to its popularity and it’s use in applications such as Google Calendar, Microsoft Outlook and Nusmods. 
+The user can export the current planner into a .ics file to use in external calendar applications. The .ics file will contain the names of the slots in the SUMMARY field and the descriptions in the DESCRIPTION field. This command automatically exports into the main directory and names the file “PlanMySem.ics”. Future updates can include user input to allow saving the file in another directory and naming the file.
+We have chosen to use the iCalendar format due to its popularity and it’s use in applications such as Google Calendar, Microsoft Outlook and Nusmods.
 
-In our implementation, we have chosen not to export the tags into the .ics file. This is because iCalendar does not have in-built tag fields. This means that other other applications that import .ics will not be able to use the tags. 
+In our implementation, we have chosen not to export the tags into the .ics file. This is because iCalendar does not have in-built tag fields. This means that other other applications that import .ics will not be able to use the tags.
 
 ===== Aspect: Exporting tags into .ics file.
 
@@ -906,6 +906,8 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 |`* * *` |user |view all slots on a certain week |conveniently view my planner for the week
 |`* * *` |user |view all slots on a certain month |conveniently view my planner for the month
 |`* * *` |user |add details to a slot |record information related to the slot
+|`* * *` |user |undo a command |easily revert my changes and restore a previous state
+|`* * *` |user |redo a command |easily revert my `undo` command in case I mistakenly undo too far
 |`* *` |user |view the planner in a graphic calendar format|easily view my schedule for the day/week/month/semester
 |`* *` |user |view a slot |view the details of a specific activity I am looking for
 |`* *` |user |remove tags on a time slot |remove unused/ unnecessary tags from an activity*
@@ -918,6 +920,7 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 |`*` |user |export semester timetable (.ics files) |view my timetable on another platform
 |`*` |user |receive notifications of upcoming activities |be reminded of important upcoming activities
 |`*` |user |view recess week and exam week |view specifically the weeks to rest
+|`*` |user |view vacations |plan my schedule on vacation days or special semesters
 |`*` |user |favourite an activity |prioritise important activities
 |`*` |user |view public holidays |be aware of upcoming public holidays
 |`*` |user |compare my timetable with someone else's |find a common time slot for a meeting

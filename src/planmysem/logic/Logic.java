@@ -1,13 +1,16 @@
 package planmysem.logic;
 
-import java.util.Collections;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
+import javax.xml.bind.JAXBException;
+
+import javafx.util.Pair;
 import planmysem.commands.Command;
 import planmysem.commands.CommandResult;
-import planmysem.data.AddressBook;
-import planmysem.data.person.ReadOnlyPerson;
+import planmysem.data.Planner;
+import planmysem.data.slot.ReadOnlySlot;
 import planmysem.parser.Parser;
 import planmysem.storage.StorageFile;
 
@@ -16,29 +19,29 @@ import planmysem.storage.StorageFile;
  */
 public class Logic {
     private StorageFile storage;
-    private AddressBook addressBook;
+    private Planner planner;
 
     /**
-     * The list of person shown to the user most recently.
+     * The list of Slots shown to the user most recently.
      */
-    private List<? extends ReadOnlyPerson> lastShownList = Collections.emptyList();
+    private List<Pair<LocalDate, ? extends ReadOnlySlot>> lastShownSlots;
 
     public Logic() throws Exception {
         setStorage(initializeStorage());
-        setAddressBook(storage.load());
+        setPlanner(storage.load());
     }
 
-    public Logic(StorageFile storageFile, AddressBook addressBook) {
+    public Logic(StorageFile storageFile, Planner planner) {
         setStorage(storageFile);
-        setAddressBook(addressBook);
+        setPlanner(planner);
     }
 
-    void setStorage(StorageFile storage) {
+    public void setStorage(StorageFile storage) {
         this.storage = storage;
     }
 
-    void setAddressBook(AddressBook addressBook) {
-        this.addressBook = addressBook;
+    public void setPlanner(Planner planner) {
+        this.planner = planner;
     }
 
     /**
@@ -46,7 +49,7 @@ public class Logic {
      *
      * @throws StorageFile.InvalidStorageFilePathException if the target file path is incorrect.
      */
-    private StorageFile initializeStorage() throws StorageFile.InvalidStorageFilePathException {
+    private StorageFile initializeStorage() throws JAXBException, StorageFile.InvalidStorageFilePathException {
         return new StorageFile();
     }
 
@@ -57,12 +60,12 @@ public class Logic {
     /**
      * Unmodifiable view of the current last shown list.
      */
-    public List<ReadOnlyPerson> getLastShownList() {
-        return Collections.unmodifiableList(lastShownList);
+    public List<Pair<LocalDate, ? extends ReadOnlySlot>> getLastShownSlots() {
+        return lastShownSlots;
     }
 
-    protected void setLastShownList(List<? extends ReadOnlyPerson> newList) {
-        lastShownList = newList;
+    protected void setLastShownSlots(List<Pair<LocalDate, ? extends ReadOnlySlot>> slots) {
+        lastShownSlots = slots;
     }
 
     /**
@@ -85,19 +88,20 @@ public class Logic {
      * @throws Exception if there was any problem during command execution.
      */
     private CommandResult execute(Command command) throws Exception {
-        command.setData(addressBook, lastShownList);
+        command.setData(planner, lastShownSlots);
         CommandResult result = command.execute();
-        storage.save(addressBook);
+        storage.save(planner);
         return result;
     }
 
     /**
-     * Updates the {@link #lastShownList} if the result contains a list of Persons.
+     * Updates the {@link #lastShownSlots} if the result contains a list of Days.
+     * TODO:
      */
     private void recordResult(CommandResult result) {
-        final Optional<List<? extends ReadOnlyPerson>> personList = result.getRelevantPersons();
-        if (personList.isPresent()) {
-            lastShownList = personList.get();
+        final Optional<List<Pair<LocalDate, ? extends ReadOnlySlot>>> slots = result.getRelevantSlots();
+        if (slots.isPresent()) {
+            lastShownSlots = slots.get();
         }
     }
 }

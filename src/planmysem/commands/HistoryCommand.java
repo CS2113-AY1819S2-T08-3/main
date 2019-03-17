@@ -10,7 +10,7 @@ import planmysem.parser.CommandHistory;
 /**
  * Lists all the commands entered by user from the start of app launch.
  */
-public class HistoryCommand extends CommandP {
+public class HistoryCommand extends Command {
 
     public static final String COMMAND_WORD = "history";
     public static final String MESSAGE_SUCCESS = "Entered commands (from most recent to earliest):\n%1$s";
@@ -27,18 +27,18 @@ public class HistoryCommand extends CommandP {
 
     /**
      * TODO: description
-     * @return CommandResultP with a list of previousCommands
+     * @return CommandResult with a list of previousCommands
      */
-    public CommandResultP execute() {
+    public CommandResult execute() {
         requireNonNull(commandHistory);
         ArrayList<String> previousCommands = new ArrayList<>(commandHistory.getHistory());
 
         if (previousCommands.isEmpty()) {
-            return new CommandResultP(MESSAGE_NO_HISTORY);
+            return new CommandResult(MESSAGE_NO_HISTORY);
         }
 
         Collections.reverse(previousCommands);
-        return new CommandResultP(String.format(MESSAGE_SUCCESS, String.join("\n", previousCommands)));
+        return new CommandResult(String.format(MESSAGE_SUCCESS, String.join("\n", previousCommands)));
     }
 
 }

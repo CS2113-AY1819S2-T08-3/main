@@ -21,7 +21,7 @@ import planmysem.data.tag.TagP;
 /**
  * Adds a person to the address book.
  */
-public class EditCommandP extends CommandP {
+public class EditCommand extends Command {
 
     public static final String COMMAND_WORD = "edit";
     public static final String COMMAND_WORD_SHORT = "e";
@@ -56,8 +56,8 @@ public class EditCommandP extends CommandP {
      *
      * @throws IllegalValueException if any of the raw values are invalid
      */
-    public EditCommandP(String name, LocalTime startTime, int duration, String location, String description,
-                        Set<String> tags, Set<String> newTags) throws IllegalValueException {
+    public EditCommand(String name, LocalTime startTime, int duration, String location, String description,
+                       Set<String> tags, Set<String> newTags) throws IllegalValueException {
         this.date = null;
         this.startTime = startTime;
         this.duration = duration;
@@ -73,8 +73,8 @@ public class EditCommandP extends CommandP {
     /**
      * Convenience constructor using raw values.
      */
-    public EditCommandP(int index, String name, LocalDate date, LocalTime startTime, int duration,
-                        String location, String description, Set<String> newTags)
+    public EditCommand(int index, String name, LocalDate date, LocalTime startTime, int duration,
+                       String location, String description, Set<String> newTags)
             throws IllegalValueException {
         super(index);
         this.date = date;
@@ -89,7 +89,7 @@ public class EditCommandP extends CommandP {
     }
 
     @Override
-    public CommandResultP execute() {
+    public CommandResult execute() {
         Map<LocalDateTime, ReadOnlySlot> selectedSlots = new TreeMap<>();
 
         if (getTargetIndex() == -1) {
@@ -101,7 +101,7 @@ public class EditCommandP extends CommandP {
                 }
             }
             if (selectedSlots.size() == 0) {
-                return new CommandResultP(String.format(MESSAGE_SUCCESS_NO_CHANGE, craftSelectedMessage()));
+                return new CommandResult(String.format(MESSAGE_SUCCESS_NO_CHANGE, craftSelectedMessage()));
             }
         } else {
             try {
@@ -109,10 +109,10 @@ public class EditCommandP extends CommandP {
                 selectedSlots.put(LocalDateTime.of(target.getKey(),
                         target.getValue().getStartTime()), target.getValue());
                 if (!planner.containsSlot(target.getKey(), target.getValue())) {
-                    return new CommandResultP(Messages.MESSAGE_SLOT_NOT_IN_PLANNER);
+                    return new CommandResult(Messages.MESSAGE_SLOT_NOT_IN_PLANNER);
                 }
             } catch (IndexOutOfBoundsException ie) {
-                return new CommandResultP(Messages.MESSAGE_INVALID_SLOT_DISPLAYED_INDEX);
+                return new CommandResult(Messages.MESSAGE_INVALID_SLOT_DISPLAYED_INDEX);
             }
         }
 
@@ -121,13 +121,13 @@ public class EditCommandP extends CommandP {
                 planner.editSlot(entry.getKey().toLocalDate(), entry.getValue(), date,
                         startTime, duration, name, location, description, newTags);
             } catch (IllegalValueException ive) {
-                return new CommandResultP(MESSAGE_FAIL_ILLEGAL_VALUE);
+                return new CommandResult(MESSAGE_FAIL_ILLEGAL_VALUE);
             } catch (Semester.DateNotFoundException dnfe) {
-                return new CommandResultP(Messages.MESSAGE_SLOT_NOT_IN_PLANNER);
+                return new CommandResult(Messages.MESSAGE_SLOT_NOT_IN_PLANNER);
             }
         }
 
-        return new CommandResultP(String.format(MESSAGE_SUCCESS, selectedSlots.size(),
+        return new CommandResult(String.format(MESSAGE_SUCCESS, selectedSlots.size(),
                 craftSelectedMessage(), craftSuccessMessage(selectedSlots)));
     }
 

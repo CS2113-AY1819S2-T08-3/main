@@ -9,7 +9,7 @@ import planmysem.data.semester.AdaptedSemester;
 /**
  * Exports the calendar into a .ics file.
  */
-public class ExportCommandP extends CommandP {
+public class ExportCommand extends Command {
 
     public static final String COMMAND_WORD = "export";
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Delete single or multiple slots in the Planner."
@@ -17,7 +17,7 @@ public class ExportCommandP extends CommandP {
     public static final String MESSAGE_EXPORT_ACKNOWEDGEMENT = "Calendar exported";
 
     @Override
-    public CommandResultP execute() {
+    public CommandResult execute() {
         AdaptedSemester semester = new AdaptedSemester(planner.getSemester());
         System.out.println(semester.toString());
         try {
@@ -28,7 +28,7 @@ public class ExportCommandP extends CommandP {
             e.printStackTrace();
         }
 
-        return new CommandResultP(MESSAGE_EXPORT_ACKNOWEDGEMENT);
+        return new CommandResult(MESSAGE_EXPORT_ACKNOWEDGEMENT);
     }
 
 }

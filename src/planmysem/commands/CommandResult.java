@@ -1,9 +1,11 @@
 package planmysem.commands;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
-import planmysem.data.person.ReadOnlyPerson;
+import javafx.util.Pair;
+import planmysem.data.slot.ReadOnlySlot;
 
 /**
  * Represents the result of a command execution.
@@ -16,25 +18,25 @@ public class CommandResult {
     public final String feedbackToUser;
 
     /**
-     * The list of persons that was produced by the command
+     * The list of Slots that was produced by the command
      */
-    private final List<? extends ReadOnlyPerson> relevantPersons;
+    private final List<Pair<LocalDate, ? extends ReadOnlySlot>> slots;
 
     public CommandResult(String feedbackToUser) {
         this.feedbackToUser = feedbackToUser;
-        relevantPersons = null;
+        slots = null;
     }
 
-    public CommandResult(String feedbackToUser, List<? extends ReadOnlyPerson> relevantPersons) {
+    public CommandResult(String feedbackToUser, List<Pair<LocalDate, ? extends ReadOnlySlot>> slots) {
         this.feedbackToUser = feedbackToUser;
-        this.relevantPersons = relevantPersons;
+        this.slots = slots;
     }
 
     /**
-     * Returns list of persons relevant to the command command result, if any.
+     * Returns list of Slots relevant to the command command result, if any.
      */
-    public Optional<List<? extends ReadOnlyPerson>> getRelevantPersons() {
-        return Optional.ofNullable(relevantPersons);
+    public Optional<List<Pair<LocalDate, ? extends ReadOnlySlot>>> getRelevantSlots() {
+        return Optional.ofNullable(slots);
     }
 
 }

@@ -32,7 +32,7 @@ public class AdaptedSlot {
     @XmlElement(required = true)
     private String startTime;
     @XmlElement(required = true)
-    private List<AdaptedTagP> tags = new ArrayList<>();
+    private List<AdaptedTag> tags = new ArrayList<>();
 
     /**
      * No-arg constructor for JAXB use.
@@ -54,7 +54,7 @@ public class AdaptedSlot {
 
         tags = new ArrayList<>();
         for (TagP tag : source.getTags()) {
-            tags.add(new AdaptedTagP(tag));
+            tags.add(new AdaptedTag(tag));
         }
     }
 
@@ -62,7 +62,7 @@ public class AdaptedSlot {
      * Returns true if any required field is missing.
      */
     public boolean isAnyRequiredFieldMissing() {
-        for (AdaptedTagP tag : tags) {
+        for (AdaptedTag tag : tags) {
             if (tag.isAnyRequiredFieldMissing()) {
                 return true;
             }
@@ -84,7 +84,7 @@ public class AdaptedSlot {
         final int duration = this.duration;
 
         final Set<TagP> tags = new HashSet<>();
-        for (AdaptedTagP tag : this.tags) {
+        for (AdaptedTag tag : this.tags) {
             tags.add(tag.toModelType());
         }
 

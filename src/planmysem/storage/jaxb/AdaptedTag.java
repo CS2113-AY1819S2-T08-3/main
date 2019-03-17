@@ -4,14 +4,14 @@ import javax.xml.bind.annotation.XmlValue;
 
 import planmysem.common.Utils;
 import planmysem.data.exception.IllegalValueException;
-import planmysem.data.tag.Tag;
+import planmysem.data.tag.TagP;
 
 /**
  * JAXB-friendly adapted tag data holder class.
  */
 public class AdaptedTag {
     @XmlValue
-    private String tagName;
+    private String value;
 
     /**
      * No-arg constructor for JAXB use.
@@ -24,8 +24,8 @@ public class AdaptedTag {
      *
      * @param source future changes to this will not affect the created AdaptedTag
      */
-    public AdaptedTag(Tag source) {
-        tagName = source.tagName;
+    public AdaptedTag(TagP source) {
+        value = source.value;
     }
 
     /**
@@ -37,7 +37,7 @@ public class AdaptedTag {
      * so we check for that.
      */
     public boolean isAnyRequiredFieldMissing() {
-        return Utils.isAnyNull(tagName);
+        return Utils.isAnyNull(value);
     }
 
     /**
@@ -45,7 +45,7 @@ public class AdaptedTag {
      *
      * @throws IllegalValueException if there were any data constraints violated in the adapted person
      */
-    public Tag toModelType() throws IllegalValueException {
-        return new Tag(tagName);
+    public TagP toModelType() throws IllegalValueException {
+        return new TagP(value);
     }
 }

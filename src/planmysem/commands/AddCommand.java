@@ -1,75 +1,103 @@
 package planmysem.commands;
 
-import java.util.HashSet;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Set;
 
+import planmysem.common.Utils;
 import planmysem.data.exception.IllegalValueException;
-import planmysem.data.person.Address;
-import planmysem.data.person.Email;
-import planmysem.data.person.Name;
-import planmysem.data.person.Person;
-import planmysem.data.person.Phone;
-import planmysem.data.person.ReadOnlyPerson;
-import planmysem.data.person.UniquePersonList;
-import planmysem.data.tag.Tag;
+import planmysem.data.recurrence.Recurrence;
+import planmysem.data.semester.Semester;
+import planmysem.data.slot.Description;
+import planmysem.data.slot.Location;
+import planmysem.data.slot.Name;
+import planmysem.data.slot.Slot;
 
 /**
- * Adds a person to the address book.
+ * Adds a person to the planner.
  */
 public class AddCommand extends Command {
-
     public static final String COMMAND_WORD = "add";
+    public static final String COMMAND_WORD_SHORT = "a";
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Add single or multiple slots to the Planner."
+            + "\n\tParameters: "
+            + "\n\t\tMandatory: n/NAME d/DATE_OR_DAY_OF_WEEK st/START_TIME et/END_TIME_OR_DURATION"
+            + "\n\t\tOptional: [l/LOCATION] [des/DESCRIPTION] [r/normal] [r/recess] [r/reading] [r/exam]"
+            + "[r/past] [t/TAG]..."
+            + "\n\tExample: " + COMMAND_WORD
+            + " n/CS2113T Tutorial d/mon st/08:00 et/09:00 des/Topic: Sequence Diagram t/CS2113T "
+            + "t/Tutorial r/normal";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ":\n" + "Adds a person to the address book. "
-            + "Contact details can be marked private by prepending 'p' to the prefix.\n\t"
-            + "Parameters: NAME [p]p/PHONE [p]e/EMAIL [p]a/ADDRESS  [t/TAG]...\n\t"
-            + "Example: " + COMMAND_WORD
-            + " John Doe p/98765432 e/johnd@gmail.com a/311, Clementi Ave 2, #02-25 t/friends t/owesMoney";
+    public static final String MESSAGE_SUCCESS_NO_CHANGE = "No slots were added.";
+    public static final String MESSAGE_SUCCESS = "%1$s Slots added.\n\n%2$s";
+    public static final String MESSAGE_FAIL_OUT_OF_BOUNDS = "Date specified is out of bounds.";
 
-    public static final String MESSAGE_SUCCESS = "New person added: %1$s";
-    public static final String MESSAGE_DUPLICATE_PERSON = "This person already exists in the address book";
-
-    private final Person toAdd;
+    private final Slot slot;
+    private final Recurrence recurrence;
 
     /**
      * Convenience constructor using raw values.
      *
      * @throws IllegalValueException if any of the raw values are invalid
      */
-    public AddCommand(String name,
-                      String phone, boolean isPhonePrivate,
-                      String email, boolean isEmailPrivate,
-                      String address, boolean isAddressPrivate,
-                      Set<String> tags) throws IllegalValueException {
-        final Set<Tag> tagSet = new HashSet<>();
-        for (String tagName : tags) {
-            tagSet.add(new Tag(tagName));
-        }
-        this.toAdd = new Person(
-                new Name(name),
-                new Phone(phone, isPhonePrivate),
-                new Email(email, isEmailPrivate),
-                new Address(address, isAddressPrivate),
-                tagSet
-        );
+    public AddCommand(LocalDate date, String name, String location, String description, LocalTime startTime,
+                      int duration, Set<String> tags, Set<String> recurrences) throws IllegalValueException {
+        slot = new Slot(new Name(name), new Location(location), new Description(description),
+                startTime, duration, Utils.parseTags(tags));
+        recurrence = new Recurrence(recurrences, date);
     }
 
-    public AddCommand(Person toAdd) {
-        this.toAdd = toAdd;
-    }
-
-    public ReadOnlyPerson getPerson() {
-        return toAdd;
+    /**
+     * Convenience constructor using raw values.
+     *
+     * @throws IllegalValueException if any of the raw values are invalid
+     */
+    public AddCommand(int day, String name, String location, String description, LocalTime startTime,
+                      int duration, Set<String> tags, Set<String> recurrences) throws IllegalValueException {
+        slot = new Slot(new Name(name), new Location(location), new Description(description),
+                startTime, duration, Utils.parseTags(tags));
+        recurrence = new Recurrence(recurrences, day);
     }
 
     @Override
     public CommandResult execute() {
-        try {
-            addressBook.addPerson(toAdd);
-            return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
-        } catch (UniquePersonList.DuplicatePersonException dpe) {
-            return new CommandResult(MESSAGE_DUPLICATE_PERSON);
+        Set<LocalDate> dates = recurrence.generateDates(planner.getSemester());
+
+        for (LocalDate date : dates) {
+            try {
+                planner.addSlot(date, slot);
+            } catch (Semester.DateNotFoundException dnfe) {
+                return new CommandResult(MESSAGE_FAIL_OUT_OF_BOUNDS);
+            }
+        }
+
+        if (dates.size() == 0) {
+            return new CommandResult(MESSAGE_SUCCESS_NO_CHANGE);
+        } else {
+            return new CommandResult(String.format(MESSAGE_SUCCESS, dates.size(),
+                    craftSuccessMessage(dates, slot)));
         }
     }
 
+    /**
+     * Craft success message.
+     */
+    private String craftSuccessMessage(Set<LocalDate> dates, Slot slot) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("On dates:");
+
+        for (LocalDate date : dates) {
+            sb.append("\n\t");
+            sb.append(planner.getSemester().getDays().get(date).getType());
+            sb.append(", ");
+            sb.append(date.toString());
+            sb.append(", ");
+            sb.append(date.getDayOfWeek().toString());
+        }
+        sb.append("\n\n");
+
+        sb.append(slot.toString());
+
+        return sb.toString();
+    }
 }

@@ -31,7 +31,9 @@ public class Slot implements ReadOnlySlot {
         this.description = description;
         this.startTime = startTime;
         this.duration = Utils.getDuration(startTime, endTime);
-        this.tags.addAll(tags);
+        if (tags != null) {
+            this.tags.addAll(tags);
+        }
     }
 
     /**
@@ -44,7 +46,9 @@ public class Slot implements ReadOnlySlot {
         this.description = description;
         this.startTime = startTime;
         this.duration = duration;
-        this.tags.addAll(tags);
+        if (tags != null) {
+            this.tags.addAll(tags);
+        }
     }
 
     /**

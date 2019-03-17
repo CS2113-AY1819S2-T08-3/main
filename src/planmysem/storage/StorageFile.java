@@ -17,20 +17,19 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
-import planmysem.data.AddressBook;
+import planmysem.data.Planner;
 import planmysem.data.exception.IllegalValueException;
-import planmysem.storage.jaxb.AdaptedAddressBook;
-
+import planmysem.storage.jaxb.AdaptedPlanner;
 
 /**
- * Represents the file used to store address book data.
+ * Represents the file used to store Planner data.
  */
 public class StorageFile {
-
     /**
      * Default file path used if the user doesn't provide the file name.
      */
-    public static final String DEFAULT_STORAGE_FILEPATH = "addressbook.txt";
+    public static final String DEFAULT_STORAGE_FILEPATH = "PlanMySem.txt";
+
     /* Note: Note the use of nested classes below.
      * More info https://docs.oracle.com/javase/tutorial/java/javaOO/nested.html
      */
@@ -41,18 +40,18 @@ public class StorageFile {
     /**
      * @throws InvalidStorageFilePathException if the default path is invalid
      */
-    public StorageFile() throws InvalidStorageFilePathException {
+    public StorageFile() throws JAXBException, InvalidStorageFilePathException {
         this(DEFAULT_STORAGE_FILEPATH);
     }
 
     /**
      * @throws InvalidStorageFilePathException if the given file path is invalid
      */
-    public StorageFile(String filePath) throws InvalidStorageFilePathException {
+    public StorageFile(String filePath) throws JAXBException, InvalidStorageFilePathException {
         try {
-            jaxbContext = JAXBContext.newInstance(AdaptedAddressBook.class);
-        } catch (JAXBException jaxbe) {
-            throw new RuntimeException("jaxb initialisation error");
+            jaxbContext = JAXBContext.newInstance(AdaptedPlanner.class);
+        } catch (JAXBException ex) {
+            throw new JAXBException(ex);
         }
 
         path = Paths.get(filePath);
@@ -74,16 +73,14 @@ public class StorageFile {
      *
      * @throws StorageOperationException if there were errors converting and/or storing data to file.
      */
-    public void save(AddressBook addressBook) throws StorageOperationException {
-
-
+    public void save(Planner planner) throws StorageOperationException {
         /* Note: Note the 'try with resource' statement below.
          * More info: https://docs.oracle.com/javase/tutorial/essential/exceptions/tryResourceClose.html
          */
         try (final Writer fileWriter =
                      new BufferedWriter(new FileWriter(path.toFile()))) {
 
-            final AdaptedAddressBook toSave = new AdaptedAddressBook(addressBook);
+            final AdaptedPlanner toSave = new AdaptedPlanner(planner);
             final Marshaller marshaller = jaxbContext.createMarshaller();
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
             if (isEncrypted) {
@@ -97,7 +94,7 @@ public class StorageFile {
         } catch (IOException ioe) {
             throw new StorageOperationException("Error writing to file: " + path + " error: " + ioe.getMessage());
         } catch (JAXBException jaxbe) {
-            throw new StorageOperationException("Error converting address book into storage format");
+            throw new StorageOperationException("Error converting Planner into storage format");
         }
     }
 
@@ -106,18 +103,18 @@ public class StorageFile {
      *
      * @throws StorageOperationException if there were errors reading and/or converting data from file.
      */
-    public AddressBook load() throws StorageOperationException {
+    public Planner load() throws StorageOperationException {
         try (final BufferedReader fileReader =
                      new BufferedReader(new FileReader(path.toFile()))) {
 
             final Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
-            final AdaptedAddressBook loaded;
+            final AdaptedPlanner loaded;
             //decrypts
             if (isEncrypted) {
                 StringReader decryptedData = new StringReader(Encryptor.decrypt(fileReader.readLine()));
-                loaded = (AdaptedAddressBook) unmarshaller.unmarshal(decryptedData);
+                loaded = (AdaptedPlanner) unmarshaller.unmarshal(decryptedData);
             } else {
-                loaded = (AdaptedAddressBook) unmarshaller.unmarshal(fileReader);
+                loaded = (AdaptedPlanner) unmarshaller.unmarshal(fileReader);
             }
 
             // manual check for missing elements
@@ -132,8 +129,8 @@ public class StorageFile {
              */
 
             // create empty file if not found
-        } catch (FileNotFoundException fnfe) {
-            final AddressBook empty = new AddressBook();
+        } catch (FileNotFoundException ex) {
+            final Planner empty = new Planner();
             save(empty);
             return empty;
 
@@ -169,5 +166,4 @@ public class StorageFile {
             super(message);
         }
     }
-
 }

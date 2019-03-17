@@ -1,5 +1,6 @@
 package planmysem.ui;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -7,11 +8,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-
+import javafx.util.Pair;
 import planmysem.commands.CommandResult;
 import planmysem.commands.ExitCommand;
 import planmysem.common.Messages;
-import planmysem.data.person.ReadOnlyPerson;
+import planmysem.data.slot.ReadOnlySlot;
 import planmysem.logic.Logic;
 
 /**
@@ -26,9 +27,6 @@ public class MainWindow {
     @FXML
     private TextField commandInput;
 
-    public MainWindow() {
-    }
-
     public void setLogic(Logic logic) {
         this.logic = logic;
     }
@@ -36,7 +34,6 @@ public class MainWindow {
     public void setMainApp(Stoppable mainApp) {
         this.mainApp = mainApp;
     }
-
 
     /**
      * TODO: Add Javadoc comment.
@@ -88,9 +85,9 @@ public class MainWindow {
      */
     public void displayResult(CommandResult result) {
         clearOutputConsole();
-        final Optional<List<? extends ReadOnlyPerson>> resultPersons = result.getRelevantPersons();
-        if (resultPersons.isPresent()) {
-            display(resultPersons.get());
+        final Optional<List<Pair<LocalDate, ? extends ReadOnlySlot>>> resultDays = result.getRelevantSlots();
+        if (resultDays.isPresent()) {
+            display(resultDays.get());
         }
         display(result.feedbackToUser);
     }
@@ -104,11 +101,12 @@ public class MainWindow {
     }
 
     /**
-     * Displays the list of persons in the output display area, formatted as an indexed list.
+     * Displays the list of slots in the output display area, formatted as an indexed list.
      * Private contact details are hidden.
      */
-    private void display(List<? extends ReadOnlyPerson> persons) {
-        display(new Formatter().format(persons));
+    private void display(List<Pair<LocalDate, ? extends ReadOnlySlot>> slots) {
+        // TODO: rename function call when AddressBook is fully removed from project
+        display(new Formatter().formatSlots(slots));
     }
 
     /**
@@ -117,5 +115,4 @@ public class MainWindow {
     private void display(String... messages) {
         outputConsole.setText(outputConsole.getText() + new Formatter().format(messages));
     }
-
 }
