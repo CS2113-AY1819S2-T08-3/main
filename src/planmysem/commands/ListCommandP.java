@@ -1,7 +1,9 @@
 package planmysem.commands;
 
 import java.time.LocalDate;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 import javafx.util.Pair;
 
@@ -17,9 +19,8 @@ public class ListCommandP extends CommandP {
 
     public static final String COMMAND_WORD = "list";
     public static final String COMMAND_WORD_SHORT = "l";
-    
     public static final String MESSAGE_SUCCESS = "%1$s Slots listed.\n%2$s";
-    public static final String MESSAGE_SUCCESS_NONE= "0 Slots listed.\n";
+    public static final String MESSAGE_SUCCESS_NONE = "0 Slots listed.\n";
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Lists all slots."
             + "\n\tOptional Parameters: [past] [next] [all]"
             + "\n\tDefault: list all"
@@ -30,7 +31,6 @@ public class ListCommandP extends CommandP {
     public ListCommandP(String name) {
         this.name = name;
     }
-    
     @Override
     public CommandResultP execute() {
         final List<Pair<LocalDate, ? extends ReadOnlySlot>> relevantSlots = new ArrayList<>();
@@ -46,15 +46,16 @@ public class ListCommandP extends CommandP {
                 }
             }
         }
-        
+
         if (matchedSlots.isEmpty()) {
             return new CommandResultP(MESSAGE_SUCCESS_NONE);
         }
-        setData(this.planner,relevantSlots);
-        
-        return new CommandResultP(String.format(MESSAGE_SUCCESS, matchedSlots.size(), craftSuccessMessage(relevantSlots)));
+        setData(this.planner, relevantSlots);
+
+        return new CommandResultP(String.format(MESSAGE_SUCCESS, matchedSlots.size(),
+                craftSuccessMessage(relevantSlots)));
     }
-    
+
     /**
      * Craft success message.
      */
