@@ -20,10 +20,11 @@ public class ListCommand extends Command {
     public static final String COMMAND_WORD_SHORT = "l";
     public static final String MESSAGE_SUCCESS = "%1$s Slots listed.\n%2$s";
     public static final String MESSAGE_SUCCESS_NONE = "0 Slots listed.\n";
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Lists all slots."
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Lists all slots whose name "
+            + "directly matches the specified keyword (not case-sensitive)."
             //+ "\n\tOptional Parameters: [past] [next] [all]"
             //+ "\n\tDefault: list all"
-            + "\n\tExample: " + COMMAND_WORD + " CS1010";
+            + "\n\tExample: " + COMMAND_WORD + " n/CS1010";
 
     private final String name;
 

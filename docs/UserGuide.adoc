@@ -163,32 +163,35 @@ Delete the second _slot_ shown via the `list` command.
 
 === Listing Slots: `list` / `l`
 
-List _slots_ in the planner. +
-Format: `list [past] [next] [all]`
+Lists all slots whose name directly matches the specified keyword (not case-sensitive). +
+//Format: `list [past] [next] [all]`
+Format: `list n/NAME`
 
-[NOTE]
-====
-If you do not specify a keyword, then the `all` keyword will be used and all _slots_ will be listed.
-====
+//[NOTE]
+//====
+//If you do not specify a keyword, then the `all` keyword will be used and all _slots_ will be listed.
+//====
 
 Examples:
 
-* `list next` +
-List all _slots_ that has yet to occurred in the planner.
+* `list n/CS2113T` +
+List all _slots_ that is named `CS2113T` in the planner.
 
 === Locating Slots: `find` / `f`
 
-Find all _slots_ that have a similar name and or contains specified _tags_. +
-Format: `find [n/SLOT_NAMES] [t/TAG]...`
+Find all _slots_ whose part of their name contains the specified keyword and displays them as a list. +
+Format: `find [KEYWORD]...`
 
-[NOTE]
-====
-TODO
-====
+//[NOTE]
+//====
+//TODO
+//====
 
 Example:
 
-* TODO
+* `find CS`
+Find all _slots_ whose name contains `CS` (eg. CS1010, CS2113T, SCS1010)
+
 
 === View the Planner : `view`
 
