@@ -11,7 +11,7 @@ import planmysem.data.slot.ReadOnlySlot;
 import planmysem.data.slot.Slot;
 
 /**
- * Finds and lists all slots in planner whose name contains any of the argument keywords.
+ * Displays a list of all slots in the planner whose name matches the argument keyword.
  * Keyword matching is case sensitive.
  */
 public class ListCommand extends Command {
@@ -21,9 +21,9 @@ public class ListCommand extends Command {
     public static final String MESSAGE_SUCCESS = "%1$s Slots listed.\n%2$s";
     public static final String MESSAGE_SUCCESS_NONE = "0 Slots listed.\n";
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Lists all slots."
-            + "\n\tOptional Parameters: [past] [next] [all]"
-            + "\n\tDefault: list all"
-            + "\n\tExample: " + COMMAND_WORD + " CS1010 tutorial lab";
+            //+ "\n\tOptional Parameters: [past] [next] [all]"
+            //+ "\n\tDefault: list all"
+            + "\n\tExample: " + COMMAND_WORD + " CS1010";
 
     private final String name;
 
