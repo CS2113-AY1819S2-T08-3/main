@@ -18,6 +18,7 @@ import planmysem.commands.Command;
 import planmysem.commands.DeleteCommand;
 import planmysem.commands.EditCommand;
 import planmysem.commands.ExitCommand;
+import planmysem.commands.ExportCommand;
 import planmysem.commands.FindCommand;
 import planmysem.commands.HelpCommand;
 import planmysem.commands.IncorrectCommand;
@@ -99,6 +100,9 @@ public class Parser {
 
         case ExitCommand.COMMAND_WORD:
             return new ExitCommand();
+
+        case ExportCommand.COMMAND_WORD:
+            return new ExportCommand();
 
         case HelpCommand.COMMAND_WORD: // Fallthrough
 

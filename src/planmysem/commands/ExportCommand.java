@@ -19,7 +19,6 @@ public class ExportCommand extends Command {
     @Override
     public CommandResult execute() {
         AdaptedSemester semester = new AdaptedSemester(planner.getSemester());
-        System.out.println(semester.toString());
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter("PlanMySem.ics"));
             writer.write(semester.toString());
