@@ -22,20 +22,24 @@
 <li><a href="#Design-Architecture">2.1. Architecture</a></li>
 <li><a href="#Design-Ui">2.2. UI component</a></li>
 <li><a href="#Design-Logic">2.3. Logic component</a></li>
-<li><a href="#Design-Model">2.4. Model component</a></li>
-<li><a href="#Design-Storage">2.5. Storage component</a></li>
-<li><a href="#Design-Planner">2.6. Planner component</a></li>
-<li><a href="#Design-Commons">2.7. Common classes</a></li>
+<li><a href="#Design-Planner">2.4. Planner component</a></li>
+<li><a href="#Design-Semester">2.5. Semester component</a></li>
+<li><a href="#Design-Slot">2.6. Slot component</a></li>
+<li><a href="#Design-Storage">2.7. Storage component</a></li>
+<li><a href="#Design-Common">2.8. Common classes</a></li>
 </ul>
 </li>
 <li><a href="#implementation">3. Implementation</a>
 <ul class="sectlevel2">
-<li><a href="#month-week-day-view-feature">3.1. Month/Week/Day View feature</a></li>
-<li><a href="#undo-redo-feature">3.2. Undo/Redo feature</a></li>
-<li><a href="#data-encryption">3.3. Data Encryption</a></li>
-<li><a href="#exporting-ics-file">3.4. Exporting .ics file</a></li>
-<li><a href="#logging">3.5. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.6. Configuration</a></li>
+<li><a href="#initializing-of-the-planner-and-it-s-semesters">3.1. Initializing of the Planner and it&#8217;s Semesters</a></li>
+<li><a href="#reinventing-the-parser-command-format-and-structure">3.2. Reinventing the Parser / Command Format and Structure</a></li>
+<li><a href="#semester-planner-days-and-slots">3.3. Semester, Planner, Days and Slots</a></li>
+<li><a href="#month-week-day-view-feature">3.4. Month/Week/Day View feature</a></li>
+<li><a href="#undo-redo-feature">3.5. Undo/Redo feature</a></li>
+<li><a href="#data-encryption">3.6. Data Encryption</a></li>
+<li><a href="#exporting-ics-file">3.7. Exporting .ics file</a></li>
+<li><a href="#logging">3.8. Logging</a></li>
+<li><a href="#Implementation-Configuration">3.9. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a>
@@ -212,7 +216,7 @@ This will generate all resources required by the application and tests.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Run the <code>seedu.address.MainApp</code> and try a few commands</p>
+<p>Run the <code>planmysem.Main</code> and try a few commands</p>
 </li>
 <li>
 <p><a href="#Testing">Run the tests</a> to ensure they all pass.</p>
@@ -257,10 +261,10 @@ This will generate all resources required by the application and tests.</p>
 <div class="sect3">
 <h4 id="updating-documentation-to-match-your-fork"><a class="link" href="#updating-documentation-to-match-your-fork">1.4.2. Updating documentation to match your fork</a></h4>
 <div class="paragraph">
-<p>After forking the repo, the documentation will still have the SE-EDU branding and refer to the <code>se-edu/addressbook-level4</code> repo.</p>
+<p>After forking the repo, the documentation will still have the SE-EDU branding and refer to the <code><a href="https://github.com/CS2113-AY1819S2-T08-3/main" class="bare">https://github.com/CS2113-AY1819S2-T08-3/main</a></code> repo.</p>
 </div>
 <div class="paragraph">
-<p>If you plan to develop this fork as a separate product (i.e. instead of contributing to <code>se-edu/addressbook-level4</code>), you should do the following:</p>
+<p>If you plan to develop this fork as a separate product (i.e. instead of contributing to <code><a href="https://github.com/CS2113-AY1819S2-T08-3/main" class="bare">https://github.com/CS2113-AY1819S2-T08-3/main</a></code>), you should do the following:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -355,7 +359,7 @@ The <code>.pptx</code> files used to create diagrams in this document can be fou
 </table>
 </div>
 <div class="paragraph">
-<p><code>Main</code> has only one class called <a href="https://github.com/CS2113-AY1819S2-T08-3/main/src/main/java/seedu/address/MainApp.java"><code>MainApp</code></a>. It is responsible for,</p>
+<p><code>Main</code> has only one class called <a href="https://github.com/CS2113-AY1819S2-T08-3/main/src/planmysem/Main.java"><code>Main</code></a>. It is responsible for,</p>
 </div>
 <div class="ulist">
 <ul>
@@ -506,7 +510,7 @@ The following class plays an important role at the architecture level:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="Design-Model"><a class="link" href="#Design-Model">2.4. Model component</a></h3>
+<h3 id="Design-Planner"><a class="link" href="#Design-Planner">2.4. Planner component</a></h3>
 <div class="imageblock">
 <div class="content">
 <img src="images/ModelClassDiagram.png" alt="ModelClassDiagram" width="800">
@@ -514,24 +518,69 @@ The following class plays an important role at the architecture level:</p>
 <div class="title">Figure 7. Structure of the Model Component</div>
 </div>
 <div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/CS2113-AY1819S2-T08-3/main/src/main/java/seedu/address/model/Model.java"><code>Model.java</code></a></p>
+<p><strong>API</strong> : <a href="https://github.com/CS2113-AY1819S2-T08-3/main/src/planmysem/data/Planner.java"><code>Planner.java</code></a></p>
 </div>
 <div class="paragraph">
-<p>The <code>Model</code>,</p>
+<p>The <code>Planner</code> component,</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>stores a <code>UserPref</code> object that represents the user&#8217;s preferences.</p>
+<p>stores a <code>Planner</code> object that represents the entire Planner.</p>
 </li>
 <li>
-<p>stores the Address Book data.</p>
+<p>stores the data of the entire application.</p>
 </li>
 <li>
-<p>exposes an unmodifiable <code>ObservableList&lt;Person&gt;</code> that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.</p>
+<p>stores the data of the current semester in an unmodifiable <code>Semester</code>.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="Design-Semester"><a class="link" href="#Design-Semester">2.5. Semester component</a></h3>
+<div class="paragraph">
+<p><strong>API</strong> : <a href="https://github.com/CS2113-AY1819S2-T08-3/main/src/planmysem/data/semester/Semester.java"><code>Semester.java</code></a></p>
+</div>
+<div class="paragraph">
+<p>The <code>Semester</code> component,</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>stores a <code>Semester</code> object that represents the an academic semester.</p>
 </li>
 <li>
-<p>does not depend on any of the other three components.</p>
+<p>stores the data of the entire semester in an unmodifiable <code>HashMap&lt;LocalDate, Day&gt;</code>.</p>
+</li>
+<li>
+<p>Semesters essentially hold "days" in which holds slots.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="Design-Slot"><a class="link" href="#Design-Slot">2.6. Slot component</a></h3>
+<div class="paragraph">
+<p><strong>API</strong> : <a href="https://github.com/CS2113-AY1819S2-T08-3/main/src/planmysem/data/slot/Slot.java"><code>Slot.java</code></a></p>
+</div>
+<div class="paragraph">
+<p>The <code>Slot</code> component,</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>stores a <code>Slot</code> object that represents a time-slot similar to traditional/conventional calendar/scheduling applications.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>such as outlook or google calendar.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>stores the data of the slot details as well as start time and duration.</p>
 </li>
 </ul>
 </div>
@@ -542,16 +591,14 @@ The following class plays an important role at the architecture level:</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book</code>, which <code>Person</code> can reference. This would allow <code>Address Book</code> to only require one <code>Tag</code> object per unique <code>Tag</code>, instead of each <code>Person</code> needing their own <code>Tag</code> object. An example of how such a model may look like is given below.<br>
-<br>
-<span class="image"><img src="images/ModelClassBetterOopDiagram.png" alt="ModelClassBetterOopDiagram" width="800"></span>
+Notice how <code>Slot</code> does not hold it&#8217;s end time but rather it holds the <code>duration</code>. This is simply our design choice as it is meaningless to save both variables.
 </td>
 </tr>
 </table>
 </div>
 </div>
 <div class="sect2">
-<h3 id="Design-Storage"><a class="link" href="#Design-Storage">2.5. Storage component</a></h3>
+<h3 id="Design-Storage"><a class="link" href="#Design-Storage">2.7. Storage component</a></h3>
 <div class="imageblock">
 <div class="content">
 <img src="images/StorageClassDiagram.png" alt="StorageClassDiagram" width="800">
@@ -559,7 +606,7 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book<
 <div class="title">Figure 8. Structure of the Storage Component</div>
 </div>
 <div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/CS2113-AY1819S2-T08-3/main/src/main/java/seedu/address/storage/Storage.java"><code>Storage.java</code></a></p>
+<p><strong>API</strong> : <a href="https://github.com/CS2113-AY1819S2-T08-3/main/src/planmysem/storage/Storage.java"><code>Storage.java</code></a></p>
 </div>
 <div class="paragraph">
 <p>The <code>Storage</code> component,</p>
@@ -576,25 +623,9 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book<
 </div>
 </div>
 <div class="sect2">
-<h3 id="Design-Planner"><a class="link" href="#Design-Planner">2.6. Planner component</a></h3>
+<h3 id="Design-Common"><a class="link" href="#Design-Common">2.8. Common classes</a></h3>
 <div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/CS2113-AY1819S2-T08-3/main/src/planmysem/data/Planner.java"><code>Planner.java</code></a></p>
-</div>
-<div class="paragraph">
-<p>The <code>Planner</code> component,</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>can initialise and hold a <code>Semester</code> object.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="Design-Commons"><a class="link" href="#Design-Commons">2.7. Common classes</a></h3>
-<div class="paragraph">
-<p>Classes used by multiple components are in the <code>seedu.addressbook.commons</code> package.</p>
+<p>Classes used by multiple components are in the <code>planmysem.commons</code> package.</p>
 </div>
 </div>
 </div>
@@ -606,9 +637,186 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book<
 <p>This section describes some noteworthy details on how certain features are implemented.</p>
 </div>
 <div class="sect2">
-<h3 id="month-week-day-view-feature"><a class="link" href="#month-week-day-view-feature">3.1. Month/Week/Day View feature</a></h3>
+<h3 id="initializing-of-the-planner-and-it-s-semesters"><a class="link" href="#initializing-of-the-planner-and-it-s-semesters">3.1. Initializing of the Planner and it&#8217;s Semesters</a></h3>
 <div class="sect3">
-<h4 id="planned-implementation"><a class="link" href="#planned-implementation">3.1.1. Planned Implementation</a></h4>
+<h4 id="future-implementation"><a class="link" href="#future-implementation">3.1.1. Future Implementation</a></h4>
+
+</div>
+</div>
+<div class="sect2">
+<h3 id="reinventing-the-parser-command-format-and-structure"><a class="link" href="#reinventing-the-parser-command-format-and-structure">3.2. Reinventing the Parser / Command Format and Structure</a></h3>
+<div class="paragraph">
+<p>Due to the flexibility and huge variation of the envisioned command format and structures, it was decided that it was more appropriate to create a new Parser
+instead of relying on the existing regex implementation in AB3 for heavy parsing.</p>
+</div>
+<div class="paragraph">
+<p>The AB3 parser was heavily modified to serve unordered command parameters as well as to allow more flexibility such that mistakes in commands will still be
+interpreted as valid as long as the "minimal" set of parameters are present. Regex is currently only used to retrieve the command keywords and arguments.
+Arguments are then parsed via 2 different methods/techniques according to the format and structure of the command keyword.</p>
+</div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">3.2.1. Design Considerations</a></h4>
+<div class="ulist">
+<ul>
+<li>
+<p>User&#8217;s time, efficiency and productivity is of focus, such as in a planner/calendar/scheduling application.</p>
+</li>
+<li>
+<p>Users are error prone when typing long commands.</p>
+</li>
+<li>
+<p>Users may repeat parameters due to forgetting what was previously typed.</p>
+</li>
+<li>
+<p>Users get frustrated when forced to retype commands or look for errors that they have made.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="current-implementation"><a class="link" href="#current-implementation">3.2.2. Current Implementation</a></h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Ordering of parameters are ignored when possible.</p>
+</li>
+<li>
+<p>Repeated parameters are ignored. The first parameter of the same "type" are taken as valid, the rest are discarded.</p>
+</li>
+<li>
+<p>Alternate formats of commands are implemented to give freedom of choice and cater to different types of users such as different personalities and comfort levels.</p>
+</li>
+<li>
+<p>Shortened versions of command keywords are implemented to give ways for users to shortened commands and be more efficient.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Hence, parameters in PlanMySem can be categorised into 2 categories:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Prepended parameters such as <code>n/NAME</code>, <code>st/START_TIME</code>, <code>des/DESCRIPTION</code>, etc.</p>
+</li>
+<li>
+<p>Non-prepended parameters, A.K.A. keywords, such as <code>INDEX</code>, <code>TYPE_OF_VIEW</code>. etc.</p>
+</li>
+</ol>
+</div>
+<div class="sect4">
+<h5 id="parsing-prepended-parameters"><a class="link" href="#parsing-prepended-parameters">Parsing Prepended Parameters</a></h5>
+<div class="paragraph">
+<p>To retrieve the set of parameters, the function <code>private static HashMap&lt;String, Set&lt;String&gt;&gt; getParametersWithArguments(String args)</code> can be called.
+The function returns a <code>Hashmap</code> data structure, specifically <code>HashMap&lt;String, Set&lt;String&gt;&gt;</code>, to hold parameters, allowing for easy, quick and efficient access to specific parameters.</p>
+</div>
+<div class="paragraph">
+<p>However, this means that exceptions have to be manually taken care of, at the stage of parsing, this exception would particularly be <code>IncorrectCommand</code>.</p>
+</div>
+<div class="paragraph">
+<p>The following are cases in which <code>IncorrectCommand</code> is invoked:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>When the returned set is <code>null</code>, then the parameter was not keyed in at all.</p>
+</li>
+<li>
+<p>When the returned set is not <code>null</code> but contains empty <code>strings</code> such that <code>string.isEmpty()</code>, then the paramter was keyed in but was left empty on purpose.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="parsing-keywords"><a class="link" href="#parsing-keywords">Parsing Keywords</a></h5>
+<div class="paragraph">
+<p>Here, keywords are thought of as parameters that are not prepended.
+In PlanMySem, keywords are utilized in command structures when they are to be used alone or when order of parameters are important.
+In such cases, there is no logical need for prepending as the meaning of these parameters can be identified.</p>
+</div>
+<div class="paragraph">
+<p>The function <code>private String getStartingArgument(String args)</code> provides this functionality.
+Here, <code>IncorrectCommand</code> is invoked due to different circumstances:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>When the keyword is null, then the parameter was not keyed in.</p>
+</li>
+<li>
+<p>When the keyword data type does not match the intended, then the parameter was keyed in wrongly or is mis-ordered.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Additional keywords are purposefully <strong>not</strong> handled to provide ease of use and cater to user mistakes.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="future-implementation-2"><a class="link" href="#future-implementation-2">3.2.3. Future Implementation</a></h4>
+<div class="paragraph">
+<p>Though the current implementation has much flexibility, there is more that can be done to elevate user experience to the next level.
+These are some possible enhancements:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Parse more formats of date and time.</p>
+</li>
+<li>
+<p>Parse time as a single parameter instead of two.</p>
+</li>
+<li>
+<p>Enhance function calls to retrieve prepended parameters and keywords to handle trivial cases that should invoke <code>IncorrectCommand</code>.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="semester-planner-days-and-slots"><a class="link" href="#semester-planner-days-and-slots">3.3. Semester, Planner, Days and Slots</a></h3>
+<div class="sect3">
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.3.1. Design Considerations</a></h4>
+
+</div>
+<div class="sect3">
+<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">3.3.2. Current Implementation</a></h4>
+<div class="sect4">
+<h5 id="semester"><a class="link" href="#semester">Semester</a></h5>
+
+</div>
+<div class="sect4">
+<h5 id="planner"><a class="link" href="#planner">Planner</a></h5>
+
+</div>
+<div class="sect4">
+<h5 id="days"><a class="link" href="#days">Days</a></h5>
+
+</div>
+<div class="sect4">
+<h5 id="slots"><a class="link" href="#slots">Slots</a></h5>
+
+</div>
+</div>
+<div class="sect3">
+<h4 id="future-implementation-3"><a class="link" href="#future-implementation-3">3.3.3. Future Implementation</a></h4>
+
+</div>
+</div>
+<div class="sect2">
+<h3 id="month-week-day-view-feature"><a class="link" href="#month-week-day-view-feature">3.4. Month/Week/Day View feature</a></h3>
+<div class="sect3">
+<h4 id="future-implementation-4"><a class="link" href="#future-implementation-4">3.4.1. Future Implementation</a></h4>
 <div class="paragraph">
 <p>The month/week/day view mechanism is facilitated by <code>PlannerView</code>.
 It extends <code>Planner</code> with different calendar views, stored internally as <code>monthView</code>, <code>weekView</code> and <code>dayView</code>.
@@ -641,7 +849,7 @@ Additionally, it implements the following operations:</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations"><a class="link" href="#design-considerations">3.1.2. Design Considerations</a></h4>
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.4.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-a-type-of-view-is-initialised-or-updated"><a class="link" href="#aspect-how-a-type-of-view-is-initialised-or-updated">Aspect: How a type of view is initialised or updated</a></h5>
 <div class="ulist">
@@ -664,7 +872,7 @@ Additionally, it implements the following operations:</p>
 <p>Pros: <code>PlannerView</code> is always updated.</p>
 </li>
 <li>
-<p>Cons: Large amount of extra operations.</p>
+<p>Cons: Large amount of additional operations.</p>
 </li>
 </ul>
 </div>
@@ -675,9 +883,9 @@ Additionally, it implements the following operations:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">3.2. Undo/Redo feature</a></h3>
+<h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">3.5. Undo/Redo feature</a></h3>
 <div class="sect3">
-<h4 id="current-implementation"><a class="link" href="#current-implementation">3.2.1. Current Implementation</a></h4>
+<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">3.5.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The undo/redo mechanism is facilitated by <code>VersionedAddressBook</code>.
 It extends <code>AddressBook</code> with an undo/redo history, stored internally as an <code>addressBookStateList</code> and <code>currentStatePointer</code>.
@@ -807,7 +1015,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.2.2. Design Considerations</a></h4>
+<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">3.5.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-undo-redo-executes"><a class="link" href="#aspect-how-undo-redo-executes">Aspect: How undo &amp; redo executes</a></h5>
 <div class="ulist">
@@ -877,9 +1085,9 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect2">
-<h3 id="data-encryption"><a class="link" href="#data-encryption">3.3. Data Encryption</a></h3>
+<h3 id="data-encryption"><a class="link" href="#data-encryption">3.6. Data Encryption</a></h3>
 <div class="paragraph">
-<p>The storage file "PlanMySem.txt" is encrypted to prevent easy access of the user calendar.
+<p>The storage file "PlanMySem.txt" is encrypted to prevent easy access of the user&#8217;s calendar.
 We are encrypting and decrypting the data using the Java Cypher class.
 This feature is implemented through creating a Encryptor that contains encrypt and decrypt methods. The encrypt method takes a String object as an argument and returns a encrypted String object. The decrypt method takes in a String object as an argument and returns the decrypted message as a String object.</p>
 </div>
@@ -892,12 +1100,10 @@ Similarly, decryption of the data is done automatically before it is loaded. In 
 </div>
 </div>
 <div class="sect2">
-<h3 id="exporting-ics-file"><a class="link" href="#exporting-ics-file">3.4. Exporting .ics file</a></h3>
+<h3 id="exporting-ics-file"><a class="link" href="#exporting-ics-file">3.7. Exporting .ics file</a></h3>
 <div class="paragraph">
-<p>The user can export the current planner into a .ics file to use in external calendar applications. The .ics file will contain the names of the slots in the SUMMARY field and the descriptions in the DESCRIPTION field. This command automatically exports into the main directory and names the file “PlanMySem.ics”. Future updates can include user input to allow saving the file in another directory and naming the file.</p>
-</div>
-<div class="paragraph">
-<p>We have chosen to use the iCalendar format due to its popularity and its use in applications such as Google Calendar, Microsoft Outlook and Nusmods.</p>
+<p>The user can export the current planner into a .ics file to use in external calendar applications. The .ics file will contain the names of the slots in the SUMMARY field and the descriptions in the DESCRIPTION field. This command automatically exports into the main directory and names the file “PlanMySem.ics”. Future updates can include user input to allow saving the file in another directory and naming the file.
+We have chosen to use the iCalendar format due to its popularity and it’s use in applications such as Google Calendar, Microsoft Outlook and Nusmods.</p>
 </div>
 <div class="paragraph">
 <p>In our implementation, we have chosen not to export the tags into the .ics file. This is because iCalendar does not have in-built tag fields. This means that other other applications that import .ics will not be able to use the tags.</p>
@@ -940,14 +1146,14 @@ Similarly, decryption of the data is done automatically before it is loaded. In 
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.5. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">3.8. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.6, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.9, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -978,7 +1184,7 @@ Similarly, decryption of the data is done automatically before it is loaded. In 
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.6. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.9. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g user prefs file location, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -1352,7 +1558,7 @@ e.g. <code>seedu.address.logic.LogicManagerTest</code></p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Update the version number in <a href="https://github.com/CS2113-AY1819S2-T08-3/main/src/main/java/seedu/address/MainApp.java"><code>MainApp.java</code></a>.</p>
+<p>Update the version number in <a href="https://github.com/CS2113-AY1819S2-T08-3/main/src/planmysem/Main.java"><code>Main.java</code></a>.</p>
 </li>
 <li>
 <p>Generate a JAR file <a href="UsingGradle.html#creating-the-jar-file">using Gradle</a>.</p>
@@ -1479,7 +1685,7 @@ Do take a look at <a href="#Design-Logic">Section 2.3, &#8220;Logic component&#8
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-Do take a look at <a href="#Design-Model">Section 2.4, &#8220;Model component&#8221;</a> before attempting to modify the <code>Model</code> component.
+Do take a look at <a href="#Design-Model">[Design-Model]</a> before attempting to modify the <code>Model</code> component.
 </td>
 </tr>
 </table>
@@ -1766,7 +1972,7 @@ Do take a look at <a href="#Design-Ui">Section 2.2, &#8220;UI component&#8221;</
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-Do take a look at <a href="#Design-Storage">Section 2.5, &#8220;Storage component&#8221;</a> before attempting to modify the <code>Storage</code> component.
+Do take a look at <a href="#Design-Storage">Section 2.7, &#8220;Storage component&#8221;</a> before attempting to modify the <code>Storage</code> component.
 </td>
 </tr>
 </table>
@@ -2694,4 +2900,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-18 09:41:43 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-18 11:49:51 UTC</div></div></div></body></html>
