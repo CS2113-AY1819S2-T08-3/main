@@ -1,4 +1,6 @@
 = PlanMySem
+
+image:https://api.codacy.com/project/badge/Grade/3fa9a58e229d4f6e8db7f98bcd461071[link="https://app.codacy.com/app/CS2113T-T08-3/MyPlanSem?utm_source=github.com&utm_medium=referral&utm_content=CS2113-AY1819S2-T08-3/main&utm_campaign=Badge_Grade_Dashboard"]
 ifdef::env-github,env-browser[:relfileprefix: docs/]
 ifdef::env-github,env-browser[:imagesDir: docs/images]
 
