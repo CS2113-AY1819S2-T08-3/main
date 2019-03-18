@@ -80,13 +80,12 @@
 <li><a href="#use-cases">Appendix D: Use Cases</a>
 <ul class="sectlevel2">
 <li><a href="#use-case-initialize-calendar">D.1. Use case: Initialize Calendar</a></li>
-<li><a href="#use-case-add-a-module">D.2. Use Case: Add a Module</a></li>
-<li><a href="#use-case-list-and-delete-a-module">D.3. Use Case: List and Delete a Module</a></li>
-<li><a href="#use-case-edit-a-module">D.4. Use Case: Edit a Module</a></li>
-<li><a href="#use-case-export-planner">D.5. Use Case: Export planner</a></li>
-<li><a href="#use-case-view-all-activities-in-a-day">D.6. Use Case: View all Activities in a Day</a></li>
-<li><a href="#use-case-add-a-category">D.7. Use Case: Add a Category</a></li>
-<li><a href="#use-case-filter-by-category">D.8. Use Case: Filter by category</a></li>
+<li><a href="#use-case-add-a-slot">D.2. Use Case: Add a slot</a></li>
+<li><a href="#use-case-list-slots">D.3. Use Case: List slots</a></li>
+<li><a href="#use-case-delete-a-slot">D.4. Use Case: Delete a slot</a></li>
+<li><a href="#use-case-edit-a-slot">D.5. Use Case: Edit a slot</a></li>
+<li><a href="#use-case-export-planner">D.6. Use Case: Export planner</a></li>
+<li><a href="#use-case-view-all-activities-in-a-day">D.7. Use Case: View all Activities in a Day</a></li>
 </ul>
 </li>
 <li><a href="#non-functional-requirements">Appendix E: Non Functional Requirements</a></li>
@@ -2556,6 +2555,10 @@ for <code>RemarkCommandParser</code>.</p>
 </div>
 <div class="sect2">
 <h3 id="use-case-initialize-calendar"><a class="link" href="#use-case-initialize-calendar">D.1. Use case: Initialize Calendar</a></h3>
+<div class="ulist">
+<ul>
+<li>
+<p>MSS:</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2563,72 +2566,250 @@ for <code>RemarkCommandParser</code>.</p>
 </li>
 <li>
 <p>System generates a new timetable which is aligned with the academic semester. Weeks 1 to 13 as well as the Recess and Reading Weeks are labelled.</p>
+</li>
+</ol>
+</div>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
 </li>
-</ol>
+</ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="use-case-add-a-module"><a class="link" href="#use-case-add-a-module">D.2. Use Case: Add a Module</a></h3>
+<h3 id="use-case-add-a-slot"><a class="link" href="#use-case-add-a-slot">D.2. Use Case: Add a slot</a></h3>
+<div class="ulist">
+<ul>
+<li>
+<p>MSS:</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User selects the category “Module” and inputs the details related to the new module.</p>
+<p>User inputs add command followed by all the mandatory parameters.</p>
 </li>
 <li>
-<p>System reflects the addition made to the list of Modules.</p>
+<p>System reflects the additions to the planner.</p>
 <div class="paragraph">
 <p>User case ends.</p>
 </div>
 </li>
 </ol>
 </div>
+</li>
+<li>
+<p>Extensions:</p>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"></dt>
+<dd>
+<p>1a. System detects an error in the entered data.</p>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"></dt>
+<dd>
+<p>1a1. System outputs error message.</p>
+<div class="paragraph">
+<p>User case ends.</p>
+</div>
+</dd>
+</dl>
+</div>
+</dd>
+<dt class="hdlist1"></dt>
+<dd>
+<p>1a. System detects insufficient parameters in the entered data.</p>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"></dt>
+<dd>
+<p>1a1. System outputs error message.</p>
+<div class="paragraph">
+<p>User case ends.</p>
+</div>
+</dd>
+</dl>
+</div>
+</dd>
+</dl>
+</div>
+</li>
+</ul>
+</div>
 </div>
 <div class="sect2">
-<h3 id="use-case-list-and-delete-a-module"><a class="link" href="#use-case-list-and-delete-a-module">D.3. Use Case: List and Delete a Module</a></h3>
+<h3 id="use-case-list-slots"><a class="link" href="#use-case-list-slots">D.3. Use Case: List slots</a></h3>
+<div class="ulist">
+<ul>
+<li>
+<p>MSS:</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User inputs the command to list all modules he/she is enrolled in.</p>
+<p>User inputs the command to list slots followed by the tag or name of the slot.</p>
 </li>
 <li>
-<p>System lists all the modules.</p>
-</li>
-<li>
-<p>User selects the intended module from the list and inputs the delete command along with the module name for deletion.</p>
+<p>System displays all slots with the specified name or tag with their indexes.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
 </li>
 </ol>
 </div>
+</li>
+<li>
+<p>Extensions:</p>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"></dt>
+<dd>
+<p>1b. Planner is empty.</p>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"></dt>
+<dd>
+<p>1b1. System outputs error message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</dd>
+</dl>
+</div>
+</dd>
+<dt class="hdlist1"></dt>
+<dd>
+<p>1b. Tag or name does not exist in the planner.</p>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"></dt>
+<dd>
+<p>1b1. System outputs error message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</dd>
+</dl>
+</div>
+</dd>
+</dl>
+</div>
+</li>
+</ul>
+</div>
 </div>
 <div class="sect2">
-<h3 id="use-case-edit-a-module"><a class="link" href="#use-case-edit-a-module">D.4. Use Case: Edit a Module</a></h3>
+<h3 id="use-case-delete-a-slot"><a class="link" href="#use-case-delete-a-slot">D.4. Use Case: Delete a slot</a></h3>
+<div class="ulist">
+<ul>
+<li>
+<p>MSS:</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User inputs command to edit a module along with the module name.</p>
+<p>User inputs the delete command followed by the index or tag of the intended slot.</p>
 </li>
 <li>
-<p>System returns module name and it’s color attribute.</p>
-</li>
-<li>
-<p>User renames the module or changes the color attribute.</p>
-</li>
-<li>
-<p>System reflects the renamed module and/or the changed color for the module.</p>
+<p>System deletes the intended slot from the planner and outputs confirmation message.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
 </li>
 </ol>
 </div>
+</li>
+<li>
+<p>Extensions:</p>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"></dt>
+<dd>
+<p>1a. Tag or index does not exist in the planner.</p>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"></dt>
+<dd>
+<p>1a1. System outputs error message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</dd>
+</dl>
+</div>
+</dd>
+</dl>
+</div>
+</li>
+</ul>
+</div>
 </div>
 <div class="sect2">
-<h3 id="use-case-export-planner"><a class="link" href="#use-case-export-planner">D.5. Use Case: Export planner</a></h3>
+<h3 id="use-case-edit-a-slot"><a class="link" href="#use-case-edit-a-slot">D.5. Use Case: Edit a slot</a></h3>
+<div class="ulist">
+<ul>
+<li>
+<p>MSS:</p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User inputs command to edit a slot along with the tag or index, followed by the parameters to be changed.</p>
+</li>
+<li>
+<p>System changes the specified parameters for the slot.</p>
+</li>
+<li>
+<p>System reflects the slots as well as the perimeters changed.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Extensions:</p>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"></dt>
+<dd>
+<p>1a. Tag or index does not exist in the planner.</p>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"></dt>
+<dd>
+<p>1a1. System outputs error message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</dd>
+</dl>
+</div>
+</dd>
+<dt class="hdlist1"></dt>
+<dd>
+<p>1b. System detects an error in the entered data.</p>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"></dt>
+<dd>
+<p>1b1. System outputs error message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</dd>
+</dl>
+</div>
+</dd>
+</dl>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="use-case-export-planner"><a class="link" href="#use-case-export-planner">D.6. Use Case: Export planner</a></h3>
+<div class="ulist">
+<ul>
+<li>
+<p>MSS:</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2648,59 +2829,31 @@ for <code>RemarkCommandParser</code>.</p>
 </li>
 </ol>
 </div>
+</li>
+</ul>
+</div>
 </div>
 <div class="sect2">
-<h3 id="use-case-view-all-activities-in-a-day"><a class="link" href="#use-case-view-all-activities-in-a-day">D.6. Use Case: View all Activities in a Day</a></h3>
+<h3 id="use-case-view-all-activities-in-a-day"><a class="link" href="#use-case-view-all-activities-in-a-day">D.7. Use Case: View all Activities in a Day</a></h3>
+<div class="ulist">
+<ul>
+<li>
+<p>MSS:</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User inputs the command to view all activities along with the date.</p>
+<p>User inputs the command to view all slots along with the time frame.</p>
 </li>
 <li>
-<p>System displays all the activities for that specified date.</p>
+<p>System displays all the slots for that specified time frame.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
 </li>
 </ol>
 </div>
-</div>
-<div class="sect2">
-<h3 id="use-case-add-a-category"><a class="link" href="#use-case-add-a-category">D.7. Use Case: Add a Category</a></h3>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>User inputs command to add a new category along with the name of the new category.</p>
 </li>
-<li>
-<p>System reflects the addition made to the list of Categories.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect2">
-<h3 id="use-case-filter-by-category"><a class="link" href="#use-case-filter-by-category">D.8. Use Case: Filter by category</a></h3>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>User inputs the command to list all categories (so he knows what categories exist).</p>
-</li>
-<li>
-<p>User inputs the command to list all activities.</p>
-</li>
-<li>
-<p>User inputs command to filter all the activities by an existing category.</p>
-</li>
-<li>
-<p>System displays filtered activities.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ol>
+</ul>
 </div>
 <div class="paragraph">
 <p><em>{More to be added}</em></p>
@@ -2900,4 +3053,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-18 11:49:51 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-18 13:20:54 UTC</div></div></div></body></html>
