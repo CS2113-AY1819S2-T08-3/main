@@ -20,7 +20,7 @@
 <li><a href="#listing-slots-code-list-code-code-l-code">3.5. Listing Slots: <code>list</code> / <code>l</code></a></li>
 <li><a href="#locating-slots-code-find-code-code-f-code">3.6. Locating Slots: <code>find</code> / <code>f</code></a></li>
 <li><a href="#view-the-planner-code-view-code">3.7. View the Planner : <code>view</code></a></li>
-<li><a href="#listing-previous-inputted-commands-code-history-code">3.8. Listing previous inputted commands : <code>history</code></a></li>
+<li><a href="#listing-previous-input-commands-code-history-code">3.8. Listing previous input commands : <code>history</code></a></li>
 <li><a href="#undoing-previous-command-code-undo-code">3.9. Undoing previous command : <code>undo</code></a></li>
 <li><a href="#redoing-the-previously-undone-command-code-redo-code">3.10. Redoing the previously undone command : <code>redo</code></a></li>
 <li><a href="#clear-all-data-clear">3.11. Clear all data : clear</a></li>
@@ -28,7 +28,7 @@
 <li><a href="#saving-the-data">3.13. Saving the data</a></li>
 <li><a href="#encrypting-decrypting-data-files">3.14. Encrypting/decrypting data files</a></li>
 <li><a href="#importing-ics-formated-files-code-coming-in-v2-0-code">3.15. Importing .ics formated files <code>[coming in v2.0]</code></a></li>
-<li><a href="#exporting-ics-formated-files-code-export-code">3.16. Exporting .ics formated files: <code>export</code></a></li>
+<li><a href="#exporting-ics-formatted-files-code-export-code">3.16. Exporting .ics formatted files: <code>export</code></a></li>
 </ul>
 </li>
 <li><a href="#faq">4. FAQ</a></li>
@@ -40,13 +40,16 @@
 <h2 id="introduction"><a class="link" href="#introduction">1. Introduction</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>PlanMySem is a CLI (Command Line Interface) scheduling/calendar application that targets NUS students and staff who prefer to use a desktop application for managing their schedule/calendar.
-PlanMySem automatically creates a planner that is synchronised according to the NUS academic calendar for the current semester and enables easy creation, editing and deleting of items.
+<p>Welcome to <em>PlanMySem</em>!</p>
+</div>
+<div class="paragraph">
+<p><em>PlanMySem</em> is a text-based (Command Line Interface) scheduling/calendar application that targets NUS students and staff who prefer to use a desktop application for managing their schedule/calendar.
+<em>PlanMySem</em> automatically creates a planner that is synchronised according to the NUS academic calendar for the current semester and enables easy creation, editing and deleting of items.
 Special weeks such as recess week and reading week are taken into account within our unique recursion system.
 Items can then be efficiently managed via the intuitive tagging system.</p>
 </div>
 <div class="paragraph">
-<p>PlanMySem is optimized for those who prefer to work with a Command Line Interface (CLI) and/or are learning to work more efficiently with CLI tools. Additionally, unlike traditional calendar/scheduling applications, PlanMySem utilizes minimal resources on the user’s machine while still allowing the user to view their schedules swiftly and efficiently.</p>
+<p><em>PlanMySem</em> is optimized for those who prefer to work with a Command Line Interface (CLI) and/or are learning to work more efficiently with CLI tools. Additionally, unlike traditional calendar/scheduling applications, <em>PlanMySem</em> utilizes minimal resources on the user’s machine while still allowing the user to view their schedules swiftly and efficiently.</p>
 </div>
 </div>
 </div>
@@ -65,7 +68,7 @@ Items can then be efficiently managed via the intuitive tagging system.</p>
 <p>Copy the file to the folder you want to use as the home folder for your planner.</p>
 </li>
 <li>
-<p>Double-click the file to start the app. The GUI should appear in a few seconds.</p>
+<p>Double-click the file to start the app. You should see the GUI appear in a few seconds.</p>
 <div class="imageblock">
 <div class="content">
 <img src="images/Ui.png" alt="Ui" width="790">
@@ -81,16 +84,17 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <div class="ulist">
 <ul>
 <li>
-<p><strong><code>list</code></strong> : lists all contacts</p>
+<p><strong><code>add</code></strong><code>n/CS2113T d/mon st/08:00 et/09:00 des/Topic: Sequence Diagram t/CS2113T t/Tutorial</code> :<br>
+Add a slot, named "CS2113T" on the coming monday, from 0800hrs to 0900hrs with the tags "CS2113T" and "Tutorial".</p>
 </li>
 <li>
-<p><strong><code>add</code></strong><code>n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01</code> : adds a contact named <code>John Doe</code> to the Address Book.</p>
+<p><strong><code>list</code></strong><code>n/CS2113T</code> : list all slots named "CS2113T"</p>
 </li>
 <li>
-<p><strong><code>delete</code></strong><code>3</code> : deletes the 3rd contact shown in the current list</p>
+<p><strong><code>delete</code></strong><code>3</code> : delete the 3rd slot shown in the current list</p>
 </li>
 <li>
-<p><strong><code>exit</code></strong> : exits the app</p>
+<p><strong><code>exit</code></strong> : exit the app</p>
 </li>
 </ul>
 </div>
@@ -130,11 +134,11 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 </ul>
 </div>
 <div class="paragraph">
-<p><strong>Paramters</strong></p>
+<p><strong>Parameters</strong></p>
 </div>
 <div class="paragraph">
-<p>Parameters in PlanMySem were designed to be, short and easy to memorise. Once familarised with, they should be intuitive to use.
-Below is the list of parameters for users such as yourself to jump right into grasping the system.</p>
+<p>Parameters in <em>PlanMySem</em> are designed to be, short and easy to memorise. Once you are familarised with them, they should be intuitive to use.
+The list of parameters below is useful for your reference as you jump right into grasping the system.</p>
 </div>
 <div class="hdlist">
 <table>
@@ -334,11 +338,19 @@ Format: <code>add n/NAME d/DATE_OR_DAY_OF_WEEK st/START_TIME et/END_TIME_OR_DURA
 <div class="paragraph">
 <p>Examples:
 * <code>add n/CS2113T Tutorial d/mon st/08:00 et/09:00 des/Topic: Sequence Diagram t/CS2113T t/Tutorial</code><br>
-Add a <em>slot</em>, named "CS2113T Tutorial" on the coming monday, from 0800hrs to 0900hrs with the tags "CS2113T" and "Tutorial".
-* <code>add n/CS2113T Tutorial d/mon st/08:00 et/09:00 des/Topic: Sequence Diagram t/CS2113T t/Tutorial r/recess r/reading</code><br>
-Do the same but additionally, recurse the slot on recess and reading week.
-* <code>add n/CS2113T Tutorial d/mon st/08:00 et/09:00 des/Topic: Sequence Diagram t/CS2113T t/Tutorial r/normal</code><br>
+Add a <em>slot</em>, named "CS2113T Tutorial" on the coming monday, from 0800hrs to 0900hrs with the tags "CS2113T" and "Tutorial".</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>add n/CS2113T Tutorial d/mon st/08:00 et/09:00 des/Topic: Sequence Diagram t/CS2113T t/Tutorial r/recess r/reading</code><br>
+Do the same but additionally, recurse the slot on recess and reading week.</p>
+</li>
+<li>
+<p><code>add n/CS2113T Tutorial d/mon st/08:00 et/09:00 des/Topic: Sequence Diagram t/CS2113T t/Tutorial r/normal</code><br>
 Do the same but recurse the slot on "normal", instructional, weeks.</p>
+</li>
+</ul>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -543,10 +555,10 @@ View all the details in the planner.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="listing-previous-inputted-commands-code-history-code"><a class="link" href="#listing-previous-inputted-commands-code-history-code">3.8. Listing previous inputted commands : <code>history</code></a></h3>
+<h3 id="listing-previous-input-commands-code-history-code"><a class="link" href="#listing-previous-input-commands-code-history-code">3.8. Listing previous input commands : <code>history</code></a></h3>
 <div class="paragraph">
 <p>Lists all the commands that you have entered in reverse chronological order.<br>
-Format: history</p>
+Format: <code>history</code></p>
 </div>
 </div>
 <div class="sect2">
@@ -563,7 +575,7 @@ Format: <code>undo</code></p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Some commands are undoable. e.g. <code>wipe PlanMySem</code>.</p>
+<p>The <code>clear</code> command cannot be undone.</p>
 </div>
 </td>
 </tr>
@@ -583,6 +595,20 @@ Format: <code>redo</code></p>
 <p>Clear all data stored on the planner.<br>
 Format: <code>clear</code></p>
 </div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The <code>clear</code> command cannot be undone! Your data will be permanently removed once <code>clear</code> is executed.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
 </div>
 <div class="sect2">
 <h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.12. Exiting the program : <code>exit</code></a></h3>
@@ -600,10 +626,10 @@ Format: <code>exit</code></p>
 <div class="sect2">
 <h3 id="encrypting-decrypting-data-files"><a class="link" href="#encrypting-decrypting-data-files">3.14. Encrypting/decrypting data files</a></h3>
 <div class="paragraph">
-<p>Planner data is automatically encrypted before saving. There is no need to encrypt the data manually.</p>
+<p>Planner data is automatically encrypted before saving. You do not need to encrypt the data manually.</p>
 </div>
 <div class="paragraph">
-<p>Planner data is automatically decrypted before loading. There is no need to decrypt the data manually.</p>
+<p>Planner data is automatically decrypted before loading. You do not need to decrypt the data manually.</p>
 </div>
 </div>
 <div class="sect2">
@@ -613,10 +639,9 @@ Format: <code>exit</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="exporting-ics-formated-files-code-export-code"><a class="link" href="#exporting-ics-formated-files-code-export-code">3.16. Exporting .ics formated files: <code>export</code></a></h3>
+<h3 id="exporting-ics-formatted-files-code-export-code"><a class="link" href="#exporting-ics-formatted-files-code-export-code">3.16. Exporting .ics formatted files: <code>export</code></a></h3>
 <div class="paragraph">
-<p>Exports planner as a .ics file.
-Format: <code>export</code></p>
+<p>You can export the planner as an .ics file.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -626,7 +651,23 @@ Format: <code>export</code></p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>The exported file is named "PlanMySem.ics" and is saved in the main directory.</p>
+<p>The exported file is named "PlanMySem.ics" and is saved in the main directory.
+Double-clicking the .ics file will import the planner data into your personal calendar app.<br></p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>A file with the ICS file extension is an iCalendar file.
+These are plain text files that include calendar event details like a description, beginning and ending times, location, etc.</p>
 </div>
 </td>
 </tr>
@@ -640,7 +681,12 @@ Format: <code>export</code></p>
 <div class="sectionbody">
 <div class="paragraph">
 <p><strong>Q</strong>: How do I transfer my data to another Computer?<br>
-<strong>A</strong>: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous PlanMySem folder.</p>
+<strong>A</strong>: In order to transfer your data to another Computer, you should:<br>
+1. Install the app on the other computer<br>
+2. Copy <em>PlanMySem.txt</em> from your old <em>PlanMySem</em> folder and paste it into the new <em>PlanMySem</em> folder.<br></p>
+</div>
+<div class="paragraph">
+<p>This will overwrite the empty data file it creates with the file that contains the data of your previous <em>PlanMySem</em> folder.</p>
 </div>
 </div>
 </div>
@@ -653,58 +699,46 @@ Format: <code>export</code></p>
 <p><strong>View help</strong> <code>help</code><br></p>
 </li>
 <li>
-<p><strong>Add category</strong> : <code>add cat n/NAME [n/MORE_NAMES]&#8230;&#8203;</code><br>
-e.g. <code>add cat n/Sports n/Study Groups n/Interest Groups</code><br></p>
+<p><strong>Add Slot</strong> : <code>add n/NAME d/DATE_OR_DAY_OF_WEEK st/START_TIME et/END_TIME_OR_DURATION [l/LOCATION] [des/DESCRIPTION] [r/normal] [r/recess] [r/reading] [r/exam] [r/past] [t/TAG]…​</code><br>
+e.g. <code>add n/CS2113T Tutorial d/mon st/08:00 et/09:00 des/Topic: Sequence Diagram t/CS2113T t/Tutorial</code><br></p>
 </li>
 <li>
-<p><strong>List category</strong> : <code>list cat</code></p>
+<p><strong>List Slot(s)</strong> : <code>list n/NAME</code><br>
+eg. <code>list n/CS2113T</code></p>
 </li>
 <li>
-<p><strong>Edit category</strong> : <code>edit cat n/NAME nn/NEW_NAME</code><br>
-e.g. <code>edit n/Sports nn/Frisbee</code></p>
+<p><strong>Edit Slot</strong> :<br></p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Via tags: <code>edit t/TAG&#8230;&#8203; [nn/NEW_NAME] [nst/NEW_START_TIME] [net/NEW_END_TIME|DURATION] [nl/NEW_LOCATION] [nd/NEW_DESCRIPTION] [nt/NEW_TAG]&#8230;&#8203;</code><br>
+e.g. <code>edit t/CS2113T t/Tutorial nl/COM2 04-01</code></p>
 </li>
 <li>
-<p><strong>Delete category</strong> : <code>del cat n/NAME [n/MORE_NAMES]&#8230;&#8203;</code><br>
-e.g. <code>del cat n/Sports n/Interest Groups</code></p>
+<p>Via <code>list</code> command: <code>edit INDEX [nn/NEW_NAME] [nd/NEW_DATE] [nst/NEW_START_TIME] [net/NEW_END_TIME|DURATION] [nl/NEW_LOCATION] [nd/NEW_DESCRIPTION] [nt/NEW_TAG]&#8230;&#8203;</code><br>
+e.g. <code>edit 1 des/Topic: Sequence Diagram</code></p>
+</li>
+</ol>
+</div>
 </li>
 <li>
-<p><strong>Add activity</strong> : <code>add act n/NAME c/CATEGORY</code>
-e.g. <code>add act n/CS2101 c/modules</code></p>
+<p><strong>Delete Slot</strong> :<br></p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Via tags: <code>delete t/TAG…​</code><br>
+eg. <code>delete t/CS2113T t/Tutorial</code></p>
 </li>
 <li>
-<p><strong>List activities</strong> : <code>list act</code></p>
+<p>Via <code>list</code> command: <code>delete INDEX</code><br>
+eg. <code>list delete 2</code></p>
+</li>
+</ol>
+</div>
 </li>
 <li>
-<p><strong>Edit activity</strong> : <code>edit act n/NAME [nn/NEW_NAME] [nc/NEW_CATEGORY]</code><br>
-e.g.<code>edit act n/CS2103 nn/CS2113T nc/hard module</code></p>
-</li>
-<li>
-<p><strong>Delete activity</strong> : <code>del act n/NAME [n/MORE_NAMES]&#8230;&#8203;</code><br>
-e.g.<code>del act n/CS2101 n/CS2100</code></p>
-</li>
-<li>
-<p><strong>Add slot</strong> : <code>add slot a/ACTIVITY_NAME d/DAY t/TIME [r/norecess] [r/noreading] [r/nonormal] [r/recess] [r/reading] [r/normal] [tag/TAG]&#8230;&#8203;</code><br>
-e.g.<code>add slot a/CS2101 d/monday t/0800-0900 r/norecess r/noreading r/normal tag/hard module</code></p>
-</li>
-<li>
-<p><strong>List slots</strong> : <code>list slot [c/CATEGORY_NAME]&#8230;&#8203; [a/ACTIVITY_NAME]&#8230;&#8203;</code><br>
-e.g.<code>list slot c/modules c/sports a/running group</code></p>
-</li>
-<li>
-<p><strong>Edit slot</strong> : <code>edit slot a/ACTIVITY_NAME d/DAY t/TIME [a/NEW_ACTIVITY_NAME] [nd/NEW_DAY] [nt/NEW_TIME] [r/norecess] [r/noreading] [r/nonormal] [r/recess] [r/reading] [r/normal]</code><br>
-e.g.<code>edit slot n/CS2103T d/monday t/0800-0900 nn/CS2113T nd/tuesday r/noreading</code></p>
-</li>
-<li>
-<p><strong>Delete slot</strong> : <code>del slot a/ACTIVITY_NAME d/DAY t/TIME</code><br>
-e.g.<code>del slot a/CS2113T d/monday t/0800-0900</code></p>
-</li>
-<li>
-<p><strong>Find categories/activities/tag</strong> : <code>find k/KEYWORD [k/MORE_KEYWORDS]&#8230;&#8203; [c/CATEGORY_NAME]&#8230;&#8203; [a/ACTIVITY_NAME]&#8230;&#8203; [tag/TAG_NAME]&#8230;&#8203;</code><br>
-e.g.<code>find frisbee c/sports</code></p>
-</li>
-<li>
-<p><strong>Delete category/activity/tag</strong> : <code>del [c/CATEGORY]&#8230;&#8203; [a/ACTIVITY]&#8230;&#8203; [tag/TAG]&#8230;&#8203;</code><br>
-e.g.<code>del c/CS2113T a/frisbee t/hard module</code></p>
+<p><strong>Find Slots</strong> : <code>find [KEYWORD]…​</code><br>
+e.g. <code>find CS</code></p>
 </li>
 <li>
 <p><strong>View planner</strong> : <code>view day [DATE] | view week [WEEK] | view month [MONTH]</code><br>
@@ -721,15 +755,18 @@ e.g.<code>view all</code></p>
 <p><strong>Undo previous command</strong> : <code>undo</code></p>
 </li>
 <li>
-<p><strong>Redo previously undone co</strong> : <code>redo</code></p>
+<p><strong>Redo previously undone command</strong> : <code>redo</code></p>
 </li>
 <li>
-<p><strong>Wipe all data</strong> : <code>wipe PlanMySem</code></p>
+<p><strong>Clear all data</strong> : <code>clear</code></p>
 </li>
 <li>
 <p><strong>Exit the program</strong> : <code>exit</code></p>
 </li>
+<li>
+<p><strong>Export .ics  files</strong> : <code>export</code></p>
+</li>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-19 06:33:21 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-19 10:46:10 UTC</div></div></div></body></html>
