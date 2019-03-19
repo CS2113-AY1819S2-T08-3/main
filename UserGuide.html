@@ -23,7 +23,7 @@
 <li><a href="#listing-previous-input-commands-code-history-code-code-coming-in-v2-0-code">3.8. Listing previous input commands : <code>history</code> <code>[coming in v2.0]</code></a></li>
 <li><a href="#undoing-previous-command-code-undo-code-code-coming-in-v2-0-code">3.9. Undoing previous command : <code>undo</code> <code>[coming in v2.0]</code></a></li>
 <li><a href="#redoing-the-previously-undone-command-code-redo-code-code-coming-in-v2-0-code">3.10. Redoing the previously undone command : <code>redo</code> <code>[coming in v2.0]</code></a></li>
-<li><a href="#clear-all-data-clear">3.11. Clear all data : clear</a></li>
+<li><a href="#clear-all-data-code-clear-code">3.11. Clear all data : <code>clear</code></a></li>
 <li><a href="#exiting-the-program-code-exit-code">3.12. Exiting the program : <code>exit</code></a></li>
 <li><a href="#saving-the-data">3.13. Saving the data</a></li>
 <li><a href="#encrypting-decrypting-data-files">3.14. Encrypting/decrypting data files</a></li>
@@ -170,10 +170,10 @@ Add a slot, named "CS2113T" on the coming monday, from 0800hrs to 0900hrs with t
 <p><strong>Recursion System</strong></p>
 </div>
 <div class="paragraph">
-<p>Recursion facilitate quick addition of multiple slots, similar to Microsoft Outlook&#8217;s series of appointments.</p>
+<p>Recursion facilitates quick addition of multiple slots, similar to Microsoft Outlook&#8217;s series of appointments.</p>
 </div>
 <div class="paragraph">
-<p>In NUS, academic semesters are split into weeks of several types. Recursion allows you to add slots to these types of weeks with ease through the use of the <code>r/</code> parameter.</p>
+<p>In NUS, academic semesters are split into weeks of several types. Recursion allows you to add slots to these types of weeks with ease through the use of the <code>r/</code>(recursion) parameter.</p>
 </div>
 <div class="paragraph">
 <p><strong>Parameters</strong></p>
@@ -181,25 +181,6 @@ Add a slot, named "CS2113T" on the coming monday, from 0800hrs to 0900hrs with t
 <div class="paragraph">
 <p>Parameters in <em>PlanMySem</em> are designed to be, short and easy to memorise. Once you are familarised with them, they should be intuitive to use.
 The table of parameters and their descriptions (Table 1) below is useful for your reference as you jump right into grasping the system.</p>
-</div>
-<div class="paragraph">
-<p><strong>Command Format</strong></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Words in UPPER_CASE are the parameters to be supplied by the user. E.g. in <code>t/TAG</code>, <code>TAG</code> is a parameter which can be used as the name of the tag.</p>
-</li>
-<li>
-<p>Items in square brackets are optional. e.g in <code>add [l/LOCATION]</code>, <code>LOCATION</code> is a parameter that may be omited.</p>
-</li>
-<li>
-<p>Items with <code>…</code> after them can be used multiple times including zero times e.g. <code>[t/TAG]…</code> can be used as   (i.e. 0 times), <code>t/lab</code>, <code>t/lecture</code>, <code>t/tutorial</code> etc.</p>
-</li>
-<li>
-<p>Parameters can be in any order e.g. if the command specifies <code>st/START_TIME et/END_TIME d/DATE</code>, then both <code>et/09:00 st/08:00 d/2-13-2019</code> and <code>et/09:00 d/2-13-2019 st/08:00</code> is also acceptable.</p>
-</li>
-</ul>
 </div>
 <div class="paragraph">
 <p><strong>Command Format</strong></p>
@@ -431,7 +412,7 @@ Format: <code>help</code></p>
 <div class="sect2">
 <h3 id="adding-slots-code-add-code-code-a-code"><a class="link" href="#adding-slots-code-add-code-code-a-code">3.2. Adding Slots : <code>add</code> / <code>a</code></a></h3>
 <div class="paragraph">
-<p>Add <em>slots</em> to the planner.<br>
+<p>Add <em>slot(s)</em> to the planner.<br>
 Format: <code>add n/NAME d/DATE_OR_DAY_OF_WEEK st/START_TIME et/END_TIME_OR_DURATION<br>
 [l/LOCATION] [des/DESCRIPTION] [r/normal] [r/recess] [r/reading] [r/exam] [r/past] [t/TAG]&#8230;&#8203;</code></p>
 </div>
@@ -488,7 +469,7 @@ Do the same but recurse the slot on "normal", instructional, weeks.</p>
 <div class="sect2">
 <h3 id="editing-slots-code-edit-code-code-e-code"><a class="link" href="#editing-slots-code-edit-code-code-e-code">3.3. Editing Slots: <code>edit</code> / <code>e</code></a></h3>
 <div class="paragraph">
-<p>Edit <em>slots</em>.</p>
+<p>Edit <em>slot(s)</em>.</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -510,8 +491,8 @@ Format: <code>edit INDEX [nn/NEW_NAME] [nd/NEW_DATE] [nst/NEW_START_TIME] [net/N
 </td>
 <td class="content">
 <div class="paragraph">
-<p>You are not able to edit a slot&#8217;s date when selecting via <em>tags</em>.
-To edit a <em>slot</em>'s date, you may use the <code>list</code> or <code>find</code> command and select specific <em>slots</em> via index.</p>
+<p>You are not able to edit a slot&#8217;s date when editing via <em>tags</em>.
+To edit a <em>slot</em>'s date, you may use the <code>list</code> or <code>find</code> command and edit specific <em>slot(s)</em> via index.</p>
 </div>
 </td>
 </tr>
@@ -798,7 +779,7 @@ Format: <code>redo</code>
 </div>
 </div>
 <div class="sect2">
-<h3 id="clear-all-data-clear"><a class="link" href="#clear-all-data-clear">3.11. Clear all data : clear</a></h3>
+<h3 id="clear-all-data-code-clear-code"><a class="link" href="#clear-all-data-code-clear-code">3.11. Clear all data : <code>clear</code></a></h3>
 <div class="paragraph">
 <p>Clear all data stored on the planner.<br>
 Format: <code>clear</code></p>
@@ -858,10 +839,7 @@ There is no need to save manually.
 <div class="sect2">
 <h3 id="encrypting-decrypting-data-files"><a class="link" href="#encrypting-decrypting-data-files">3.14. Encrypting/decrypting data files</a></h3>
 <div class="paragraph">
-<p>Planner data is automatically encrypted before saving. You do not need to encrypt the data manually.</p>
-</div>
-<div class="paragraph">
-<p>Planner data is automatically decrypted after loading. You do not need to decrypt the data manually.
+<p>Planner data is automatically encrypted before saving and decrypted before loading. You do not need to encrypt or decrypt he data manually.
 &#8203;</p>
 </div>
 <div class="paragraph">
@@ -872,6 +850,7 @@ There is no need to save manually.
 <h3 id="importing-ics-formatted-files-code-coming-in-v2-0-code"><a class="link" href="#importing-ics-formatted-files-code-coming-in-v2-0-code">3.15. Importing .ics formatted files <code>[coming in v2.0]</code></a></h3>
 <div class="paragraph">
 <p>You can import an .ics file into the planner.
+Format: <code>import FILENAME</code>
 &#8203;</p>
 </div>
 <div class="paragraph">
@@ -881,7 +860,7 @@ There is no need to save manually.
 <div class="sect2">
 <h3 id="exporting-ics-formatted-files-code-export-code"><a class="link" href="#exporting-ics-formatted-files-code-export-code">3.16. Exporting .ics formatted files: <code>export</code></a></h3>
 <div class="paragraph">
-<p>You can export the planner as an .ics file.</p>
+<p>You can export the planner as a .ics file.</p>
 </div>
 <div id="img-export" class="imageblock">
 <div class="content">
@@ -904,7 +883,7 @@ There is no need to save manually.
 <td class="content">
 <div class="paragraph">
 <p>The exported file is named "PlanMySem.ics" and is saved in the main directory.
-Double-clicking the .ics file will import the planner data into your personal calendar app.<br></p>
+The .ics file can be imported into other calendar apps that support .ics files such as Google Calendar.<br></p>
 </div>
 <div id="img-exportFile" class="imageblock">
 <div class="content">
@@ -986,7 +965,7 @@ e.g. <code>add n/CS2113T Tutorial d/mon st/08:00 et/09:00 des/Topic: Sequence Di
 eg. <code>list n/CS2113T</code></p>
 </li>
 <li>
-<p><strong>Edit Slot</strong> :<br></p>
+<p><strong>Edit Slot</strong> : <code>edit</code><br></p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -1001,7 +980,7 @@ e.g. <code>edit 1 des/Topic: Sequence Diagram</code></p>
 </div>
 </li>
 <li>
-<p><strong>Delete Slot</strong> :<br></p>
+<p><strong>Delete Slot</strong> : <code>delete</code><br></p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -1042,12 +1021,12 @@ e.g.<code>view month</code></p>
 <p><strong>Exit the program</strong> : <code>exit</code></p>
 </li>
 <li>
-<p><strong>Import .ics  files into planner</strong> : <code>import</code></p>
+<p><strong>Export .ics  file</strong> : <code>export</code></p>
 </li>
 <li>
-<p><strong>Export .ics  files from planner</strong> : <code>export</code></p>
+<p><strong>Import .ics  file</strong> : <code>import FILENAME</code></p>
 </li>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-19 18:07:25 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-19 18:39:40 UTC</div></div></div></body></html>
