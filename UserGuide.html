@@ -19,7 +19,7 @@
 <li><a href="#delete-slots-code-delete-code-code-del-code-code-d-code">3.4. Delete Slots: <code>delete</code> / <code>del</code> / <code>d</code></a></li>
 <li><a href="#listing-slots-code-list-code-code-l-code">3.5. Listing Slots: <code>list</code> / <code>l</code></a></li>
 <li><a href="#locating-slots-code-find-code-code-f-code">3.6. Locating Slots: <code>find</code> / <code>f</code></a></li>
-<li><a href="#view-the-planner-code-view-code">3.7. View the Planner : <code>view</code></a></li>
+<li><a href="#view-the-planner-code-view-code-code-v-code">3.7. View the Planner : <code>view</code> / <code>v</code></a></li>
 <li><a href="#listing-previous-input-commands-code-history-code">3.8. Listing previous input commands : <code>history</code></a></li>
 <li><a href="#undoing-previous-command-code-undo-code">3.9. Undoing previous command : <code>undo</code></a></li>
 <li><a href="#redoing-the-previously-undone-command-code-redo-code">3.10. Redoing the previously undone command : <code>redo</code></a></li>
@@ -40,7 +40,7 @@
 <h2 id="introduction"><a class="link" href="#introduction">1. Introduction</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Welcome to <em>PlanMySem</em>!</p>
+<p>Welcome to <em>PlanMySem</em>! Choose a topic from the table of contents to learn about available features with examples, find answers or view a summary of the commands.</p>
 </div>
 <div class="paragraph">
 <p><em>PlanMySem</em> is a text-based (Command Line Interface) scheduling/calendar application that targets NUS students and staff who prefer to use a desktop application for managing their schedule/calendar.
@@ -50,6 +50,9 @@ Items can then be efficiently managed via the intuitive tagging system.</p>
 </div>
 <div class="paragraph">
 <p><em>PlanMySem</em> is optimized for those who prefer to work with a Command Line Interface (CLI) and/or are learning to work more efficiently with CLI tools. Additionally, unlike traditional calendar/scheduling applications, <em>PlanMySem</em> utilizes minimal resources on the user’s machine while still allowing the user to view their schedules swiftly and efficiently.</p>
+</div>
+<div class="paragraph">
+<p>This user guide provides a quick start guide for you to easily setup and install <em>PlanMySem</em>, documentation of all the various features <em>PlanMySem</em> offers, frequently asked questions and a summary of the available commands.</p>
 </div>
 </div>
 </div>
@@ -123,13 +126,13 @@ Add a slot, named "CS2113T" on the coming monday, from 0800hrs to 0900hrs with t
 <p>Words in UPPER_CASE are the parameters to be supplied by the user. E.g. in <code>t/TAG</code>, <code>TAG</code> is a parameter which can be used as the name of the tag.</p>
 </li>
 <li>
-<p>Items in square brackets are optional. e.g add act NAME <code>[c/NAME]</code>.</p>
+<p>Items in square brackets are optional. e.g in <code>add n/NAME [l/LOCATION]</code>, <code>LOCATION</code> is an optional parameter and is not required to successfully run the command.</p>
 </li>
 <li>
-<p>Items with <code>…</code> after them can be used multiple times including zero times e.g. <code>[t/TAG]…</code> can be used as   (i.e. 0 times), <code>t/lab</code>, <code>t/lecture</code>, <code>t/tutorial</code> etc.</p>
+<p>Items with <code>…</code> after them can be used multiple times including zero times e.g. <code>[t/TAG]…</code> can be used 0 times, or as <code>t/lab</code>, <code>t/lecture</code>, <code>t/tutorial</code> etc.</p>
 </li>
 <li>
-<p>Parameters can be in any order e.g. if the command specifies <code>st/START_TIME et/END_TIME d/DATE</code>, then both <code>et/09:00 st/08:00 d/2-13-2019</code> and <code>et/09:00 d/2-13-2019 st/08:00</code> is also acceptable.</p>
+<p>Parameters can be in any order e.g. if the command specifies <code>st/START_TIME et/END_TIME d/DATE</code>, then both <code>et/09:00 st/08:00 d/2-13-2019</code> and <code>et/09:00 d/2-13-2019 st/08:00</code> are acceptable.</p>
 </li>
 </ul>
 </div>
@@ -155,7 +158,7 @@ The list of parameters below is useful for your reference as you jump right into
 <code>n/</code>
 </td>
 <td class="hdlist2">
-<p><strong>Name specific to the object at hand.</strong></p>
+<p><strong>Name of an activity <em>slot</em>.</strong></p>
 </td>
 </tr>
 <tr>
@@ -182,7 +185,7 @@ Format:<br></p>
 <code>st/</code>
 </td>
 <td class="hdlist2">
-<p><strong>Start Time.</strong>
+<p><strong>Start Time.</strong><br>
 Format:<br></p>
 <div class="ulist">
 <ul>
@@ -202,7 +205,7 @@ Format:<br></p>
 </td>
 <td class="hdlist2">
 <p><strong>End Time / duration.</strong><br>
-Format:</p>
+Format:<br></p>
 <div class="ulist">
 <ul>
 <li>
@@ -223,8 +226,8 @@ Format:</p>
 <code>r/</code>
 </td>
 <td class="hdlist2">
-<p><strong>recurrence.</strong><br>
-Format:</p>
+<p><strong>Specify recurrence of an activity <em>slot</em>.</strong><br>
+Format:<br></p>
 <div class="ulist">
 <ul>
 <li>
@@ -275,7 +278,7 @@ Format:</p>
 <code>nn/</code>
 </td>
 <td class="hdlist2">
-<p><strong>New name of the object at hand.</strong></p>
+<p><strong>New name of an activity <em>slot</em>.</strong></p>
 </td>
 </tr>
 <tr>
@@ -325,7 +328,8 @@ Format:</p>
 <div class="sect2">
 <h3 id="viewing-help-code-help-code"><a class="link" href="#viewing-help-code-help-code">3.1. Viewing help : <code>help</code></a></h3>
 <div class="paragraph">
-<p>Format: <code>help</code></p>
+<p>Displays all the available commands with the syntax and examples.<br>
+Format: <code>help</code></p>
 </div>
 </div>
 <div class="sect2">
@@ -336,12 +340,14 @@ Format: <code>add n/NAME d/DATE_OR_DAY_OF_WEEK st/START_TIME et/END_TIME_OR_DURA
 [l/LOCATION] [des/DESCRIPTION] [r/normal] [r/recess] [r/reading] [r/exam] [r/past] [t/TAG]&#8230;&#8203;</code></p>
 </div>
 <div class="paragraph">
-<p>Examples:
-* <code>add n/CS2113T Tutorial d/mon st/08:00 et/09:00 des/Topic: Sequence Diagram t/CS2113T t/Tutorial</code><br>
-Add a <em>slot</em>, named "CS2113T Tutorial" on the coming monday, from 0800hrs to 0900hrs with the tags "CS2113T" and "Tutorial".</p>
+<p>Examples:</p>
 </div>
 <div class="ulist">
 <ul>
+<li>
+<p><code>add n/CS2113T Tutorial d/mon st/08:00 et/09:00 des/Topic: Sequence Diagram t/CS2113T t/Tutorial</code><br>
+Add a <em>slot</em>, named "CS2113T Tutorial" on the coming monday, from 0800hrs to 0900hrs with the tags "CS2113T" and "Tutorial".</p>
+</li>
 <li>
 <p><code>add n/CS2113T Tutorial d/mon st/08:00 et/09:00 des/Topic: Sequence Diagram t/CS2113T t/Tutorial r/recess r/reading</code><br>
 Do the same but additionally, recurse the slot on recess and reading week.</p>
@@ -360,7 +366,7 @@ Do the same but recurse the slot on "normal", instructional, weeks.</p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>You may add single slots by neglecting the recurrence parameters.</p>
+<p>You may add single <em>slots</em> by omitting the recurrence parameter.</p>
 </div>
 </td>
 </tr>
@@ -453,7 +459,7 @@ Format: <code>delete INDEX</code></p>
 Delete <em>slots</em> that contain tags "CS2113T" and "Tutorial".</p>
 </li>
 <li>
-<p><code>list delete 2</code><br>
+<p><code>delete 2</code><br>
 Delete the second <em>slot</em> shown via the <code>list</code> command.</p>
 </li>
 </ul>
@@ -489,17 +495,36 @@ Format: <code>find [KEYWORD]&#8230;&#8203;</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>find CS</code>
+<p><code>find CS</code><br>
 Find all <em>slots</em> whose name contains <code>CS</code> (eg. CS1010, CS2113T, SCS1010)</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="view-the-planner-code-view-code"><a class="link" href="#view-the-planner-code-view-code">3.7. View the Planner : <code>view</code></a></h3>
+<h3 id="view-the-planner-code-view-code-code-v-code"><a class="link" href="#view-the-planner-code-view-code-code-v-code">3.7. View the Planner : <code>view</code> / <code>v</code></a></h3>
 <div class="paragraph">
-<p>View the planner according to day/week/month. <br>
-Format: <code>view day DATE | view week WEEK | view month MONTH | view all</code></p>
+<p>View the planner in a month/week/day view.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>View the monthly calendar view of the current academic semester.<br>
+Format: <code>view month [MONTH]</code></p>
+</li>
+<li>
+<p>View the weekly calendar view of the current academic week.<br>
+Format: <code>view week [WEEK]</code></p>
+</li>
+<li>
+<p>View the day view of a particular day in the academic semester.<br>
+Format: <code>view day [DATE]</code></p>
+</li>
+<li>
+<p>View all the details in the planner.<br>
+Format: <code>view all</code></p>
+</li>
+</ol>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -508,22 +533,15 @@ Format: <code>view day DATE | view week WEEK | view month MONTH | view all</code
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>If no date is given, the current date is assumed.</p>
-</li>
-<li>
-<p>If the <code>all</code> option is specified, the planner will not be displayed, instead all the details in the planner will be displayed.</p>
-</li>
-</ol>
+<div class="paragraph">
+<p>If MONTH/WEEK/DATE is not specified, the current date is assumed.</p>
 </div>
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>Example:</p>
+<p>Examples:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -620,7 +638,8 @@ Format: <code>exit</code></p>
 <div class="sect2">
 <h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.13. Saving the data</a></h3>
 <div class="paragraph">
-<p>Planner data is saved in the hard disk automatically after any command that changes the data is executed. + There is no need to save manually.</p>
+<p>Planner data is saved in the hard disk automatically after any command that changes the data is executed.<br>
+There is no need to save manually.</p>
 </div>
 </div>
 <div class="sect2">
@@ -629,7 +648,7 @@ Format: <code>exit</code></p>
 <p>Planner data is automatically encrypted before saving. You do not need to encrypt the data manually.</p>
 </div>
 <div class="paragraph">
-<p>Planner data is automatically decrypted before loading. You do not need to decrypt the data manually.</p>
+<p>Planner data is automatically decrypted after loading. You do not need to decrypt the data manually.</p>
 </div>
 </div>
 <div class="sect2">
@@ -681,9 +700,17 @@ These are plain text files that include calendar event details like a descriptio
 <div class="sectionbody">
 <div class="paragraph">
 <p><strong>Q</strong>: How do I transfer my data to another Computer?<br>
-<strong>A</strong>: In order to transfer your data to another Computer, you should:<br>
-1. Install the app on the other computer<br>
-2. Copy <em>PlanMySem.txt</em> from your old <em>PlanMySem</em> folder and paste it into the new <em>PlanMySem</em> folder.<br></p>
+<strong>A</strong>: In order to transfer your data to another Computer, you should:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Install the app on the other computer<br></p>
+</li>
+<li>
+<p>Copy <em>PlanMySem.txt</em> from your old <em>PlanMySem</em> folder and paste it into the new <em>PlanMySem</em> folder.<br></p>
+</li>
+</ol>
 </div>
 <div class="paragraph">
 <p>This will overwrite the empty data file it creates with the file that contains the data of your previous <em>PlanMySem</em> folder.</p>
@@ -696,7 +723,7 @@ These are plain text files that include calendar event details like a descriptio
 <div class="ulist">
 <ul>
 <li>
-<p><strong>View help</strong> <code>help</code><br></p>
+<p><strong>View help</strong> : <code>help</code><br></p>
 </li>
 <li>
 <p><strong>Add Slot</strong> : <code>add n/NAME d/DATE_OR_DAY_OF_WEEK st/START_TIME et/END_TIME_OR_DURATION [l/LOCATION] [des/DESCRIPTION] [r/normal] [r/recess] [r/reading] [r/exam] [r/past] [t/TAG]…​</code><br>
@@ -731,7 +758,7 @@ eg. <code>delete t/CS2113T t/Tutorial</code></p>
 </li>
 <li>
 <p>Via <code>list</code> command: <code>delete INDEX</code><br>
-eg. <code>list delete 2</code></p>
+eg. <code>delete 2</code></p>
 </li>
 </ol>
 </div>
@@ -742,11 +769,10 @@ e.g. <code>find CS</code></p>
 </li>
 <li>
 <p><strong>View planner</strong> : <code>view day [DATE] | view week [WEEK] | view month [MONTH]</code><br>
-e.g.<code>view day 01/04/2019</code></p>
+e.g.<code>view month</code></p>
 </li>
 <li>
-<p><strong>View all details</strong> : <code>view all</code><br>
-e.g.<code>view all</code></p>
+<p><strong>View all details</strong> : <code>view all</code></p>
 </li>
 <li>
 <p><strong>View history</strong> : <code>history</code></p>
@@ -769,4 +795,4 @@ e.g.<code>view all</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-19 10:46:10 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-19 13:19:17 UTC</div></div></div></body></html>
