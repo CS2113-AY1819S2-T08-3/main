@@ -20,14 +20,14 @@
 <li><a href="#listing-slots-code-list-code-code-l-code">3.5. Listing Slots: <code>list</code> / <code>l</code></a></li>
 <li><a href="#locating-slots-code-find-code-code-f-code">3.6. Locating Slots: <code>find</code> / <code>f</code></a></li>
 <li><a href="#view-the-planner-code-view-code-code-v-code">3.7. View the Planner : <code>view</code> / <code>v</code></a></li>
-<li><a href="#listing-previous-input-commands-code-history-code">3.8. Listing previous input commands : <code>history</code></a></li>
-<li><a href="#undoing-previous-command-code-undo-code">3.9. Undoing previous command : <code>undo</code></a></li>
-<li><a href="#redoing-the-previously-undone-command-code-redo-code">3.10. Redoing the previously undone command : <code>redo</code></a></li>
+<li><a href="#listing-previous-input-commands-code-history-code-code-coming-in-v2-0-code">3.8. Listing previous input commands : <code>history</code> <code>[coming in v2.0]</code></a></li>
+<li><a href="#undoing-previous-command-code-undo-code-code-coming-in-v2-0-code">3.9. Undoing previous command : <code>undo</code> <code>[coming in v2.0]</code></a></li>
+<li><a href="#redoing-the-previously-undone-command-code-redo-code-code-coming-in-v2-0-code">3.10. Redoing the previously undone command : <code>redo</code> <code>[coming in v2.0]</code></a></li>
 <li><a href="#clear-all-data-clear">3.11. Clear all data : clear</a></li>
 <li><a href="#exiting-the-program-code-exit-code">3.12. Exiting the program : <code>exit</code></a></li>
 <li><a href="#saving-the-data">3.13. Saving the data</a></li>
 <li><a href="#encrypting-decrypting-data-files">3.14. Encrypting/decrypting data files</a></li>
-<li><a href="#importing-ics-formated-files-code-coming-in-v2-0-code">3.15. Importing .ics formated files <code>[coming in v2.0]</code></a></li>
+<li><a href="#importing-ics-formatted-files-code-coming-in-v2-0-code">3.15. Importing .ics formatted files <code>[coming in v2.0]</code></a></li>
 <li><a href="#exporting-ics-formatted-files-code-export-code">3.16. Exporting .ics formatted files: <code>export</code></a></li>
 </ul>
 </li>
@@ -52,7 +52,11 @@ Items can then be efficiently managed via the intuitive tagging system.</p>
 <p><em>PlanMySem</em> is optimized for those who prefer to work with a Command Line Interface (CLI) and/or are learning to work more efficiently with CLI tools. Additionally, unlike traditional calendar/scheduling applications, <em>PlanMySem</em> utilizes minimal resources on the user’s machine while still allowing the user to view their schedules swiftly and efficiently.</p>
 </div>
 <div class="paragraph">
-<p>This user guide provides a quick start guide for you to easily setup and install <em>PlanMySem</em>, documentation of all the various features <em>PlanMySem</em> offers, frequently asked questions and a summary of the available commands.</p>
+<p>This user guide provides a quick start guide for you to easily setup and install <em>PlanMySem</em>, documentation of all the various features <em>PlanMySem</em> offers, frequently asked questions and a summary of the available commands.
+&#8203;</p>
+</div>
+<div class="paragraph">
+<p>&#8203;</p>
 </div>
 </div>
 </div>
@@ -72,10 +76,11 @@ Items can then be efficiently managed via the intuitive tagging system.</p>
 </li>
 <li>
 <p>Double-click the file to start the app. You should see the GUI appear in a few seconds.</p>
-<div class="imageblock">
+<div id="img-startup" class="imageblock">
 <div class="content">
-<img src="images/Ui.png" alt="Ui" width="790">
+<img src="images/Start_Screen.png" alt="Start Screen" width="790">
 </div>
+<div class="title">Figure 1. <span class="underline">GUI screen upon start-up</span></div>
 </div>
 </li>
 <li>
@@ -103,9 +108,13 @@ Add a slot, named "CS2113T" on the coming monday, from 0800hrs to 0900hrs with t
 </div>
 </li>
 <li>
-<p>Refer to <a href="#Features">Section 3, &#8220;Features&#8221;</a> for details of each command.</p>
+<p>Refer to <a href="#Features">Section 3, &#8220;Features&#8221;</a> for details of each command.
+&#8203;</p>
 </li>
 </ol>
+</div>
+<div class="paragraph">
+<p>&#8203;</p>
 </div>
 </div>
 </div>
@@ -171,7 +180,26 @@ Add a slot, named "CS2113T" on the coming monday, from 0800hrs to 0900hrs with t
 </div>
 <div class="paragraph">
 <p>Parameters in <em>PlanMySem</em> are designed to be, short and easy to memorise. Once you are familarised with them, they should be intuitive to use.
-The list of parameters below is useful for your reference as you jump right into grasping the system.</p>
+The table of parameters and their descriptions (Table 1) below is useful for your reference as you jump right into grasping the system.</p>
+</div>
+<div class="paragraph">
+<p><strong>Command Format</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Words in UPPER_CASE are the parameters to be supplied by the user. E.g. in <code>t/TAG</code>, <code>TAG</code> is a parameter which can be used as the name of the tag.</p>
+</li>
+<li>
+<p>Items in square brackets are optional. e.g in <code>add [l/LOCATION]</code>, <code>LOCATION</code> is a parameter that may be omited.</p>
+</li>
+<li>
+<p>Items with <code>…</code> after them can be used multiple times including zero times e.g. <code>[t/TAG]…</code> can be used as   (i.e. 0 times), <code>t/lab</code>, <code>t/lecture</code>, <code>t/tutorial</code> etc.</p>
+</li>
+<li>
+<p>Parameters can be in any order e.g. if the command specifies <code>st/START_TIME et/END_TIME d/DATE</code>, then both <code>et/09:00 st/08:00 d/2-13-2019</code> and <code>et/09:00 d/2-13-2019 st/08:00</code> is also acceptable.</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
 <p><strong>Command Format</strong></p>
@@ -374,11 +402,30 @@ Format:<br></p>
 </div>
 </div>
 </div>
+<div class="paragraph">
+<p>Table 1. Parameters and their descriptions
+&#8203;</p>
+</div>
+<div class="paragraph">
+<p>&#8203;</p>
+</div>
 <div class="sect2">
 <h3 id="viewing-help-code-help-code"><a class="link" href="#viewing-help-code-help-code">3.1. Viewing help : <code>help</code></a></h3>
 <div class="paragraph">
 <p>Displays all the available commands with the syntax and examples.<br>
 Format: <code>help</code></p>
+</div>
+<div id="img-help" class="imageblock">
+<div class="content">
+<img src="images/Help_Command_Output.png" alt="Help Command Output" width="790">
+</div>
+<div class="title">Figure 2. <span class="underline">Output after entering <code>help</code></span></div>
+</div>
+<div class="paragraph">
+<p>&#8203;</p>
+</div>
+<div class="paragraph">
+<p>&#8203;</p>
 </div>
 </div>
 <div class="sect2">
@@ -397,6 +444,16 @@ Format: <code>add n/NAME d/DATE_OR_DAY_OF_WEEK st/START_TIME et/END_TIME_OR_DURA
 <p><code>add n/CS2113T Tutorial d/mon st/08:00 et/09:00 des/Topic: Sequence Diagram t/CS2113T t/Tutorial</code><br>
 Add a <em>slot</em>, named "CS2113T Tutorial" on the coming monday, from 0800hrs to 0900hrs with the tags "CS2113T" and "Tutorial".</p>
 </li>
+</ul>
+</div>
+<div id="img-add" class="imageblock">
+<div class="content">
+<img src="images/Add_Command_Output_1.png" alt="Add Command Output 1" width="790">
+</div>
+<div class="title">Figure 3. <span class="underline">Output after entering <code>add n/CS2113T Tutorial d/mon st/08:00 et/09:00 des/Topic: Sequence Diagram t/CS2113T t/Tutorial</code></span></div>
+</div>
+<div class="ulist">
+<ul>
 <li>
 <p><code>add n/CS2113T Tutorial d/mon st/08:00 et/09:00 des/Topic: Sequence Diagram t/CS2113T t/Tutorial r/recess r/reading</code><br>
 Do the same but additionally, recurse the slot on recess and reading week.</p>
@@ -407,11 +464,11 @@ Do the same but recurse the slot on "normal", instructional, weeks.</p>
 </li>
 </ul>
 </div>
-<div class="admonitionblock note">
+<div class="admonitionblock tip">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-note" title="Note"></i>
+<i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
 <div class="paragraph">
@@ -420,6 +477,12 @@ Do the same but recurse the slot on "normal", instructional, weeks.</p>
 </td>
 </tr>
 </table>
+</div>
+<div class="paragraph">
+<p>&#8203;</p>
+</div>
+<div class="paragraph">
+<p>&#8203;</p>
 </div>
 </div>
 <div class="sect2">
@@ -439,11 +502,11 @@ Format: <code>edit INDEX [nn/NEW_NAME] [nd/NEW_DATE] [nst/NEW_START_TIME] [net/N
 </li>
 </ol>
 </div>
-<div class="admonitionblock note">
+<div class="admonitionblock warning">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-note" title="Note"></i>
+<i class="fa icon-warning" title="Warning"></i>
 </td>
 <td class="content">
 <div class="paragraph">
@@ -463,11 +526,25 @@ To edit a <em>slot</em>'s date, you may use the <code>list</code> or <code>find<
 <p><code>edit t/CS2113T t/Tutorial nl/COM2 04-01</code><br>
 Edit slots that contain tags "CS2113T" and "Tutorial", set these <em>slot&#8217;s</em> location to "COM2 04-01".</p>
 </li>
+</ul>
+</div>
+<div id="img-edit" class="imageblock">
+<div class="content">
+<img src="images/Edit_Command_Output_1.png" alt="Edit Command Output 1" width="790">
+</div>
+<div class="title">Figure 4. <span class="underline">Output after entering <code>edit t/CS2113T t/Tutorial nl/COM2 04-01</code></span></div>
+</div>
+<div class="ulist">
+<ul>
 <li>
 <p><code>edit 1 des/Topic: Sequence Diagram</code><br>
-Edit the first item from the previous result of the <code>list</code> or <code>find</code> command.</p>
+Edit the first item from the previous result of the <code>list</code> or <code>find</code> command.
+&#8203;</p>
 </li>
 </ul>
+</div>
+<div class="paragraph">
+<p>&#8203;</p>
 </div>
 </div>
 <div class="sect2">
@@ -484,11 +561,11 @@ Format: <code>delete INDEX</code></p>
 </li>
 </ol>
 </div>
-<div class="admonitionblock note">
+<div class="admonitionblock tip">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-note" title="Note"></i>
+<i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
 <div class="paragraph">
@@ -507,11 +584,25 @@ Format: <code>delete INDEX</code></p>
 <p><code>delete t/CS2113T t/Tutorial</code><br>
 Delete <em>slots</em> that contain tags "CS2113T" and "Tutorial".</p>
 </li>
+</ul>
+</div>
+<div id="img-delete" class="imageblock">
+<div class="content">
+<img src="images/Delete_Command_Output.png" alt="Delete Command Output" width="790">
+</div>
+<div class="title">Figure 5. <span class="underline">Output after entering <code>delete t/CS2113T t/Tutorial</code></span></div>
+</div>
+<div class="ulist">
+<ul>
 <li>
 <p><code>delete 2</code><br>
-Delete the second <em>slot</em> shown via the <code>list</code> command.</p>
+Delete the second <em>slot</em> shown via the <code>list</code> command.
+&#8203;</p>
 </li>
 </ul>
+</div>
+<div class="paragraph">
+<p>&#8203;</p>
 </div>
 </div>
 <div class="sect2">
@@ -531,12 +622,24 @@ List all <em>slots</em> that is named <code>CS2113T</code> in the planner.</p>
 </li>
 </ul>
 </div>
+<div id="img-list" class="imageblock">
+<div class="content">
+<img src="images/List_Command_Output_1.png" alt="List Command Output 1" width="790">
+</div>
+<div class="title">Figure 6. <span class="underline">Output after entering <code>list n/CS2113T</code></span></div>
+</div>
+<div class="paragraph">
+<p>&#8203;</p>
+</div>
+<div class="paragraph">
+<p>&#8203;</p>
+</div>
 </div>
 <div class="sect2">
 <h3 id="locating-slots-code-find-code-code-f-code"><a class="link" href="#locating-slots-code-find-code-code-f-code">3.6. Locating Slots: <code>find</code> / <code>f</code></a></h3>
 <div class="paragraph">
 <p>Find all <em>slots</em> whose part of their name contains the specified keyword and displays them as a list.<br>
-Format: <code>find [KEYWORD]&#8230;&#8203;</code></p>
+Format: <code>find n/KEYWORD</code></p>
 </div>
 <div class="paragraph">
 <p>Example:</p>
@@ -544,10 +647,22 @@ Format: <code>find [KEYWORD]&#8230;&#8203;</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>find CS</code><br>
-Find all <em>slots</em> whose name contains <code>CS</code> (eg. CS1010, CS2113T, SCS1010)</p>
+<p><code>find n/CS</code><br>
+Find all <em>slots</em> whose name contains <code>CS</code> (eg. CS2101, CS2113T, SOCSMeet)</p>
 </li>
 </ul>
+</div>
+<div id="img-find" class="imageblock">
+<div class="content">
+<img src="images/Find_Command_Output_1.png" alt="Find Command Output 1" width="790">
+</div>
+<div class="title">Figure 7. <span class="underline">Output after entering <code>find n/CS</code></span></div>
+</div>
+<div class="paragraph">
+<p>&#8203;</p>
+</div>
+<div class="paragraph">
+<p>&#8203;</p>
 </div>
 </div>
 <div class="sect2">
@@ -620,25 +735,41 @@ View all the details in the planner.</p>
 </li>
 </ul>
 </div>
+<div id="img-view" class="imageblock">
+<div class="content">
+<img src="images/Ui.png" alt="Ui" width="790">
+</div>
+<div class="title">Figure 8. <span class="underline">Output after entering <code>view month</code></span></div>
+</div>
+<div class="paragraph">
+<p>&#8203;</p>
+</div>
+<div class="paragraph">
+<p>&#8203;</p>
+</div>
 </div>
 <div class="sect2">
-<h3 id="listing-previous-input-commands-code-history-code"><a class="link" href="#listing-previous-input-commands-code-history-code">3.8. Listing previous input commands : <code>history</code></a></h3>
+<h3 id="listing-previous-input-commands-code-history-code-code-coming-in-v2-0-code"><a class="link" href="#listing-previous-input-commands-code-history-code-code-coming-in-v2-0-code">3.8. Listing previous input commands : <code>history</code> <code>[coming in v2.0]</code></a></h3>
 <div class="paragraph">
 <p>Lists all the commands that you have entered in reverse chronological order.<br>
-Format: <code>history</code></p>
+Format: <code>history</code>
+&#8203;</p>
+</div>
+<div class="paragraph">
+<p>&#8203;</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">3.9. Undoing previous command : <code>undo</code></a></h3>
+<h3 id="undoing-previous-command-code-undo-code-code-coming-in-v2-0-code"><a class="link" href="#undoing-previous-command-code-undo-code-code-coming-in-v2-0-code">3.9. Undoing previous command : <code>undo</code> <code>[coming in v2.0]</code></a></h3>
 <div class="paragraph">
 <p>Restores the planner to the state before the previous command was executed.<br>
 Format: <code>undo</code></p>
 </div>
-<div class="admonitionblock note">
+<div class="admonitionblock warning">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-note" title="Note"></i>
+<i class="fa icon-warning" title="Warning"></i>
 </td>
 <td class="content">
 <div class="paragraph">
@@ -648,12 +779,22 @@ Format: <code>undo</code></p>
 </tr>
 </table>
 </div>
+<div class="paragraph">
+<p>&#8203;</p>
+</div>
+<div class="paragraph">
+<p>&#8203;</p>
+</div>
 </div>
 <div class="sect2">
-<h3 id="redoing-the-previously-undone-command-code-redo-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code">3.10. Redoing the previously undone command : <code>redo</code></a></h3>
+<h3 id="redoing-the-previously-undone-command-code-redo-code-code-coming-in-v2-0-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code-code-coming-in-v2-0-code">3.10. Redoing the previously undone command : <code>redo</code> <code>[coming in v2.0]</code></a></h3>
 <div class="paragraph">
 <p>Reverses the most recent <code>undo</code> command.<br>
-Format: <code>redo</code></p>
+Format: <code>redo</code>
+&#8203;</p>
+</div>
+<div class="paragraph">
+<p>&#8203;</p>
 </div>
 </div>
 <div class="sect2">
@@ -661,6 +802,15 @@ Format: <code>redo</code></p>
 <div class="paragraph">
 <p>Clear all data stored on the planner.<br>
 Format: <code>clear</code></p>
+</div>
+<div id="img-find" class="imageblock">
+<div class="content">
+<img src="images/Clear_Command_Output_1.png" alt="Clear Command Output 1" width="790">
+</div>
+<div class="title">Figure 9. <span class="underline">Output after entering <code>clear</code></span></div>
+</div>
+<div class="paragraph">
+<p>&#8203;</p>
 </div>
 <div class="admonitionblock warning">
 <table>
@@ -676,19 +826,33 @@ Format: <code>clear</code></p>
 </tr>
 </table>
 </div>
+<div class="paragraph">
+<p>&#8203;</p>
+</div>
+<div class="paragraph">
+<p>&#8203;</p>
+</div>
 </div>
 <div class="sect2">
 <h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.12. Exiting the program : <code>exit</code></a></h3>
 <div class="paragraph">
 <p>Exits the program.<br>
-Format: <code>exit</code></p>
+Format: <code>exit</code>
+&#8203;</p>
+</div>
+<div class="paragraph">
+<p>&#8203;</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.13. Saving the data</a></h3>
 <div class="paragraph">
 <p>Planner data is saved in the hard disk automatically after any command that changes the data is executed.<br>
-There is no need to save manually.</p>
+There is no need to save manually.
+&#8203;</p>
+</div>
+<div class="paragraph">
+<p>&#8203;</p>
 </div>
 </div>
 <div class="sect2">
@@ -697,19 +861,39 @@ There is no need to save manually.</p>
 <p>Planner data is automatically encrypted before saving. You do not need to encrypt the data manually.</p>
 </div>
 <div class="paragraph">
-<p>Planner data is automatically decrypted after loading. You do not need to decrypt the data manually.</p>
+<p>Planner data is automatically decrypted after loading. You do not need to decrypt the data manually.
+&#8203;</p>
+</div>
+<div class="paragraph">
+<p>&#8203;</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="importing-ics-formated-files-code-coming-in-v2-0-code"><a class="link" href="#importing-ics-formated-files-code-coming-in-v2-0-code">3.15. Importing .ics formated files <code>[coming in v2.0]</code></a></h3>
+<h3 id="importing-ics-formatted-files-code-coming-in-v2-0-code"><a class="link" href="#importing-ics-formatted-files-code-coming-in-v2-0-code">3.15. Importing .ics formatted files <code>[coming in v2.0]</code></a></h3>
 <div class="paragraph">
-<p><em>{explain how the user can import .ics formatted files}</em></p>
+<p>You can import an .ics file into the planner.
+&#8203;</p>
+</div>
+<div class="paragraph">
+<p>&#8203;</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="exporting-ics-formatted-files-code-export-code"><a class="link" href="#exporting-ics-formatted-files-code-export-code">3.16. Exporting .ics formatted files: <code>export</code></a></h3>
 <div class="paragraph">
 <p>You can export the planner as an .ics file.</p>
+</div>
+<div id="img-export" class="imageblock">
+<div class="content">
+<img src="images/Export_Command_Output_1.png" alt="Export Command Output 1" width="420">
+</div>
+<div class="title">Figure 10. <span class="underline">Output after entering <code>export</code></span></div>
+</div>
+<div class="paragraph">
+<p>&#8203;</p>
+</div>
+<div class="paragraph">
+<p>&#8203;</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -722,15 +906,24 @@ There is no need to save manually.</p>
 <p>The exported file is named "PlanMySem.ics" and is saved in the main directory.
 Double-clicking the .ics file will import the planner data into your personal calendar app.<br></p>
 </div>
+<div id="img-exportFile" class="imageblock">
+<div class="content">
+<img src="images/Export_Command_Directory_1.png" alt="Export Command Directory 1" width="790">
+</div>
+<div class="title">Figure 11. <span class="underline">Location of PlanMySem.ics file</span></div>
+</div>
 </td>
 </tr>
 </table>
 </div>
-<div class="admonitionblock note">
+<div class="paragraph">
+<p>&#8203;</p>
+</div>
+<div class="admonitionblock tip">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-note" title="Note"></i>
+<i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
 <div class="paragraph">
@@ -740,6 +933,12 @@ These are plain text files that include calendar event details like a descriptio
 </td>
 </tr>
 </table>
+</div>
+<div class="paragraph">
+<p>&#8203;</p>
+</div>
+<div class="paragraph">
+<p>&#8203;</p>
 </div>
 </div>
 </div>
@@ -762,7 +961,11 @@ These are plain text files that include calendar event details like a descriptio
 </ol>
 </div>
 <div class="paragraph">
-<p>This will overwrite the empty data file it creates with the file that contains the data of your previous <em>PlanMySem</em> folder.</p>
+<p>This will overwrite the empty data file it creates with the file that contains the data of your previous <em>PlanMySem</em> folder.
+&#8203;</p>
+</div>
+<div class="paragraph">
+<p>&#8203;</p>
 </div>
 </div>
 </div>
@@ -839,9 +1042,12 @@ e.g.<code>view month</code></p>
 <p><strong>Exit the program</strong> : <code>exit</code></p>
 </li>
 <li>
-<p><strong>Export .ics  files</strong> : <code>export</code></p>
+<p><strong>Import .ics  files into planner</strong> : <code>import</code></p>
+</li>
+<li>
+<p><strong>Export .ics  files from planner</strong> : <code>export</code></p>
 </li>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-19 13:59:40 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-19 16:13:23 UTC</div></div></div></body></html>
