@@ -145,7 +145,7 @@ Add a slot, named "CS2113T" on the coming monday, from 0800hrs to 0900hrs with t
 <p>Unlike other commercial calendar/scheduling/planner software, PlanMySem makes use of a tagging system to manage slots.</p>
 </div>
 <div class="paragraph">
-<p>Using tags to tag slots will make tasks easier for you in the future. Tasks such as viewing, deleting and editing slots will be more efficient and performed quicker.</p>
+<p>Using tags to tag slots will make tasks easier for you in the future. Performing tasks such as viewing, deleting and editing slots will be more efficient.</p>
 </div>
 <div class="paragraph">
 <p>Recommended uses for tags:</p>
@@ -159,10 +159,10 @@ Add a slot, named "CS2113T" on the coming monday, from 0800hrs to 0900hrs with t
 <p>Tag type of lesson. e.g. "Lecture", "Tutorial", "Lab".</p>
 </li>
 <li>
-<p>Tag type of activities. e.g. "Sports", "Seminar", "Talk"</p>
+<p>Tag type of activities. e.g. "Sports", "Seminar", "Talk".</p>
 </li>
 <li>
-<p>Tag difficulty of task. e.g. "Tough", "Simple", "Trivial"</p>
+<p>Tag difficulty of task. e.g. "Tough", "Simple", "Trivial".</p>
 </li>
 </ol>
 </div>
@@ -176,13 +176,6 @@ Add a slot, named "CS2113T" on the coming monday, from 0800hrs to 0900hrs with t
 <p>In NUS, academic semesters are split into weeks of several types. Recursion allows you to add slots to these types of weeks with ease through the use of the <code>r/</code>(recursion) parameter.</p>
 </div>
 <div class="paragraph">
-<p><strong>Parameters</strong></p>
-</div>
-<div class="paragraph">
-<p>Parameters in <em>PlanMySem</em> are designed to be, short and easy to memorise. Once you are familarised with them, they should be intuitive to use.
-The table of parameters and their descriptions (Table 1) below is useful for your reference as you jump right into grasping the system.</p>
-</div>
-<div class="paragraph">
 <p><strong>Command Format</strong></p>
 </div>
 <div class="ulist">
@@ -191,15 +184,22 @@ The table of parameters and their descriptions (Table 1) below is useful for you
 <p>Words in UPPER_CASE are the parameters to be supplied by the user. E.g. in <code>t/TAG</code>, <code>TAG</code> is a parameter which can be used as the name of the tag.</p>
 </li>
 <li>
-<p>Items in square brackets are optional. e.g in <code>add [l/LOCATION]</code>, <code>LOCATION</code> is a parameter that may be omited.</p>
+<p>Items in square brackets are optional. e.g in <code>add [l/LOCATION]</code>, <code>LOCATION</code> is a parameter that may be omitted.</p>
 </li>
 <li>
-<p>Items with <code>…</code> after them can be used multiple times including zero times e.g. <code>[t/TAG]…</code> can be used as   (i.e. 0 times), <code>t/lab</code>, <code>t/lecture</code>, <code>t/tutorial</code> etc.</p>
+<p>Items with <code>…</code> after them can be used multiple times including zero times e.g. <code>[t/TAG]…</code> can be used 0 times, or as <code>t/lab</code>, <code>t/lecture</code>, <code>t/tutorial</code> etc.</p>
 </li>
 <li>
-<p>Parameters can be in any order e.g. if the command specifies <code>st/START_TIME et/END_TIME d/DATE</code>, then both <code>et/09:00 st/08:00 d/2-13-2019</code> and <code>et/09:00 d/2-13-2019 st/08:00</code> is also acceptable.</p>
+<p>Parameters can be in any order e.g. if the command specifies <code>st/START_TIME et/END_TIME d/DATE</code>, then both <code>et/09:00 st/08:00 d/2-13-2019</code> and <code>et/09:00 d/2-13-2019 st/08:00</code> are acceptable.</p>
 </li>
 </ul>
+</div>
+<div class="paragraph">
+<p><strong>Parameters</strong></p>
+</div>
+<div class="paragraph">
+<p>Parameters in <em>PlanMySem</em> are designed to be, short and easy to memorise. Once you are familarised with them, they should be intuitive to use.
+The table of parameters and their descriptions (Table 1) below is useful for your reference as you jump right into grasping the system.</p>
 </div>
 <div class="hdlist">
 <table>
@@ -707,12 +707,8 @@ View planner for week 7 of the academic calendar.</p>
 View planner for recess week of the academic calendar.</p>
 </li>
 <li>
-<p><code>view month March</code><br>
-View planner for the month of March.</p>
-</li>
-<li>
-<p><code>view all</code><br>
-View all the details in the planner.</p>
+<p><code>view month</code><br>
+View planner for the months of the current academic semester.</p>
 </li>
 </ul>
 </div>
@@ -722,8 +718,14 @@ View all the details in the planner.</p>
 </div>
 <div class="title">Figure 8. <span class="underline">Output after entering <code>view month</code></span></div>
 </div>
-<div class="paragraph">
-<p>&#8203;</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>view all</code><br>
+View all the details in the planner.
+&#8203;</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
 <p>&#8203;</p>
@@ -1029,4 +1031,4 @@ e.g.<code>view month</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-19 18:39:40 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-20 01:04:08 UTC</div></div></div></body></html>
