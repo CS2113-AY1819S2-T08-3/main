@@ -9,30 +9,41 @@
 <div id="toc" class="toc">
 <div id="toctitle"></div>
 <ul class="sectlevel1">
-<li><a href="#introduction">1. Introduction</a></li>
+<li><a href="#introduction">1. Introduction</a>
+<ul class="sectlevel2">
+<li><a href="#terminology">1.1. Terminology</a></li>
+</ul>
+</li>
 <li><a href="#quick-start">2. Quick Start</a></li>
 <li><a href="#Features">3. Features</a>
 <ul class="sectlevel2">
-<li><a href="#viewing-help-code-help-code">3.1. Viewing help : <code>help</code></a></li>
-<li><a href="#adding-slots-code-add-code-code-a-code">3.2. Adding Slots : <code>add</code> / <code>a</code></a></li>
-<li><a href="#editing-slots-code-edit-code-code-e-code">3.3. Editing Slots: <code>edit</code> / <code>e</code></a></li>
-<li><a href="#delete-slots-code-delete-code-code-del-code-code-d-code">3.4. Delete Slots: <code>delete</code> / <code>del</code> / <code>d</code></a></li>
-<li><a href="#listing-slots-code-list-code-code-l-code">3.5. Listing Slots: <code>list</code> / <code>l</code></a></li>
-<li><a href="#locating-slots-code-find-code-code-f-code">3.6. Locating Slots: <code>find</code> / <code>f</code></a></li>
-<li><a href="#view-the-planner-code-view-code-code-v-code">3.7. View the Planner : <code>view</code> / <code>v</code></a></li>
-<li><a href="#listing-previous-input-commands-code-history-code-code-coming-in-v2-0-code">3.8. Listing previous input commands : <code>history</code> <code>[coming in v2.0]</code></a></li>
-<li><a href="#undoing-previous-command-code-undo-code-code-coming-in-v2-0-code">3.9. Undoing previous command : <code>undo</code> <code>[coming in v2.0]</code></a></li>
-<li><a href="#redoing-the-previously-undone-command-code-redo-code-code-coming-in-v2-0-code">3.10. Redoing the previously undone command : <code>redo</code> <code>[coming in v2.0]</code></a></li>
-<li><a href="#clear-all-data-code-clear-code">3.11. Clear all data : <code>clear</code></a></li>
-<li><a href="#exiting-the-program-code-exit-code">3.12. Exiting the program : <code>exit</code></a></li>
-<li><a href="#saving-the-data">3.13. Saving the data</a></li>
-<li><a href="#encrypting-decrypting-data-files">3.14. Encrypting/decrypting data files</a></li>
-<li><a href="#importing-ics-formatted-files-code-coming-in-v2-0-code">3.15. Importing .ics formatted files <code>[coming in v2.0]</code></a></li>
-<li><a href="#exporting-ics-formatted-files-code-export-code">3.16. Exporting .ics formatted files: <code>export</code></a></li>
+<li><a href="#help">3.1. Viewing help : <code>help</code></a></li>
+<li><a href="#add">3.2. Adding Slots : <code>add</code> / <code>a</code></a></li>
+<li><a href="#edit">3.3. Editing Slots: <code>edit</code> / <code>e</code></a></li>
+<li><a href="#delete">3.4. Delete Slots: <code>delete</code> / <code>del</code> / <code>d</code></a></li>
+<li><a href="#list">3.5. Listing Slots: <code>list</code> / <code>l</code></a></li>
+<li><a href="#find">3.6. Locating Slots: <code>find</code> / <code>f</code></a></li>
+<li><a href="#view">3.7. View the Planner : <code>view</code> / <code>v</code></a></li>
+<li><a href="#history">3.8. Listing previous input commands : <code>history</code> <code>[coming in v2.0]</code></a></li>
+<li><a href="#undo">3.9. Undoing previous command : <code>undo</code> <code>[coming in v2.0]</code></a></li>
+<li><a href="#redo">3.10. Redoing the previously undone command : <code>redo</code> <code>[coming in v2.0]</code></a></li>
+<li><a href="#encrypt">3.11. Encrypting/decrypting data files</a></li>
+<li><a href="#import">3.12. Importing .ics formatted files <code>[coming in v2.0]</code></a></li>
+<li><a href="#export">3.13. Exporting .ics formatted files: <code>export</code></a></li>
+<li><a href="#clear">3.14. Clear all data : <code>clear</code></a></li>
+<li><a href="#exit">3.15. Exiting the program : <code>exit</code></a></li>
+<li><a href="#save">3.16. Saving the data</a></li>
 </ul>
 </li>
 <li><a href="#faq">4. FAQ</a></li>
-<li><a href="#command-summary">5. Command Summary</a></li>
+<li><a href="#command-summary">5. Command Summary</a>
+<ul class="sectlevel2">
+<li><a href="#general-commands">5.1. General Commands</a></li>
+<li><a href="#manipulating-the-planner">5.2. Manipulating the Planner</a></li>
+<li><a href="#viewing-the-planner">5.3. Viewing the Planner</a></li>
+<li><a href="#import-exporting-the-planner">5.4. Import/Exporting the Planner</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -57,6 +68,79 @@ Items can then be efficiently managed via the intuitive tagging system.</p>
 </div>
 <div class="paragraph">
 <p>&#8203;</p>
+</div>
+<div class="sect2">
+<h3 id="terminology"><a class="link" href="#terminology">1.1. Terminology</a></h3>
+<div class="paragraph">
+<p>For ease of communication, this document will refer to lessons/activities/events/appointments that you might add into the planner as <em>slots</em>.</p>
+</div>
+<div class="paragraph">
+<p>Additionally, throughout this user guide, there will be various icons used as described below.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+This is a tip. Follow these suggested tips to make your life much simpler when using <em>PlanMySem</em>!
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+This is a note. These are things for you to take note of when using <em>PlanMySem</em>.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+This is a sign-post dictating important information. These are information that you will surely need to know to use <em>PlanMySem</em> properly.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+This is a sign-post informing caution. Please take note of these items and exercise some care.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+This is a rule. Ensure that you follow these rule to make your life using <em>PlanMySem</em> a pleasant one.
+&#8203;
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>&#8203;</p>
+</div>
 </div>
 </div>
 </div>
@@ -85,7 +169,7 @@ Items can then be efficiently managed via the intuitive tagging system.</p>
 </li>
 <li>
 <p>Type the command in the command box and press <kbd>Enter</kbd> to execute it.<br>
-e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> will open the help window.</p>
+E.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> will open the help window.</p>
 </li>
 <li>
 <p>Some example commands you can try:</p>
@@ -122,27 +206,13 @@ Add a slot, named "CS2113T" on the coming monday, from 0800hrs to 0900hrs with t
 <h2 id="Features"><a class="link" href="#Features">3. Features</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This section displays the current implemented features as well as features that will be implemented in the future.</p>
+<p>This section displays the features of <em>PlanMySem</em>.</p>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<strong>For ease of communication, this document will refer to lessons/activities/events/appointments that you might add into the Planner as <em>slots</em>.</strong>
-</td>
-</tr>
-</table>
-</div>
-<div class="exampleblock">
-<div class="content">
 <div class="paragraph">
 <p><strong>Tagging System</strong></p>
 </div>
 <div class="paragraph">
-<p>Unlike other commercial calendar/scheduling/planner software, PlanMySem makes use of a tagging system to manage slots.</p>
+<p>Unlike other commercial calendar/scheduling/planner software, <em>PlanMySem</em> makes use of a tagging system to manage slots.</p>
 </div>
 <div class="paragraph">
 <p>Using tags to tag slots will make tasks easier for you in the future. Performing tasks such as viewing, deleting and editing slots will be more efficient.</p>
@@ -153,16 +223,16 @@ Add a slot, named "CS2113T" on the coming monday, from 0800hrs to 0900hrs with t
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Tag modules. e.g. "CS2113T", "CS2101".</p>
+<p>Tag modules. E.g. "CS2113T", "CS2101".</p>
 </li>
 <li>
-<p>Tag type of lesson. e.g. "Lecture", "Tutorial", "Lab".</p>
+<p>Tag type of lesson. E.g. "Lecture", "Tutorial", "Lab".</p>
 </li>
 <li>
-<p>Tag type of activities. e.g. "Sports", "Seminar", "Talk".</p>
+<p>Tag type of activities. E.g. "Sports", "Seminar", "Talk".</p>
 </li>
 <li>
-<p>Tag difficulty of task. e.g. "Tough", "Simple", "Trivial".</p>
+<p>Tag difficulty of task. E.g. "Tough", "Simple", "Trivial".</p>
 </li>
 </ol>
 </div>
@@ -187,211 +257,217 @@ Add a slot, named "CS2113T" on the coming monday, from 0800hrs to 0900hrs with t
 <p>Items in square brackets are optional. e.g in <code>add [l/LOCATION]</code>, <code>LOCATION</code> is a parameter that may be omitted.</p>
 </li>
 <li>
-<p>Items with <code>…</code> after them can be used multiple times including zero times e.g. <code>[t/TAG]…</code> can be used 0 times, or as <code>t/lab</code>, <code>t/lecture</code>, <code>t/tutorial</code> etc.</p>
+<p>Items with <code>…</code> after them can be used multiple times including zero times. E.g. <code>[t/TAG]…</code> can be used 0 times, or as <code>t/lab</code>, <code>t/lecture</code>, <code>t/tutorial</code> etc.</p>
 </li>
 <li>
-<p>Parameters can be in any order e.g. if the command specifies <code>st/START_TIME et/END_TIME d/DATE</code>, then both <code>et/09:00 st/08:00 d/2-13-2019</code> and <code>et/09:00 d/2-13-2019 st/08:00</code> are acceptable.</p>
+<p>Parameters can be in any order. E.g. if the command specifies <code>st/START_TIME et/END_TIME d/DATE</code>, then both <code>et/09:00 st/08:00 d/2-13-2019</code> and <code>et/09:00 d/2-13-2019 st/08:00</code> are acceptable.</p>
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p><strong>Parameters</strong></p>
-</div>
-<div class="paragraph">
-<p>Parameters in <em>PlanMySem</em> are designed to be, short and easy to memorise. Once you are familarised with them, they should be intuitive to use.
-The table of parameters and their descriptions (Table 1) below is useful for your reference as you jump right into grasping the system.</p>
-</div>
-<div class="hdlist">
+<div class="admonitionblock tip">
 <table>
 <tr>
-<td class="hdlist1">
-<strong>Parameter</strong>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
 </td>
-<td class="hdlist2">
-<p><strong>Description</strong></p>
-</td>
-</tr>
-<tr>
-<td class="hdlist1">
-<code>n/</code>
-</td>
-<td class="hdlist2">
-<p><strong>Name of a <em>slot</em>.</strong></p>
-</td>
-</tr>
-<tr>
-<td class="hdlist1">
-<code>d/</code>
-</td>
-<td class="hdlist2">
-<p><strong>Date / Day of week.</strong><br>
-Format:<br></p>
-<div class="ulist">
-<ul>
-<li>
-<p>Dates: <code>01-01</code>, <code>2019-01-02</code></p>
-</li>
-<li>
-<p>Day of Week: <code>Monday</code>, <code>mon</code>, <code>1</code></p>
-</li>
-</ul>
-</div>
-</td>
-</tr>
-<tr>
-<td class="hdlist1">
-<code>st/</code>
-</td>
-<td class="hdlist2">
-<p><strong>Start Time.</strong><br>
-Format:<br></p>
-<div class="ulist">
-<ul>
-<li>
-<p>24-Hour in the form of “hh:mm”. e.g. <code>23:00</code></p>
-</li>
-<li>
-<p>12-Hour in the form of <code>hh:mm+AM|PM</code>. e.g. <code>12:30 AM</code></p>
-</li>
-</ul>
-</div>
-</td>
-</tr>
-<tr>
-<td class="hdlist1">
-<code>et/</code>
-</td>
-<td class="hdlist2">
-<p><strong>End Time / duration.</strong><br>
-Format:<br></p>
-<div class="ulist">
-<ul>
-<li>
-<p>24-Hour in the form of “hh:mm”. e.g. <code>23:00</code></p>
-</li>
-<li>
-<p>12-Hour in the form of <code>hh:mm+AM|PM</code>. e.g. <code>12:30 AM</code></p>
-</li>
-<li>
-<p>Duration of the event in minutes. e.g. <code>60</code> represents 60 minutes</p>
-</li>
-</ul>
-</div>
-</td>
-</tr>
-<tr>
-<td class="hdlist1">
-<code>r/</code>
-</td>
-<td class="hdlist2">
-<p><strong>Specify recurrence of a <em>slot</em>.</strong><br>
-Format:<br></p>
-<div class="ulist">
-<ul>
-<li>
-<p>Select normal weeks: <code>normal</code></p>
-</li>
-<li>
-<p>Select recess week: <code>recess</code></p>
-</li>
-<li>
-<p>Select reading week: <code>reading</code></p>
-</li>
-<li>
-<p>Select examination weeks: <code>exam</code></p>
-</li>
-<li>
-<p>Select past dates: <code>past</code></p>
-</li>
-</ul>
-</div>
-</td>
-</tr>
-<tr>
-<td class="hdlist1">
-<code>l/</code>
-</td>
-<td class="hdlist2">
-<p><strong>Location.</strong></p>
-</td>
-</tr>
-<tr>
-<td class="hdlist1">
-<code>des/</code>
-</td>
-<td class="hdlist2">
-<p><strong>Description.</strong></p>
-</td>
-</tr>
-<tr>
-<td class="hdlist1">
-<code>t/</code>
-</td>
-<td class="hdlist2">
-<p><strong>Tag.</strong></p>
-</td>
-</tr>
-<tr>
-<td class="hdlist1">
-<code>nn/</code>
-</td>
-<td class="hdlist2">
-<p><strong>New name of a <em>slot</em>.</strong></p>
-</td>
-</tr>
-<tr>
-<td class="hdlist1">
-<code>nd/</code>
-</td>
-<td class="hdlist2">
-<p><strong>New Date.</strong></p>
-</td>
-</tr>
-<tr>
-<td class="hdlist1">
-<code>nst/</code>
-</td>
-<td class="hdlist2">
-<p><strong>New Start Time.</strong></p>
-</td>
-</tr>
-<tr>
-<td class="hdlist1">
-<code>net/</code>
-</td>
-<td class="hdlist2">
-<p><strong>New End Time.</strong></p>
-</td>
-</tr>
-<tr>
-<td class="hdlist1">
-<code>nl/</code>
-</td>
-<td class="hdlist2">
-<p><strong>New Location.</strong></p>
-</td>
-</tr>
-<tr>
-<td class="hdlist1">
-<code>ndes/</code>
-</td>
-<td class="hdlist2">
-<p><strong>New Description.</strong></p>
+<td class="content">
+You can save time by utilizing the alternate and shortcut commands. E.g. instead of using <code>delete</code>, you may also use <code>del</code> or simply <code>d</code>.
 </td>
 </tr>
 </table>
 </div>
-</div>
+<div class="paragraph">
+<p><strong>Identifiers and Parameters</strong></p>
 </div>
 <div class="paragraph">
-<p>Table 1. Parameters and their descriptions
-&#8203;</p>
+<p>Identifiers in <em>PlanMySem</em> are designed to be, short and easy to memorise.
+Once you are familiarised with them, they should be intuitive to use to add your parameters.
+The table of Identifiers and Parameters and their descriptions (Table 1) below is useful for your reference as you jump right into grasping the system.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 1. Identifiers and their Parameters and descriptions.</caption>
+<colgroup>
+<col style="width: 5%;">
+<col style="width: 10%;">
+<col style="width: 30%;">
+<col style="width: 30%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Identifier</th>
+<th class="tableblock halign-left valign-top">Parameter</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Format</th>
+<th class="tableblock halign-left valign-top">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock"><code>n/</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>NAME</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name of a <em>slot</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Text</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>n/CS2113T</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>KEYWORD</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Text that are part of the name of a <em>slot</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Text</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>n/CS</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>l/</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>LOCATION</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Location of a <em>slot</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Text</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>l/COM2 04-22</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>des/</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>DESCRIPTION</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Description of a <em>slot</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Text</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>des/Topic: Abstraction</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>t/</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>TAG</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tag of a <em>slot</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Text</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>nt/Lab</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="4"><p class="tableblock"><code>d/</code></p></td>
+<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock"><code>DATE</code></p></td>
+<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock">Date</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>dd-mm-yyyy</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>d/01-02-2019</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>dd-mm</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>d/01-02</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock"><code>DAY</code></p></td>
+<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock">Day of week</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name of day</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>d/Monday</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name of day (short-form)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>d/mon</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock"><code>st/</code></p></td>
+<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock"><code>START_TIME</code></p></td>
+<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock">Start time</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Time in 24-Hour format, <code>hh:mm</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>st/23:00</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Time in 12-Hour format, form of <code>hh:mm+AM|PM</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>st/11:00 PM</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="3"><p class="tableblock"><code>et/</code></p></td>
+<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock"><code>END_TIME</code></p></td>
+<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock">End Time</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Time in 24-Hour format, <code>hh:mm</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>e/23:00</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Time 12-Hour format, <code>hh:mm+AM|PM</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>e/11:00 PM</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>DURATION</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Duration from Start Time</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number of minutes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>et/60</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="5"><p class="tableblock"><code>r/</code></p></td>
+<td class="tableblock halign-left valign-top" rowspan="5"><p class="tableblock"><code>RECURRENCE</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Recurse <em>slot</em> on normal academic weeks</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>normal</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>r/normal</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Recurse <em>slot</em> on recess week</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>recess</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>r/recess</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Recurse <em>slot</em> on reading week</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>reading</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>r/reading</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Recurse <em>slot</em> on examination weeks</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>exam</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>r/exam</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Recurse <em>slot</em> on past dates</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>past</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>r/past</code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>You may order identifiers and parameters in any fashion and you will still be able to achieve what you want!
+So, do not bother thinking about where to place parameters as ordering does not matter, instead become more efficient and save your time!</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Identifiers may be appended with a <code>n</code> to dictate "new".<br>
+E.g. <code>nt/NEW_TAG</code> signifies new tags in which you want to replace existing tags with.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>While this table 1 shows you all the identifiers and parameters that <em>PlanMySem</em> uses, there are some commands that do not make use of identifiers nor parameters.
+The view command is one such exception that make use of keywords that must be typed in a specific order.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>&#8203;</p>
 </div>
 <div class="paragraph">
 <p>&#8203;</p>
 </div>
 <div class="sect2">
-<h3 id="viewing-help-code-help-code"><a class="link" href="#viewing-help-code-help-code">3.1. Viewing help : <code>help</code></a></h3>
+<h3 id="help"><a class="link" href="#help">3.1. Viewing help : <code>help</code></a></h3>
 <div class="paragraph">
 <p>Displays all the available commands with the syntax and examples.<br>
 Format: <code>help</code></p>
@@ -410,7 +486,7 @@ Format: <code>help</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="adding-slots-code-add-code-code-a-code"><a class="link" href="#adding-slots-code-add-code-code-a-code">3.2. Adding Slots : <code>add</code> / <code>a</code></a></h3>
+<h3 id="add"><a class="link" href="#add">3.2. Adding Slots : <code>add</code> / <code>a</code></a></h3>
 <div class="paragraph">
 <p>Add <em>slot(s)</em> to the planner.<br>
 Format: <code>add n/NAME d/DATE_OR_DAY_OF_WEEK st/START_TIME et/END_TIME_OR_DURATION<br>
@@ -453,7 +529,7 @@ Do the same but recurse the slot on "normal", instructional, weeks.</p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>You may add single <em>slots</em> by omitting the recurrence parameter.</p>
+<p>You may add single <em>slots</em> by omitting the <code>r/</code> identifiers and its parameters.</p>
 </div>
 </td>
 </tr>
@@ -467,7 +543,7 @@ Do the same but recurse the slot on "normal", instructional, weeks.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="editing-slots-code-edit-code-code-e-code"><a class="link" href="#editing-slots-code-edit-code-code-e-code">3.3. Editing Slots: <code>edit</code> / <code>e</code></a></h3>
+<h3 id="edit"><a class="link" href="#edit">3.3. Editing Slots: <code>edit</code> / <code>e</code></a></h3>
 <div class="paragraph">
 <p>Edit <em>slot(s)</em>.</p>
 </div>
@@ -483,15 +559,15 @@ Format: <code>edit INDEX [nn/NEW_NAME] [nd/NEW_DATE] [nst/NEW_START_TIME] [net/N
 </li>
 </ol>
 </div>
-<div class="admonitionblock warning">
+<div class="admonitionblock note">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
+<i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>You are not able to edit a slot&#8217;s date when editing via <em>tags</em>.
+<p>You will not be able to edit a slot&#8217;s date when editing via <em>tags</em>.<br>
 To edit a <em>slot</em>'s date, you may use the <code>list</code> or <code>find</code> command and edit specific <em>slot(s)</em> via index.</p>
 </div>
 </td>
@@ -529,7 +605,7 @@ Edit the first item from the previous result of the <code>list</code> or <code>f
 </div>
 </div>
 <div class="sect2">
-<h3 id="delete-slots-code-delete-code-code-del-code-code-d-code"><a class="link" href="#delete-slots-code-delete-code-code-del-code-code-d-code">3.4. Delete Slots: <code>delete</code> / <code>del</code> / <code>d</code></a></h3>
+<h3 id="delete"><a class="link" href="#delete">3.4. Delete Slots: <code>delete</code> / <code>del</code> / <code>d</code></a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -549,9 +625,7 @@ Format: <code>delete INDEX</code></p>
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-<div class="paragraph">
-<p>You may delete a specific slot by using the <code>list</code> or <code>find</code> command and select the specific <em>slot</em> via index.</p>
-</div>
+You may delete a specific slot by using the <code>list</code> or <code>find</code> command and select the specific <em>slot</em> via index.
 </td>
 </tr>
 </table>
@@ -587,7 +661,7 @@ Delete the second <em>slot</em> shown via the <code>list</code> command.
 </div>
 </div>
 <div class="sect2">
-<h3 id="listing-slots-code-list-code-code-l-code"><a class="link" href="#listing-slots-code-list-code-code-l-code">3.5. Listing Slots: <code>list</code> / <code>l</code></a></h3>
+<h3 id="list"><a class="link" href="#list">3.5. Listing Slots: <code>list</code> / <code>l</code></a></h3>
 <div class="paragraph">
 <p>Lists all slots whose name directly matches the specified keyword (not case-sensitive).<br>
 Format: <code>list n/NAME</code></p>
@@ -617,7 +691,7 @@ List all <em>slots</em> that is named <code>CS2113T</code> in the planner.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="locating-slots-code-find-code-code-f-code"><a class="link" href="#locating-slots-code-find-code-code-f-code">3.6. Locating Slots: <code>find</code> / <code>f</code></a></h3>
+<h3 id="find"><a class="link" href="#find">3.6. Locating Slots: <code>find</code> / <code>f</code></a></h3>
 <div class="paragraph">
 <p>Find all <em>slots</em> whose part of their name contains the specified keyword and displays them as a list.<br>
 Format: <code>find n/KEYWORD</code></p>
@@ -647,7 +721,7 @@ Find all <em>slots</em> whose name contains <code>CS</code> (eg. CS2101, CS2113T
 </div>
 </div>
 <div class="sect2">
-<h3 id="view-the-planner-code-view-code-code-v-code"><a class="link" href="#view-the-planner-code-view-code-code-v-code">3.7. View the Planner : <code>view</code> / <code>v</code></a></h3>
+<h3 id="view"><a class="link" href="#view">3.7. View the Planner : <code>view</code> / <code>v</code></a></h3>
 <div class="paragraph">
 <p>View the planner in a month/week/day view.</p>
 </div>
@@ -671,15 +745,16 @@ Format: <code>view all</code></p>
 </li>
 </ol>
 </div>
-<div class="admonitionblock note">
+<div class="admonitionblock tip">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-note" title="Note"></i>
+<i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>If MONTH/WEEK/DATE is not specified, the current date is assumed.</p>
+<p>You may omit <code>[MONTH]</code>/<code>[WEEK]</code>/<code>[DATE]</code> to view the format chosen in respect to the current day!<br>
+E.g. <code>view month</code> will allow you to view the current month and <code>view day</code> will allow you to view the current day!</p>
 </div>
 </td>
 </tr>
@@ -732,7 +807,7 @@ View all the details in the planner.
 </div>
 </div>
 <div class="sect2">
-<h3 id="listing-previous-input-commands-code-history-code-code-coming-in-v2-0-code"><a class="link" href="#listing-previous-input-commands-code-history-code-code-coming-in-v2-0-code">3.8. Listing previous input commands : <code>history</code> <code>[coming in v2.0]</code></a></h3>
+<h3 id="history"><a class="link" href="#history">3.8. Listing previous input commands : <code>history</code> <code>[coming in v2.0]</code></a></h3>
 <div class="paragraph">
 <p>Lists all the commands that you have entered in reverse chronological order.<br>
 Format: <code>history</code>
@@ -743,21 +818,19 @@ Format: <code>history</code>
 </div>
 </div>
 <div class="sect2">
-<h3 id="undoing-previous-command-code-undo-code-code-coming-in-v2-0-code"><a class="link" href="#undoing-previous-command-code-undo-code-code-coming-in-v2-0-code">3.9. Undoing previous command : <code>undo</code> <code>[coming in v2.0]</code></a></h3>
+<h3 id="undo"><a class="link" href="#undo">3.9. Undoing previous command : <code>undo</code> <code>[coming in v2.0]</code></a></h3>
 <div class="paragraph">
 <p>Restores the planner to the state before the previous command was executed.<br>
 Format: <code>undo</code></p>
 </div>
-<div class="admonitionblock warning">
+<div class="admonitionblock tip">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
+<i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-<div class="paragraph">
-<p>The <code>clear</code> command cannot be undone.</p>
-</div>
+The <code>clear</code> command cannot be undone.
 </td>
 </tr>
 </table>
@@ -770,7 +843,7 @@ Format: <code>undo</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="redoing-the-previously-undone-command-code-redo-code-code-coming-in-v2-0-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code-code-coming-in-v2-0-code">3.10. Redoing the previously undone command : <code>redo</code> <code>[coming in v2.0]</code></a></h3>
+<h3 id="redo"><a class="link" href="#redo">3.10. Redoing the previously undone command : <code>redo</code> <code>[coming in v2.0]</code></a></h3>
 <div class="paragraph">
 <p>Reverses the most recent <code>undo</code> command.<br>
 Format: <code>redo</code>
@@ -781,7 +854,82 @@ Format: <code>redo</code>
 </div>
 </div>
 <div class="sect2">
-<h3 id="clear-all-data-code-clear-code"><a class="link" href="#clear-all-data-code-clear-code">3.11. Clear all data : <code>clear</code></a></h3>
+<h3 id="encrypt"><a class="link" href="#encrypt">3.11. Encrypting/decrypting data files</a></h3>
+<div class="paragraph">
+<p>Planner data is automatically encrypted before saving and decrypted before loading. You do not need to encrypt or decrypt he data manually.
+&#8203;</p>
+</div>
+<div class="paragraph">
+<p>&#8203;</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="import"><a class="link" href="#import">3.12. Importing .ics formatted files <code>[coming in v2.0]</code></a></h3>
+<div class="paragraph">
+<p>You can import an .ics file into the planner.
+Format: <code>import FILENAME</code>
+&#8203;</p>
+</div>
+<div class="paragraph">
+<p>&#8203;</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="export"><a class="link" href="#export">3.13. Exporting .ics formatted files: <code>export</code></a></h3>
+<div class="paragraph">
+<p>You can export the planner as a .ics file.</p>
+</div>
+<div id="img-export" class="imageblock">
+<div class="content">
+<img src="images/Export_Command_Output_1.png" alt="Export Command Output 1" width="420">
+</div>
+<div class="title">Figure 9. <span class="underline">Output after entering <code>export</code></span></div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The exported file is named "PlanMySem.ics" and is saved in the main directory.
+The .ics file can be imported into other calendar apps that support .ics files such as Google Calendar.<br></p>
+</div>
+<div id="img-exportFile" class="imageblock">
+<div class="content">
+<img src="images/Export_Command_Directory_1.png" alt="Export Command Directory 1" width="790">
+</div>
+<div class="title">Figure 10. <span class="underline">Location of PlanMySem.ics file</span></div>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+A file with the ICS file extension is an iCalendar file.
+These are plain text files that include calendar event details like a description, beginning and ending times, location, etc.
+&#8203;
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>&#8203;
+&#8203;</p>
+</div>
+<div class="paragraph">
+<p>&#8203;</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="clear"><a class="link" href="#clear">3.14. Clear all data : <code>clear</code></a></h3>
 <div class="paragraph">
 <p>Clear all data stored on the planner.<br>
 Format: <code>clear</code></p>
@@ -790,16 +938,16 @@ Format: <code>clear</code></p>
 <div class="content">
 <img src="images/Clear_Command_Output_1.png" alt="Clear Command Output 1" width="790">
 </div>
-<div class="title">Figure 9. <span class="underline">Output after entering <code>clear</code></span></div>
+<div class="title">Figure 11. <span class="underline">Output after entering <code>clear</code></span></div>
 </div>
 <div class="paragraph">
 <p>&#8203;</p>
 </div>
-<div class="admonitionblock warning">
+<div class="admonitionblock note">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
+<i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
 <div class="paragraph">
@@ -817,7 +965,7 @@ Format: <code>clear</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.12. Exiting the program : <code>exit</code></a></h3>
+<h3 id="exit"><a class="link" href="#exit">3.15. Exiting the program : <code>exit</code></a></h3>
 <div class="paragraph">
 <p>Exits the program.<br>
 Format: <code>exit</code>
@@ -828,95 +976,11 @@ Format: <code>exit</code>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.13. Saving the data</a></h3>
+<h3 id="save"><a class="link" href="#save">3.16. Saving the data</a></h3>
 <div class="paragraph">
 <p>Planner data is saved in the hard disk automatically after any command that changes the data is executed.<br>
 There is no need to save manually.
 &#8203;</p>
-</div>
-<div class="paragraph">
-<p>&#8203;</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="encrypting-decrypting-data-files"><a class="link" href="#encrypting-decrypting-data-files">3.14. Encrypting/decrypting data files</a></h3>
-<div class="paragraph">
-<p>Planner data is automatically encrypted before saving and decrypted before loading. You do not need to encrypt or decrypt he data manually.
-&#8203;</p>
-</div>
-<div class="paragraph">
-<p>&#8203;</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="importing-ics-formatted-files-code-coming-in-v2-0-code"><a class="link" href="#importing-ics-formatted-files-code-coming-in-v2-0-code">3.15. Importing .ics formatted files <code>[coming in v2.0]</code></a></h3>
-<div class="paragraph">
-<p>You can import an .ics file into the planner.
-Format: <code>import FILENAME</code>
-&#8203;</p>
-</div>
-<div class="paragraph">
-<p>&#8203;</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="exporting-ics-formatted-files-code-export-code"><a class="link" href="#exporting-ics-formatted-files-code-export-code">3.16. Exporting .ics formatted files: <code>export</code></a></h3>
-<div class="paragraph">
-<p>You can export the planner as a .ics file.</p>
-</div>
-<div id="img-export" class="imageblock">
-<div class="content">
-<img src="images/Export_Command_Output_1.png" alt="Export Command Output 1" width="420">
-</div>
-<div class="title">Figure 10. <span class="underline">Output after entering <code>export</code></span></div>
-</div>
-<div class="paragraph">
-<p>&#8203;</p>
-</div>
-<div class="paragraph">
-<p>&#8203;</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>The exported file is named "PlanMySem.ics" and is saved in the main directory.
-The .ics file can be imported into other calendar apps that support .ics files such as Google Calendar.<br></p>
-</div>
-<div id="img-exportFile" class="imageblock">
-<div class="content">
-<img src="images/Export_Command_Directory_1.png" alt="Export Command Directory 1" width="790">
-</div>
-<div class="title">Figure 11. <span class="underline">Location of PlanMySem.ics file</span></div>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>&#8203;</p>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>A file with the ICS file extension is an iCalendar file.
-These are plain text files that include calendar event details like a description, beginning and ending times, location, etc.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>&#8203;</p>
 </div>
 <div class="paragraph">
 <p>&#8203;</p>
@@ -953,82 +1017,209 @@ These are plain text files that include calendar event details like a descriptio
 <div class="sect1">
 <h2 id="command-summary"><a class="link" href="#command-summary">5. Command Summary</a></h2>
 <div class="sectionbody">
-<div class="ulist">
-<ul>
-<li>
-<p><strong>View help</strong> : <code>help</code><br></p>
-</li>
-<li>
-<p><strong>Add Slot</strong> : <code>add n/NAME d/DATE_OR_DAY_OF_WEEK st/START_TIME et/END_TIME_OR_DURATION [l/LOCATION] [des/DESCRIPTION] [r/normal] [r/recess] [r/reading] [r/exam] [r/past] [t/TAG]…​</code><br>
-e.g. <code>add n/CS2113T Tutorial d/mon st/08:00 et/09:00 des/Topic: Sequence Diagram t/CS2113T t/Tutorial</code><br></p>
-</li>
-<li>
-<p><strong>List Slot(s)</strong> : <code>list n/NAME</code><br>
-eg. <code>list n/CS2113T</code></p>
-</li>
-<li>
-<p><strong>Edit Slot</strong> : <code>edit</code><br></p>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Via tags: <code>edit t/TAG&#8230;&#8203; [nn/NEW_NAME] [nst/NEW_START_TIME] [net/NEW_END_TIME|DURATION] [nl/NEW_LOCATION] [nd/NEW_DESCRIPTION] [nt/NEW_TAG]&#8230;&#8203;</code><br>
-e.g. <code>edit t/CS2113T t/Tutorial nl/COM2 04-01</code></p>
-</li>
-<li>
-<p>Via <code>list</code> command: <code>edit INDEX [nn/NEW_NAME] [nd/NEW_DATE] [nst/NEW_START_TIME] [net/NEW_END_TIME|DURATION] [nl/NEW_LOCATION] [nd/NEW_DESCRIPTION] [nt/NEW_TAG]&#8230;&#8203;</code><br>
-e.g. <code>edit 1 des/Topic: Sequence Diagram</code></p>
-</li>
-</ol>
+<div class="sect2">
+<h3 id="general-commands"><a class="link" href="#general-commands">5.1. General Commands</a></h3>
+<div class="paragraph">
+<p>General commands that you might find useful in helping you to navigate and configure <em>PlanMySem</em>:</p>
 </div>
-</li>
-<li>
-<p><strong>Delete Slot</strong> : <code>delete</code><br></p>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Via tags: <code>delete t/TAG…​</code><br>
-eg. <code>delete t/CS2113T t/Tutorial</code></p>
-</li>
-<li>
-<p>Via <code>list</code> command: <code>delete INDEX</code><br>
-eg. <code>delete 2</code></p>
-</li>
-</ol>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 30%;">
+<col style="width: 20%;">
+<col style="width: 30%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Task</th>
+<th class="tableblock halign-left valign-top">Purpose</th>
+<th class="tableblock halign-left valign-top">Command</th>
+<th class="tableblock halign-left valign-top">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em><a href="#help">Help</a></em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Shows you the user guide</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>help</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>help</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em><a href="#history">History</a></em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Shows you a history of all commands used</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>history</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>history</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em><a href="#undo">Undo</a></em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Undo your previous command</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>undo</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>undo</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em><a href="#redo">Redo</a></em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Redo your undo</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>redo</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>redo</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em><a href="#clear">Clear</a></em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Clear your planner</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>clear</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>clear</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em><a href="#exit">Exit</a></em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Exit the <em>PlanMySem</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>exit</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>exit</code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>&#8203;</p>
 </div>
-</li>
-<li>
-<p><strong>Find Slots</strong> : <code>find [KEYWORD]…​</code><br>
-e.g. <code>find CS</code></p>
-</li>
-<li>
-<p><strong>View planner</strong> : <code>view day [DATE] | view week [WEEK] | view month [MONTH]</code><br>
-e.g.<code>view month</code></p>
-</li>
-<li>
-<p><strong>View all details</strong> : <code>view all</code></p>
-</li>
-<li>
-<p><strong>View history</strong> : <code>history</code></p>
-</li>
-<li>
-<p><strong>Undo previous command</strong> : <code>undo</code></p>
-</li>
-<li>
-<p><strong>Redo previously undone command</strong> : <code>redo</code></p>
-</li>
-<li>
-<p><strong>Clear all data</strong> : <code>clear</code></p>
-</li>
-<li>
-<p><strong>Exit the program</strong> : <code>exit</code></p>
-</li>
-<li>
-<p><strong>Export .ics  file</strong> : <code>export</code></p>
-</li>
-<li>
-<p><strong>Import .ics  file</strong> : <code>import FILENAME</code></p>
-</li>
-</ul>
+<div class="paragraph">
+<p>&#8203;</p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-20 01:04:08 UTC</div></div></div></body></html>
+<div class="sect2">
+<h3 id="manipulating-the-planner"><a class="link" href="#manipulating-the-planner">5.2. Manipulating the Planner</a></h3>
+<div class="paragraph">
+<p>Commands to manage <em>slots</em>:</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 30%;">
+<col style="width: 20%;">
+<col style="width: 30%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Task</th>
+<th class="tableblock halign-left valign-top">Purpose</th>
+<th class="tableblock halign-left valign-top">Command</th>
+<th class="tableblock halign-left valign-top">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em><a href="#add">Add slot(s)</a></em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Add <em>slot(s)</em> into the planner</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>add</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>add n/CS2113T Tutorial d/mon st/08:00 et/09:00 t/CS2113T</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em><a href="#edit">Edit slot(s)</a></em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Edit <em>slot(s)</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>edit</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>edit t/CS2113T nl/COM2 04-01</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em><a href="#delete">Delete slot(s)</a></em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Delete <em>slot(s)</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>delete</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>delete t/CS2113T</code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>&#8203;</p>
+</div>
+<div class="paragraph">
+<p>&#8203;</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="viewing-the-planner"><a class="link" href="#viewing-the-planner">5.3. Viewing the Planner</a></h3>
+<div class="paragraph">
+<p>Commands to view <em>slots</em>:</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 30%;">
+<col style="width: 20%;">
+<col style="width: 30%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Task</th>
+<th class="tableblock halign-left valign-top">Purpose</th>
+<th class="tableblock halign-left valign-top">Command</th>
+<th class="tableblock halign-left valign-top">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em><a href="#view">View the planner</a></em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">view the planner in a chosen format/layout</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>view</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>view month</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em><a href="#list">List slot(s)</a></em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">list <em>slot(s)</em> of a certain name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>list</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>list n/CS2113T</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em><a href="#find">Find slot(s)</a></em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">find <em>slot(s)</em> containing certain keywords</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>find</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>find CS</code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>&#8203;</p>
+</div>
+<div class="paragraph">
+<p>&#8203;</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="import-exporting-the-planner"><a class="link" href="#import-exporting-the-planner">5.4. Import/Exporting the Planner</a></h3>
+<div class="paragraph">
+<p>Commands to view <em>slots</em>:</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 30%;">
+<col style="width: 20%;">
+<col style="width: 30%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Task</th>
+<th class="tableblock halign-left valign-top">Purpose</th>
+<th class="tableblock halign-left valign-top">Command</th>
+<th class="tableblock halign-left valign-top">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em><a href="#export">Export your planner</a></em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Export all your slots into a .ics file</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>export</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>export</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em><a href="#import">Import into your planner</a></em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Import into your planner from a .ics file</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>import</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>import</code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>&#8203;</p>
+</div>
+<div class="paragraph">
+<p>&#8203;</p>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-21 13:16:49 UTC</div></div></div></body></html>
