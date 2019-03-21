@@ -9,39 +9,36 @@
 <div id="toc" class="toc">
 <div id="toctitle"></div>
 <ul class="sectlevel1">
-<li><a href="#introduction">1. Introduction</a>
+<li><a href="#introduction">1. Introduction</a></li>
+<li><a href="#about-this-user-guide">2. About this User Guide</a></li>
+<li><a href="#quick-start">3. Quick Start</a></li>
+<li><a href="#Features">4. Features</a>
 <ul class="sectlevel2">
-<li><a href="#terminology">1.1. Terminology</a></li>
+<li><a href="#help">4.1. Viewing help : <code>help</code></a></li>
+<li><a href="#add">4.2. Adding Slots : <code>add</code> / <code>a</code></a></li>
+<li><a href="#edit">4.3. Editing Slots: <code>edit</code> / <code>e</code></a></li>
+<li><a href="#delete">4.4. Delete Slots: <code>delete</code> / <code>del</code> / <code>d</code></a></li>
+<li><a href="#list">4.5. Listing Slots: <code>list</code> / <code>l</code></a></li>
+<li><a href="#find">4.6. Locating Slots: <code>find</code> / <code>f</code></a></li>
+<li><a href="#view">4.7. View the Planner : <code>view</code> / <code>v</code></a></li>
+<li><a href="#history">4.8. Listing previous input commands : <code>history</code> <code>[coming in v2.0]</code></a></li>
+<li><a href="#undo">4.9. Undoing previous command : <code>undo</code> <code>[coming in v2.0]</code></a></li>
+<li><a href="#redo">4.10. Redoing the previously undone command : <code>redo</code> <code>[coming in v2.0]</code></a></li>
+<li><a href="#encrypt">4.11. Encrypting/decrypting data files</a></li>
+<li><a href="#import">4.12. Importing .ics formatted files <code>[coming in v2.0]</code></a></li>
+<li><a href="#export">4.13. Exporting .ics formatted files: <code>export</code></a></li>
+<li><a href="#clear">4.14. Clear all data : <code>clear</code></a></li>
+<li><a href="#exit">4.15. Exiting the program : <code>exit</code></a></li>
+<li><a href="#save">4.16. Saving the data</a></li>
 </ul>
 </li>
-<li><a href="#quick-start">2. Quick Start</a></li>
-<li><a href="#Features">3. Features</a>
+<li><a href="#faq">5. FAQ</a></li>
+<li><a href="#command-summary">6. Command Summary</a>
 <ul class="sectlevel2">
-<li><a href="#help">3.1. Viewing help : <code>help</code></a></li>
-<li><a href="#add">3.2. Adding Slots : <code>add</code> / <code>a</code></a></li>
-<li><a href="#edit">3.3. Editing Slots: <code>edit</code> / <code>e</code></a></li>
-<li><a href="#delete">3.4. Delete Slots: <code>delete</code> / <code>del</code> / <code>d</code></a></li>
-<li><a href="#list">3.5. Listing Slots: <code>list</code> / <code>l</code></a></li>
-<li><a href="#find">3.6. Locating Slots: <code>find</code> / <code>f</code></a></li>
-<li><a href="#view">3.7. View the Planner : <code>view</code> / <code>v</code></a></li>
-<li><a href="#history">3.8. Listing previous input commands : <code>history</code> <code>[coming in v2.0]</code></a></li>
-<li><a href="#undo">3.9. Undoing previous command : <code>undo</code> <code>[coming in v2.0]</code></a></li>
-<li><a href="#redo">3.10. Redoing the previously undone command : <code>redo</code> <code>[coming in v2.0]</code></a></li>
-<li><a href="#encrypt">3.11. Encrypting/decrypting data files</a></li>
-<li><a href="#import">3.12. Importing .ics formatted files <code>[coming in v2.0]</code></a></li>
-<li><a href="#export">3.13. Exporting .ics formatted files: <code>export</code></a></li>
-<li><a href="#clear">3.14. Clear all data : <code>clear</code></a></li>
-<li><a href="#exit">3.15. Exiting the program : <code>exit</code></a></li>
-<li><a href="#save">3.16. Saving the data</a></li>
-</ul>
-</li>
-<li><a href="#faq">4. FAQ</a></li>
-<li><a href="#command-summary">5. Command Summary</a>
-<ul class="sectlevel2">
-<li><a href="#general-commands">5.1. General Commands</a></li>
-<li><a href="#manipulating-the-planner">5.2. Manipulating the Planner</a></li>
-<li><a href="#viewing-the-planner">5.3. Viewing the Planner</a></li>
-<li><a href="#import-exporting-the-planner">5.4. Import/Exporting the Planner</a></li>
+<li><a href="#general-commands">6.1. General Commands</a></li>
+<li><a href="#manipulating-the-planner">6.2. Manipulating the Planner</a></li>
+<li><a href="#viewing-the-planner">6.3. Viewing the Planner</a></li>
+<li><a href="#import-exporting-the-planner">6.4. Import/Exporting the Planner</a></li>
 </ul>
 </li>
 </ul>
@@ -51,7 +48,7 @@
 <h2 id="introduction"><a class="link" href="#introduction">1. Introduction</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Welcome to <em>PlanMySem</em>! Choose a topic from the table of contents to learn about available features with examples, find answers or view a summary of the commands.</p>
+<p>Welcome to <em>PlanMySem</em>!</p>
 </div>
 <div class="paragraph">
 <p><em>PlanMySem</em> is a text-based (Command Line Interface) scheduling/calendar application that targets NUS students and staff who prefer to use a desktop application for managing their schedule/calendar.
@@ -60,17 +57,20 @@ Special weeks such as recess week and reading week are taken into account within
 Items can then be efficiently managed via the intuitive tagging system.</p>
 </div>
 <div class="paragraph">
-<p><em>PlanMySem</em> is optimized for those who prefer to work with a Command Line Interface (CLI) and/or are learning to work more efficiently with CLI tools. Additionally, unlike traditional calendar/scheduling applications, <em>PlanMySem</em> utilizes minimal resources on the user’s machine while still allowing the user to view their schedules swiftly and efficiently.</p>
-</div>
-<div class="paragraph">
-<p>This user guide provides a quick start guide for you to easily setup and install <em>PlanMySem</em>, documentation of all the various features <em>PlanMySem</em> offers, frequently asked questions and a summary of the available commands.
+<p><em>PlanMySem</em> is optimized for those who prefer to work with a Command Line Interface (CLI) and/or are learning to work more efficiently with CLI tools. Additionally, unlike traditional calendar/scheduling applications, <em>PlanMySem</em> utilizes minimal resources on the user’s machine while still allowing the user to view their schedules swiftly and efficiently.
 &#8203;</p>
 </div>
 <div class="paragraph">
 <p>&#8203;</p>
 </div>
-<div class="sect2">
-<h3 id="terminology"><a class="link" href="#terminology">1.1. Terminology</a></h3>
+</div>
+</div>
+<div class="sect1">
+<h2 id="about-this-user-guide"><a class="link" href="#about-this-user-guide">2. About this User Guide</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This user guide provides a quick start guide for you to easily setup and install <em>PlanMySem</em>, documentation of all the various features <em>PlanMySem</em> offers, frequently asked questions and a summary of the available commands. To navigate between the different sections, you could use the table of contents above.</p>
+</div>
 <div class="paragraph">
 <p>For ease of communication, this document will refer to lessons/activities/events/appointments that you might add into the planner as <em>slots</em>.</p>
 </div>
@@ -143,10 +143,12 @@ This is a rule. Ensure that you follow these rule to make your life using <em>Pl
 </div>
 </div>
 </div>
-</div>
 <div class="sect1">
-<h2 id="quick-start"><a class="link" href="#quick-start">2. Quick Start</a></h2>
+<h2 id="quick-start"><a class="link" href="#quick-start">3. Quick Start</a></h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>This section guides you through the installation of <em>PlanMySem</em> and provides a few example commands you may try.</p>
+</div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -177,13 +179,13 @@ E.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <ul>
 <li>
 <p><strong><code>add</code></strong><code>n/CS2113T d/mon st/08:00 et/09:00 des/Topic: Sequence Diagram t/CS2113T t/Tutorial</code> :<br>
-Add a slot, named "CS2113T" on the coming monday, from 0800hrs to 0900hrs with the tags "CS2113T" and "Tutorial".</p>
+Add a <em>slot</em>, named "CS2113T" on the coming monday, from 0800hrs to 0900hrs with the tags "CS2113T" and "Tutorial".</p>
 </li>
 <li>
-<p><strong><code>list</code></strong><code>n/CS2113T</code> : list all slots named "CS2113T"</p>
+<p><strong><code>list</code></strong><code>n/CS2113T</code> : list all <em>slots</em> named "CS2113T"</p>
 </li>
 <li>
-<p><strong><code>delete</code></strong><code>3</code> : delete the 3rd slot shown in the current list</p>
+<p><strong><code>delete</code></strong><code>3</code> : delete the 3rd <em>slot</em> shown in the current list</p>
 </li>
 <li>
 <p><strong><code>exit</code></strong> : exit the app</p>
@@ -192,7 +194,7 @@ Add a slot, named "CS2113T" on the coming monday, from 0800hrs to 0900hrs with t
 </div>
 </li>
 <li>
-<p>Refer to <a href="#Features">Section 3, &#8220;Features&#8221;</a> for details of each command.
+<p>Refer to <a href="#Features">Section 4, &#8220;Features&#8221;</a> for details of each command.
 &#8203;</p>
 </li>
 </ol>
@@ -203,19 +205,19 @@ Add a slot, named "CS2113T" on the coming monday, from 0800hrs to 0900hrs with t
 </div>
 </div>
 <div class="sect1">
-<h2 id="Features"><a class="link" href="#Features">3. Features</a></h2>
+<h2 id="Features"><a class="link" href="#Features">4. Features</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This section displays the features of <em>PlanMySem</em>.</p>
+<p>This section displays the available features of <em>PlanMySem</em> together with examples for you to refer to.</p>
 </div>
 <div class="paragraph">
 <p><strong>Tagging System</strong></p>
 </div>
 <div class="paragraph">
-<p>Unlike other commercial calendar/scheduling/planner software, <em>PlanMySem</em> makes use of a tagging system to manage slots.</p>
+<p>Unlike other commercial calendar/scheduling/planner software, <em>PlanMySem</em> makes use of a tagging system to manage <em>slots</em>.</p>
 </div>
 <div class="paragraph">
-<p>Using tags to tag slots will make tasks easier for you in the future. Performing tasks such as viewing, deleting and editing slots will be more efficient.</p>
+<p>Using tags to tag <em>slots</em> will make tasks easier for you in the future. Performing tasks such as viewing, deleting and editing <em>slots</em> will be more efficient.</p>
 </div>
 <div class="paragraph">
 <p>Recommended uses for tags:</p>
@@ -240,10 +242,10 @@ Add a slot, named "CS2113T" on the coming monday, from 0800hrs to 0900hrs with t
 <p><strong>Recursion System</strong></p>
 </div>
 <div class="paragraph">
-<p>Recursion facilitates quick addition of multiple slots, similar to Microsoft Outlook&#8217;s series of appointments.</p>
+<p>Recursion facilitates quick addition of multiple <em>slots</em>, similar to Microsoft Outlook&#8217;s series of appointments.</p>
 </div>
 <div class="paragraph">
-<p>In NUS, academic semesters are split into weeks of several types. Recursion allows you to add slots to these types of weeks with ease through the use of the <code>r/</code>(recursion) parameter.</p>
+<p>In NUS, academic semesters are split into weeks of several types. Recursion allows you to add <em>slots</em> to these types of weeks with ease through the use of the <code>r/</code>(recursion) parameter.</p>
 </div>
 <div class="paragraph">
 <p><strong>Command Format</strong></p>
@@ -335,7 +337,7 @@ The table of Identifiers and Parameters and their descriptions (Table 1) below i
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>TAG</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Tag of a <em>slot</em></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Text</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>nt/Lab</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>t/Lab</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top" rowspan="4"><p class="tableblock"><code>d/</code></p></td>
@@ -374,11 +376,11 @@ The table of Identifiers and Parameters and their descriptions (Table 1) below i
 <td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock"><code>END_TIME</code></p></td>
 <td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock">End Time</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Time in 24-Hour format, <code>hh:mm</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>e/23:00</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>et/23:00</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Time 12-Hour format, <code>hh:mm+AM|PM</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>e/11:00 PM</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>et/11:00 PM</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>DURATION</code></p></td>
@@ -422,10 +424,8 @@ The table of Identifiers and Parameters and their descriptions (Table 1) below i
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-<div class="paragraph">
-<p>You may order identifiers and parameters in any fashion and you will still be able to achieve what you want!
-So, do not bother thinking about where to place parameters as ordering does not matter, instead become more efficient and save your time!</p>
-</div>
+You may order identifiers and parameters in any fashion and you will still be able to achieve what you want!
+So, do not bother thinking about where to place parameters as ordering does not matter, instead become more efficient and save your time!
 </td>
 </tr>
 </table>
@@ -437,10 +437,8 @@ So, do not bother thinking about where to place parameters as ordering does not 
 <i class="fa icon-important" title="Important"></i>
 </td>
 <td class="content">
-<div class="paragraph">
-<p>Identifiers may be appended with a <code>n</code> to dictate "new".<br>
-E.g. <code>nt/NEW_TAG</code> signifies new tags in which you want to replace existing tags with.</p>
-</div>
+Identifiers may be appended with a <code>n</code> to dictate "new".<br>
+E.g. <code>nt/NEW_TAG</code> signifies new tags in which you want to replace existing tags with.
 </td>
 </tr>
 </table>
@@ -452,10 +450,8 @@ E.g. <code>nt/NEW_TAG</code> signifies new tags in which you want to replace exi
 <i class="fa icon-caution" title="Caution"></i>
 </td>
 <td class="content">
-<div class="paragraph">
-<p>While this table 1 shows you all the identifiers and parameters that <em>PlanMySem</em> uses, there are some commands that do not make use of identifiers nor parameters.
-The view command is one such exception that make use of keywords that must be typed in a specific order.</p>
-</div>
+While table 1 shows you all the identifiers and parameters that <em>PlanMySem</em> uses, there are some commands that do not make use of identifiers nor parameters.
+The view command is one such exception that make use of keywords that must be typed in a specific order.
 </td>
 </tr>
 </table>
@@ -467,7 +463,7 @@ The view command is one such exception that make use of keywords that must be ty
 <p>&#8203;</p>
 </div>
 <div class="sect2">
-<h3 id="help"><a class="link" href="#help">3.1. Viewing help : <code>help</code></a></h3>
+<h3 id="help"><a class="link" href="#help">4.1. Viewing help : <code>help</code></a></h3>
 <div class="paragraph">
 <p>Displays all the available commands with the syntax and examples.<br>
 Format: <code>help</code></p>
@@ -486,7 +482,7 @@ Format: <code>help</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="add"><a class="link" href="#add">3.2. Adding Slots : <code>add</code> / <code>a</code></a></h3>
+<h3 id="add"><a class="link" href="#add">4.2. Adding Slots : <code>add</code> / <code>a</code></a></h3>
 <div class="paragraph">
 <p>Add <em>slot(s)</em> to the planner.<br>
 Format: <code>add n/NAME d/DATE_OR_DAY_OF_WEEK st/START_TIME et/END_TIME_OR_DURATION<br>
@@ -513,11 +509,11 @@ Add a <em>slot</em>, named "CS2113T Tutorial" on the coming monday, from 0800hrs
 <ul>
 <li>
 <p><code>add n/CS2113T Tutorial d/mon st/08:00 et/09:00 des/Topic: Sequence Diagram t/CS2113T t/Tutorial r/recess r/reading</code><br>
-Do the same but additionally, recurse the slot on recess and reading week.</p>
+Do the same but additionally, recurse the <em>slot</em> on recess and reading week.</p>
 </li>
 <li>
 <p><code>add n/CS2113T Tutorial d/mon st/08:00 et/09:00 des/Topic: Sequence Diagram t/CS2113T t/Tutorial r/normal</code><br>
-Do the same but recurse the slot on "normal", instructional, weeks.</p>
+Do the same but recurse the <em>slot</em> on "normal", instructional, weeks.</p>
 </li>
 </ul>
 </div>
@@ -528,9 +524,8 @@ Do the same but recurse the slot on "normal", instructional, weeks.</p>
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-<div class="paragraph">
-<p>You may add single <em>slots</em> by omitting the <code>r/</code> identifiers and its parameters.</p>
-</div>
+You may add single <em>slots</em> by omitting the <code>r/</code> identifiers and its parameters.
+&#8203;
 </td>
 </tr>
 </table>
@@ -538,12 +533,9 @@ Do the same but recurse the slot on "normal", instructional, weeks.</p>
 <div class="paragraph">
 <p>&#8203;</p>
 </div>
-<div class="paragraph">
-<p>&#8203;</p>
-</div>
 </div>
 <div class="sect2">
-<h3 id="edit"><a class="link" href="#edit">3.3. Editing Slots: <code>edit</code> / <code>e</code></a></h3>
+<h3 id="edit"><a class="link" href="#edit">4.3. Editing Slots: <code>edit</code> / <code>e</code></a></h3>
 <div class="paragraph">
 <p>Edit <em>slot(s)</em>.</p>
 </div>
@@ -566,10 +558,8 @@ Format: <code>edit INDEX [nn/NEW_NAME] [nd/NEW_DATE] [nst/NEW_START_TIME] [net/N
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-<div class="paragraph">
-<p>You will not be able to edit a slot&#8217;s date when editing via <em>tags</em>.<br>
-To edit a <em>slot</em>'s date, you may use the <code>list</code> or <code>find</code> command and edit specific <em>slot(s)</em> via index.</p>
-</div>
+You will not be able to edit a <em>slot</em>'s date when editing via <em>tags</em>.<br>
+To edit a <em>slot</em>'s date, you may use the <code>list</code> or <code>find</code> command and edit specific <em>slot(s)</em> via index.
 </td>
 </tr>
 </table>
@@ -581,7 +571,7 @@ To edit a <em>slot</em>'s date, you may use the <code>list</code> or <code>find<
 <ul>
 <li>
 <p><code>edit t/CS2113T t/Tutorial nl/COM2 04-01</code><br>
-Edit slots that contain tags "CS2113T" and "Tutorial", set these <em>slot&#8217;s</em> location to "COM2 04-01".</p>
+Edit <em>slots</em> that contain tags "CS2113T" and "Tutorial", set these <em>slot&#8217;s</em> location to "COM2 04-01".</p>
 </li>
 </ul>
 </div>
@@ -605,7 +595,7 @@ Edit the first item from the previous result of the <code>list</code> or <code>f
 </div>
 </div>
 <div class="sect2">
-<h3 id="delete"><a class="link" href="#delete">3.4. Delete Slots: <code>delete</code> / <code>del</code> / <code>d</code></a></h3>
+<h3 id="delete"><a class="link" href="#delete">4.4. Delete Slots: <code>delete</code> / <code>del</code> / <code>d</code></a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -625,7 +615,7 @@ Format: <code>delete INDEX</code></p>
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-You may delete a specific slot by using the <code>list</code> or <code>find</code> command and select the specific <em>slot</em> via index.
+You may delete a specific <em>slot</em> by using the <code>list</code> or <code>find</code> command and select the specific <em>slot</em> via index.
 </td>
 </tr>
 </table>
@@ -661,9 +651,9 @@ Delete the second <em>slot</em> shown via the <code>list</code> command.
 </div>
 </div>
 <div class="sect2">
-<h3 id="list"><a class="link" href="#list">3.5. Listing Slots: <code>list</code> / <code>l</code></a></h3>
+<h3 id="list"><a class="link" href="#list">4.5. Listing Slots: <code>list</code> / <code>l</code></a></h3>
 <div class="paragraph">
-<p>Lists all slots whose name directly matches the specified keyword (not case-sensitive).<br>
+<p>Lists all <em>slots</em> whose name directly matches the specified keyword (not case-sensitive).<br>
 Format: <code>list n/NAME</code></p>
 </div>
 <div class="paragraph">
@@ -691,7 +681,7 @@ List all <em>slots</em> that is named <code>CS2113T</code> in the planner.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="find"><a class="link" href="#find">3.6. Locating Slots: <code>find</code> / <code>f</code></a></h3>
+<h3 id="find"><a class="link" href="#find">4.6. Locating Slots: <code>find</code> / <code>f</code></a></h3>
 <div class="paragraph">
 <p>Find all <em>slots</em> whose part of their name contains the specified keyword and displays them as a list.<br>
 Format: <code>find n/KEYWORD</code></p>
@@ -721,7 +711,7 @@ Find all <em>slots</em> whose name contains <code>CS</code> (eg. CS2101, CS2113T
 </div>
 </div>
 <div class="sect2">
-<h3 id="view"><a class="link" href="#view">3.7. View the Planner : <code>view</code> / <code>v</code></a></h3>
+<h3 id="view"><a class="link" href="#view">4.7. View the Planner : <code>view</code> / <code>v</code></a></h3>
 <div class="paragraph">
 <p>View the planner in a month/week/day view.</p>
 </div>
@@ -752,10 +742,8 @@ Format: <code>view all</code></p>
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-<div class="paragraph">
-<p>You may omit <code>[MONTH]</code>/<code>[WEEK]</code>/<code>[DATE]</code> to view the format chosen in respect to the current day!<br>
-E.g. <code>view month</code> will allow you to view the current month and <code>view day</code> will allow you to view the current day!</p>
-</div>
+You may omit <code>[MONTH]</code>/<code>[WEEK]</code>/<code>[DATE]</code> to view the format chosen in respect to the current day!<br>
+E.g. <code>view month</code> will allow you to view the current month and <code>view day</code> will allow you to view the current day!
 </td>
 </tr>
 </table>
@@ -807,7 +795,7 @@ View all the details in the planner.
 </div>
 </div>
 <div class="sect2">
-<h3 id="history"><a class="link" href="#history">3.8. Listing previous input commands : <code>history</code> <code>[coming in v2.0]</code></a></h3>
+<h3 id="history"><a class="link" href="#history">4.8. Listing previous input commands : <code>history</code> <code>[coming in v2.0]</code></a></h3>
 <div class="paragraph">
 <p>Lists all the commands that you have entered in reverse chronological order.<br>
 Format: <code>history</code>
@@ -818,7 +806,7 @@ Format: <code>history</code>
 </div>
 </div>
 <div class="sect2">
-<h3 id="undo"><a class="link" href="#undo">3.9. Undoing previous command : <code>undo</code> <code>[coming in v2.0]</code></a></h3>
+<h3 id="undo"><a class="link" href="#undo">4.9. Undoing previous command : <code>undo</code> <code>[coming in v2.0]</code></a></h3>
 <div class="paragraph">
 <p>Restores the planner to the state before the previous command was executed.<br>
 Format: <code>undo</code></p>
@@ -831,6 +819,7 @@ Format: <code>undo</code></p>
 </td>
 <td class="content">
 The <code>clear</code> command cannot be undone.
+&#8203;
 </td>
 </tr>
 </table>
@@ -838,12 +827,9 @@ The <code>clear</code> command cannot be undone.
 <div class="paragraph">
 <p>&#8203;</p>
 </div>
-<div class="paragraph">
-<p>&#8203;</p>
-</div>
 </div>
 <div class="sect2">
-<h3 id="redo"><a class="link" href="#redo">3.10. Redoing the previously undone command : <code>redo</code> <code>[coming in v2.0]</code></a></h3>
+<h3 id="redo"><a class="link" href="#redo">4.10. Redoing the previously undone command : <code>redo</code> <code>[coming in v2.0]</code></a></h3>
 <div class="paragraph">
 <p>Reverses the most recent <code>undo</code> command.<br>
 Format: <code>redo</code>
@@ -854,7 +840,7 @@ Format: <code>redo</code>
 </div>
 </div>
 <div class="sect2">
-<h3 id="encrypt"><a class="link" href="#encrypt">3.11. Encrypting/decrypting data files</a></h3>
+<h3 id="encrypt"><a class="link" href="#encrypt">4.11. Encrypting/decrypting data files</a></h3>
 <div class="paragraph">
 <p>Planner data is automatically encrypted before saving and decrypted before loading. You do not need to encrypt or decrypt he data manually.
 &#8203;</p>
@@ -864,7 +850,7 @@ Format: <code>redo</code>
 </div>
 </div>
 <div class="sect2">
-<h3 id="import"><a class="link" href="#import">3.12. Importing .ics formatted files <code>[coming in v2.0]</code></a></h3>
+<h3 id="import"><a class="link" href="#import">4.12. Importing .ics formatted files <code>[coming in v2.0]</code></a></h3>
 <div class="paragraph">
 <p>You can import an .ics file into the planner.
 Format: <code>import FILENAME</code>
@@ -875,7 +861,7 @@ Format: <code>import FILENAME</code>
 </div>
 </div>
 <div class="sect2">
-<h3 id="export"><a class="link" href="#export">3.13. Exporting .ics formatted files: <code>export</code></a></h3>
+<h3 id="export"><a class="link" href="#export">4.13. Exporting .ics formatted files: <code>export</code></a></h3>
 <div class="paragraph">
 <p>You can export the planner as a .ics file.</p>
 </div>
@@ -921,15 +907,11 @@ These are plain text files that include calendar event details like a descriptio
 </table>
 </div>
 <div class="paragraph">
-<p>&#8203;
-&#8203;</p>
-</div>
-<div class="paragraph">
 <p>&#8203;</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="clear"><a class="link" href="#clear">3.14. Clear all data : <code>clear</code></a></h3>
+<h3 id="clear"><a class="link" href="#clear">4.14. Clear all data : <code>clear</code></a></h3>
 <div class="paragraph">
 <p>Clear all data stored on the planner.<br>
 Format: <code>clear</code></p>
@@ -940,9 +922,6 @@ Format: <code>clear</code></p>
 </div>
 <div class="title">Figure 11. <span class="underline">Output after entering <code>clear</code></span></div>
 </div>
-<div class="paragraph">
-<p>&#8203;</p>
-</div>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -950,9 +929,8 @@ Format: <code>clear</code></p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-<div class="paragraph">
-<p>The <code>clear</code> command cannot be undone! Your data will be permanently removed once <code>clear</code> is executed.</p>
-</div>
+The <code>clear</code> command cannot be undone! Your data will be permanently removed once <code>clear</code> is executed.
+&#8203;
 </td>
 </tr>
 </table>
@@ -960,12 +938,9 @@ Format: <code>clear</code></p>
 <div class="paragraph">
 <p>&#8203;</p>
 </div>
-<div class="paragraph">
-<p>&#8203;</p>
-</div>
 </div>
 <div class="sect2">
-<h3 id="exit"><a class="link" href="#exit">3.15. Exiting the program : <code>exit</code></a></h3>
+<h3 id="exit"><a class="link" href="#exit">4.15. Exiting the program : <code>exit</code></a></h3>
 <div class="paragraph">
 <p>Exits the program.<br>
 Format: <code>exit</code>
@@ -976,7 +951,7 @@ Format: <code>exit</code>
 </div>
 </div>
 <div class="sect2">
-<h3 id="save"><a class="link" href="#save">3.16. Saving the data</a></h3>
+<h3 id="save"><a class="link" href="#save">4.16. Saving the data</a></h3>
 <div class="paragraph">
 <p>Planner data is saved in the hard disk automatically after any command that changes the data is executed.<br>
 There is no need to save manually.
@@ -989,7 +964,7 @@ There is no need to save manually.
 </div>
 </div>
 <div class="sect1">
-<h2 id="faq"><a class="link" href="#faq">4. FAQ</a></h2>
+<h2 id="faq"><a class="link" href="#faq">5. FAQ</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p><strong>Q</strong>: How do I transfer my data to another Computer?<br>
@@ -1015,10 +990,10 @@ There is no need to save manually.
 </div>
 </div>
 <div class="sect1">
-<h2 id="command-summary"><a class="link" href="#command-summary">5. Command Summary</a></h2>
+<h2 id="command-summary"><a class="link" href="#command-summary">6. Command Summary</a></h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="general-commands"><a class="link" href="#general-commands">5.1. General Commands</a></h3>
+<h3 id="general-commands"><a class="link" href="#general-commands">6.1. General Commands</a></h3>
 <div class="paragraph">
 <p>General commands that you might find useful in helping you to navigate and configure <em>PlanMySem</em>:</p>
 </div>
@@ -1084,7 +1059,7 @@ There is no need to save manually.
 </div>
 </div>
 <div class="sect2">
-<h3 id="manipulating-the-planner"><a class="link" href="#manipulating-the-planner">5.2. Manipulating the Planner</a></h3>
+<h3 id="manipulating-the-planner"><a class="link" href="#manipulating-the-planner">6.2. Manipulating the Planner</a></h3>
 <div class="paragraph">
 <p>Commands to manage <em>slots</em>:</p>
 </div>
@@ -1132,7 +1107,7 @@ There is no need to save manually.
 </div>
 </div>
 <div class="sect2">
-<h3 id="viewing-the-planner"><a class="link" href="#viewing-the-planner">5.3. Viewing the Planner</a></h3>
+<h3 id="viewing-the-planner"><a class="link" href="#viewing-the-planner">6.3. Viewing the Planner</a></h3>
 <div class="paragraph">
 <p>Commands to view <em>slots</em>:</p>
 </div>
@@ -1180,7 +1155,7 @@ There is no need to save manually.
 </div>
 </div>
 <div class="sect2">
-<h3 id="import-exporting-the-planner"><a class="link" href="#import-exporting-the-planner">5.4. Import/Exporting the Planner</a></h3>
+<h3 id="import-exporting-the-planner"><a class="link" href="#import-exporting-the-planner">6.4. Import/Exporting the Planner</a></h3>
 <div class="paragraph">
 <p>Commands to view <em>slots</em>:</p>
 </div>
@@ -1222,4 +1197,4 @@ There is no need to save manually.
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-21 13:16:49 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-21 14:22:25 UTC</div></div></div></body></html>
