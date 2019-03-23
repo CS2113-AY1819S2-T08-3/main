@@ -1045,7 +1045,10 @@ We are encrypting and decrypting the data using the Java Cypher class.
 This feature is implemented through creating a Encryptor that contains encrypt and decrypt methods. The encrypt method takes a String object as an argument and returns a encrypted String object. The decrypt method takes in a String object as an argument and returns the decrypted message as a String object.</p>
 </div>
 <div class="paragraph">
-<p>Currently, the encryption is done using AES/ECB/PKCS5Padding. The key used for encryption is a placeholder key and the encrption mode is Electronic Codebook(ECB). In future updates, the key will be generated uniquely and Cipher Block Chaining(CBC) with a Initialization Vector(IV) will be used instead to improve security.</p>
+<p>The encryption is done using AES/CBC/PKCS5Padding. The key used for encryption/decryption is generated randomly and stored in a file named "KeyStorage.jceks". No password is required from the user to retrieve this key, but a password input can be added in the KeyStorage.java class to improve security.<br></p>
+</div>
+<div class="paragraph">
+<p>A initialization vector (IV) is required for the Cipher Block Chain (CBC) mode of encryption. A random IV is generated and appended at the beginning of the data before being stored. The IV is then retrieved from the same file to decrypt the data.</p>
 </div>
 <div class="paragraph">
 <p>Encryption of the data is done automatically before the file is saved. In the implmentation, the AdaptedPlanner object is first marshalled into a StringWriter before being encrypted and written into the file. This is to ensure that the data is JAXB formatted and the save algorithm is unaffected.
@@ -3007,4 +3010,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-23 04:47:14 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-23 07:12:20 UTC</div></div></div></body></html>
