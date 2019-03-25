@@ -34,12 +34,13 @@
 <li><a href="#initialization-of-the-planner-and-it-s-semester">3.1. Initialization of the Planner and it&#8217;s Semester</a></li>
 <li><a href="#reinventing-the-parser-command-format-and-structure">3.2. Reinventing the Parser / Command Format and Structure</a></li>
 <li><a href="#semester-planner-days-and-slots">3.3. Semester, Planner, Days and Slots</a></li>
-<li><a href="#month-week-day-view-feature">3.4. Month/Week/Day View feature</a></li>
-<li><a href="#undo-redo-feature">3.5. Undo/Redo feature</a></li>
-<li><a href="#data-encryption">3.6. Data Encryption</a></li>
-<li><a href="#exporting-ics-file">3.7. Exporting .ics file</a></li>
-<li><a href="#logging">3.8. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.9. Configuration</a></li>
+<li><a href="#find-feature">3.4. Find feature</a></li>
+<li><a href="#month-week-day-view-feature">3.5. Month/Week/Day View feature</a></li>
+<li><a href="#undo-redo-feature">3.6. Undo/Redo feature</a></li>
+<li><a href="#data-encryption">3.7. Data Encryption</a></li>
+<li><a href="#exporting-ics-file">3.8. Exporting .ics file</a></li>
+<li><a href="#logging">3.9. Logging</a></li>
+<li><a href="#Implementation-Configuration">3.10. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a>
@@ -1155,9 +1156,80 @@ These are some possible enhancements:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="month-week-day-view-feature"><a class="link" href="#month-week-day-view-feature">3.4. Month/Week/Day View feature</a></h3>
+<h3 id="find-feature"><a class="link" href="#find-feature">3.4. Find feature</a></h3>
 <div class="sect3">
-<h4 id="future-implementation-3"><a class="link" href="#future-implementation-3">3.4.1. Future Implementation</a></h4>
+<h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">3.4.1. Current Implementation</a></h4>
+<div class="paragraph">
+<p>The find function supports searching using a single keyword.<br>
+If some part of the name of <code>Slot</code> / tags attributed to <code>Slot</code> contains the specified keyword,
+a positive match is registered and the designated <code>Slot</code> will be added to the output list.<br>
+Examples:<br>
+<code>find n/CS</code><br>
+<code>CS2101</code>, <code>CS2113T</code>, <code>SOCSMeet</code> are considered positive matches.<br>
+<code>ST2334</code>, <code>Hockey</code>, <code>Lunch</code> are NOT considered positive matches.<br></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="future-implementation-3"><a class="link" href="#future-implementation-3">3.4.2. Future Implementation</a></h4>
+<div class="paragraph">
+<p>The find function will be revamped to support search guessing.<br>
+FindCommand will be enhanced by using Levenshtein Distance to generate an ordered set of <code>Slot</code> attributes ordered by similarity.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">3.4.3. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-what-constitutes-a-positive-search-result-in-code-find-code-command"><a class="link" href="#aspect-what-constitutes-a-positive-search-result-in-code-find-code-command">Aspect: What constitutes a positive search result in <code>find</code> command</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1:</strong> Positive search result by strictly matching the entered keyword</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to implement.</p>
+</li>
+<li>
+<p>Cons: Search must be exact, typos or an incomplete keyword will yield incorrect results. Nothing different from <code>List</code> feature.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2 (current choice):</strong> Positive search result as long as name/tag contains the keyword.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Searches can now consider names/tags similar to the keyword.</p>
+</li>
+<li>
+<p>Cons: Output list will be longer. May become excessively long if short keyword is provided.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 3 (future implementation):</strong> Store the search results in a <code>treeMap</code> ordered by their Levenshtein distances from the search keyword</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Will also consider searches that are similar to what we want and will account for typos or incomplete keywords</p>
+</li>
+<li>
+<p>Cons: Added complexities in finding and searching.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="month-week-day-view-feature"><a class="link" href="#month-week-day-view-feature">3.5. Month/Week/Day View feature</a></h3>
+<div class="sect3">
+<h4 id="future-implementation-4"><a class="link" href="#future-implementation-4">3.5.1. Future Implementation</a></h4>
 <div class="paragraph">
 <p>The month/week/day view mechanism is facilitated by <code>PlannerView</code>.
 It extends <code>Planner</code> with different calendar views, stored internally as <code>monthView</code>, <code>weekView</code> and <code>dayView</code>.
@@ -1190,7 +1262,7 @@ Additionally, it implements the following operations:</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">3.4.2. Design Considerations</a></h4>
+<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">3.5.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-a-type-of-view-is-initialised-or-updated"><a class="link" href="#aspect-how-a-type-of-view-is-initialised-or-updated">Aspect: How a type of view is initialised or updated</a></h5>
 <div class="ulist">
@@ -1224,9 +1296,9 @@ Additionally, it implements the following operations:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">3.5. Undo/Redo feature</a></h3>
+<h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">3.6. Undo/Redo feature</a></h3>
 <div class="sect3">
-<h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">3.5.1. Current Implementation</a></h4>
+<h4 id="current-implementation-5"><a class="link" href="#current-implementation-5">3.6.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The undo/redo mechanism is facilitated by <code>VersionedPlanner</code>.
 It extends <code>Planner</code> with an undo/redo history, stored internally as an <code>plannerStateList</code> and <code>currentStatePointer</code>.
@@ -1310,7 +1382,7 @@ If the <code>currentStatePointer</code> is at index <code>plannerStateList.size(
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">3.5.2. Design Considerations</a></h4>
+<h4 id="design-considerations-6"><a class="link" href="#design-considerations-6">3.6.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-undo-redo-executes"><a class="link" href="#aspect-how-undo-redo-executes">Aspect: How undo &amp; redo executes</a></h5>
 <div class="ulist">
@@ -1380,7 +1452,7 @@ If the <code>currentStatePointer</code> is at index <code>plannerStateList.size(
 </div>
 </div>
 <div class="sect2">
-<h3 id="data-encryption"><a class="link" href="#data-encryption">3.6. Data Encryption</a></h3>
+<h3 id="data-encryption"><a class="link" href="#data-encryption">3.7. Data Encryption</a></h3>
 <div class="paragraph">
 <p>The storage file "PlanMySem.txt" is encrypted to prevent easy access of the user&#8217;s calendar.
 We are encrypting and decrypting the data using the Java Cypher class.
@@ -1398,7 +1470,7 @@ Similarly, decryption of the data is done automatically before it is loaded. In 
 </div>
 </div>
 <div class="sect2">
-<h3 id="exporting-ics-file"><a class="link" href="#exporting-ics-file">3.7. Exporting .ics file</a></h3>
+<h3 id="exporting-ics-file"><a class="link" href="#exporting-ics-file">3.8. Exporting .ics file</a></h3>
 <div class="paragraph">
 <p>The user can export the current planner into a .ics file to use in external calendar applications. The .ics file will contain the names of the slots in the SUMMARY field and the descriptions in the DESCRIPTION field. This command automatically exports into the main directory and names the file “PlanMySem.ics”. Future updates can include user input to allow saving the file in another directory and naming the file.
 We have chosen to use the iCalendar format due to its popularity and it’s use in applications such as Google Calendar, Microsoft Outlook and Nusmods.</p>
@@ -1444,14 +1516,14 @@ We have chosen to use the iCalendar format due to its popularity and it’s use 
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.8. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">3.9. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.9, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.10, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -1482,7 +1554,7 @@ We have chosen to use the iCalendar format due to its popularity and it’s use 
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.9. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.10. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g user prefs file location, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -3352,4 +3424,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-25 04:19:12 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-25 14:06:09 UTC</div></div></div></body></html>
