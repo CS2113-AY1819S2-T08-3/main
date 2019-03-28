@@ -22,7 +22,7 @@
 <li><a href="#Design-Architecture">2.1. Architecture</a></li>
 <li><a href="#Design-Ui">2.2. UI component</a></li>
 <li><a href="#Design-Logic">2.3. Logic component</a></li>
-<li><a href="#Design-Data">2.4. Data component</a></li>
+<li><a href="#Design-Model">2.4. Model component</a></li>
 <li><a href="#Design-Storage">2.5. Storage component</a></li>
 <li><a href="#Design-Common">2.6. Common classes</a></li>
 </ul>
@@ -30,14 +30,15 @@
 <li><a href="#implementation">3. Implementation</a>
 <ul class="sectlevel2">
 <li><a href="#initialization-of-the-planner-and-it-s-semester">3.1. Initialization of the Planner and it&#8217;s Semester</a></li>
-<li><a href="#reinventing-the-parser-command-format-and-structure">3.2. Reinventing the Parser / Command Format and Structure</a></li>
+<li><a href="#parser-command-format-and-structure">3.2. Parser / Command Format and Structure</a></li>
 <li><a href="#slot-management">3.3. Slot Management</a></li>
-<li><a href="#find-feature">3.4. Find feature</a></li>
-<li><a href="#view-month-week-day-feature">3.5. View Month/Week/Day feature</a></li>
-<li><a href="#undo-redo-feature">3.6. Undo/Redo feature</a></li>
-<li><a href="#data-encryption-decription-feature">3.7. Data Encryption / Decription feature</a></li>
-<li><a href="#data-exporting-exporting-feature">3.8. Data Exporting / Exporting feature</a></li>
-<li><a href="#Implementation-Configuration">3.9. Configuration</a></li>
+<li><a href="#list-feature">3.4. List feature</a></li>
+<li><a href="#find-feature">3.5. Find feature</a></li>
+<li><a href="#view-month-week-day-feature">3.6. View Month/Week/Day feature</a></li>
+<li><a href="#undo-redo-feature">3.7. Undo/Redo feature</a></li>
+<li><a href="#data-encryption-decryption-feature">3.8. Data Encryption / Decryption feature</a></li>
+<li><a href="#data-exporting-exporting-feature">3.9. Data Exporting / Exporting feature</a></li>
+<li><a href="#Implementation-Configuration">3.10. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a>
@@ -171,7 +172,7 @@ Do not disable them. If you have disabled them, go to <code>File</code> &gt; <co
 <p>Click <code>OK</code> to accept the default settings</p>
 </li>
 <li>
-<p>Run the <code>planmysem.Main</code> class (right-click the <code>Main</code> class and click <code>Run Main.main()</code>) and try executing a few commands</p>
+<p>Run the <code>PlanMySem.Main</code> class (right-click the <code>Main</code> class and click <code>Run Main.main()</code>) and try executing a few commands</p>
 </li>
 <li>
 <p>Run all the tests (right-click the <code>test</code> folder, and click <code>Run 'All Tests'</code>) and ensure that they pass</p>
@@ -184,7 +185,7 @@ Do not disable them. If you have disabled them, go to <code>File</code> &gt; <co
 This will generate all resources required by the application and tests.</p>
 </li>
 <li>
-<p>Open <a href="https://github.com/CS2113-AY1819S2-T08-3/main/src/main/java/seedu/address/ui/MainWindow.java"><code>MainWindow.java</code></a> and check for any code errors</p>
+<p>Open <a href="https://github.com/CS2113-AY1819S2-T08-3/main/tree/master/src/main/java/seedu/address/ui/MainWindow.java"><code>MainWindow.java</code></a> and check for any code errors</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
@@ -197,7 +198,7 @@ This will generate all resources required by the application and tests.</p>
 </div>
 </li>
 <li>
-<p>Repeat this for the test folder as well (e.g. check <a href="https://github.com/CS2113-AY1819S2-T08-3/main/src/test/java/seedu/address/ui/HelpWindowTest.java"><code>HelpWindowTest.java</code></a> for code errors, and if so, resolve it the same way)</p>
+<p>Repeat this for the test folder as well (e.g. check <a href="https://github.com/CS2113-AY1819S2-T08-3/main/tree/master/src/test/java/seedu/address/ui/HelpWindowTest.java"><code>HelpWindowTest.java</code></a> for code errors, and if so, resolve it the same way)</p>
 </li>
 </ol>
 </div>
@@ -207,7 +208,7 @@ This will generate all resources required by the application and tests.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Run the <code>planmysem.Main</code> and try a few commands</p>
+<p>Run the <code>PlanMySem.Main</code> and try a few commands</p>
 </li>
 <li>
 <p><a href="#Testing">Run the tests</a> to ensure they all pass.</p>
@@ -252,7 +253,7 @@ This will generate all resources required by the application and tests.</p>
 <div class="sect3">
 <h4 id="updating-documentation-to-match-your-fork"><a class="link" href="#updating-documentation-to-match-your-fork">1.4.2. Updating documentation to match your fork</a></h4>
 <div class="paragraph">
-<p>After forking the repo, the documentation will still have the <em>PlanMySem</em> branding and refer to the <code><a href="https://github.com/CS2113-AY1819S2-T08-3/main" class="bare">https://github.com/CS2113-AY1819S2-T08-3/main</a></code> repo.</p>
+<p>After forking the repo, the documentation will still have the <strong>PlanMySem</strong> branding and refer to the <code><a href="https://github.com/CS2113-AY1819S2-T08-3/main" class="bare">https://github.com/CS2113-AY1819S2-T08-3/main</a></code> repo.</p>
 </div>
 <div class="paragraph">
 <p>If you plan to develop this fork as a separate product (i.e. instead of contributing to <code><a href="https://github.com/CS2113-AY1819S2-T08-3/main" class="bare">https://github.com/CS2113-AY1819S2-T08-3/main</a></code>), you should do the following:</p>
@@ -260,10 +261,10 @@ This will generate all resources required by the application and tests.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Configure the <a href="#Docs-SiteWideDocSettings">site-wide documentation settings</a> in <a href="https://github.com/CS2113-AY1819S2-T08-3/main/build.gradle"><code>build.gradle</code></a>, such as the <code>site-name</code>, to suit your own project.</p>
+<p>Configure the <a href="#Docs-SiteWideDocSettings">site-wide documentation settings</a> in <a href="https://github.com/CS2113-AY1819S2-T08-3/main/tree/master/build.gradle"><code>build.gradle</code></a>, such as the <code>site-name</code>, to suit your own project.</p>
 </li>
 <li>
-<p>Replace the URL in the attribute <code>repoURL</code> in <a href="https://github.com/CS2113-AY1819S2-T08-3/main/docs/DeveloperGuide.adoc"><code>DeveloperGuide.adoc</code></a> and <a href="https://github.com/CS2113-AY1819S2-T08-3/main/docs/UserGuide.adoc"><code>UserGuide.adoc</code></a> with the URL of your fork.</p>
+<p>Replace the URL in the attribute <code>repoURL</code> in <a href="https://github.com/CS2113-AY1819S2-T08-3/main/tree/master/docs/DeveloperGuide.adoc"><code>DeveloperGuide.adoc</code></a> and <a href="https://github.com/CS2113-AY1819S2-T08-3/main/tree/master/docs/UserGuide.adoc"><code>UserGuide.adoc</code></a> with the URL of your fork.</p>
 </li>
 </ol>
 </div>
@@ -330,7 +331,7 @@ Having both Travis and AppVeyor ensures your App works on both Unix-based platfo
 <h3 id="Design-Architecture"><a class="link" href="#Design-Architecture">2.1. Architecture</a></h3>
 <div class="imageblock">
 <div class="content">
-<img src="images/Architecture.png" alt="Architecture" width="600">
+<img src="images/Architecture.png" alt="Architecture" width="100%">
 </div>
 <div class="title">Figure 1. Architecture Diagram</div>
 </div>
@@ -344,13 +345,13 @@ Having both Travis and AppVeyor ensures your App works on both Unix-based platfo
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-The <code>.pptx</code> files used to create diagrams in this document can be found in the <a href="https://github.com/CS2113-AY1819S2-T08-3/main/docs/diagrams/">diagrams</a> folder. To update a diagram, modify the diagram in the pptx file, select the objects of the diagram, and choose <code>Save as picture</code>.
+The <code>.pptx</code> files used to create diagrams in this document can be found in the <a href="https://github.com/CS2113-AY1819S2-T08-3/main/tree/master/docs/diagrams/">diagrams</a> folder. To update a diagram, modify the diagram in the pptx file, select the objects of the diagram, and choose <code>Save as picture</code>.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p><code>Main</code> has only one class called <a href="https://github.com/CS2113-AY1819S2-T08-3/main/src/planmysem/Main.java"><code>Main</code></a>. It is responsible for,</p>
+<p><code>Main</code> has only one class called <a href="https://github.com/CS2113-AY1819S2-T08-3/main/tree/master/src/PlanMySem/Main.java"><code>Main</code></a>. It is responsible for,</p>
 </div>
 <div class="ulist">
 <ul>
@@ -366,7 +367,7 @@ The <code>.pptx</code> files used to create diagrams in this document can be fou
 <p><a href="#Design-Common"><strong><code>Common</code></strong></a> represents a collection of classes used by multiple other components.</p>
 </div>
 <div class="paragraph">
-<p>The following class plays an important role at the architecture level, the App consists of four components.</p>
+<p>The following class plays an important role at the architecture level, the App consists of four components:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -377,7 +378,7 @@ The <code>.pptx</code> files used to create diagrams in this document can be fou
 <p><a href="#Design-Logic"><strong><code>Logic</code></strong></a>: The command executor.</p>
 </li>
 <li>
-<p><a href="#Design-Data"><strong><code>Data</code></strong></a>: Holds the data of the App in-memory.</p>
+<p><a href="#Design-Model"><strong><code>Model</code></strong></a>: Holds the data of the App in-memory.</p>
 </li>
 <li>
 <p><a href="#Design-Storage"><strong><code>Storage</code></strong></a>: Reads data from, and writes data to, the hard disk.</p>
@@ -402,9 +403,9 @@ The <code>.pptx</code> files used to create diagrams in this document can be fou
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/LogicClassDiagram.png" alt="LogicClassDiagram" width="800">
+<img src="images/OverallClassDiagram.png" alt="OverallClassDiagram" width="100%">
 </div>
-<div class="title">Figure 2. Class Diagram of the Logic Component</div>
+<div class="title">Figure 2. Class Diagram of overall application.</div>
 </div>
 <h4 id="how-the-architecture-components-interact-with-each-other" class="discrete">How the architecture components interact with each other</h4>
 <div class="paragraph">
@@ -412,7 +413,7 @@ The <code>.pptx</code> files used to create diagrams in this document can be fou
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/SDforDeleteSlot.png" alt="SDforDeleteSlot" width="800">
+<img src="images/SDforDeleteSlot.png" alt="SDforDeleteSlot" width="100%">
 </div>
 <div class="title">Figure 3. Component interactions for <code>delete 1</code> command</div>
 </div>
@@ -429,10 +430,15 @@ The <code>.pptx</code> files used to create diagrams in this document can be fou
 <div class="title">Figure 4. Structure of the UI Component</div>
 </div>
 <div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/CS2113-AY1819S2-T08-3/main/src/main/planmysem/ui/Gui.java"><code>Gui.java</code></a></p>
+<p><strong>API</strong> : <a href="https://github.com/CS2113-AY1819S2-T08-3/main/tree/master/src/main/PlanMySem/ui/Ui.java"><code>Ui.java</code></a></p>
 </div>
 <div class="paragraph">
-<p>The UI consists of a <code>MainWindow</code> that is made up of parts e.g.<code>commandInput</code>, <code>outputConsole</code> etc.</p>
+<p>The UI consists of a <code>MainWindow</code> that is made up of just <code>commandInput</code> and <code>outputConsole</code>.
+This application is mainly a text-based application, hence here are not much componenets here.</p>
+</div>
+<div class="paragraph">
+<p>The <code>UI</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files that are in the <code>src/main/resources/view</code> folder.
+For example, the layout of the <a href="https://github.com/CS2113-AY1819S2-T08-3/main/tree/master/src/main/java/seedu/address/ui/MainWindow.java"><code>MainWindow</code></a> is specified in <a href="https://github.com/CS2113-AY1819S2-T08-3/main/tree/master/src/main/resources/view/MainWindow.fxml"><code>MainWindow.fxml</code></a></p>
 </div>
 <div class="paragraph">
 <p>The <code>UI</code> component,</p>
@@ -443,7 +449,7 @@ The <code>.pptx</code> files used to create diagrams in this document can be fou
 <p>Executes user commands read from <code>commandInput</code>, using the <code>Logic</code> component.</p>
 </li>
 <li>
-<p>Displays <code>commandResult</code> to the user via the <code>outputConsole</code>.</p>
+<p>Displays <code>commandResult</code> to the user via <code>outputConsole</code>.</p>
 </li>
 </ul>
 </div>
@@ -458,7 +464,7 @@ The <code>.pptx</code> files used to create diagrams in this document can be fou
 </div>
 <div class="paragraph">
 <p><strong>API</strong> :
-<a href="https://github.com/CS2113-AY1819S2-T08-3/main/src/main/java/plamysem/logic/Logic.java"><code>Logic.java</code></a></p>
+<a href="https://github.com/CS2113-AY1819S2-T08-3/main/tree/master/src/main/java/plamysem/logicManager/Logic.java"><code>Logic.java</code></a></p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -490,17 +496,20 @@ The <code>.pptx</code> files used to create diagrams in this document can be fou
 </div>
 </div>
 <div class="sect2">
-<h3 id="Design-Data"><a class="link" href="#Design-Data">2.4. Data component</a></h3>
+<h3 id="Design-Model"><a class="link" href="#Design-Model">2.4. Model component</a></h3>
 <div class="imageblock">
 <div class="content">
-<img src="images/DataClassDiagram.png" alt="DataClassDiagram" width="800">
+<img src="images/ModelClassDiagram.png" alt="ModelClassDiagram" width="400">
 </div>
-<div class="title">Figure 7. Overall structure of the Data Component</div>
+<div class="title">Figure 7. Overall structure of the Model Component</div>
+</div>
+<div class="paragraph">
+<p><strong>API</strong> : <a href="https://github.com/CS2113-AY1819S2-T08-3/main/tree/master/src/PlanMySem/model/Model.java"><code>Model.java</code></a></p>
 </div>
 <div class="sect3">
 <h4 id="Design-Planner"><a class="link" href="#Design-Planner">2.4.1. Planner component</a></h4>
 <div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/CS2113-AY1819S2-T08-3/main/src/planmysem/data/Planner.java"><code>Planner.java</code></a></p>
+<p><strong>API</strong> : <a href="https://github.com/CS2113-AY1819S2-T08-3/main/tree/master/src/PlanMySem/model/Planner.java"><code>Planner.java</code></a></p>
 </div>
 <div class="paragraph">
 <p>The <code>Planner</code> component,</p>
@@ -522,7 +531,7 @@ The <code>.pptx</code> files used to create diagrams in this document can be fou
 <div class="sect3">
 <h4 id="Design-Semester"><a class="link" href="#Design-Semester">2.4.2. Semester component</a></h4>
 <div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/CS2113-AY1819S2-T08-3/main/src/planmysem/data/semester/Semester.java"><code>Semester.java</code></a></p>
+<p><strong>API</strong> : <a href="https://github.com/CS2113-AY1819S2-T08-3/main/tree/master/src/PlanMySem/model/semester/Semester.java"><code>Semester.java</code></a></p>
 </div>
 <div class="paragraph">
 <p>The <code>Semester</code> component,</p>
@@ -544,7 +553,7 @@ The <code>.pptx</code> files used to create diagrams in this document can be fou
 <div class="sect3">
 <h4 id="Design-Slot"><a class="link" href="#Design-Slot">2.4.3. Slot component</a></h4>
 <div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/CS2113-AY1819S2-T08-3/main/src/planmysem/data/slot/Slot.java"><code>Slot.java</code></a></p>
+<p><strong>API</strong> : <a href="https://github.com/CS2113-AY1819S2-T08-3/main/tree/master/src/PlanMySem/model/slot/Slot.java"><code>Slot.java</code></a></p>
 </div>
 <div class="paragraph">
 <p>The <code>Slot</code> component,</p>
@@ -584,12 +593,12 @@ Notice how <code>Slot</code> does not hold it&#8217;s end time but rather it hol
 <h3 id="Design-Storage"><a class="link" href="#Design-Storage">2.5. Storage component</a></h3>
 <div class="imageblock">
 <div class="content">
-<img src="images/StorageClassDiagram.png" alt="StorageClassDiagram" width="800">
+<img src="images/StorageClassDiagram.png" alt="StorageClassDiagram" width="400">
 </div>
 <div class="title">Figure 8. Structure of the Storage Component</div>
 </div>
 <div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/CS2113-AY1819S2-T08-3/main/src/planmysem/storage/Storage.java"><code>Storage.java</code></a></p>
+<p><strong>API</strong> : <a href="https://github.com/CS2113-AY1819S2-T08-3/main/tree/master/src/PlanMySem/storageFile/Storage.java"><code>Storage.java</code></a></p>
 </div>
 <div class="paragraph">
 <p>The <code>Storage</code> component,</p>
@@ -608,7 +617,7 @@ Notice how <code>Slot</code> does not hold it&#8217;s end time but rather it hol
 <div class="sect2">
 <h3 id="Design-Common"><a class="link" href="#Design-Common">2.6. Common classes</a></h3>
 <div class="paragraph">
-<p>Classes used by multiple components are in the <code>planmysem.common</code> package.</p>
+<p>Classes used by multiple components are in the <code>PlanMySem.common</code> package.</p>
 </div>
 </div>
 </div>
@@ -622,13 +631,13 @@ Notice how <code>Slot</code> does not hold it&#8217;s end time but rather it hol
 <div class="sect2">
 <h3 id="initialization-of-the-planner-and-it-s-semester"><a class="link" href="#initialization-of-the-planner-and-it-s-semester">3.1. Initialization of the Planner and it&#8217;s Semester</a></h3>
 <div class="paragraph">
-<p>The <code>Planner</code> and it&#8217;s <code>Semester</code> has to be initialized for <em>PlanMySem</em> to work as all other features of <em>PlanMySem</em> would
+<p>The <code>Planner</code> and it&#8217;s <code>Semester</code> has to be initialized for <strong>PlanMySem</strong> to work as all other features of <strong>PlanMySem</strong> would
 interact with this <code>Semester</code> object.</p>
 </div>
 <div class="sect3">
 <h4 id="current-implementation"><a class="link" href="#current-implementation">3.1.1. Current Implementation</a></h4>
 <div class="paragraph">
-<p>Upon launching <em>PlanMySem</em>, the initialization of the <code>Planner</code> and it&#8217;s <code>Semester</code> would be implemented via two steps:</p>
+<p>Upon launching <strong>PlanMySem</strong>, the initialization of the <code>Planner</code> and it&#8217;s <code>Semester</code> would be implemented via two steps:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -969,7 +978,7 @@ Table 1 shows an example of the relation between academic week and the week of t
 </div>
 </div>
 <div class="sect2">
-<h3 id="reinventing-the-parser-command-format-and-structure"><a class="link" href="#reinventing-the-parser-command-format-and-structure">3.2. Reinventing the Parser / Command Format and Structure</a></h3>
+<h3 id="parser-command-format-and-structure"><a class="link" href="#parser-command-format-and-structure">3.2. Parser / Command Format and Structure</a></h3>
 <div class="paragraph">
 <p>Due to the flexibility and huge variation of the envisioned command format and structures, it was decided that it was more appropriate to create a new Parser
 instead of relying on the existing regex implementation in AB3 for heavy parsing.</p>
@@ -998,7 +1007,7 @@ Arguments are then parsed via 2 different methods/techniques according to the fo
 </ul>
 </div>
 <div class="paragraph">
-<p>Hence, parameters in PlanMySem can be categorised into 2 categories:</p>
+<p>Hence, parameters in <strong>PlanMySem</strong> can be categorised into 2 categories:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -1037,7 +1046,7 @@ The function returns a <code>Hashmap</code> data structure, specifically <code>H
 <h5 id="parsing-keywords"><a class="link" href="#parsing-keywords">Parsing Keywords</a></h5>
 <div class="paragraph">
 <p>Here, keywords are thought of as parameters that are not prepended.
-In PlanMySem, keywords are utilized in command structures when they are to be used alone or when order of parameters are important.
+In <strong>PlanMySem</strong>, keywords are utilized in command structures when they are to be used alone or when order of parameters are important.
 In such cases, there is no logical need for prepending as the meaning of these parameters can be identified.</p>
 </div>
 <div class="paragraph">
@@ -1232,9 +1241,13 @@ Additionally, the <code>Add</code> command also allows users to input <em>tags</
 </div>
 </div>
 <div class="sect2">
-<h3 id="find-feature"><a class="link" href="#find-feature">3.4. Find feature</a></h3>
+<h3 id="list-feature"><a class="link" href="#list-feature">3.4. List feature</a></h3>
+
+</div>
+<div class="sect2">
+<h3 id="find-feature"><a class="link" href="#find-feature">3.5. Find feature</a></h3>
 <div class="sect3">
-<h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">3.4.1. Current Implementation</a></h4>
+<h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">3.5.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The find function supports searching using a single keyword.<br>
 If some part of the name of <code>Slot</code> / tags attributed to <code>Slot</code> contains the specified keyword,
@@ -1246,7 +1259,7 @@ Examples:<br>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">3.4.2. Design Considerations</a></h4>
+<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">3.5.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-what-constitutes-a-positive-search-result-in-code-find-code-command"><a class="link" href="#aspect-what-constitutes-a-positive-search-result-in-code-find-code-command">Aspect: What constitutes a positive search result in <code>find</code> command</a></h5>
 <div class="ulist">
@@ -1295,7 +1308,7 @@ Examples:<br>
 </div>
 </div>
 <div class="sect3">
-<h4 id="future-implementation-3"><a class="link" href="#future-implementation-3">3.4.3. Future Implementation</a></h4>
+<h4 id="future-implementation-3"><a class="link" href="#future-implementation-3">3.5.3. Future Implementation</a></h4>
 <div class="paragraph">
 <p>The find function will be revamped to support search guessing.<br>
 FindCommand will be enhanced by using Levenshtein Distance to generate an ordered set of <code>Slot</code> attributes ordered by similarity.</p>
@@ -1303,9 +1316,9 @@ FindCommand will be enhanced by using Levenshtein Distance to generate an ordere
 </div>
 </div>
 <div class="sect2">
-<h3 id="view-month-week-day-feature"><a class="link" href="#view-month-week-day-feature">3.5. View Month/Week/Day feature</a></h3>
+<h3 id="view-month-week-day-feature"><a class="link" href="#view-month-week-day-feature">3.6. View Month/Week/Day feature</a></h3>
 <div class="sect3">
-<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">3.5.1. Design Considerations</a></h4>
+<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">3.6.1. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-a-type-of-view-is-initialised-or-updated"><a class="link" href="#aspect-how-a-type-of-view-is-initialised-or-updated">Aspect: How a type of view is initialised or updated</a></h5>
 <div class="ulist">
@@ -1338,7 +1351,7 @@ FindCommand will be enhanced by using Levenshtein Distance to generate an ordere
 </div>
 </div>
 <div class="sect3">
-<h4 id="future-implementation-4"><a class="link" href="#future-implementation-4">3.5.2. Future Implementation</a></h4>
+<h4 id="future-implementation-4"><a class="link" href="#future-implementation-4">3.6.2. Future Implementation</a></h4>
 <div class="paragraph">
 <p>The month/week/day view mechanism is facilitated by <code>PlannerView</code>.
 It extends <code>Planner</code> with different calendar views, stored internally as <code>monthView</code>, <code>weekView</code> and <code>dayView</code>.
@@ -1372,9 +1385,9 @@ Additionally, it implements the following operations:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">3.6. Undo/Redo feature</a></h3>
+<h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">3.7. Undo/Redo feature</a></h3>
 <div class="sect3">
-<h4 id="current-implementation-5"><a class="link" href="#current-implementation-5">3.6.1. Current Implementation</a></h4>
+<h4 id="current-implementation-5"><a class="link" href="#current-implementation-5">3.7.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The undo/redo mechanism is facilitated by <code>VersionedPlanner</code>.
 It extends <code>Planner</code> with an undo/redo history, stored internally as an <code>plannerStateList</code> and <code>currentStatePointer</code>.
@@ -1458,7 +1471,7 @@ If the <code>currentStatePointer</code> is at index <code>plannerStateList.size(
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-6"><a class="link" href="#design-considerations-6">3.6.2. Design Considerations</a></h4>
+<h4 id="design-considerations-6"><a class="link" href="#design-considerations-6">3.7.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-undo-redo-executes"><a class="link" href="#aspect-how-undo-redo-executes">Aspect: How undo &amp; redo executes</a></h5>
 <div class="ulist">
@@ -1528,9 +1541,9 @@ If the <code>currentStatePointer</code> is at index <code>plannerStateList.size(
 </div>
 </div>
 <div class="sect2">
-<h3 id="data-encryption-decription-feature"><a class="link" href="#data-encryption-decription-feature">3.7. Data Encryption / Decription feature</a></h3>
+<h3 id="data-encryption-decryption-feature"><a class="link" href="#data-encryption-decryption-feature">3.8. Data Encryption / Decryption feature</a></h3>
 <div class="paragraph">
-<p>The storage file "PlanMySem.txt" is encrypted to prevent easy access of the user&#8217;s calendar.
+<p>The storageFile file "PlanMySem.txt" is encrypted to prevent easy access of the user&#8217;s calendar.
 We are encrypting and decrypting the data using the Java Cypher class.
 This feature is implemented through creating a Encryptor that contains encrypt and decrypt methods. The encrypt method takes a String object as an argument and returns a encrypted String object. The decrypt method takes in a String object as an argument and returns the decrypted message as a String object.</p>
 </div>
@@ -1541,15 +1554,15 @@ This feature is implemented through creating a Encryptor that contains encrypt a
 <p>A initialization vector (IV) is required for the Cipher Block Chain (CBC) mode of encryption. A random IV is generated and appended at the beginning of the data before being stored. The IV is then retrieved from the same file to decrypt the data.</p>
 </div>
 <div class="paragraph">
-<p>Encryption of the data is done automatically before the file is saved. In the implmentation, the AdaptedPlanner object is first marshalled into a StringWriter before being encrypted and written into the file. This is to ensure that the data is JAXB formatted and the save algorithm is unaffected.
-Similarly, decryption of the data is done automatically before it is loaded. In the implementation, the file is read and decrypted and parsed into a StringReader object. The StringReader object is then unmarshalled and loaded. This is to ensure that the file is converted back into a JAXB object before being loaded and the load algorithm is unaffected.</p>
+<p>Encryption of the data is done automatically before the file is saved. In the implementation, the AdaptedPlanner object is first marshaled into a StringWriter before being encrypted and written into the file. This is to ensure that the data is JAXB formatted and the save algorithm is unaffected.
+Similarly, decryption of the data is done automatically before it is loaded. In the implementation, the file is read and decrypted and parsed into a StringReader object. The StringReader object is then un-marshaled and loaded. This is to ensure that the file is converted back into a JAXB object before being loaded and the load algorithm is unaffected.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="data-exporting-exporting-feature"><a class="link" href="#data-exporting-exporting-feature">3.8. Data Exporting / Exporting feature</a></h3>
+<h3 id="data-exporting-exporting-feature"><a class="link" href="#data-exporting-exporting-feature">3.9. Data Exporting / Exporting feature</a></h3>
 <div class="paragraph">
 <p>The user can export the current planner into a .ics file to use in external calendar applications. The .ics file will contain the names of the slots in the SUMMARY field and the descriptions in the DESCRIPTION field. This command automatically exports into the main directory and names the file “PlanMySem.ics”. Future updates can include user input to allow saving the file in another directory and naming the file.
-We have chosen to use the iCalendar format due to its popularity and it’s use in applications such as Google Calendar, Microsoft Outlook and Nusmods.</p>
+We have chosen to use the iCalendar format due to its popularity and it’s use in applications such as Google Calendar, Microsoft Outlook and NUSmods.</p>
 </div>
 <div class="paragraph">
 <p>In our implementation, we have chosen not to export the tags into the .ics file. This is because iCalendar does not have in-built tag fields. This means that other other applications that import .ics will not be able to use the tags.</p>
@@ -1569,7 +1582,7 @@ We have chosen to use the iCalendar format due to its popularity and it’s use 
 <p>Cons: Not all the information about the slots will be retained.</p>
 </li>
 <li>
-<p>Reason for choice: We do not have much control over other applications, and importing and exporting .ics within PlanMySem can be done using the storage .txt file.</p>
+<p>Reason for choice: We do not have much control over other applications, and importing and exporting .ics within <strong>PlanMySem</strong> can be done using the storageFile .txt file.</p>
 </li>
 </ul>
 </div>
@@ -1592,7 +1605,7 @@ We have chosen to use the iCalendar format due to its popularity and it’s use 
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.9. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.10. Configuration</a></h3>
 
 </div>
 </div>
@@ -1662,7 +1675,7 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <div class="sect2">
 <h3 id="Docs-SiteWideDocSettings"><a class="link" href="#Docs-SiteWideDocSettings">4.4. Site-wide Documentation Settings</a></h3>
 <div class="paragraph">
-<p>The <a href="https://github.com/CS2113-AY1819S2-T08-3/main/build.gradle"><code>build.gradle</code></a> file specifies some project-specific <a href="https://asciidoctor.org/docs/user-manual/#attributes">asciidoc attributes</a> which affects how all documentation files within this project are rendered.</p>
+<p>The <a href="https://github.com/CS2113-AY1819S2-T08-3/main/tree/master/build.gradle"><code>build.gradle</code></a> file specifies some project-specific <a href="https://asciidoctor.org/docs/user-manual/#attributes">asciidoc attributes</a> which affects how all documentation files within this project are rendered.</p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -1778,11 +1791,11 @@ One of: <code>UserGuide</code>, <code>DeveloperGuide</code>, <code>LearningOutco
 <div class="sect2">
 <h3 id="site-template"><a class="link" href="#site-template">4.6. Site Template</a></h3>
 <div class="paragraph">
-<p>The files in <a href="https://github.com/CS2113-AY1819S2-T08-3/main/docs/stylesheets"><code>docs/stylesheets</code></a> are the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS">CSS stylesheets</a> of the site.
+<p>The files in <a href="https://github.com/CS2113-AY1819S2-T08-3/main/tree/master/docs/stylesheets"><code>docs/stylesheets</code></a> are the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS">CSS stylesheets</a> of the site.
 You can modify them to change some properties of the site&#8217;s design.</p>
 </div>
 <div class="paragraph">
-<p>The files in <a href="https://github.com/CS2113-AY1819S2-T08-3/main/docs/templates"><code>docs/templates</code></a> controls the rendering of <code>.adoc</code> files into HTML5.
+<p>The files in <a href="https://github.com/CS2113-AY1819S2-T08-3/main/tree/master/docs/templates"><code>docs/templates</code></a> controls the rendering of <code>.adoc</code> files into HTML5.
 These template files are written in a mixture of <a href="https://www.ruby-lang.org">Ruby</a> and <a href="http://slim-lang.com">Slim</a>.</p>
 </div>
 <div class="admonitionblock warning">
@@ -1793,7 +1806,7 @@ These template files are written in a mixture of <a href="https://www.ruby-lang.
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Modifying the template files in <a href="https://github.com/CS2113-AY1819S2-T08-3/main/docs/templates"><code>docs/templates</code></a> requires some knowledge and experience with Ruby and Asciidoctor&#8217;s API.
+<p>Modifying the template files in <a href="https://github.com/CS2113-AY1819S2-T08-3/main/tree/master/docs/templates"><code>docs/templates</code></a> requires some knowledge and experience with Ruby and Asciidoctor&#8217;s API.
 You should only modify them if you need greater control over the site&#8217;s layout than what stylesheets can provide.
 The SE-EDU team does not provide support for modified template files.</p>
 </div>
@@ -1874,23 +1887,16 @@ See <a href="UsingGradle.html">UsingGradle.adoc</a> for more info on how to run 
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p><strong>Non-GUI Tests</strong> - These are tests not involving the GUI. They include,</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
 <p><em>Unit tests</em> targeting the lowest level methods/classes.<br>
-e.g. <code>planmysem.commons.UtilTest</code></p>
+e.g. <code>PlanMySem.commons.UtilTest</code></p>
 </li>
 <li>
 <p><em>Integration tests</em> that are checking the integration of multiple code units (those code units are assumed to be working).<br>
-e.g. <code>planmysem.storage.StorageManagerTest</code></p>
+e.g. <code>PlanMySem.storageFile.StorageManagerTest</code></p>
 </li>
 <li>
 <p>Hybrids of unit and integration tests. These test are checking multiple code units as well as how the are connected together.<br>
-e.g. <code>planmysem.logic.LogicTest</code>, <code>planmysem.parse,ParserTest</code></p>
-</li>
-</ol>
-</div>
+e.g. <code>PlanMySem.logicManager.LogicTest</code>, <code>PlanMySem.parse,ParserTest</code></p>
 </li>
 </ol>
 </div>
@@ -1948,7 +1954,7 @@ e.g. <code>planmysem.logic.LogicTest</code>, <code>planmysem.parse,ParserTest</c
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Update the version number in <a href="https://github.com/CS2113-AY1819S2-T08-3/main/src/planmysem/Main.java"><code>Main.java</code></a>.</p>
+<p>Update the version number in <a href="https://github.com/CS2113-AY1819S2-T08-3/main/tree/master/src/PlanMySem/Main.java"><code>Main.java</code></a>.</p>
 </li>
 <li>
 <p>Generate a JAR file <a href="UsingGradle.html#creating-the-jar-file">using Gradle</a>.</p>
@@ -2551,13 +2557,13 @@ e.g. <code>planmysem.logic.LogicTest</code>, <code>planmysem.parse,ParserTest</c
 <p>A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.</p>
 </li>
 <li>
-<p>The system should respond relatively quickly to user commands so as to not make the user wait around; this is an advantage of using PlanMySem.</p>
+<p>The system should respond relatively quickly to user commands so as to not make the user wait around; this is an advantage of using <strong>PlanMySem</strong>.</p>
 </li>
 <li>
 <p>The system should take up relatively little space on the local machine so as to cater to all students and OS.</p>
 </li>
 <li>
-<p>The system should be easy to use, intuitive and simple, such that any student regardless of past experience with calendar/scheduling softwares is able to use it.</p>
+<p>The system should be easy to use, intuitive and simple, such that any student regardless of past experience with calendar/scheduling software is able to use it.</p>
 </li>
 <li>
 <p>The system should be flexible to allow all kinds of schedules that target users might have.</p>
@@ -2728,4 +2734,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-26 00:23:03 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-28 20:35:34 UTC</div></div></div></body></html>
