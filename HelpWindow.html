@@ -719,7 +719,7 @@ Find all <em>slots</em> whose name contains <code>CS</code> (eg. CS2101, CS2113T
 <ol class="arabic">
 <li>
 <p>View the monthly calendar view of the current academic semester.<br>
-Format: <code>view month [MONTH]</code></p>
+Format: <code>view month</code></p>
 </li>
 <li>
 <p>View the weekly calendar view of the current academic week.<br>
@@ -727,7 +727,7 @@ Format: <code>view week [WEEK]</code></p>
 </li>
 <li>
 <p>View the day view of a particular day in the academic semester.<br>
-Format: <code>view day [DATE]</code></p>
+Format: <code>view day [DATE_OR_DAY_OF_WEEK]</code></p>
 </li>
 <li>
 <p>View all the details in the planner.<br>
@@ -742,8 +742,8 @@ Format: <code>view all</code></p>
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-You may omit <code>[MONTH]</code>/<code>[WEEK]</code>/<code>[DATE]</code> to view the format chosen in respect to the current day!<br>
-E.g. <code>view month</code> will allow you to view the current month and <code>view day</code> will allow you to view the current day!
+You may omit <code>[WEEK]</code>/<code>[DATE_OR_DAY_OF_WEEK]</code> to view the calendar with respect to the current date!<br>
+E.g. <code>view week</code> will allow you to view the current week and <code>view day</code> will allow you to view the current day!
 </td>
 </tr>
 </table>
@@ -758,8 +758,12 @@ E.g. <code>view month</code> will allow you to view the current month and <code>
 View planner for the current date.</p>
 </li>
 <li>
-<p><code>view day 01/03/2019</code><br>
+<p><code>view day 01-03-2019</code><br>
 View planner for the first of March.</p>
+</li>
+<li>
+<p><code>view day monday</code><br>
+View planner for the upcoming Monday.</p>
 </li>
 <li>
 <p><code>view week 7</code><br>
@@ -1197,4 +1201,4 @@ There is no need to save manually.
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-28 20:35:34 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-30 17:15:41 UTC</div></div></div></body></html>
