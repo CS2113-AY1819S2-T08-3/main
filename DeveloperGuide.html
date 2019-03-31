@@ -1331,11 +1331,7 @@ it is not necessary to handle invalid values with the innate <code>Model</code> 
 <div class="paragraph">
 <p>The find function supports searching using a single keyword.<br>
 If some part of the name of <code>Slot</code> / tags attributed to <code>Slot</code> contains the specified keyword,
-a positive match is registered and the designated <code>Slot</code> will be added to the output list.<br>
-Examples:<br>
-<code>find n/CS</code><br>
-<code>CS2101</code>, <code>CS2113T</code>, <code>SOCSMeet</code> are considered positive matches.<br>
-<code>ST2334</code>, <code>Hockey</code>, <code>Lunch</code> are NOT considered positive matches.<br></p>
+a positive match is registered and the designated <code>Slot</code> will be added to the output list.<br></p>
 </div>
 </div>
 <div class="sect3">
@@ -1358,11 +1354,11 @@ Examples:<br>
 </div>
 </li>
 <li>
-<p><strong>Alternative 2 (current choice):</strong> Positive search result as long as name/tag contains the keyword.</p>
+<p><strong>Alternative 2:</strong> Positive search result as long as name/tag contains the keyword.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Searches can now consider names/tags similar to the keyword.</p>
+<p>Pros: Searches will detect names/tags similar to the keyword.</p>
 </li>
 <li>
 <p>Cons: Output list will be longer. May become excessively long if short keyword is provided.</p>
@@ -1371,11 +1367,11 @@ Examples:<br>
 </div>
 </li>
 <li>
-<p><strong>Alternative 3 (future implementation):</strong> Store the search results in a <code>treeMap</code> ordered by their Levenshtein distances from the search keyword</p>
+<p><strong>Alternative 3 (current implementation):</strong> Store the search results in a <code>PriorityQueue</code> ordered by their <a href="#levenshtein-distance">Levenshtein distances</a> from the search keyword.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Will also consider searches that are similar to what we want and will account for typos or incomplete keywords</p>
+<p>Pros: Will also consider searches that are similar to the desired name/tag and will account for a typo or an incomplete keyword</p>
 </li>
 <li>
 <p>Cons: Added complexities in finding and searching.</p>
@@ -1385,13 +1381,6 @@ Examples:<br>
 </li>
 </ul>
 </div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="future-implementation-3"><a class="link" href="#future-implementation-3">3.5.3. Future Implementation</a></h4>
-<div class="paragraph">
-<p>The find function will be revamped to support search guessing.<br>
-FindCommand will be enhanced by using Levenshtein Distance to generate an ordered set of <code>Slot</code> attributes ordered by similarity.</p>
 </div>
 </div>
 </div>
@@ -1431,7 +1420,7 @@ FindCommand will be enhanced by using Levenshtein Distance to generate an ordere
 </div>
 </div>
 <div class="sect3">
-<h4 id="future-implementation-4"><a class="link" href="#future-implementation-4">3.6.2. Future Implementation</a></h4>
+<h4 id="future-implementation-3"><a class="link" href="#future-implementation-3">3.6.2. Future Implementation</a></h4>
 <div class="paragraph">
 <p>The month/week/day view mechanism is facilitated by <code>PlannerView</code>.
 It extends <code>Planner</code> with different calendar views, stored internally as <code>monthView</code>, <code>weekView</code> and <code>dayView</code>.
@@ -2863,6 +2852,12 @@ e.g. <code>PlanMySem.logicManager.LogicTest</code>, <code>PlanMySem.parse,Parser
 <dd>
 <p>Windows, Linux, Unix, OS-X</p>
 </dd>
+<dt class="hdlist1"><a id="levenshtein-distance"></a> Levenshtein Distance</dt>
+<dd>
+<p>The Levenshtein distance is a string metric for measuring difference between two sequences.<br>
+Informally, the Levenshtein distance between two words is the minimum number of single-character edits (i.e. insertions, deletions or substitutions)
+required to change one word into the other.</p>
+</dd>
 </dl>
 </div>
 </div>
@@ -3013,4 +3008,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-31 16:10:19 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-31 16:21:48 UTC</div></div></div></body></html>
