@@ -83,12 +83,11 @@
 </li>
 <li><a href="#non-functional-requirements">Appendix D: Non Functional Requirements</a></li>
 <li><a href="#glossary">Appendix E: Glossary</a></li>
-<li><a href="#product-survey">Appendix F: Product Survey</a></li>
-<li><a href="#instructions-for-manual-testing">Appendix G: Instructions for Manual Testing</a>
+<li><a href="#instructions-for-manual-testing">Appendix F: Instructions for Manual Testing</a>
 <ul class="sectlevel2">
-<li><a href="#launch-and-shutdown">G.1. Launch and Shutdown</a></li>
-<li><a href="#deleting-a-slot">G.2. Deleting a slot</a></li>
-<li><a href="#saving-data">G.3. Saving data</a></li>
+<li><a href="#launch-and-shutdown">F.1. Launch and Shutdown</a></li>
+<li><a href="#deleting-a-slot">F.2. Deleting a slot</a></li>
+<li><a href="#saving-data">F.3. Saving data</a></li>
 </ul>
 </li>
 </ul>
@@ -1279,7 +1278,7 @@ it is not necessary to handle invalid values with the innate <code>Model</code> 
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Use of <code>Map</code>, such as <code>HashMap</code> to store <code>Days</code> that store <code>Slots</code>.</p>
+<p><strong>Alternative 1 (current implementation):</strong> Use of <code>Map</code>, such as <code>HashMap</code> to store <code>Days</code> that store <code>Slots</code>.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -1322,16 +1321,34 @@ it is not necessary to handle invalid values with the innate <code>Model</code> 
 </div>
 <div class="sect2">
 <h3 id="list-feature"><a class="link" href="#list-feature">3.4. List feature</a></h3>
-
+<div class="sect3">
+<h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">3.4.1. Current Implementation</a></h4>
+<div class="paragraph">
+<p>The list function supports searching using a single keyword.<br></p>
+</div>
+<div class="paragraph">
+<p>The keyword is compared to all names/tags of all <code>Slots</code> existing in <code>Planner</code>.<br></p>
+</div>
+<div class="paragraph">
+<p>If an exact match is found, the <code>Slot</code> will be added to the output list.</p>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="find-feature"><a class="link" href="#find-feature">3.5. Find feature</a></h3>
 <div class="sect3">
-<h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">3.5.1. Current Implementation</a></h4>
+<h4 id="current-implementation-5"><a class="link" href="#current-implementation-5">3.5.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The find function supports searching using a single keyword.<br>
-If some part of the name of <code>Slot</code> / tags attributed to <code>Slot</code> contains the specified keyword,
-a positive match is registered and the designated <code>Slot</code> will be added to the output list.<br></p>
+All existing <code>Slots</code> are weighted based on their name/tag&#8217;s <a href="#levenshtein-distance">Levenshtein Distance</a> from the keyword.</p>
+</div>
+<div class="paragraph">
+<p>A low <a href="#levenshtein-distance">Levenshtein Distance</a> is attributed to a high level of similarity between the name/tag and the keyword.
+(A value of 0 constitutes an exact match.)</p>
+</div>
+<div class="paragraph">
+<p>The weighted <code>Slots</code> are inserted into a <code>PriorityQueue</code> and the closest matching <code>Slots</code>
+will be polled into the output list.<br></p>
 </div>
 </div>
 <div class="sect3">
@@ -1456,33 +1473,47 @@ Additionally, it implements the following operations:</p>
 <div class="sect2">
 <h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">3.7. Undo/Redo feature</a></h3>
 <div class="sect3">
-<h4 id="current-implementation-5"><a class="link" href="#current-implementation-5">3.7.1. Current Implementation</a></h4>
+<h4 id="current-implementation-6"><a class="link" href="#current-implementation-6">3.7.1. Current Implementation</a></h4>
 <div class="paragraph">
-<p>The undo/redo mechanism is facilitated by <code>VersionedAddressBook</code>.
-It extends <code>AddressBook</code> with an undo/redo history, stored internally as an <code>addressBookStateList</code> and <code>currentStatePointer</code>.
+<p>The undo/redo mechanism is facilitated by <code>VersionedPlanner</code>.<br></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Only <code>Add</code>, <code>Edit</code> and <code>Delete</code> commands can be undone/redone.<br>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>It extends <code>Planner</code> with an undo/redo history, stored internally as an <code>plannerStateList</code> and <code>currentStatePointer</code>.
 Additionally, it implements the following operations:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>VersionedAddressBook#commit()</code>&#8201;&#8212;&#8201;Saves the current address book state in its history.</p>
+<p><code>VersionedPlanner#commit()</code>&#8201;&#8212;&#8201;Saves the current planner state in its history.</p>
 </li>
 <li>
-<p><code>VersionedAddressBook#undo()</code>&#8201;&#8212;&#8201;Restores the previous address book state from its history.</p>
+<p><code>VersionedPlanner#undo()</code>&#8201;&#8212;&#8201;Restores the previous planner state from its history.</p>
 </li>
 <li>
-<p><code>VersionedAddressBook#redo()</code>&#8201;&#8212;&#8201;Restores a previously undone address book state from its history.</p>
+<p><code>VersionedPlanner#redo()</code>&#8201;&#8212;&#8201;Restores a previously undone planner state from its history.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>These operations are exposed in the <code>Model</code> interface as <code>Model#commitAddressBook()</code>, <code>Model#undoAddressBook()</code> and <code>Model#redoAddressBook()</code> respectively.</p>
+<p>These operations are exposed in the <code>Model</code> interface as <code>Model#commitPlanner()</code>, <code>Model#undoPlanner()</code> and <code>Model#redoPlanner()</code> respectively.</p>
 </div>
 <div class="paragraph">
 <p>Given below is an example usage scenario and how the undo/redo mechanism behaves at each step.</p>
 </div>
 <div class="paragraph">
-<p>Step 1. The user launches the application for the first time. The <code>VersionedAddressBook</code> will be initialized with the initial address book state, and the <code>currentStatePointer</code> pointing to that single address book state.</p>
+<p>Step 1. The user launches the application for the first time. The <code>VersionedPlanner</code> will be initialized with the initial planner state, and the <code>currentStatePointer</code> pointing to that single planner state.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -1490,7 +1521,7 @@ Additionally, it implements the following operations:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Step 2. The user executes <code>delete 5</code> command to delete the 5th person in the address book. The <code>delete</code> command calls <code>Model#commitAddressBook()</code>, causing the modified state of the address book after the <code>delete 5</code> command executes to be saved in the <code>addressBookStateList</code>, and the <code>currentStatePointer</code> is shifted to the newly inserted address book state.</p>
+<p>Step 2. The user executes <code>delete 5</code> command to delete the 5th <code>Slot</code> in the planner. The <code>delete</code> command calls <code>Model#commitPlanner()</code>, causing the modified state of the planner after the <code>delete 5</code> command executes to be saved in the <code>plannerStateList</code>, and the <code>currentStatePointer</code> is shifted to the newly inserted planner state.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -1498,7 +1529,7 @@ Additionally, it implements the following operations:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Step 3. The user executes <code>add n/David &#8230;&#8203;</code> to add a new person. The <code>add</code> command also calls <code>Model#commitAddressBook()</code>, causing another modified address book state to be saved into the <code>addressBookStateList</code>.</p>
+<p>Step 3. The user executes <code>add n/CS2113T &#8230;&#8203;</code> to add a new slot. The <code>add</code> command also calls <code>Model#commitPlanner()</code>, causing another modified planner state to be saved into the <code>plannerStateList</code>.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -1512,13 +1543,13 @@ Additionally, it implements the following operations:</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-If a command fails its execution, it will not call <code>Model#commitAddressBook()</code>, so the address book state will not be saved into the <code>addressBookStateList</code>.
+If a command fails its execution, it will not call <code>Model#commitPlanner()</code>, so the planner state will not be saved into the <code>plannerStateList</code>.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>Step 4. The user now decides that adding the person was a mistake, and decides to undo that action by executing the <code>undo</code> command. The <code>undo</code> command will call <code>Model#undoAddressBook()</code>, which will shift the <code>currentStatePointer</code> once to the left, pointing it to the previous address book state, and restores the address book to that state.</p>
+<p>Step 4. The user now decides that adding the <code>Slot</code> was a mistake, and decides to undo that action by executing the <code>undo</code> command. The <code>undo</code> command will call <code>Model#undo()</code>, which will shift the <code>currentStatePointer</code> once to the left, pointing it to the previous planner state, and restores the planner to that state.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -1532,7 +1563,7 @@ If a command fails its execution, it will not call <code>Model#commitAddressBook
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-If the <code>currentStatePointer</code> is at index 0, pointing to the initial address book state, then there are no previous address book states to restore. The <code>undo</code> command uses <code>Model#canUndoAddressBook()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the undo.
+If the <code>currentStatePointer</code> is at index 0, pointing to the initial planner state, then there are no previous planner states to restore. The <code>undo</code> command uses <code>Model#canUndo()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the undo.
 </td>
 </tr>
 </table>
@@ -1546,7 +1577,7 @@ If the <code>currentStatePointer</code> is at index 0, pointing to the initial a
 </div>
 </div>
 <div class="paragraph">
-<p>The <code>redo</code> command does the opposite&#8201;&#8212;&#8201;it calls <code>Model#redoAddressBook()</code>, which shifts the <code>currentStatePointer</code> once to the right, pointing to the previously undone state, and restores the address book to that state.</p>
+<p>The <code>redo</code> command does the opposite&#8201;&#8212;&#8201;it calls <code>Model#redoPlanner()</code>, which shifts the <code>currentStatePointer</code> once to the right, pointing to the previously undone state, and restores the planner to that state.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1555,13 +1586,13 @@ If the <code>currentStatePointer</code> is at index 0, pointing to the initial a
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-If the <code>currentStatePointer</code> is at index <code>addressBookStateList.size() - 1</code>, pointing to the latest address book state, then there are no undone address book states to restore. The <code>redo</code> command uses <code>Model#canRedoAddressBook()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
+If the <code>currentStatePointer</code> is at index <code>plannerStateList.size() - 1</code>, pointing to the latest planner state, then there are no undone planner states to restore. The <code>redo</code> command uses <code>Model#canRedo()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>Step 5. The user then decides to execute the command <code>list</code>. Commands that do not modify the address book, such as <code>list</code>, will usually not call <code>Model#commitAddressBook()</code>, <code>Model#undoAddressBook()</code> or <code>Model#redoAddressBook()</code>. Thus, the <code>addressBookStateList</code> remains unchanged.</p>
+<p>Step 5. The user then decides to execute the command <code>list</code>. Commands that do not modify the planner, such as <code>list</code>, will usually not call <code>Model#commitPlanner()</code>, <code>Model#undoPlanner()</code> or <code>Model#redoPlanner()</code>. Thus, the <code>plannerStateList</code> remains unchanged.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -1569,7 +1600,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="paragraph">
-<p>Step 6. The user executes <code>clear</code>, which calls <code>Model#commitAddressBook()</code>. Since the <code>currentStatePointer</code> is not pointing at the end of the <code>addressBookStateList</code>, all address book states after the <code>currentStatePointer</code> will be purged. We designed it this way because it no longer makes sense to redo the <code>add n/David &#8230;&#8203;</code> command. This is the behavior that most modern desktop applications follow.</p>
+<p>Step 6. The user executes <code>clear</code>, which calls <code>Model#commitPlanner()</code>. Since the <code>currentStatePointer</code> is not pointing at the end of the <code>plannerStateList</code>, all planner states after the <code>currentStatePointer</code> will be purged. We designed it this way because it no longer makes sense to redo the <code>add n/David &#8230;&#8203;</code> command. This is the behavior that most modern desktop applications follow.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -1592,7 +1623,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Saves the entire address book.</p>
+<p><strong>Alternative 1 (current choice):</strong> Saves the entire planner.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -1622,159 +1653,6 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 <div class="sect4">
 <h5 id="aspect-data-structure-to-support-the-undo-redo-commands"><a class="link" href="#aspect-data-structure-to-support-the-undo-redo-commands">Aspect: Data structure to support the undo/redo commands</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice):</strong> Use a list to store the history of address book states.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Easy for new Computer Science student undergraduates to understand, who are likely to be the new incoming developers of our project.</p>
-</li>
-<li>
-<p>Cons: Logic is duplicated twice. For example, when a new command is executed, we must remember to update both <code>HistoryManager</code> and <code>VersionedAddressBook</code>.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Use <code>HistoryManager</code> for undo/redo</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: We do not need to maintain a separate list, and just reuse what is already in the codebase.</p>
-</li>
-<li>
-<p>Cons: Requires dealing with commands that have already been undone: We must remember to skip these commands. Violates Single Responsibility Principle and Separation of Concerns as <code>HistoryManager</code> now needs to do two different things.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="current-implementation-6"><a class="link" href="#current-implementation-6">3.7.3. Current Implementation</a></h4>
-<div class="paragraph">
-<p>The undo/redo mechanism is facilitated by <code>VersionedPlanner</code>.
-It extends <code>Planner</code> with an undo/redo history, stored internally as an <code>plannerStateList</code> and <code>currentStatePointer</code>.
-Additionally, it implements the following operations:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>VersionedPlanner#commit()</code>&#8201;&#8212;&#8201;Saves the current planner state in its history.</p>
-</li>
-<li>
-<p><code>VersionedPlanner#undo()</code>&#8201;&#8212;&#8201;Restores the previous planner state from its history.</p>
-</li>
-<li>
-<p><code>VersionedPlanner#redo()</code>&#8201;&#8212;&#8201;Restores a previously undone planner state from its history.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>These operations are exposed in the <code>Model</code> interface as <code>Model#commitPlanner()</code>, <code>Model#undoPlanner()</code> and <code>Model#redoPlanner()</code> respectively.</p>
-</div>
-<div class="paragraph">
-<p>Given below is an example usage scenario and how the undo/redo mechanism behaves at each step.</p>
-</div>
-<div class="paragraph">
-<p>Step 1. The user launches the application for the first time. The <code>VersionedPlanner</code> will be initialized with the initial planner state, and the <code>currentStatePointer</code> pointing to that single planner state.</p>
-</div>
-<div class="paragraph">
-<p>Step 2. The user executes <code>delete 5</code> command to delete the 5th slot in the planner. The <code>delete</code> command calls <code>Model#commitPlanner()</code>, causing the modified state of the planner after the <code>delete 5</code> command executes to be saved in the <code>plannerStateList</code>, and the <code>currentStatePointer</code> is shifted to the newly inserted planner state.</p>
-</div>
-<div class="paragraph">
-<p>Step 3. The user executes <code>add n/CS2113T &#8230;&#8203;</code> to add a new slot. The <code>add</code> command also calls <code>Model#commitPlanner()</code>, causing another modified planner state to be saved into the <code>plannerStateList</code>.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If a command fails its execution, it will not call <code>Model#commitPlanner()</code>, so the planner state will not be saved into the <code>plannerStateList</code>.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Step 4. The user now decides that adding the slot was a mistake, and decides to undo that action by executing the <code>undo</code> command. The <code>undo</code> command will call <code>Model#undoPlanner()</code>, which will shift the <code>currentStatePointer</code> once to the left, pointing it to the previous planner state, and restores the planner to that state.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If the <code>currentStatePointer</code> is at index 0, pointing to the initial planner state, then there are no previous planner states to restore. The <code>undo</code> command uses <code>Model#canUndoPlanner()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the undo.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>The <code>redo</code> command does the opposite&#8201;&#8212;&#8201;it calls <code>Model#redoPlanner()</code>, which shifts the <code>currentStatePointer</code> once to the right, pointing to the previously undone state, and restores the planner to that state.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If the <code>currentStatePointer</code> is at index <code>plannerStateList.size() - 1</code>, pointing to the latest planner state, then there are no undone planner states to restore. The <code>redo</code> command uses <code>Model#canRedoPlanner()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Step 5. The user then decides to execute the command <code>list</code>. Commands that do not modify the planner, such as <code>list</code>, will usually not call <code>Model#commitPlanner()</code>, <code>Model#undoPlanner()</code> or <code>Model#redoPlanner()</code>. Thus, the <code>plannerStateList</code> remains unchanged.</p>
-</div>
-<div class="paragraph">
-<p>Step 6. The user executes <code>clear</code>, which calls <code>Model#commitPlanner()</code>. Since the <code>currentStatePointer</code> is not pointing at the end of the <code>plannerStateList</code>, all planner states after the <code>currentStatePointer</code> will be purged. We designed it this way because it no longer makes sense to redo the <code>add n/CS2113T &#8230;&#8203;</code> command. This is the behavior that most modern desktop applications follow.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="design-considerations-7"><a class="link" href="#design-considerations-7">3.7.4. Design Considerations</a></h4>
-<div class="sect4">
-<h5 id="aspect-how-undo-redo-executes-2"><a class="link" href="#aspect-how-undo-redo-executes-2">Aspect: How undo &amp; redo executes</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice):</strong> Saves the entire planner.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Easy to implement.</p>
-</li>
-<li>
-<p>Cons: May have performance issues in terms of memory usage.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Individual command knows how to undo/redo by itself.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Will use less memory (e.g. for <code>delete</code>, just save the slot being deleted).</p>
-</li>
-<li>
-<p>Cons: We must ensure that the implementation of each individual command are correct.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect4">
-<h5 id="aspect-data-structure-to-support-the-undo-redo-commands-2"><a class="link" href="#aspect-data-structure-to-support-the-undo-redo-commands-2">Aspect: Data structure to support the undo/redo commands</a></h5>
 <div class="ulist">
 <ul>
 <li>
@@ -2863,44 +2741,7 @@ required to change one word into the other.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="product-survey"><a class="link" href="#product-survey">Appendix F: Product Survey</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p><strong>Product Name</strong></p>
-</div>
-<div class="paragraph">
-<p>Author: &#8230;&#8203;</p>
-</div>
-<div class="paragraph">
-<p>Pros:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>&#8230;&#8203;</p>
-</li>
-<li>
-<p>&#8230;&#8203;</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Cons:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>&#8230;&#8203;</p>
-</li>
-<li>
-<p>&#8230;&#8203;</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="instructions-for-manual-testing"><a class="link" href="#instructions-for-manual-testing">Appendix G: Instructions for Manual Testing</a></h2>
+<h2 id="instructions-for-manual-testing"><a class="link" href="#instructions-for-manual-testing">Appendix F: Instructions for Manual Testing</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Given below are instructions to test the app manually.</p>
@@ -2918,7 +2759,7 @@ These instructions only provide a starting point for testers to work on; testers
 </table>
 </div>
 <div class="sect2">
-<h3 id="launch-and-shutdown"><a class="link" href="#launch-and-shutdown">G.1. Launch and Shutdown</a></h3>
+<h3 id="launch-and-shutdown"><a class="link" href="#launch-and-shutdown">F.1. Launch and Shutdown</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2951,12 +2792,9 @@ Expected: The most recent window size and location is retained.</p>
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p><em>{ more test cases &#8230;&#8203; }</em></p>
-</div>
 </div>
 <div class="sect2">
-<h3 id="deleting-a-slot"><a class="link" href="#deleting-a-slot">G.2. Deleting a slot</a></h3>
+<h3 id="deleting-a-slot"><a class="link" href="#deleting-a-slot">F.2. Deleting a slot</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2983,12 +2821,9 @@ Expected: Similar to previous.</p>
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p><em>{ more test cases &#8230;&#8203; }</em></p>
-</div>
 </div>
 <div class="sect2">
-<h3 id="saving-data"><a class="link" href="#saving-data">G.3. Saving data</a></h3>
+<h3 id="saving-data"><a class="link" href="#saving-data">F.3. Saving data</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -3003,9 +2838,6 @@ Expected: Similar to previous.</p>
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p><em>{ more test cases &#8230;&#8203; }</em></p>
 </div>
 </div>
-</div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-31 16:21:48 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-31 16:37:54 UTC</div></div></div></body></html>
