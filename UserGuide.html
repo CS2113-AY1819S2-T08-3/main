@@ -27,18 +27,6 @@
 <li><a href="#encrypt">4.11. Encrypting/decrypting data files</a></li>
 <li><a href="#import">4.12. Importing .ics formatted files <code>[coming in v2.0]</code></a></li>
 <li><a href="#export">4.13. Exporting .ics formatted files: <code>export</code></a></li>
-<li><a href="#clear">4.14. Clear all data : <code>clear</code></a></li>
-<li><a href="#exit">4.15. Exiting the program : <code>exit</code></a></li>
-<li><a href="#save">4.16. Saving the data</a></li>
-</ul>
-</li>
-<li><a href="#faq">5. FAQ</a></li>
-<li><a href="#command-summary">6. Command Summary</a>
-<ul class="sectlevel2">
-<li><a href="#general-commands">6.1. General Commands</a></li>
-<li><a href="#manipulating-the-planner">6.2. Manipulating the Planner</a></li>
-<li><a href="#viewing-the-planner">6.3. Viewing the Planner</a></li>
-<li><a href="#import-exporting-the-planner">6.4. Import/Exporting the Planner</a></li>
 </ul>
 </li>
 </ul>
@@ -853,7 +841,7 @@ Format: <code>redo</code>
 <div class="sect2">
 <h3 id="encrypt"><a class="link" href="#encrypt">4.11. Encrypting/decrypting data files</a></h3>
 <div class="paragraph">
-<p>Planner data is automatically encrypted before saving and decrypted before loading. You do not need to encrypt or decrypt he data manually.
+<p>Planner data is automatically encrypted before saving and decrypted before loading. You do not need to encrypt or decrypt the data manually.
 &#8203;</p>
 </div>
 <div class="paragraph">
@@ -864,8 +852,38 @@ Format: <code>redo</code>
 <h3 id="import"><a class="link" href="#import">4.12. Importing .ics formatted files <code>[coming in v2.0]</code></a></h3>
 <div class="paragraph">
 <p>You can import an .ics file into the planner.
-Format: <code>import FILENAME</code>
+Format: <code>import filename</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The .ics file can be imported into other calendar apps that support .ics files such as Google Calendar. The file to be imported has to be located in the PlanMySem main directory.+
 &#8203;</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+For .ics files that are created from other calendar applications, events with recurrence will not be recursed in our
+application. Events that are outside of the current school semester will also not be imported.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>&#8203;</p>
 </div>
 <div class="paragraph">
 <p>&#8203;</p>
@@ -893,16 +911,30 @@ Format: <code>import FILENAME</code>
 <p>The exported file is named "PlanMySem.ics" and is saved in the main directory.
 The .ics file can be imported into other calendar apps that support .ics files such as Google Calendar.<br></p>
 </div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+Exporting will REMOVE all tags in the planner.
+</td>
+</tr>
+</table>
+</div>
 <div id="img-exportFile" class="imageblock">
 <div class="content">
 <img src="images/Export_Command_Directory_1.png" alt="Export Command Directory 1" width="790">
 </div>
 <div class="title">Figure 10. <span class="underline">Location of PlanMySem.ics file</span></div>
 </div>
-</td>
-</tr>
-</table>
-</div>
+<div class="exampleblock">
+<div class="content">
 <div class="admonitionblock tip">
 <table>
 <tr>
@@ -920,11 +952,9 @@ These are plain text files that include calendar event details like a descriptio
 <div class="paragraph">
 <p>&#8203;</p>
 </div>
-</div>
-<div class="sect2">
-<h3 id="clear"><a class="link" href="#clear">4.14. Clear all data : <code>clear</code></a></h3>
-<div class="paragraph">
-<p>Clear all data stored on the planner.<br>
+<div id="clear" class="paragraph">
+<p>=== Clear all data : <code>clear</code>
+Clear all data stored on the planner.<br>
 Format: <code>clear</code></p>
 </div>
 <div id="img-find" class="imageblock">
@@ -949,36 +979,27 @@ The <code>clear</code> command cannot be undone! Your data will be permanently r
 <div class="paragraph">
 <p>&#8203;</p>
 </div>
-</div>
-<div class="sect2">
-<h3 id="exit"><a class="link" href="#exit">4.15. Exiting the program : <code>exit</code></a></h3>
-<div class="paragraph">
-<p>Exits the program.<br>
+<div id="exit" class="paragraph">
+<p>=== Exiting the program : <code>exit</code>
+Exits the program.<br>
 Format: <code>exit</code>
 &#8203;</p>
 </div>
 <div class="paragraph">
 <p>&#8203;</p>
 </div>
-</div>
-<div class="sect2">
-<h3 id="save"><a class="link" href="#save">4.16. Saving the data</a></h3>
-<div class="paragraph">
-<p>Planner data is saved in the hard disk automatically after any command that changes the data is executed.<br>
+<div id="save" class="paragraph">
+<p>=== Saving the data
+Planner data is saved in the hard disk automatically after any command that changes the data is executed.<br>
 There is no need to save manually.
 &#8203;</p>
 </div>
 <div class="paragraph">
 <p>&#8203;</p>
 </div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="faq"><a class="link" href="#faq">5. FAQ</a></h2>
-<div class="sectionbody">
 <div class="paragraph">
-<p><strong>Q</strong>: How do I transfer my data to another computer?<br>
+<p>== FAQ
+<strong>Q</strong>: How do I transfer my data to another computer?<br>
 <strong>A</strong>: In order to transfer your data to another computer, you should:</p>
 </div>
 <div class="olist arabic">
@@ -998,15 +1019,12 @@ There is no need to save manually.
 <div class="paragraph">
 <p>&#8203;</p>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="command-summary"><a class="link" href="#command-summary">6. Command Summary</a></h2>
-<div class="sectionbody">
-<div class="sect2">
-<h3 id="general-commands"><a class="link" href="#general-commands">6.1. General Commands</a></h3>
 <div class="paragraph">
-<p>General commands that you might find useful in helping you to navigate and configure <strong>PlanMySem</strong>:</p>
+<p>== Command Summary</p>
+</div>
+<div class="paragraph">
+<p>=== General Commands
+General commands that you might find useful in helping you to navigate and configure <strong>PlanMySem</strong>:</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
@@ -1068,11 +1086,9 @@ There is no need to save manually.
 <div class="paragraph">
 <p>&#8203;</p>
 </div>
-</div>
-<div class="sect2">
-<h3 id="manipulating-the-planner"><a class="link" href="#manipulating-the-planner">6.2. Manipulating the Planner</a></h3>
 <div class="paragraph">
-<p>Commands to manage <em>slots</em>:</p>
+<p>=== Manipulating the Planner
+Commands to manage <em>slots</em>:</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
@@ -1116,11 +1132,9 @@ There is no need to save manually.
 <div class="paragraph">
 <p>&#8203;</p>
 </div>
-</div>
-<div class="sect2">
-<h3 id="viewing-the-planner"><a class="link" href="#viewing-the-planner">6.3. Viewing the Planner</a></h3>
 <div class="paragraph">
-<p>Commands to view <em>slots</em>:</p>
+<p>=== Viewing the Planner
+Commands to view <em>slots</em>:</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
@@ -1164,11 +1178,9 @@ There is no need to save manually.
 <div class="paragraph">
 <p>&#8203;</p>
 </div>
-</div>
-<div class="sect2">
-<h3 id="import-exporting-the-planner"><a class="link" href="#import-exporting-the-planner">6.4. Import/Exporting the Planner</a></h3>
 <div class="paragraph">
-<p>Commands to view <em>slots</em>:</p>
+<p>=== Import/Exporting the Planner
+Commands to view <em>slots</em>:</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
@@ -1208,4 +1220,6 @@ There is no need to save manually.
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-01 11:26:00 UTC</div></div></div></body></html>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-01 16:17:01 UTC</div></div></div></body></html>
