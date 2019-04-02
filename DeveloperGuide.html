@@ -10,7 +10,7 @@
 <div id="toctitle"></div>
 <ul class="sectlevel1">
 <li><a href="#introduction">1. Introduction</a></li>
-<li><a href="#about-this-developer-guide">2. About this Developer Guide</a></li>
+<li><a href="#about">2. About this Developer Guide</a></li>
 <li><a href="#setting-up">3. Setting up</a>
 <ul class="sectlevel2">
 <li><a href="#prerequisites">3.1. Prerequisites</a></li>
@@ -31,12 +31,12 @@
 </li>
 <li><a href="#implementation">5. Implementation</a>
 <ul class="sectlevel2">
-<li><a href="#Planner-Initialization">5.1. Initialization of the Planner and it&#8217;s Semester</a></li>
+<li><a href="#Planner-Initialization">5.1. Initialization of the Planner and its Semester</a></li>
 <li><a href="#parser-command-format-and-structure">5.2. Parser / Command Format and Structure</a></li>
 <li><a href="#slot-management">5.3. Slot Management</a></li>
 <li><a href="#list-feature">5.4. List feature</a></li>
 <li><a href="#find-feature">5.5. Find feature</a></li>
-<li><a href="#view-month-week-day-feature">5.6. View Month/Week/Day feature</a></li>
+<li><a href="#view">5.6. View Month/Week/Day feature</a></li>
 <li><a href="#undo-redo-feature">5.7. Undo/Redo feature</a></li>
 <li><a href="#data-encryption-decryption-feature">5.8. Data Encryption / Decryption feature</a></li>
 <li><a href="#data-exporting-exporting-feature">5.9. Data Exporting / Exporting feature</a></li>
@@ -117,7 +117,7 @@ Items can then be efficiently managed via the intuitive tagging system.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="about-this-developer-guide"><a class="link" href="#about-this-developer-guide">2. About this Developer Guide</a></h2>
+<h2 id="about"><a class="link" href="#about">2. About this Developer Guide</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>This developer guide provides a detailed documentation on the implementation of all the various features <strong>PlanMySem</strong>
@@ -530,7 +530,7 @@ The <code>.pptx</code> files used to create diagrams in this document can be fou
 </ul>
 </div>
 <div class="paragraph">
-<p>For example, the <code>Logic</code> component (see the class diagram given below) defines it&#8217;s API in the <code>Logic.java</code> interface and exposes its functionality using the <code>Logic.java</code> class.</p>
+<p>For example, the <code>Logic</code> component (see the class diagram given below) defines its API in the <code>Logic.java</code> interface and exposes its functionality using the <code>Logic.java</code> class.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -757,7 +757,7 @@ For example, the layout of the <a href="https://github.com/CS2113-AY1819S2-T08-3
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Notice how <code>Slot</code> does not hold it&#8217;s end time but rather it holds the <code>duration</code>. This is simply our design choice as it is meaningless to save both variables.
+Notice how <code>Slot</code> does not hold its end time but rather it holds the <code>duration</code>. This is simply our design choice as it is meaningless to save both variables.
 &#8203;
 </td>
 </tr>
@@ -819,9 +819,9 @@ Notice how <code>Slot</code> does not hold it&#8217;s end time but rather it hol
 <p>This section describes some noteworthy details on how certain features are implemented.</p>
 </div>
 <div class="sect2">
-<h3 id="Planner-Initialization"><a class="link" href="#Planner-Initialization">5.1. Initialization of the Planner and it&#8217;s Semester</a></h3>
+<h3 id="Planner-Initialization"><a class="link" href="#Planner-Initialization">5.1. Initialization of the Planner and its Semester</a></h3>
 <div class="paragraph">
-<p>The <code>Planner</code> and it&#8217;s <code>Semester</code> has to be initialized for <strong>PlanMySem</strong> to work as all other features of <strong>PlanMySem</strong> would
+<p>The <code>Planner</code> and its <code>Semester</code> has to be initialized for <strong>PlanMySem</strong> to work as all other features of <strong>PlanMySem</strong> would
 interact with this <code>Semester</code> object. The initialization is automated and dynamic to ensure sustainability.
 &#8203;</p>
 </div>
@@ -831,7 +831,7 @@ interact with this <code>Semester</code> object. The initialization is automated
 <div class="sect3">
 <h4 id="current-implementation"><a class="link" href="#current-implementation">5.1.1. Current Implementation</a></h4>
 <div class="paragraph">
-<p>Upon launching <strong>PlanMySem</strong>, the initialization of the <code>Planner</code> and it&#8217;s <code>Semester</code> would be implemented via two steps:</p>
+<p>Upon launching <strong>PlanMySem</strong>, the initialization of the <code>Planner</code> and its <code>Semester</code> would be implemented via two steps:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -1516,7 +1516,7 @@ E.g. <code>name</code>, <code>location</code> amd <code>description</code> are n
 </ul>
 </div>
 <div class="paragraph">
-<p>In summary, in this cause of <strong>PlanMySme</strong>, there is a need to achieve varied and flexible commands and as such,
+<p>In summary, in this cause of <strong>PlanMySem</strong>, there is a need to achieve varied and flexible commands and as such,
 it is not necessary to handle invalid values with the innate <code>Model</code> objects as these are taken care of when parsing.</p>
 </div>
 <div class="paragraph">
@@ -1691,7 +1691,7 @@ will be polled into the output list.<br>
 </div>
 </div>
 <div class="sect2">
-<h3 id="view-month-week-day-feature"><a class="link" href="#view-month-week-day-feature">5.6. View Month/Week/Day feature</a></h3>
+<h3 id="view"><a class="link" href="#view">5.6. View Month/Week/Day feature</a></h3>
 <div class="paragraph">
 <p>This feature presents the planner in different formats. This section will detail how this feature is implemented.
 &#8203;</p>
@@ -1744,7 +1744,7 @@ the user.</p>
 </div>
 <div class="paragraph">
 <p><code>displayMonthView()</code> displays all the months of the current semester in a monthly calendar format. Each academic week
-of the semester is also indicated in the display as seen in the figure below. The implementation of this function can be
+of the semester is also indicated in the display. The implementation of this function can be
 broken down into 2 parts:</p>
 </div>
 <div class="olist arabic">
@@ -1763,15 +1763,6 @@ broken down into 2 parts:</p>
 </div>
 </li>
 </ol>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/Ui.png" alt="Ui" width="800">
-</div>
-<div class="title">Figure 10. View of months in current semester with academic weeks indicated.</div>
-</div>
-<div class="paragraph">
-<p>&#8203;</p>
 </div>
 <div class="paragraph">
 <p><code>displayWeekView()</code> displays the weekly calendar format of a specified week. The implementation of this function can be
@@ -2200,7 +2191,7 @@ We have chosen to use the iCalendar format due to its popularity and it’s use 
 <h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">5.10. Configuration</a></h3>
 <div class="paragraph">
 <p>There is no need for manual configuration of the <code>Semester</code> as it is initialized dynamically as mentioned in
-<a href="#Planner-Initialization">Section 5.1, &#8220;Initialization of the Planner and it&#8217;s Semester&#8221;</a>.
+<a href="#Planner-Initialization">Section 5.1, &#8220;Initialization of the Planner and its Semester&#8221;</a>.
 &#8203;</p>
 </div>
 <div class="paragraph">
@@ -2280,7 +2271,7 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <div class="content">
 <img src="images/chrome_save_as_pdf.png" alt="chrome save as pdf" width="300">
 </div>
-<div class="title">Figure 11. Saving documentation as PDF files in Chrome</div>
+<div class="title">Figure 10. Saving documentation as PDF files in Chrome</div>
 </div>
 <div class="paragraph">
 <p>&#8203;</p>
@@ -2738,31 +2729,31 @@ For example, Gradle can download the dependencies automatically, which is better
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">add a slot</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">store all my slots in the calendar*</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">store all my slots in the calendar</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">delete a slot</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">remove all slots from my calendar that have been cancelled*</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">remove all slots from my calendar that have been cancelled</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">edit a slot</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">edit slots from my calendar that have been postponed/ brought forward/ changed*</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">edit slots from my calendar that have been postponed/ brought forward/ changed</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">list all slots</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">view all slots on the planner which I have activities on*</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">view all slots on the planner which I have activities on</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">recurse a slot</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">easily create all the relevant time slots for a module to recur every week*</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">easily create all the relevant time slots for a module to recur every week</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
@@ -2816,7 +2807,7 @@ For example, Gradle can download the dependencies automatically, which is better
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">remove tags on a time slot</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">remove unused/ unnecessary tags from an activity*</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">remove unused/ unnecessary tags from an activity</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
@@ -3428,4 +3419,4 @@ Expected: No <em>Slot</em> is deleted. Error details shown in the status message
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-02 11:45:26 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-02 13:13:44 UTC</div></div></div></body></html>
