@@ -10,109 +10,260 @@
 <h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This portfolio documents my contributions to <em>PlanMySem</em>, a software engineering module project.
-This module was taken in my third year during the second semester.</p>
+<p>This portfolio documents my contributions to <strong>PlanMySem</strong>, an application that was morphed from <a href="https://github.com/CS2113-AY1819S2-T08-3/main">AddressBook Level 3</a>
+into a scheduling/calendar application that caters to NUS students and staff.</p>
 </div>
 <div class="paragraph">
-<p><strong>PlanMySem</strong> is a text-based (Command Line Interface) scheduling/calendar application that targets NUS students and staff who prefer to use a desktop application for managing their schedule/calendar.</p>
+<p>In summary, <strong>PlanMySem</strong> offers the following features:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Automatic creation of a planner that is synchronized to the NUS academic calendar for the current semester.</p>
+</li>
+<li>
+<p>Quick and easy slot management (adding, editing and deleting of slots). This is achieved via two systems.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>A unique recursion system which takes into account special weeks such as recess week or reading week to allow efficient adding of recurring items.</p>
+</li>
+<li>
+<p>An intuitive tagging system to manage large amount of slots productively.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Optimized for you if you prefer to work with a Command Line Interface (CLI) and/or are learning to work more efficiently with CLI tools.</p>
+</li>
+<li>
+<p>Utilizes minimal resources on your machine while still allowing you to view your schedules swiftly.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>It was developed as part of CS2113T, a software engineering module in the National University of Singapore (NUS), and consisted of 4 partners, <a href="marcus-pzj.html">Marcus</a>, <a href="macchazuki.html">Jullian</a>, <a href="dingheng4448.html">Ding Heng</a>
+and myself; in which I served as the team lead. I was responsible for the slot management feature (add, edit and delete commands) and the structure of the codebase.</p>
+</div>
+<div class="paragraph">
+<p>The next sections will illustrate these enhancements in more detail as well as the respective changes that I have made to both the user guide and developer guide.
+Lastly, kindly take not that throughout this portfolio, there will be various icons used as described as such.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+This is a tip. Follow these suggested tips to make your life much simpler when using <strong>PlanMySem</strong>!
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+This is a note. These are things for you to take note of when using <strong>PlanMySem</strong>.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+This is a sign-post dictating important information. These are information that you will surely need to know to use <strong>PlanMySem</strong> efficiently.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+This is a sign-post informing caution. Please take note of these items and exercise some care.
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="summary-of-contributions"><a class="link" href="#summary-of-contributions">Summary of contributions</a></h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>This section shows a summary of my coding, documentation, and other helpful contributions to the team project.</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Major enhancement</strong>: added <strong>the ability to undo/redo previous commands</strong></p>
+<p><strong>Major enhancements</strong>:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>What it does: allows the user to undo all previous commands one at a time. Preceding undo commands can be reversed by using the redo command.</p>
+<p>Feature 1: I implemented the slot management system, including the recursion and tagging system, of <strong>PlanMySem</strong>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: Slot management composes of the three interactions that users are able to perform regarding slots.
+As such, slot management are the parsing and execution of the add, edit and delete commands and its functions.</p>
 </li>
 <li>
-<p>Justification: This feature improves the product significantly because a user can make mistakes in commands and the app should provide a convenient way to rectify them.</p>
+<p>Justification: Slot management is a basic feature of <strong>PlanMySem</strong>, it is a necessity of the application. Without so,
+the planner cannot be manipulated nor interacted with.</p>
 </li>
 <li>
-<p>Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands.</p>
-</li>
-<li>
-<p>Credits: <em>{mention here if you reused any code/ideas from elsewhere or if a third-party library is heavily used in the feature so that a reader can make a more accurate judgement of how much effort went into the feature}</em></p>
+<p>Highlights: This enhancement involved many variables and data types due to the nature of slots and its details.
+As such, this enhancement involved a large amount of cases, same was the came as with its tests. Additionally, to cater
+to user experience and ease of use, several variations of each functions were done up.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Minor enhancement</strong>: added a history command that allows the user to navigate to previous commands using up/down keys.</p>
+<p>Feature 2: I implemented a new parsing system to replace the existing system for both prefixed parameters and keywords.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: It parses commands input by the user and determines the user intention, hence determining what action
+is to be taken by the application.</p>
 </li>
 <li>
-<p><strong>Code contributed</strong>: [<a href="https://github.com">Functional code</a>] [<a href="https://github.com">Test code</a>] <em>{give links to collated code files}</em></p>
+<p>Justification: A new parser with flexible reading of prefixed parameters allows for unordered parameters instead of fixed ordering
+in the old parse. This way, new parser allow for greater ease of use and overall user experience.</p>
+</li>
+<li>
+<p>Highlights: The implementation of this feature required taking care of numerous cases in an effective manner. It
+was a tedious and slow process but necessary.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Feature 2: I implemented a new parsing system to replace the existing system for both prefixed parameters and keywords.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: It parses commands input by the user and determines the user intention, hence determining what action
+is to be taken by the application.</p>
+</li>
+<li>
+<p>Justification: A new parser with flexible reading of prefixed parameters allows for unordered parameters instead of fixed ordering
+in the old parse. This way, new parser allow for greater ease of use and overall user experience.</p>
+</li>
+<li>
+<p>Highlights: The implementation of this feature required taking care of numerous cases in an effective manner. It
+was a tedious and slow process but necessary.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Minor enhancement</strong>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Mini-Feature 1: I implemented a new clock system to manage dates and time more efficiently as with the nature of a planner application, the application is very time sensitive.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Code contributed</strong>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>View my RepoSense contribution analaysis: [<a href="https://nuscs2113-ay1819s2.github.io/dashboard-beta/#search=&amp;sort=displayName&amp;since=2019-02-10&amp;until=2019-03-26&amp;timeframe=day&amp;reverse=false&amp;groupSelect=groupByRepos&amp;breakdown=false&amp;tabAuthor=seanieyap&amp;tabRepo=CS2113-AY1819S2-T08-3_main_master">here</a>]</p>
+</li>
+<li>
+<p>View my Pull Requests: [<a href="https://github.com/CS2113-AY1819S2-T08-3/main/pulls?q=is%3Apr+author%3Aseanieyap+is%3Aclosed">here</a>]</p>
+</li>
+</ul>
+</div>
 </li>
 <li>
 <p><strong>Other contributions</strong>:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Project management:</p>
+<p>Project Management:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Managed releases <code>v1.3</code> - <code>v1.5rc</code> (3 releases) on GitHub</p>
+<p>I was involved with the conception of <strong>PlanMySem</strong> up till the release of version 1.3. These releases can be viewed [<a href="https://github.com/CS2113-AY1819S2-T08-3/main/releases">here</a>]</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p>Enhancements to existing features:</p>
+<p>Testing:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Updated the GUI color scheme (Pull requests <a href="https://github.com">#33</a>, <a href="https://github.com">#34</a>)</p>
-</li>
-<li>
-<p>Wrote additional tests for existing features to increase coverage from 88% to 92% (Pull requests <a href="https://github.com">#36</a>, <a href="https://github.com">#38</a>)</p>
+<p>I wrote tests for all code in trying to achieve the most code coverage and ensure reliability of my code.
+Most of classes belonging to my features have 100% code coverage. At this time of writing, the code coverage for the entire codebase of <strong>PlanMySem</strong> is 86%.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p>Documentation:</p>
+<p>Tools: Integrated all AddressBook Level 4 continuous Integration and continuous Deployment tools</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Did cosmetic tweaks to existing contents of the User Guide: <a href="https://github.com">#14</a></p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Community:</p>
+<p>continuous Integration tools:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>PRs reviewed (with non-trivial review comments): <a href="https://github.com">#12</a>, <a href="https://github.com">#32</a>, <a href="https://github.com">#19</a>, <a href="https://github.com">#42</a></p>
+<p>[<a href="https://travis-ci.org/CS2113-AY1819S2-T08-3/main">Travis-CI</a>]</p>
 </li>
 <li>
-<p>Contributed to forum discussions (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>, <a href="https://github.com">4</a>)</p>
-</li>
-<li>
-<p>Reported bugs and suggestions for other teams in the class (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>)</p>
-</li>
-<li>
-<p>Some parts of the history feature I added was adopted by several other class mates (<a href="https://github.com">1</a>, <a href="https://github.com">2</a>)</p>
+<p>[<a href="https://ci.appveyor.com/project/seanieyap/main-r8jp5">AppVeyor</a>]</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p>Tools:</p>
+<p>continuous Deployment tools:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Integrated a third party library (Natty) to the project (<a href="https://github.com">#42</a>)</p>
+<p>[<a href="https://app.netlify.com/sites/planmysem/deploys">Netlify</a>]</p>
+</li>
+</ul>
+</div>
 </li>
 <li>
-<p>Integrated a new Github plugin (CircleCI) to the team repo</p>
+<p>Test Coverage History &amp; Statistics tools:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>[<a href="https://coveralls.io/github/CS2113-AY1819S2-T08-3/main?branch=master">Coveralls</a>]</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Automated code reviews and code analytics tools:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>[<a href="https://app.codacy.com/project/CS2113T-T08-3/main/dashboard">Codacy</a>]</p>
 </li>
 </ul>
 </div>
@@ -122,47 +273,708 @@ This module was taken in my third year during the second semester.</p>
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p><em>{you can add/remove categories in the list above}</em></p>
+</li>
+</ul>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="contributions-to-the-user-guide"><a class="link" href="#contributions-to-the-user-guide">Contributions to the User Guide</a></h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>This section shows my contributions I contributed to the User Guide. They showcase my ability to write documentation targeting end-users.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="features"><a class="link" href="#features">Features</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section displays the available features of <strong>PlanMySem</strong> together with examples for you to refer to.</p>
+</div>
+<div class="paragraph">
+<p><strong>Tagging System</strong></p>
+</div>
+<div class="paragraph">
+<p>Unlike other commercial calendar/scheduling/planner software, <strong>PlanMySem</strong> makes use of a tagging system to manage <em>slots</em>.</p>
+</div>
+<div class="paragraph">
+<p>Using tags to tag <em>slots</em> will make tasks easier for you in the future. Performing tasks such as viewing, deleting and editing <em>slots</em> will be more efficient.</p>
+</div>
+<div class="paragraph">
+<p>Recommended uses for tags:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Tag modules. E.g. "CS2113T", "CS2101".</p>
+</li>
+<li>
+<p>Tag type of lesson. E.g. "Lecture", "Tutorial", "Lab".</p>
+</li>
+<li>
+<p>Tag type of activities. E.g. "Sports", "Seminar", "Talk".</p>
+</li>
+<li>
+<p>Tag difficulty of task. E.g. "Tough", "Simple", "Trivial".</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Recursion System</strong></p>
+</div>
+<div class="paragraph">
+<p>Recursion facilitates quick addition of multiple <em>slots</em>, similar to Microsoft Outlook&#8217;s series of appointments.</p>
+</div>
+<div class="paragraph">
+<p>In NUS, academic semesters are split into weeks of several types. Recursion allows you to add <em>slots</em> to these types of weeks with ease through the use of the <code>r/</code>(recursion) parameter.</p>
+</div>
+<div class="paragraph">
+<p><strong>Command Format</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Words in UPPER_CASE are the parameters to be supplied by the user. E.g. in <code>t/TAG</code>, <code>TAG</code> is a parameter which can be used as the name of the tag.</p>
+</li>
+<li>
+<p>Items in square brackets are optional. e.g in <code>add [l/LOCATION]</code>, <code>LOCATION</code> is a parameter that may be omitted.</p>
+</li>
+<li>
+<p>Items with <code>…</code> after them can be used multiple times including zero times. E.g. <code>[t/TAG]…</code> can be used 0 times, or as <code>t/lab</code>, <code>t/lecture</code>, <code>t/tutorial</code> etc.</p>
+</li>
+<li>
+<p>Parameters can be in any order. E.g. if the command specifies <code>st/START_TIME et/END_TIME d/DATE</code>, then both <code>et/09:00 st/08:00 d/2-13-2019</code> and <code>et/09:00 d/2-13-2019 st/08:00</code> are acceptable.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+You can save time by utilizing the alternate and shortcut commands. E.g. instead of using <code>delete</code>, you may also use <code>del</code> or simply <code>d</code>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><strong>Identifiers and Parameters</strong></p>
+</div>
+<div class="paragraph">
+<p>Identifiers in <strong>PlanMySem</strong> are designed to be, short and easy to memorise.
+Once you are familiarised with them, they should be intuitive to use to add your parameters.
+The table of Identifiers and Parameters and their descriptions (Table 1) below is useful for your reference as you jump right into grasping the system.</p>
+</div>
 <table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 1. Identifiers and their Parameters and descriptions.</caption>
 <colgroup>
-<col style="width: 100%;">
+<col style="width: 5%;">
+<col style="width: 10%;">
+<col style="width: 30%;">
+<col style="width: 30%;">
+<col style="width: 25%;">
 </colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Identifier</th>
+<th class="tableblock halign-left valign-top">Parameter</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Format</th>
+<th class="tableblock halign-left valign-top">Example</th>
+</tr>
+</thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users.</em></p></td>
+<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock"><code>n/</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>NAME</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name of a <em>slot</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Text</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>n/CS2113T</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>KEYWORD</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Text that are part of the name of a <em>slot</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Text</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>n/CS</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>l/</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>LOCATION</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Location of a <em>slot</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Text</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>l/COM2 04-22</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>des/</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>DESCRIPTION</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Description of a <em>slot</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Text</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>des/Topic: Abstraction</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>t/</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>TAG</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tag of a <em>slot</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Text</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>t/Lab</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="5"><p class="tableblock"><em>Further rows are omitted due to space constrains</em></p></td>
 </tr>
 </tbody>
 </table>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+You may order identifiers and parameters in any fashion and you will still be able to achieve what you want!
+So, do not bother thinking about where to place parameters as ordering does not matter, instead become more efficient and save your time!
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Identifiers may be appended with a <code>n</code> to dictate "new".<br>
+E.g. <code>nt/NEW_TAG</code> signifies new tags in which you want to replace existing tags with.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+While table 1 shows you all the identifiers and parameters that <strong>PlanMySem</strong> uses, there are some commands that do not make use of identifiers nor parameters.
+The view command is one such exception that make use of keywords that must be typed in a specific order.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="adding-slots-code-add-code-code-a-code"><a class="link" href="#adding-slots-code-add-code-code-a-code">Adding Slots : <code>add</code> / <code>a</code></a></h3>
+<div class="paragraph">
+<p>Add <em>slot(s)</em> to the planner.<br>
+Format: <code>add n/NAME d/DATE_OR_DAY_OF_WEEK st/START_TIME et/END_TIME_OR_DURATION<br>
+[l/LOCATION] [des/DESCRIPTION] [r/normal] [r/recess] [r/reading] [r/exam] [r/past] [t/TAG]&#8230;&#8203;</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>add n/CS2113T Tutorial d/mon st/8:00 am et/9:00 am des/Topic: Sequence Diagram t/CS2113T t/Tutorial</code><br>
+Add a single <em>slot</em>, named "CS2113T Tutorial" on the coming monday, from 0800hrs to 0900hrs with the tags "CS2113T" and "Tutorial".</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><em>There is am image here that is omitted due to space constrains, click <a href="https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/images/Add_Command_Output_1.png"><code>here</code></a> to view it.</em></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>add n/CS2113T Tutorial d/mon st/08:00 et/09:00 des/Topic: Sequence Diagram t/CS2113T t/Tutorial r/recess r/reading</code><br>
+Do the same but additionally, recurse the <em>slot</em> on both recess and reading week.</p>
+</li>
+<li>
+<p><code>add n/CS2113T Tutorial d/mon st/08:00 et/09:00 des/Topic: Sequence Diagram t/CS2113T t/Tutorial r/normal</code><br>
+Do the same but recurse the <em>slot</em> on "normal", instructional, weeks.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+You may add single <em>slots</em> by omitting the <code>r/</code> identifiers and its parameters.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="edit"><a class="link" href="#edit">Editing Slots: <code>edit</code> / <code>e</code></a></h3>
+<div class="paragraph">
+<p>Edit <em>slot(s)</em>.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Edit <em>slot(s)</em> which contains certain <em>tag</em>(s).<br>
+Format: <code>edit t/TAG&#8230;&#8203; [nn/NEW_NAME] [nst/NEW_START_TIME] [net/NEW_END_TIME|DURATION] [nl/NEW_LOCATION] [nd/NEW_DESCRIPTION] [nt/NEW_TAG]&#8230;&#8203;</code></p>
+</li>
+<li>
+<p>Edit specific <em>slot</em> via the <code>list</code> command.<br>
+Format: <code>edit INDEX [nn/NEW_NAME] [nd/NEW_DATE] [nst/NEW_START_TIME] [net/NEW_END_TIME|DURATION] [nl/NEW_LOCATION] [nd/NEW_DESCRIPTION] [nt/NEW_TAG]&#8230;&#8203;</code></p>
+</li>
+</ol>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+You will not be able to edit a <em>slot</em>'s date when editing via <em>tags</em>.<br>
+To edit a <em>slot</em>'s date, you may use the <code>list</code> or <code>find</code> command and edit specific <em>slot(s)</em> via index.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>edit t/CS2113T t/Tutorial nl/COM2 04-01</code><br>
+Edit <em>slots</em> that contain tags "CS2113T" and "Tutorial", set these <em>slot&#8217;s</em> location to "COM2 04-01".</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><em>There is am image here that is omitted due to space constrains, click <a href="https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/images/Edit_Command_Output_1.png"><code>here</code></a> to view it.</em></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>edit 1 des/Topic: Sequence Diagram</code><br>
+Edit the first item from the previous result of the <code>list</code> or <code>find</code> command.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="delete"><a class="link" href="#delete">Delete Slots: <code>delete</code> / <code>del</code> / <code>d</code></a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Delete <em>slot(s)</em> which contains certain <em>tag</em>(s).<br>
+Format: <code>delete t/TAG&#8230;&#8203;</code></p>
+</li>
+<li>
+<p>Delete <em>slot</em> via the <code>list</code> command.<br>
+Format: <code>delete INDEX</code></p>
+</li>
+</ol>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+You may delete a specific <em>slot</em> by using the <code>list</code> or <code>find</code> command and select the specific <em>slot</em> via index.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>delete t/CS2113T t/Tutorial</code><br>
+Delete <em>slots</em> that contain tags "CS2113T" and "Tutorial".</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><em>There is am image here that is omitted due to space constrains, click <a href="https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/images/Delete_Command_Output.png"><code>here</code></a> to view it.</em></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>delete 2</code><br>
+Delete the second <em>slot</em> shown via the <code>list</code> command.</p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="contributions-to-the-developer-guide"><a class="link" href="#contributions-to-the-developer-guide">Contributions to the Developer Guide</a></h2>
 <div class="sectionbody">
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 100%;">
-</colgroup>
-<tbody>
+<div class="paragraph">
+<p>This section shows my contributions to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project._</p>
+</div>
+<div class="sect2">
+<h3 id="parser-command-format-and-structure"><a class="link" href="#parser-command-format-and-structure">Parser / Command Format and Structure</a></h3>
+<div class="paragraph">
+<p>Due to the flexibility and huge variation of the envisioned command format and structures, it was decided that it was more appropriate to create a new Parser
+instead of relying on the existing regex implementation in AB3 for heavy parsing.</p>
+</div>
+<div class="paragraph">
+<p>The AB3 parser was heavily modified to serve unordered command parameters as well as to allow more flexibility such that mistakes in commands will still be
+interpreted as valid as long as the "minimal" set of parameters are present. Regex is currently only used to retrieve the command keywords and arguments.
+Arguments are then parsed via 2 different methods/techniques according to the format and structure of the command keyword.</p>
+</div>
+<div class="sect3">
+<h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Ordering of parameters are ignored when possible.</p>
+</li>
+<li>
+<p>Repeated parameters are ignored. The first parameter of the same "type" are taken as valid, the rest are discarded.</p>
+</li>
+<li>
+<p>Alternate formats of commands are implemented to give freedom of choice and cater to different types of users such as different personalities and comfort levels.</p>
+</li>
+<li>
+<p>Shortened versions of command keywords are implemented to give ways for users to shortened commands and be more efficient.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Hence, parameters in <strong>PlanMySem</strong> can be categorised into 2 categories:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Prefixed parameters such as <code>n/NAME</code>, <code>st/START_TIME</code>, <code>des/DESCRIPTION</code>, etc.</p>
+</li>
+<li>
+<p>Non-Prefixed parameters, A.K.A. keywords, such as <code>INDEX</code>, <code>TYPE_OF_VIEW</code>. etc.</p>
+</li>
+</ol>
+</div>
+<div class="sect4">
+<h5 id="parsing-prefixed-parameters"><a class="link" href="#parsing-prefixed-parameters">Parsing Prefixed Parameters</a></h5>
+<div class="paragraph">
+<p>To retrieve the set of parameters, the function <code>private static HashMap&lt;String, Set&lt;String&gt;&gt; getParametersWithArguments(String args)</code> can be called.
+The function returns a <code>HashMap</code> data structure, specifically <code>HashMap&lt;String, Set&lt;String&gt;&gt;</code>, to hold parameters, allowing for easy, quick and efficient access to specific prefixes and its keyed in parameters; O(1) access, insertion and removal.</p>
+</div>
+<div class="paragraph">
+<p>However, this means that exceptions have to be manually taken care of, at the stage of parsing, this exception would particularly be <code>ParseException</code>.</p>
+</div>
+<div class="paragraph">
+<p>The following are cases in which <code>ParseException</code> is invoked:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>When the returned set is <code>null</code>, then the prefix and parameters was not keyed in at all.</p>
+</li>
+<li>
+<p>When the returned set is not <code>null</code> but contains empty <code>strings</code> such that <code>string.isEmpty()</code>, then the prefix was keyed in but was left empty on purpose.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="parsing-keywords"><a class="link" href="#parsing-keywords">Parsing Keywords</a></h5>
+<div class="paragraph">
+<p>Here, keywords are thought of as parameters that are not prefixed.
+In <strong>PlanMySem</strong>, keywords are utilized in command structures when they are to be used alone or when order of parameters are important.
+In such cases, there is no logical need for prefixing as the meaning of these parameters can be identified.</p>
+</div>
+<div class="paragraph">
+<p>The function <code>private String getStartingArgument(String args)</code> provides this functionality.
+Here, <code>IncorrectCommand</code> is invoked due to different circumstances:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>When the keyword is null, then the parameter was not keyed in.</p>
+</li>
+<li>
+<p>When the keyword data type does not match the intended, then the parameter was keyed in wrongly or is mis-ordered.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project.</em></p></td>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Additional keywords are purposefully <strong>not</strong> handled to provide ease of use and cater to user mistakes.
+</td>
 </tr>
-</tbody>
 </table>
 </div>
 </div>
-<div class="sect1">
-<h2 id="project-powerpointlabs"><a class="link" href="#project-powerpointlabs">PROJECT: PowerPointLabs</a></h2>
-<div class="sectionbody">
-<hr>
+</div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-handling-repeated-parameters"><a class="link" href="#aspect-handling-repeated-parameters">Aspect: Handling repeated parameters</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Accept and ignore repeated parameters when possible.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Less Computationally expensive and allows users to make minor mistakes.</p>
+</li>
+<li>
+<p>Cons: User errors may be misinterpreted and hence wrong actions may be executed.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Accept repeated parameters only when as necessary.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Errors are shown to the user so that the invalid command may be fixed.</p>
+</li>
+<li>
+<p>Cons: May hinder user experience, ease of use.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-handling-order-of-parameters"><a class="link" href="#aspect-handling-order-of-parameters">Aspect: Handling order of parameters</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Parse parameters without regards to order.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Greater user experience due to greater ease of use.</p>
+</li>
+<li>
+<p>Cons: More computationally expensive and tougher development process due to more cases to care for, requires manual parsing.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Accept only a specific ordering of parameters.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Less computationally expensive and short development process, able to use existing regex solutions in AB3.</p>
+</li>
+<li>
+<p>Cons: Greatly hinder user experience as order of parameters have no relation to meaning of commands.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="future-implementation"><a class="link" href="#future-implementation">Future Implementation</a></h4>
 <div class="paragraph">
-<p><em>{Optionally, you may include other projects in your portfolio.}</em></p>
+<p>Though the current implementation has much flexibility, there is more that can be done to elevate user experience to the next level.
+These are some possible enhancements:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Parse more formats of date and time.</p>
+</li>
+<li>
+<p>Parse time as a single parameter instead of two.</p>
+</li>
+<li>
+<p>Enhance function calls to retrieve prepended parameters and keywords to handle trivial cases that should invoke <code>IncorrectCommand</code>.</p>
+</li>
+</ol>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-02 16:07:53 UTC</div></div></div></body></html>
+</div>
+<div class="sect2">
+<h3 id="slot-management"><a class="link" href="#slot-management">Slot Management</a></h3>
+<div class="paragraph">
+<p><em>Slot</em> Management involves mainly the interaction between the users and their <em>slots</em>.</p>
+</div>
+<div class="paragraph">
+<p>The section below will describe in detail the Current Implementation, Design Considerations and Future Implementation of the Slot Management.</p>
+</div>
+<div class="sect3">
+<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">Current Implementation</a></h4>
+<div class="paragraph">
+<p>Users are able to perform three actions (or commands), though a small variety of methods, involving <em>slots</em>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Add</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Add multiple slots via the <em>recursion</em> system.</p>
+</li>
+<li>
+<p>Add a single slot via omitting the <em>recursion</em> system.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>Edit</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Edit multiple <em>slots</em> via <em>tags</em>.</p>
+</li>
+<li>
+<p>Edit a single <em>slot</em> via <em>index</em>.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>Delete</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Delete <em>slots</em> via <em>tags</em>.</p>
+</li>
+<li>
+<p>Delete a single <em>slot</em> via <em>index</em>.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The <code>Add</code> command heavily relies on the <em>recursion</em> system to select multiple dates in which to add the same slot to multiple days.
+Additionally, the <code>Add</code> command also allows users to input <em>tags</em> to tag <em>slots</em>.</p>
+</div>
+<div class="paragraph">
+<p>The <code>Edit</code> and <code>Delete</code> command then makes use of the <em>tagging</em> system to then select multiple slots for editing/deleting.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-wrapping-of-primitive-data-types-in-code-slot-code"><a class="link" href="#aspect-wrapping-of-primitive-data-types-in-code-slot-code">Aspect: Wrapping of primitive data types in <code>Slot</code></a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Use of "primitive" data types instead of creating and utilising wrapped objects.<br>
+E.g. <code>name</code>, <code>location</code> amd <code>description</code> are not wrapped but "primitive".</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Allows for more flexible code to account for flexible parsing (as needed in this application).</p>
+</li>
+<li>
+<p>Cons: Bigger code base and duplicated code.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Wrap "primitive" data types.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Less errors in handling invalid values.</p>
+</li>
+<li>
+<p>Cons: May cause inflexibility in writing code to account for flexible parsing.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In summary, in this cause of <strong>PlanMySem</strong>, there is a need to achieve varied and flexible commands and as such,
+it is not necessary to handle invalid values with the innate <code>Model</code> objects as these are taken care of when parsing.</p>
+</div>
+<div class="paragraph">
+<p>Additionally, doing these actions when parsing, though bloats code, allows for more varied responses to the user and improves user experience.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-storing-and-accessing-code-slots-code"><a class="link" href="#aspect-storing-and-accessing-code-slots-code">Aspect: Storing and accessing <code>Slots</code></a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current implementation):</strong> Use of <code>Map</code>, such as <code>HashMap</code> to store <code>Days</code> that store <code>Slots</code>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: <code>HashMap</code> allows for easier and faster, O(1) access time, access of particular <code>Day</code> according to date.</p>
+</li>
+<li>
+<p>Cons: This requires splitting of the calendar into days, as such there is no easy way to account for <code>Slots</code> that occur across days.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Store <code>Slots</code> in a huge list.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Allows for easier access by "index" and offers flexibility, for example, in the time of slots.</p>
+</li>
+<li>
+<p>Cons: Expensive to access, add and remove items. Furthermore, it is extremely expensive to collect slots that occur in a day, a very important and most likely to be a commonly used feature.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="future-implementation-2"><a class="link" href="#future-implementation-2">Future Implementation</a></h4>
+<div class="sect4">
+<h5 id="create-a-class-to-hold-code-days-code-instead-of-utilising-a-code-hashmap-code"><a class="link" href="#create-a-class-to-hold-code-days-code-instead-of-utilising-a-code-hashmap-code">Create a class to hold <code>Days</code>, instead of utilising a <code>HashMap</code></a></h5>
+<div class="paragraph">
+<p>Currently, <code>Days</code> are held in a HashMap of key <code>LocalDate</code> and value <code>Day</code>. While this works without any loss in performance, this causes duplication of code and removes some key concepts of abstraction.
+For example, there are code blocks dedicated to retrieving days or slots that could have been placed into this new class. This is an issue as these code have nothing to do with for instance, <code>Semester</code> but they are placed there.</p>
+</div>
+<div class="paragraph">
+<p>Therefore, this needs to be implemented in the future to achieve less coupling, more cohesion and respect the Single Responsibility Principle (SRP), Open-Closed Principle (OCP) and Separation of Concerns Principle (SoC).</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="code-planner-code-to-hold-multiple-code-semesters-code"><a class="link" href="#code-planner-code-to-hold-multiple-code-semesters-code"><code>Planner</code> to hold multiple <code>Semesters</code></a></h5>
+<div class="paragraph">
+<p>While <strong>PlanMySem</strong> now allow users to work on the current semester, it is unable to cater to future semesters. For instance when a semester is about to end, users are not able to plan ahead for the coming semester.</p>
+</div>
+<div class="paragraph">
+<p>This is an issue that plagues user experience and is a significant problem. To solve this issue, <code>Planner</code> needs to hold multiple semesters in a <code>List</code> and more features need to be included to allow saving, loading and switching of semesters and etc.</p>
+</div>
+<hr>
+</div>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-02 16:28:43 UTC</div></div></div></body></html>
