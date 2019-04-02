@@ -51,6 +51,33 @@ efficiently with CLI tools.</p>
 feature. The following sections illustrate my implementations in more detail, as well as the relevant sections I have
 contributed to the user and developer guides in relation to my implementations.</p>
 </div>
+<div class="paragraph">
+<p>Throughout this portfolio, there will be various icons used as described below.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+This is a tip. Follow these suggested tips to make your life much simpler when using <strong>PlanMySem</strong>!
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+This is a note. These are things for you to take note of when using <strong>PlanMySem</strong>.
+</td>
+</tr>
+</table>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -202,6 +229,100 @@ code which can be found <a href="https://introcs.cs.princeton.edu/java/21functio
 </tr>
 </tbody>
 </table>
+<div class="paragraph">
+<p>Links to my contributed sections in the User Guide:<br>
+- <a href="https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/UserGuide.adoc#view">View the Planner : view / v</a></p>
+</div>
+<div class="sect2">
+<h3 id="view-the-planner-code-view-code-code-v-code"><a class="link" href="#view-the-planner-code-view-code-code-v-code">View the Planner : <code>view</code> / <code>v</code></a></h3>
+<div class="paragraph">
+<p>View the planner in a month/week/day view.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>View the monthly calendar view of the current academic semester.<br>
+Format: <code>view month</code></p>
+</li>
+<li>
+<p>View the weekly calendar view of the current academic week.<br>
+Format: <code>view week [WEEK]</code></p>
+</li>
+<li>
+<p>View the day view of a particular day in the academic semester.<br>
+Format: <code>view day [DATE_OR_DAY_OF_WEEK]</code></p>
+</li>
+</ol>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+You may add in the parameter <code>details</code> after <code>[WEEK]</code> to view the details of all <em>slots</em> with respect to <code>[WEEK]</code>.<br>
+E.g. <code>view week details</code> will allow you to view details of all <em>slots</em> in the current week!
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+You may omit <code>[WEEK]</code>/<code>[DATE_OR_DAY_OF_WEEK]</code> to view the calendar with respect to the current date!<br>
+E.g. <code>view week</code> will allow you to view the current week and <code>view day</code> will allow you to view the current day!
+The expected output after successfully running <code>view week</code> is shown in the figure below.
+</td>
+</tr>
+</table>
+</div>
+<div id="img-view" class="imageblock">
+<div class="content">
+<img src="../images/Ui.png" alt="Ui" width="790">
+</div>
+<div class="title">Figure 1. <span class="underline">Output after entering <code>view week</code></span></div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>view day</code><br>
+View planner for the current date.</p>
+</li>
+<li>
+<p><code>view day 01-03-2019</code><br>
+View planner for the first of March.</p>
+</li>
+<li>
+<p><code>view day monday</code><br>
+View planner for the upcoming Monday.</p>
+</li>
+<li>
+<p><code>view week details</code><br>
+View planner for current week of the academic calendar with details of all <em>slots</em>.</p>
+</li>
+<li>
+<p><code>view week 7</code><br>
+View planner for week 7 of the academic calendar.</p>
+</li>
+<li>
+<p><code>view week recess</code><br>
+View planner for recess week of the academic calendar.</p>
+</li>
+<li>
+<p><code>view month</code><br>
+View planner for the months of the current academic semester.</p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -217,5 +338,325 @@ code which can be found <a href="https://introcs.cs.princeton.edu/java/21functio
 </tr>
 </tbody>
 </table>
+<div class="paragraph">
+<p>Links to my contributed sections in the Developer Guide:<br>
+- <a href="https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/UserGuide.adoc#Planner-Initialization">Initialization of the Planner and its Semester</a><br>
+- <a href="https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/UserGuide.adoc#view">View Month/Week/Day feature</a></p>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-02 14:38:55 UTC</div></div></div></body></html>
+<div class="sect2">
+<h3 id="initialization-of-the-planner-and-its-semester"><a class="link" href="#initialization-of-the-planner-and-its-semester">Initialization of the Planner and its Semester</a></h3>
+<div class="paragraph">
+<p>The <code>Planner</code> and its <code>Semester</code> has to be initialized for <strong>PlanMySem</strong> to work as all other features of <strong>PlanMySem</strong> would
+interact with this <code>Semester</code> object. The initialization is automated and dynamic to ensure sustainability.</p>
+</div>
+<div class="sect3">
+<h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
+<div class="paragraph">
+<p>Upon launching <strong>PlanMySem</strong>, the initialization of the <code>Planner</code> and its <code>Semester</code> would be implemented via two steps:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Automatically generate the academic calendar from the current date.</p>
+</li>
+<li>
+<p>Setup current <code>Semester</code> from the academic calendar.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The academic calendar is dynamically generated by invoking the function <code>generateSemester</code> in the <code>Semester</code> class.
+The function will first retrieve the current date from the system clock to determine which academic year it is.
+As a new academic year starts from August, it can be determined from the month of the current date.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If the current date is before August, the current academic year is "the previous year / current year".<br>
+e.g. If the date is 25/3/2019, the academic year is "2018 / 2019".</p>
+</li>
+<li>
+<p>If the current date is after August, the current academic year is "the current year / next year".<br>
+e.g. If the date is 25/8/2019, the academic year is "2019 / 2020".</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>After determining the academic year, the details of the semesters will be generated. All the weeks of the academic
+year can be calculated from the first day of semester 1 since each semester has a fixed amount of weeks.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Semester 1 of the academic year starts with an orientation week and will always begin from the first Monday of August.
+</td>
+</tr>
+</table>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Semester 1 has 18 weeks (inclusive of orientation week) and semester 2 has 17 weeks.</p>
+</li>
+<li>
+<p>The vacation between semester 1 and 2 has 5 weeks.</p>
+</li>
+<li>
+<p>The vacation between academic years will have 12 or 13 weeks depending on the starting week of the next academic year.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Each week of the year will correspond to an academic week and this information will be stored in a <code>HashMap</code>. This
+<code>HashMap</code> can be used to determine the academic week given a date (by finding out the week of the year for that date).
+The figures below shows an example of the relation between academic week and the week of the year for academic year 2018/2019.</p>
+</div>
+<div id="img-view" class="imageblock">
+<div class="content">
+<img src="../images/Sem1.png" alt="Sem1" width="790">
+</div>
+<div class="title">Figure 2. <span class="underline">Weeks in academic year 2018/2019, Semester 1.</span></div>
+</div>
+<div id="img-view" class="imageblock">
+<div class="content">
+<img src="../images/Sem2.png" alt="Sem2" width="790">
+</div>
+<div class="title">Figure 3. <span class="underline">Weeks in academic year 2018/2019, Semester 2.</span></div>
+</div>
+<div class="paragraph">
+<p>Hence, the information listed below can be determined from the current date.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Current academic week</p>
+</li>
+<li>
+<p>Current academic semester</p>
+</li>
+<li>
+<p>Current academic year</p>
+</li>
+<li>
+<p>Number of weeks in current academic semester</p>
+</li>
+<li>
+<p>Start date of current academic semester</p>
+</li>
+<li>
+<p>End date of current academic semester</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>These information would be assigned to the <code>Semester</code> object upon initialization of the <code>Planner</code>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-generation-of-academic-calendar"><a class="link" href="#aspect-generation-of-academic-calendar">Aspect: Generation of academic calendar</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Generate academic calendar by performing calculations from the current date.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Generation of academic calendar is dynamic and will work for future dates.</p>
+</li>
+<li>
+<p>Cons: Computationally expensive as many operations have to be performed.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Retrieve academic calendar from a pre-generated file.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Generation of academic calendar is efficient and not prone to calculation errors.</p>
+</li>
+<li>
+<p>Cons: Requires the pre-generated file which may be accidentally edited or deleted by the user.
+&#8203;</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>&#8203;</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="view-month-week-day-feature"><a class="link" href="#view-month-week-day-feature">View Month/Week/Day feature</a></h3>
+<div class="paragraph">
+<p>This feature presents the planner in different formats. This section will detail how this feature is implemented.</p>
+</div>
+<div class="sect3">
+<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">Current Implementation</a></h4>
+<div class="paragraph">
+<p>Upon entering the <code>view</code> command with valid parameters (refer to <a href="UserGuide.html">UserGuide.adoc</a> for <code>view</code> usage), the
+following sequence of events is executed:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The <code>Parser</code> component parses the <code>view</code> command. It can be parsed into only 3 general types of views which are the
+month, week or day view.</p>
+</li>
+<li>
+<p>This results in a Command object which is executed.</p>
+</li>
+<li>
+<p>The command execution will retrieve data from the <code>Model</code> (e.g. retrieving data from the current <code>Semester</code>).</p>
+</li>
+<li>
+<p>The result of the command execution is encapsulated as a <code>CommandResult</code> object which is passed back to <code>Ui</code>.</p>
+</li>
+<li>
+<p>In addition, the <code>CommandResult</code> object can also instruct the <code>Ui</code> to display results, such as displaying help to
+the user.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Given below is the Sequence Diagram upon executing the <code>view month</code> command.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ViewMonthSequenceDiagram.png" alt="ViewMonthSequenceDiagram" width="800">
+</div>
+<div class="title">Figure 4. Interactions between components for the <code>view month</code> Command</div>
+</div>
+<div class="paragraph">
+<p>&#8203;</p>
+</div>
+<div class="paragraph">
+<p>The 3 general types of view (month, week, day) are generated by the methods <code>displayMonthView()</code>, <code>displayWeekView()</code>,
+<code>displayDetailedWeekView()</code> and <code>displayDayView()</code> from the <code>ViewCommand</code> class.</p>
+</div>
+<div class="paragraph">
+<p><code>displayMonthView()</code> displays all the months of the current semester in a monthly calendar format. Each academic week
+of the semester is also indicated in the display. The implementation of this function can be
+broken down into 2 parts:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Print month header and calculate required amount of whitespace before the 1st of the month.</p>
+</li>
+<li>
+<p>Print all days of the month using a loop.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Append academic week after each Saturday or last day of month.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><code>displayWeekView()</code> displays the weekly calendar format of a specified week. The implementation of this function can be
+broken down into the following steps:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Print academic week header.</p>
+</li>
+<li>
+<p>Retrieve all days of the week and for each day, retrieve its <em>slots</em> into an <code>ArrayList</code>.</p>
+</li>
+<li>
+<p>For each day, print the <em>slot</em> details (only start time, end time and a shortened title) and remove the <em>slot</em> from
+the <code>ArrayList</code>.</p>
+</li>
+<li>
+<p>Repeat step 3 until the <code>ArrayList</code> of <em>slots</em> for each day is empty.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><code>displayDayView()</code> displays the details of all <em>slots</em> of a specified day. The implementation of this function can be
+broken down into 2 parts:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Retrieve all <em>slots</em> for the specified day.</p>
+</li>
+<li>
+<p>Print all details of each <em>slot</em> found.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><code>displayDetailedWeekView()</code> displays the details of all <em>slots</em> of a specified week since <code>displayWeekView()</code> only shows
+ a formatted and summarised week view. The implementation of this function can be broken down into the following steps:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Print academic week header.</p>
+</li>
+<li>
+<p>Retrieve all days of the week.</p>
+</li>
+<li>
+<p>For each day, print all details of all <em>slots</em> via the <code>displayDayView()</code> method.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-functionality-of-code-view-week-code-command"><a class="link" href="#aspect-functionality-of-code-view-week-code-command">Aspect: Functionality of <code>view week</code> command</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Option for user to display a formatted summarised week view or a detailed week view.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: The formatted summarised week view is uncluttered. User given the choice and flexibility for the week view.</p>
+</li>
+<li>
+<p>Cons: User is required to spend a little more time to specify an additional parameter in the <code>view week</code> command.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Only a single formatted week view which displays details of all <em>slots</em> in the specified week.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Efficient for the user as user is only required to enter a single command to view all details of all <em>slots</em>.</p>
+</li>
+<li>
+<p>Cons: The formatted week view will be too cluttered as there are too many <em>slots</em> and lots of details. Formatting is
+an issue as well as details of each <em>slot</em> can be of varying lengths.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-02 16:07:53 UTC</div></div></div></body></html>
