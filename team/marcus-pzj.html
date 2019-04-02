@@ -10,39 +10,148 @@
 <h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>AddressBook - Level 4 is a desktop address book application used for teaching Software Engineering principles. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.</p>
+<p>For our Software Engineering project, my team and I were tasked with enhancing a basic command line interface address book  application.<br></p>
+</div>
+<div class="paragraph">
+<p>We chose to morph it into a text-based (Command Line Interface) scheduling/calendar application called <strong>PlanMySem</strong>, which caters to NUS students and staff who prefer to use a desktop application for managing their schedule/calendar.<br></p>
+</div>
+<div class="paragraph">
+<p><strong>PlanMySem</strong> automatically creates a planner that is synchronised according to the NUS academic calendar for the current semester and enables easy creation, editing and deleting of items.
+Special weeks such as recess week and reading week are taken into account within our unique recursion system.
+Items can then be efficiently managed via the intuitive tagging system.<br></p>
+</div>
+<div class="paragraph">
+<p>Note the following symbols and formatting used in this document:</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+This symbol indicates important information.
+</td>
+</tr>
+</table>
+</div>
+<table class="tableblock frame-none grid-none spread">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>list</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A grey highlight (called a mark-up) indicates that this is a command that can be inputted into the command line and executed by the application.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code class="blue">VersionedPlanner</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Blue text with grey highlight indicates a component, class or object in the architecture of the application.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>My role was to design and write the codes for the <code>list</code>, <code>find</code>, <code>history</code>, <code>undo</code> and <code>redo</code> features.
+The following sections illustrate these enhancements in more detail, as well as
+the relevant sections I have added to the user and developer guides in relation to these enhancements.</p>
+</div>
+<div class="paragraph">
+<p>&#8203;</p>
+</div>
+<div class="paragraph">
+<p>&#8203;</p>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="summary-of-contributions"><a class="link" href="#summary-of-contributions">Summary of contributions</a></h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>This section shows a summary of my coding, documentation, and other helpful contributions to the team project.<br></p>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Major enhancement</strong>: added <strong>the ability to undo/redo previous commands</strong></p>
+<p><strong>Major enhancements</strong>:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>What it does: allows the user to undo all previous commands one at a time. Preceding undo commands can be reversed by using the redo command.</p>
+<p>Feature 1: I added the ability to <strong>undo/redo previous commands</strong> and <strong>view the history</strong> of commands entered.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: The <code>undo</code> command allows the user to undo a previous <code>add</code>/<code>edit</code>/<code>delete</code> command. The user may reverse this command with the <code>redo</code> command.</p>
 </li>
 <li>
-<p>Justification: This feature improves the product significantly because a user can make mistakes in commands and the app should provide a convenient way to rectify them.</p>
+<p>Justification: In the event that users have made a mistake or changed their minds about executing
+a command, the <code>undo</code> command enables them to revert to a version immediately before
+the mistaken command was executed. If they change their minds again and decide to
+execute the command after all, then the <code>redo</code> command enables them to do so easily.</p>
 </li>
 <li>
-<p>Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands.</p>
+<p>Highlights: As our group chose to morph the product from <a href="https://github.com/nusCS2113-AY1819S2/addressbook-level3">AddressBook 3</a>, we did not have a History framework in place. I took up the responsibility
+to adapt the History Framework provided in <a href="https://github.com/nusCS2113-AY1819S2/addressbook-level4">AddressBook 4</a> in order to cater to our implementation of <strong>PlanMySem</strong>.</p>
 </li>
 <li>
-<p>Credits: <em>{mention here if you reused any code/ideas from elsewhere or if a third-party library is heavily used in the feature so that a reader can make a more accurate judgement of how much effort went into the feature}</em></p>
+<p>Credits: <a href="https://github.com/nusCS2113-AY1819S2/addressbook-level4">AddressBook 4</a> for providing the History framework.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Minor enhancement</strong>: added a history command that allows the user to navigate to previous commands using up/down keys.</p>
+<p>Feature 2: I added the ability to <strong>search and list <code class="blue">Slots</code></strong> using a keyword user input.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: The <code>list</code> command <strong>generates a list</strong> containing all <code class="blue">Slots</code> whose name/tag <strong>directly matches</strong> the specified keyword (not case-sensitive).</p>
 </li>
 <li>
-<p><strong>Code contributed</strong>: [<a href="https://github.com">Functional code</a>] [<a href="https://github.com">Test code</a>] <em>{give links to collated code files}</em></p>
+<p>Justification: After the user has added <code class="blue">Slots</code> to their planner, they may want to be able to view information regarding
+a <code class="blue">Slot</code> that they have added. If the user wants to find out the dates, start times, end times, venues and descriptions pertaining to a specific <code class="blue">Slot</code>, they can use the <code>list</code> command to
+locate that specific <code class="blue">Slot</code> and view all of its information in a list.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Feature 3: I added the ability to <strong>search and find <code class="blue">Slots</code></strong> using a keyword user input.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: The <code>find</code> command <strong>generates a list</strong> containing all <code class="blue">Slots</code> whose name <strong>closely matches</strong> the specified keyword and displays them as a list.</p>
+</li>
+<li>
+<p>Justification: Unlike the <code>list</code> command, the <code>find</code> command will also consider searches that are similar to the desired name/tag. This is to account for a typo or an incomplete keyword, which can happen often while the user is typing.
+Additionally, the user may not remember the exact name he has added to the planner, and hence, the <code>find</code> command provides a higher chance for the user to locate their desired <code class="blue">Slot</code>.</p>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+The <code>find</code> command ends up generating a longer output list, which potentially contains many <code class="blue">Slots</code>, which may not be optimal for the user to skim through. Thus, I provide users with the option to use the <code>list</code> command to specifically pinpoint their desired <code class="blue">Slot</code> to list.
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>Highlights: It was challenging to provide an optimal string matching algorithm that accurately weighs the closeness of strings.
+An in-depth analysis of design alternatives was necessary to determine the kind of string matching algorithm to implement in order to improve search accuracy.</p>
+</li>
+<li>
+<p>Credits: The string matching logic was largely dependent on <a href="#levenshtein-distance">Levenshtein Distance</a>. My implementation was adapted from <a href="https://rosettacode.org/wiki/Levenshtein_distance#Java">Rosetta Code</a>.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Code contributed</strong>: [<a href="https://nuscs2113-ay1819s2.github.io/dashboard-beta/#search=marcus-pzj&amp;sort=displayName&amp;since=2019-02-10&amp;until=2019-04-01&amp;timeframe=day&amp;reverse=false&amp;groupSelect=groupByRepos&amp;breakdown=false&amp;tabAuthor=marcus-pzj&amp;tabRepo=CS2113-AY1819S2-T08-3_main_master">RepoSense</a>] [<a href="https://github.com/CS2113-AY1819S2-T08-3/main/pulls?q=is%3Apr+author%3Amarcus-pzj+is%3Aclosed">Pull Requests</a>]</p>
 </li>
 <li>
 <p><strong>Other contributions</strong>:</p>
@@ -53,20 +162,17 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Managed releases <code>v1.3</code> - <code>v1.5rc</code> (3 releases) on GitHub</p>
+<p>I managed releases from version 1.1 to 1.3, which are all of the <a href="https://github.com/CS2113-AY1819S2-T08-3/main/releases">releases</a> on GitHub.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p>Enhancements to existing features:</p>
+<p>Enhancement to existing features:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Updated the GUI color scheme (Pull requests <a href="https://github.com">#33</a>, <a href="https://github.com">#34</a>)</p>
-</li>
-<li>
-<p>Wrote additional tests for existing features to increase coverage from 88% to 92% (Pull requests <a href="https://github.com">#36</a>, <a href="https://github.com">#38</a>)</p>
+<p>I wrote additional tests for existing features to increase coverage.</p>
 </li>
 </ul>
 </div>
@@ -76,7 +182,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Did cosmetic tweaks to existing contents of the User Guide: <a href="https://github.com">#14</a></p>
+<p>I performed cosmetic tweaks to existing contents of the User Guide: <a href="https://github.com/CS2113-AY1819S2-T08-3/main/pull/98">#98</a>, <a href="https://github.com/CS2113-AY1819S2-T08-3/main/pull/101">#101</a>.</p>
 </li>
 </ul>
 </div>
@@ -86,16 +192,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p>PRs reviewed (with non-trivial review comments): <a href="https://github.com">#12</a>, <a href="https://github.com">#32</a>, <a href="https://github.com">#19</a>, <a href="https://github.com">#42</a></p>
-</li>
-<li>
-<p>Contributed to forum discussions (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>, <a href="https://github.com">4</a>)</p>
-</li>
-<li>
-<p>Reported bugs and suggestions for other teams in the class (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>)</p>
-</li>
-<li>
-<p>Some parts of the history feature I added was adopted by several other class mates (<a href="https://github.com">1</a>, <a href="https://github.com">2</a>)</p>
+<p>I reviewed Pull Requests and provided non-trivial review comments for some requests: <a href="https://github.com/CS2113-AY1819S2-T08-3/main/pull/25">#25</a>, <a href="https://github.com/CS2113-AY1819S2-T08-3/main/pull/53">#53</a>, <a href="https://github.com/CS2113-AY1819S2-T08-3/main/pull/75">#75</a>, <a href="https://github.com/CS2113-AY1819S2-T08-3/main/pull/115">#115</a>.</p>
 </li>
 </ul>
 </div>
@@ -105,10 +202,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Integrated a third party library (Natty) to the project (<a href="https://github.com">#42</a>)</p>
-</li>
-<li>
-<p>Integrated a new Github plugin (CircleCI) to the team repo</p>
+<p>I completed the initial set up of the <a href="https://github.com/CS2113-AY1819S2-T08-3">developer team and organisation repository</a> on GitHub.</p>
 </li>
 </ul>
 </div>
@@ -117,9 +211,6 @@
 </div>
 </li>
 </ul>
-</div>
-<div class="paragraph">
-<p><em>{you can add/remove categories in the list above}</em></p>
 </div>
 </div>
 </div>
@@ -132,10 +223,76 @@
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users.</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the User Guide. I have added the descriptions of all features that I have implemented.
+I have also provided clear instructions for users to use my implemented features.</em></p></td>
 </tr>
 </tbody>
 </table>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/UserGuide.adoc#list"><code>list</code></a><br></p>
+</li>
+<li>
+<p><a href="https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/UserGuide.adoc#find"><code>find</code></a><br></p>
+</li>
+<li>
+<p><a href="https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/UserGuide.adoc#history"><code>history</code></a><br></p>
+</li>
+<li>
+<p><a href="https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/UserGuide.adoc#undo"><code>undo</code></a><br></p>
+</li>
+<li>
+<p><a href="https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/UserGuide.adoc#redo"><code>redo</code></a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Below is an example of my addition to the User Guide for the <code>find</code> feature.</p>
+</div>
+<div class="sect2">
+<h3 id="locating-slots-code-find-code-code-f-code"><a class="link" href="#locating-slots-code-find-code-code-f-code">Locating Slots: <code>find</code> / <code>f</code></a></h3>
+<div class="paragraph">
+<p>Find all <code class="blue">Slots</code> whose name closely matches the specified keyword and displays them as a list.<br>
+Format: <code>find n/KEYWORD</code></p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+The <code>find</code> command will attempt to return the closest matching <code class="blue">Slot</code> in the event that a match is not found.
+Do not be surprised to <em>eg. enter <code>find n/ABC</code> and get a <code class="blue">Slot</code> named `XYZ`</em> in return.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>find n/CS</code><br>
+Find all <code class="blue">Slots</code> whose name contains <code>CS</code> (eg. CS2101, CS2113T, SOCSMeet)</p>
+</li>
+</ul>
+</div>
+<div id="img-find" class="imageblock">
+<div class="content">
+<img src="../images/Find_Command_Output_1.png" alt="Find Command Output 1" width="790">
+</div>
+<div class="title">Figure 1. <span class="underline">Output after entering <code>find n/CS</code></span></div>
+</div>
+<div class="paragraph">
+<p>&#8203;</p>
+</div>
+<div class="paragraph">
+<p>&#8203;</p>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -147,18 +304,113 @@
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project.</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the Developer Guide. I have explained the logic behind the features that were tasked to me.
+I have also elaborated on my design considerations in order to justify my implementation style.<br></p>
+<p class="tableblock">In addition, I was tasked with collating and polishing the User Stories which were generated during the ideation phase of the project.</em></p></td>
 </tr>
 </tbody>
 </table>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/DeveloperGuide.adoc#list-feature"><code>list</code></a></p>
+</li>
+<li>
+<p><a href="https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/DeveloperGuide.adoc#find-feature"><code>find</code></a></p>
+</li>
+<li>
+<p><a href="https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/DeveloperGuide.adoc#undo-redo-feature"><code>undo</code> &amp; <code>redo</code></a></p>
+</li>
+<li>
+<p><a href="https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/DeveloperGuide.adoc#user-stories">User Stories</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Below is an example of my addition to the Developer Guide for the <code>find</code> feature.</p>
+</div>
+<div class="sect2">
+<h3 id="find-feature"><a class="link" href="#find-feature">Find feature</a></h3>
+<div class="sect3">
+<h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
+<div class="paragraph">
+<p>The find function supports searching using a single keyword.<br>
+All existing <code>Slots</code> are weighted based on their name/tag&#8217;s <a href="#levenshtein-distance">Levenshtein Distance</a> from the keyword.</p>
+</div>
+<div class="paragraph">
+<p>A low <a href="#levenshtein-distance">Levenshtein Distance</a> is attributed to a high level of similarity between the name/tag and the keyword.
+(A value of 0 constitutes an exact match.)</p>
+</div>
+<div class="paragraph">
+<p>The weighted <code class="blue">Slots</code> are inserted into a <code class="blue">PriorityQueue</code> and the closest matching <code class="blue">Slots</code>
+will be polled into the output list.<br>
+&#8203;</p>
+</div>
+<div class="paragraph">
+<p>&#8203;</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-what-constitutes-a-positive-search-result-in-code-find-code-command"><a class="link" href="#aspect-what-constitutes-a-positive-search-result-in-code-find-code-command">Aspect: What constitutes a positive search result in <code>find</code> command</a></h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>No.</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Alternatives</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pros</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Cons</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>1</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Positive search result by strictly matching the entered keyword</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Easy to implement.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Search must be exact, typos or an incomplete keyword will yield incorrect results. Nothing different from <code>List</code> feature.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>2</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Positive search result as long as name/tag contains the keyword.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Searches will detect names/tags similar to the keyword.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Output list will be longer. May become excessively long if short keyword is provided.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>3 (current implementation)</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Store the search results in a <code>PriorityQueue</code> ordered by their <a href="#levenshtein-distance">Levenshtein distances</a> from the search keyword.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Will also consider searches that are similar to the desired name/tag and will account for a typo or an incomplete keyword</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Adds complexities in finding and searching.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>&#8203;</p>
+</div>
+<div class="paragraph">
+<p>&#8203;</p>
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="project-powerpointlabs"><a class="link" href="#project-powerpointlabs">PROJECT: PowerPointLabs</a></h2>
+<h2 id="glossary"><a class="link" href="#glossary">Glossary</a></h2>
 <div class="sectionbody">
-<hr>
-<div class="paragraph">
-<p><em>{Optionally, you may include other projects in your portfolio.}</em></p>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a id="levenshtein-distance"></a> Levenshtein Distance</dt>
+<dd>
+<p>The Levenshtein distance is a string metric for measuring difference between two sequences.<br>
+Informally, the Levenshtein distance between two words is the minimum number of single-character edits (i.e. insertions, deletions or substitutions)
+required to change one word into the other.</p>
+</dd>
+</dl>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-02 13:13:44 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-02 13:39:15 UTC</div></div></div></body></html>
