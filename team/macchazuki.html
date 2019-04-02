@@ -7,10 +7,20 @@
 </div>
 </div>
 <div class="sect1">
-<h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
+<h2 id="about-the-project"><a class="link" href="#about-the-project">About the project</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>AddressBook - Level 4 is a desktop address book application used for teaching Software Engineering principles. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.</p>
+<p>My team and I were tasked with enhancing a basic command line interface addressbook for our
+Software Engineering project. We chose to morph it into a student planner for NUS students. This planner is automatically synchronised according to the NUS academic calendar for the current semester and enables easy creation, editing and deleting of items.</p>
+</div>
+<div class="paragraph">
+<p>Special weeks such as recess week and reading week are taken into account within our unique recursion system.
+This allows NUS students to easily keep track of school related matters such as classes, deadlines and examinations.
+Items can also be efficiently managed via the intuitive tagging system.
+&#8203;</p>
+</div>
+<div class="paragraph">
+<p>&#8203;</p>
 </div>
 </div>
 </div>
@@ -20,95 +30,92 @@
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Major enhancement</strong>: added <strong>the ability to undo/redo previous commands</strong></p>
+<p><strong>Major enhancement 1</strong>: I added the ability to <strong>import .ics files</strong></p>
 <div class="ulist">
 <ul>
 <li>
-<p>What it does: allows the user to undo all previous commands one at a time. Preceding undo commands can be reversed by using the redo command.</p>
+<p>What it does: allows the user to import .ics files obtained from this or other applications.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+.ics stands for a iCalendar file format. .ics files are one of the most commonly used calendar formats in applications such as Google Calendar and Outlook.
+</td>
+</tr>
+</table>
+</div>
 </li>
 <li>
-<p>Justification: This feature improves the product significantly because a user can make mistakes in commands and the app should provide a convenient way to rectify them.</p>
+<p>Justification: This feature improves the product significantly because the user can import existing appointments on other calendar applications into PlanMySem, allowing him to combine external appointments with his school schedule.</p>
 </li>
 <li>
-<p>Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands.</p>
-</li>
-<li>
-<p>Credits: <em>{mention here if you reused any code/ideas from elsewhere or if a third-party library is heavily used in the feature so that a reader can make a more accurate judgement of how much effort went into the feature}</em></p>
+<p>Highlights: This enhancement works with existing as well as future commands. In particular, this enhancement works hand-in-hand with 2 features that I will go into detail later: exporting and data and encryption.
+An in-depth analysis of the add command was necessary to understand how slots are added into our planner as I had to add multiple slots into the planner at once.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Minor enhancement</strong>: added a history command that allows the user to navigate to previous commands using up/down keys.</p>
+<p><strong>Code contributed</strong>: [<a href="https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/src/planmysem/logic/commands/ImportCommand.java" class="bare">https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/src/planmysem/logic/commands/ImportCommand.java</a>]
+&#8203;</p>
 </li>
 <li>
-<p><strong>Code contributed</strong>: [<a href="https://github.com">Functional code</a>] [<a href="https://github.com">Test code</a>] <em>{give links to collated code files}</em></p>
+<p><strong>Major enhancement 2</strong>: I added the ability to <strong>export .ics files</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: allows the user to export .ics files from the planner  ** What it does: allows the user to export .ics files from the planner</p>
+</li>
+<li>
+<p>Justification: This feature improves the product because the user can export current slots in the planner and merge them into other calendar applications. The user can also export the .ics file to be imported across devices.</p>
+</li>
+<li>
+<p>Highlights: This enhancement works with existing as well as future commands. In particular, this enhancement works hand-in-hand with the import feature described above. This allows the user to export a file that can be imported into PlanMySem on another device.
+This enhancement also allows the user to obtain a readable file as the data will be encrypted (discussed later).<br>
+An in-depth analysis of how the planner stores slots was necessary in order to extract their details to be exported.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Code contributed</strong>: [<a href="https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/src/planmysem/logic/commands/ExportCommand.java" class="bare">https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/src/planmysem/logic/commands/ExportCommand.java</a>]
+&#8203;</p>
+</li>
+<li>
+<p><strong>Major enhancement 3</strong>: I added data encryption of the storage file.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: the planner automatically encrypts the data before saving it into a .txt file. This data is then decrypted before being loaded by the application.</p>
+</li>
+<li>
+<p>Justification: This feature improves the product because the user&#8217;s schedule data will not be able to easily obtained by others.</p>
+</li>
+<li>
+<p>Highlights: This enhancement works with existing as well as future commands. In particular, this enhancement works hand-in-hand with the import and export functions. As we have decided to encrypt the raw data file, the user will not be able to obtain the raw data of his planner.<br>
+As a result, the export function allows the user to obtain a read-able text file when he wishes to.<br>
+This enhancement also allows the user to obtain a readable file as the data will be encrypted (discussed later).<br>
+An in-depth analysis of how the planner data is stored was necessary to identify where encryption and decryption should be done on the data. Also, a general understanding of ciphers and data encryption was necessary in implementation of this enhancement.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Code contributed</strong>: [<a href="https://github.com/CS2113-AY1819S2-T08-3/main/tree/master/src/planmysem/storage" class="bare">https://github.com/CS2113-AY1819S2-T08-3/main/tree/master/src/planmysem/storage</a>]</p>
 </li>
 <li>
 <p><strong>Other contributions</strong>:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Project management:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Managed releases <code>v1.3</code> - <code>v1.5rc</code> (3 releases) on GitHub</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Enhancements to existing features:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Updated the GUI color scheme (Pull requests <a href="https://github.com">#33</a>, <a href="https://github.com">#34</a>)</p>
-</li>
-<li>
-<p>Wrote additional tests for existing features to increase coverage from 88% to 92% (Pull requests <a href="https://github.com">#36</a>, <a href="https://github.com">#38</a>)</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
 <p>Documentation:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Did cosmetic tweaks to existing contents of the User Guide: <a href="https://github.com">#14</a></p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Community:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>PRs reviewed (with non-trivial review comments): <a href="https://github.com">#12</a>, <a href="https://github.com">#32</a>, <a href="https://github.com">#19</a>, <a href="https://github.com">#42</a></p>
-</li>
-<li>
-<p>Contributed to forum discussions (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>, <a href="https://github.com">4</a>)</p>
-</li>
-<li>
-<p>Reported bugs and suggestions for other teams in the class (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>)</p>
-</li>
-<li>
-<p>Some parts of the history feature I added was adopted by several other class mates (<a href="https://github.com">1</a>, <a href="https://github.com">2</a>)</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Tools:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Integrated a third party library (Natty) to the project (<a href="https://github.com">#42</a>)</p>
-</li>
-<li>
-<p>Integrated a new Github plugin (CircleCI) to the team repo</p>
+<p>Wrote Use Cases on the Developer Guide: [<a href="https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/DeveloperGuide.adoc" class="bare">https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/DeveloperGuide.adoc</a>]</p>
 </li>
 </ul>
 </div>
@@ -117,9 +124,6 @@
 </div>
 </li>
 </ul>
-</div>
-<div class="paragraph">
-<p><em>{you can add/remove categories in the list above}</em></p>
 </div>
 </div>
 </div>
@@ -132,7 +136,31 @@
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users.</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users.</em><br>
+- <a href="https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/UserGuide.adoc#encrypt" class="bare">https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/UserGuide.adoc#encrypt</a><br>
+- <a href="https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/UserGuide.adoc#import" class="bare">https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/UserGuide.adoc#import</a><br>
+- <a href="https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/UserGuide.adoc#export" class="bare">https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/UserGuide.adoc#export</a><br></p>
+<p class="tableblock">Below is an example of my contributions for the import and export features.<br></p>
+<p class="tableblock">&#8203;
+<a id="import"></a>
+Importing .ics formatted files 'import filename'<br>
+You can import an .ics file into the planner.
+Format: <code>import filename</code><br>
+[NOTE]<br>
+The .ics file can be imported into other calendar apps that support .ics files such as Google Calendar. The file to be imported has to be located in the PlanMySem main directory.<br></p>
+<p class="tableblock">&#8203;
+[WARNING]<br>
+For .ics files that are created from other calendar applications, events with recurrence will not be recursed in our
+application. Events that are outside of the current school semester will also not be imported.</p>
+<p class="tableblock">&#8203;</p>
+<p class="tableblock"><a id="export"></a>
+Exporting .ics formatted files: <code>export</code><br>
+You can export the planner as a .ics file.<br></p>
+<p class="tableblock">[NOTE]<br>
+The exported file is named "PlanMySem.ics" and is saved in the main directory.
+The .ics file can be imported into other calendar apps that support .ics files such as Google Calendar.<br></p>
+<p class="tableblock">[WARNING]<br>
+Exporting will REMOVE all tags in the planner.</p></td>
 </tr>
 </tbody>
 </table>
@@ -147,18 +175,33 @@
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project.</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project.</em><br>
+- <a href="https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/DeveloperGuide.adoc#data-encryption-decryption-feature" class="bare">https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/DeveloperGuide.adoc#data-encryption-decryption-feature</a><br>
+- <a href="https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/DeveloperGuide.adoc#data-exporting-exporting-feature" class="bare">https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/DeveloperGuide.adoc#data-exporting-exporting-feature</a><br>
+- <a href="https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/DeveloperGuide.adoc#use-cases" class="bare">https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/DeveloperGuide.adoc#use-cases</a><br></p>
+<p class="tableblock">Below is an example of my contributions in design considerations.</p>
+<p class="tableblock">Data Exporting / Exporting feature</p>
+<p class="tableblock">The user can export the current planner into a .ics file to use in external calendar applications. The .ics file will contain the names of the slots in the SUMMARY field and the descriptions in the DESCRIPTION field. This command automatically exports into the main directory and names the file “PlanMySem.ics”. Future updates can include user input to allow saving the file in another directory and naming the file.</p>
+<p class="tableblock">We have chosen to use the iCalendar format due to its popularity and it’s use in applications such as Google Calendar, Microsoft Outlook and NUSmods.</p>
+<p class="tableblock">In our implementation, we have chosen not to export the tags into the .ics file. This is because iCalendar does not have in-built tag fields. This means that other other applications that import .ics will not be able to use the tags.
+&#8203;</p>
+<p class="tableblock">&#8203;</p>
+<p class="tableblock"><strong>Aspect: Exporting tags into .ics file.</strong></p>
+<p class="tableblock"><strong>Alternative 1 (current choice):</strong> Ignore tags when exporting.</p>
+<p class="tableblock"><strong> Pros: Easier to implement as iCalendar does not have in-built tag fields.</strong></p>
+<p class="tableblock">Cons: Not all the information about the slots will be retained.</p>
+<p class="tableblock"><strong>Reason for choice: We do not have much control over other applications, and importing and exporting .ics within <strong>PlanMySem</strong> can be done using the storageFile .txt file.</strong></p>
+<p class="tableblock"><strong>Alternative 2:</strong> Use the notes field and a tag identifier to save the tags.</p>
+<p class="tableblock"><strong> Pros: All the information from the semester will be exported.</strong></p>
+<p class="tableblock">Cons: Requires other applications to be coded to read these tag identifiers and also to store and use the tags in their functions.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
 <div class="sect1">
-<h2 id="project-powerpointlabs"><a class="link" href="#project-powerpointlabs">PROJECT: PowerPointLabs</a></h2>
+<h2 id="project-planmysem-2"><a class="link" href="#project-planmysem-2">PROJECT: PlanMySem</a></h2>
 <div class="sectionbody">
 <hr>
-<div class="paragraph">
-<p><em>{Optionally, you may include other projects in your portfolio.}</em></p>
 </div>
-</div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-02 13:39:15 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-02 14:38:55 UTC</div></div></div></body></html>
