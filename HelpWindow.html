@@ -27,6 +27,18 @@
 <li><a href="#encrypt">4.11. Encrypting/decrypting data files</a></li>
 <li><a href="#import">4.12. Importing .ics formatted files <code>import</code></a></li>
 <li><a href="#export">4.13. Exporting .ics formatted files: <code>export</code></a></li>
+<li><a href="#clear">4.14. Clear all data : <code>clear</code></a></li>
+<li><a href="#exit">4.15. Exiting the program : <code>exit</code></a></li>
+<li><a href="#save">4.16. Saving the data</a></li>
+</ul>
+</li>
+<li><a href="#faq">5. FAQ</a></li>
+<li><a href="#command-summary">6. Command Summary</a>
+<ul class="sectlevel2">
+<li><a href="#general-commands">6.1. General Commands</a></li>
+<li><a href="#manipulating-the-planner">6.2. Manipulating the Planner</a></li>
+<li><a href="#viewing-the-planner">6.3. Viewing the Planner</a></li>
+<li><a href="#import-exporting-the-planner">6.4. Import/Exporting the Planner</a></li>
 </ul>
 </li>
 </ul>
@@ -480,8 +492,9 @@ Format: <code>add n/NAME d/DATE_OR_DAY_OF_WEEK st/START_TIME et/END_TIME_OR_DURA
 <div class="ulist">
 <ul>
 <li>
-<p><code>add n/CS2113T Tutorial d/mon st/8:00 am et/9:00 am des/Topic: Sequence Diagram t/CS2113T t/Tutorial</code><br>
-Add a single <em>slot</em>, named "CS2113T Tutorial" on the coming monday, from 0800hrs to 0900hrs with the tags "CS2113T" and "Tutorial".</p>
+<p><code>add n/CS2113T Lecture d/mon st/8:00 am et/9:00 am des/Topic: Software Engineering t/CS2113T t/Lecture r/normal r/past</code><br>
+Add a single <em>slot</em>, named "CS2113T Lecture" with description "Software Engineering" on all mondays, from 0800hrs to 0900hrs with the tags "CS2113T" and "Tutorial".
+Here, the recursion parameters enable a single command to place 13 slots on all "normal" weeks that lectures take place on.</p>
 </li>
 </ul>
 </div>
@@ -489,17 +502,17 @@ Add a single <em>slot</em>, named "CS2113T Tutorial" on the coming monday, from 
 <div class="content">
 <img src="images/Add_Command_Output_1.png" alt="Add Command Output 1" width="790">
 </div>
-<div class="title">Figure 3. <span class="underline">Output after entering <code>add n/CS2113T Tutorial d/mon st/08:00 et/09:00 des/Topic: Sequence Diagram t/CS2113T t/Tutorial</code></span></div>
+<div class="title">Figure 3. <span class="underline">Output after entering <code>add n/CS2113T Lecture d/mon st/8:00 am et/9:00 am des/Topic: Software Engineering t/CS2113T t/Lecture r/normal r/past</code></span></div>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>add n/CS2113T Tutorial d/mon st/08:00 et/09:00 des/Topic: Sequence Diagram t/CS2113T t/Tutorial r/recess r/reading</code><br>
-Do the same but additionally, recurse the <em>slot</em> on both recess and reading week.</p>
+<p><code>add n/CS2113T Lecture d/mon st/8:00 am et/9:00 am des/Topic: Software Engineering t/CS2113T t/Lecture r/recess r/reading r/past</code><br>
+Do the same but instead of "normal" weeks, do the opposite of the norm and recurse the <em>slot</em> on both recess and reading week.</p>
 </li>
 <li>
-<p><code>add n/CS2113T Tutorial d/mon st/08:00 et/09:00 des/Topic: Sequence Diagram t/CS2113T t/Tutorial r/normal</code><br>
-Do the same but recurse the <em>slot</em> on "normal", instructional, weeks.</p>
+<p><code>add n/CS2113T Lecture d/mon st/8:00 am et/9:00 am des/Topic: Software Engineering t/CS2113T t/Lecture</code><br>
+Do the same but without any recursion, instead place the <em>slot</em> the coming monday.</p>
 </li>
 </ul>
 </div>
@@ -529,11 +542,11 @@ You may add single <em>slots</em> by omitting the <code>r/</code> identifiers an
 <ol class="arabic">
 <li>
 <p>Edit <em>slot(s)</em> which contains certain <em>tag</em>(s).<br>
-Format: <code>edit t/TAG&#8230;&#8203; [nn/NEW_NAME] [nst/NEW_START_TIME] [net/NEW_END_TIME|DURATION] [nl/NEW_LOCATION] [nd/NEW_DESCRIPTION] [nt/NEW_TAG]&#8230;&#8203;</code></p>
+Format: <code>edit t/TAG&#8230;&#8203; [nn/NEW_NAME] [nst/NEW_START_TIME] [net/NEW_END_TIME|DURATION] [nl/NEW_LOCATION] [ndes/NEW_DESCRIPTION] [nt/NEW_TAG]&#8230;&#8203;</code></p>
 </li>
 <li>
 <p>Edit specific <em>slot</em> via the <code>list</code> command.<br>
-Format: <code>edit INDEX [nn/NEW_NAME] [nd/NEW_DATE] [nst/NEW_START_TIME] [net/NEW_END_TIME|DURATION] [nl/NEW_LOCATION] [nd/NEW_DESCRIPTION] [nt/NEW_TAG]&#8230;&#8203;</code></p>
+Format: <code>edit INDEX [nn/NEW_NAME] [nd/NEW_DATE] [nst/NEW_START_TIME] [net/NEW_END_TIME|DURATION] [nl/NEW_LOCATION] [ndes/NEW_DESCRIPTION] [nt/NEW_TAG]&#8230;&#8203;</code></p>
 </li>
 </ol>
 </div>
@@ -556,8 +569,8 @@ To edit a <em>slot</em>'s date, you may use the <code>list</code> or <code>find<
 <div class="ulist">
 <ul>
 <li>
-<p><code>edit t/CS2113T t/Tutorial nl/COM2 04-01</code><br>
-Edit <em>slots</em> that contain tags "CS2113T" and "Tutorial", set these <em>slot&#8217;s</em> location to "COM2 04-01".</p>
+<p><code>edit t/CS2113T t/Lecture nl/COM2 04-01</code><br>
+Edit <em>slots</em> that contain tags "Lecture" and "Tutorial", set these <em>slot&#8217;s</em> location to "COM2 04-01".</p>
 </li>
 </ul>
 </div>
@@ -565,13 +578,13 @@ Edit <em>slots</em> that contain tags "CS2113T" and "Tutorial", set these <em>sl
 <div class="content">
 <img src="images/Edit_Command_Output_1.png" alt="Edit Command Output 1" width="790">
 </div>
-<div class="title">Figure 4. <span class="underline">Output after entering <code>edit t/CS2113T t/Tutorial nl/COM2 04-01</code></span></div>
+<div class="title">Figure 4. <span class="underline">Output after entering <code>edit t/CS2113T t/Lecture nl/COM2 04-01</code></span></div>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>edit 1 des/Topic: Sequence Diagram</code><br>
-Edit the first item from the previous result of the <code>list</code> or <code>find</code> command.
+<p><code>edit 1 nl/ICube</code><br>
+Edit the first item from the previous result of the <code>list</code> or <code>find</code> command, replace it&#8217;s location with "ICube".
 &#8203;</p>
 </li>
 </ul>
@@ -612,19 +625,23 @@ You may delete a specific <em>slot</em> by using the <code>list</code> or <code>
 <div class="ulist">
 <ul>
 <li>
-<p><code>delete t/CS2113T t/Tutorial</code><br>
-Delete <em>slots</em> that contain tags "CS2113T" and "Tutorial".</p>
+<p><code>delete t/CS2113T t/Lecture</code><br>
+Delete <em>slots</em> that contain both tags "CS2113T" and "Lecture".</p>
 </li>
 </ul>
 </div>
 <div id="img-delete" class="imageblock">
 <div class="content">
-<img src="images/Delete_Command_Output.png" alt="Delete Command Output" width="790">
+<img src="images/Delete_Command_Output_1.png" alt="Delete Command Output 1" width="790">
 </div>
-<div class="title">Figure 5. <span class="underline">Output after entering <code>delete t/CS2113T t/Tutorial</code></span></div>
+<div class="title">Figure 5. <span class="underline">Output after entering <code>delete t/CS2113T t/Lecture</code></span></div>
 </div>
 <div class="ulist">
 <ul>
+<li>
+<p><code>delete t/Lecture</code><br>
+Delete <em>slots</em> that contain the tag "Lecture".</p>
+</li>
 <li>
 <p><code>delete 2</code><br>
 Delete the second <em>slot</em> shown via the <code>list</code> command.
@@ -648,12 +665,12 @@ Format: <code>list n/NAME</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>list n/CS2113T</code><br>
-List all <em>slots</em> that is named <code>CS2113T</code> in the planner.</p>
+<p><code>list n/CS2113T Lecture</code><br>
+List all <em>slots</em> that is named <code>CS2113T Lecture</code>.</p>
 </li>
 <li>
-<p><code>list t/Tutorial</code><br>
-List all <em>slots</em> that contains tags named <code>Tutorial</code> in the planner.</p>
+<p><code>list t/Lecture</code><br>
+List all <em>slots</em> that contains the tag <code>Lecture</code>.</p>
 </li>
 </ul>
 </div>
@@ -661,7 +678,7 @@ List all <em>slots</em> that contains tags named <code>Tutorial</code> in the pl
 <div class="content">
 <img src="images/List_Command_Output_1.png" alt="List Command Output 1" width="790">
 </div>
-<div class="title">Figure 6. <span class="underline">Output after entering <code>list n/CS2113T</code></span></div>
+<div class="title">Figure 6. <span class="underline">Output after entering <code>list t/Lecture</code></span></div>
 </div>
 <div class="paragraph">
 <p>&#8203;</p>
@@ -699,8 +716,8 @@ Do not be surprised to <em>eg. enter <code>find n/ABC</code> and get a <code>Slo
 Find all <em>slots</em> whose name closely matches <code>CS</code> (eg. CS2101, CS2113T, SOCSMeet)</p>
 </li>
 <li>
-<p><code>find t/Tut</code><br>
-Find all <em>slots</em> that contains tags whose names closely matches <code>Tut</code> (eg. Tutorial, Tutorship)</p>
+<p><code>find t/2113T</code><br>
+Find all <em>slots</em> that contain tags that closely matches <code>2113T</code>.</p>
 </li>
 </ul>
 </div>
@@ -929,6 +946,12 @@ application. Events that are outside of the current school semester will also no
 <p>The exported file is named "PlanMySem.ics" and is saved in the main directory.
 The .ics file can be imported into other calendar apps that support .ics files such as Google Calendar.<br></p>
 </div>
+<div id="img-exportFile" class="imageblock">
+<div class="content">
+<img src="images/Export_Command_Directory_1.png" alt="Export Command Directory 1" width="790">
+</div>
+<div class="title">Figure 10. <span class="underline">Location of PlanMySem.ics file</span></div>
+</div>
 </td>
 </tr>
 </table>
@@ -945,14 +968,6 @@ Exporting will REMOVE all tags in the planner.
 </tr>
 </table>
 </div>
-<div id="img-exportFile" class="imageblock">
-<div class="content">
-<img src="images/Export_Command_Directory_1.png" alt="Export Command Directory 1" width="790">
-</div>
-<div class="title">Figure 10. <span class="underline">Location of PlanMySem.ics file</span></div>
-</div>
-<div class="exampleblock">
-<div class="content">
 <div class="admonitionblock tip">
 <table>
 <tr>
@@ -970,9 +985,11 @@ These are plain text files that include calendar event details like a descriptio
 <div class="paragraph">
 <p>&#8203;</p>
 </div>
-<div id="clear" class="paragraph">
-<p>=== Clear all data : <code>clear</code>
-Clear all data stored on the planner.<br>
+</div>
+<div class="sect2">
+<h3 id="clear"><a class="link" href="#clear">4.14. Clear all data : <code>clear</code></a></h3>
+<div class="paragraph">
+<p>Clear all data stored on the planner.<br>
 Format: <code>clear</code></p>
 </div>
 <div id="img-find" class="imageblock">
@@ -997,27 +1014,36 @@ The <code>clear</code> command cannot be undone! Your data will be permanently r
 <div class="paragraph">
 <p>&#8203;</p>
 </div>
-<div id="exit" class="paragraph">
-<p>=== Exiting the program : <code>exit</code>
-Exits the program.<br>
+</div>
+<div class="sect2">
+<h3 id="exit"><a class="link" href="#exit">4.15. Exiting the program : <code>exit</code></a></h3>
+<div class="paragraph">
+<p>Exits the program.<br>
 Format: <code>exit</code>
 &#8203;</p>
 </div>
 <div class="paragraph">
 <p>&#8203;</p>
 </div>
-<div id="save" class="paragraph">
-<p>=== Saving the data
-Planner data is saved in the hard disk automatically after any command that changes the data is executed.<br>
+</div>
+<div class="sect2">
+<h3 id="save"><a class="link" href="#save">4.16. Saving the data</a></h3>
+<div class="paragraph">
+<p>Planner data is saved in the hard disk automatically after any command that changes the data is executed.<br>
 There is no need to save manually.
 &#8203;</p>
 </div>
 <div class="paragraph">
 <p>&#8203;</p>
 </div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="faq"><a class="link" href="#faq">5. FAQ</a></h2>
+<div class="sectionbody">
 <div class="paragraph">
-<p>== FAQ
-<strong>Q</strong>: How do I transfer my data to another computer?<br>
+<p><strong>Q</strong>: How do I transfer my data to another computer?<br>
 <strong>A</strong>: In order to transfer your data to another computer, you should:</p>
 </div>
 <div class="olist arabic">
@@ -1037,12 +1063,15 @@ There is no need to save manually.
 <div class="paragraph">
 <p>&#8203;</p>
 </div>
-<div class="paragraph">
-<p>== Command Summary</p>
 </div>
+</div>
+<div class="sect1">
+<h2 id="command-summary"><a class="link" href="#command-summary">6. Command Summary</a></h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="general-commands"><a class="link" href="#general-commands">6.1. General Commands</a></h3>
 <div class="paragraph">
-<p>=== General Commands
-General commands that you might find useful in helping you to navigate and configure <strong>PlanMySem</strong>:</p>
+<p>General commands that you might find useful in helping you to navigate and configure <strong>PlanMySem</strong>:</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
@@ -1104,9 +1133,11 @@ General commands that you might find useful in helping you to navigate and confi
 <div class="paragraph">
 <p>&#8203;</p>
 </div>
+</div>
+<div class="sect2">
+<h3 id="manipulating-the-planner"><a class="link" href="#manipulating-the-planner">6.2. Manipulating the Planner</a></h3>
 <div class="paragraph">
-<p>=== Manipulating the Planner
-Commands to manage <em>slots</em>:</p>
+<p>Commands to manage <em>slots</em>:</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
@@ -1150,9 +1181,11 @@ Commands to manage <em>slots</em>:</p>
 <div class="paragraph">
 <p>&#8203;</p>
 </div>
+</div>
+<div class="sect2">
+<h3 id="viewing-the-planner"><a class="link" href="#viewing-the-planner">6.3. Viewing the Planner</a></h3>
 <div class="paragraph">
-<p>=== Viewing the Planner
-Commands to view <em>slots</em>:</p>
+<p>Commands to view <em>slots</em>:</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
@@ -1196,9 +1229,11 @@ Commands to view <em>slots</em>:</p>
 <div class="paragraph">
 <p>&#8203;</p>
 </div>
+</div>
+<div class="sect2">
+<h3 id="import-exporting-the-planner"><a class="link" href="#import-exporting-the-planner">6.4. Import/Exporting the Planner</a></h3>
 <div class="paragraph">
-<p>=== Import/Exporting the Planner
-Commands:</p>
+<p>Commands:</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
@@ -1238,6 +1273,4 @@ Commands:</p>
 </div>
 </div>
 </div>
-</div>
-</div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-03 02:50:34 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-04 10:32:05 UTC</div></div></div></body></html>
