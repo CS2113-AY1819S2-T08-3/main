@@ -3,7 +3,6 @@ package planmysem.logic.Commands;
 import static planmysem.logic.Commands.CommandTestUtil.assertCommandFailure;
 import static planmysem.logic.Commands.CommandTestUtil.assertCommandSuccess;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -19,7 +18,6 @@ import planmysem.common.Clock;
 
 import planmysem.logic.CommandHistory;
 import planmysem.logic.commands.ExportCommand;
-import planmysem.logic.commands.exceptions.CommandException;
 import planmysem.model.Model;
 import planmysem.model.ModelManager;
 
@@ -52,6 +50,7 @@ public class ExportCommandTest {
     @Test
     public void execute_export_fail() {
         Model model = new ModelManager();
-        assertCommandFailure(new ExportCommand(tempFolderPath + "?"), model, commandHistory, ExportCommand.MESSAGE_FAILED);
+        assertCommandFailure(new ExportCommand("/"), model, commandHistory,
+                ExportCommand.MESSAGE_FAILED);
     }
 }
