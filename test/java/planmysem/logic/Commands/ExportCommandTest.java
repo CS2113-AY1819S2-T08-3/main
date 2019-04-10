@@ -50,7 +50,7 @@ public class ExportCommandTest {
     @Test
     public void execute_export_fail() {
         Model model = new ModelManager();
-        assertCommandFailure(new ExportCommand("/"), model, commandHistory,
+        assertCommandFailure(new ExportCommand("\\/:*?\"<>|"), model, commandHistory,
                 ExportCommand.MESSAGE_FAILED);
     }
 }
