@@ -92,7 +92,7 @@ public class Planner implements ReadOnlyPlanner {
         for (Map.Entry<LocalDate, Day> entry : getDays().entrySet()) {
             for (Slot slot : entry.getValue().getSlots()) {
                 if (slot.getTags().containsAll(tags)) {
-                    selectedSlots.add(new Pair(entry.getKey(), new Pair<>(entry.getValue(), slot)));
+                    selectedSlots.add(new Pair<>(entry.getKey(), new Pair<>(entry.getValue(), slot)));
                 }
             }
         }

@@ -14,7 +14,6 @@ public class EncryptorTest {
         String testString = Encryptor.encrypt("Hello World!");
         assertNotEquals(testString, "HellO World!");
     }
-
     @Test
     public void decrypt_valid() throws IllegalValueException {
         String testString = Encryptor.encrypt("Hello World!");

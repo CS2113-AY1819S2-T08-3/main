@@ -12,11 +12,19 @@ import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
 
 /**
- * Manages key storage and load.
+ * Manages storage and loading of secret key.
  */
 public class KeyStorage {
 
-    private static char[] password = "password".toCharArray();
+    //creates unique key
+    private static char[] password = String.valueOf((System.getProperty("os.name")
+    + System.getProperty("java.runtime.version")
+    + System.getProperty("user.name")
+    + System.getProperty("os.arch")
+    + System.getProperty("java.jm.version")
+    + System.getProperty("java.vm.name")
+    + System.getProperty("java.home")
+    + System.getProperty("java.compiler")).hashCode()).toCharArray();
 
     /**
      * Loads the secret key from the key store.
