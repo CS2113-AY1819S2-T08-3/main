@@ -213,6 +213,10 @@ Do the same but without any recursion, instead place the _slot_ the coming monda
 
 [TIP]
 You may add single _slots_ by omitting the `r/` identifiers and its parameters.
+
+[NOTE]
+*PlanMySem* does not dictate your scheduling preferences.
+As such, you may even add identical slots or slots with overlapping start and end times to help plan for tentative/unconfirmed events.
 {zwsp}
 
 {zwsp}
@@ -311,7 +315,6 @@ Find all _slots_ whose name closely matches `CS` (eg. CS2101, CS2113T, SOCSMeet)
 Find all _slots_ that contain tags that closely matches `2113T`.
 
 // TODO: need to change picture
-[#img-find]
 .[.underline]#Output after entering `find n/CS`#
 image::Find_Command_Output_1.png[width="790"]
 {zwsp}

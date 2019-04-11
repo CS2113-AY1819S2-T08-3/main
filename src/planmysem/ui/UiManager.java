@@ -11,7 +11,7 @@ import planmysem.logic.LogicManager;
 /**
  * The GUI of the App
  */
-public class Gui implements Ui {
+public class UiManager implements Ui {
 
     public static final int INITIAL_WINDOW_WIDTH = 1100;
     public static final int INITIAL_WINDOW_HEIGHT = 600;
@@ -20,7 +20,7 @@ public class Gui implements Ui {
     private MainWindow mainWindow;
     private String version;
 
-    public Gui(LogicManager logicManager, String version) {
+    public UiManager(LogicManager logicManager, String version) {
         this.logicManager = logicManager;
         this.version = version;
     }
