@@ -2029,3 +2029,5 @@ p {
         display: inherit !important
     }
 }
+
+@media print {a[href]:after{content: none !important;}}

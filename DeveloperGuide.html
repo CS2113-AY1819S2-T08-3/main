@@ -459,7 +459,7 @@ Having both Travis and AppVeyor ensures your App works on both Unix-based platfo
 <h3 id="Design-Architecture"><a class="link" href="#Design-Architecture">4.1. Architecture</a></h3>
 <div class="imageblock">
 <div class="content">
-<img src="images/Architecture.png" alt="Architecture" width="800">
+<img src="images/ArchitectureDiagram.png" alt="ArchitectureDiagram" width="800">
 </div>
 <div class="title">Figure 1. Architecture Diagram</div>
 </div>
@@ -530,15 +530,6 @@ The <code>.pptx</code> files used to create diagrams in this document can be fou
 </ul>
 </div>
 <div class="paragraph">
-<p>For example, the <code>Logic</code> component (see the class diagram given below) defines its API in the <code>Logic.java</code> interface and exposes its functionality using the <code>Logic.java</code> class.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/OverallClassDiagram.png" alt="OverallClassDiagram" width="800">
-</div>
-<div class="title">Figure 2. Class Diagram of overall application.</div>
-</div>
-<div class="paragraph">
 <p>&#8203;</p>
 </div>
 <div class="paragraph">
@@ -552,7 +543,7 @@ The <code>.pptx</code> files used to create diagrams in this document can be fou
 <div class="content">
 <img src="images/SDforDeleteSlot.png" alt="SDforDeleteSlot" width="800">
 </div>
-<div class="title">Figure 3. Component interactions for <code>delete 1</code> command</div>
+<div class="title">Figure 2. Component interactions for <code>delete 1</code> command</div>
 </div>
 <div class="paragraph">
 <p>&#8203;</p>
@@ -569,9 +560,9 @@ The <code>.pptx</code> files used to create diagrams in this document can be fou
 <h3 id="Design-Ui"><a class="link" href="#Design-Ui">4.2. UI component</a></h3>
 <div class="imageblock">
 <div class="content">
-<img src="images/UiClassDiagram.png" alt="UiClassDiagram" width="400">
+<img src="images/UiComponentClassDiagram.png" alt="UiComponentClassDiagram" width="800">
 </div>
-<div class="title">Figure 4. Structure of the UI Component</div>
+<div class="title">Figure 3. Structure of the UI Component</div>
 </div>
 <div class="paragraph">
 <p>&#8203;</p>
@@ -581,7 +572,7 @@ The <code>.pptx</code> files used to create diagrams in this document can be fou
 </div>
 <div class="paragraph">
 <p>The UI consists of a <code>MainWindow</code> that is made up of just <code>commandInput</code> and <code>outputConsole</code>.
-This application is mainly a text-based application, hence here are not much componenets here.</p>
+This application is mainly a text-based application, hence here are not many components here.</p>
 </div>
 <div class="paragraph">
 <p>The <code>UI</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files that are in the <code>src/main/resources/view</code> folder.
@@ -609,9 +600,9 @@ For example, the layout of the <a href="https://github.com/CS2113-AY1819S2-T08-3
 <h3 id="Design-Logic"><a class="link" href="#Design-Logic">4.3. Logic component</a></h3>
 <div id="fig-LogicClassDiagram" class="imageblock">
 <div class="content">
-<img src="images/LogicClassDiagram.png" alt="LogicClassDiagram" width="800">
+<img src="images/LogicComponentClassDiagram.png" alt="LogicComponentClassDiagram" width="800">
 </div>
-<div class="title">Figure 5. Structure of the Logic Component</div>
+<div class="title">Figure 4. Structure of the Logic Component</div>
 </div>
 <div class="paragraph">
 <p>&#8203;</p>
@@ -620,13 +611,20 @@ For example, the layout of the <a href="https://github.com/CS2113-AY1819S2-T08-3
 <p><strong>API</strong> :
 <a href="https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/src/planmysem/logic/Logic.java"><code>Logic.java</code></a></p>
 </div>
+<div class="paragraph">
+<p>the <code>Logic</code> component,</p>
+</div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p><code>Logic</code> uses the <code>parser</code> class to parse the user command.</p>
-</li>
+<p>uses the <code>parser</code> class to parse the user command.</p>
+<div class="ulist">
+<ul>
 <li>
 <p>This results in a <code>Command</code> object which is executed.</p>
+</li>
+</ul>
+</div>
 </li>
 <li>
 <p>The command execution can affect the <code>Model</code> (e.g. adding a <em>Slot</em>).</p>
@@ -646,7 +644,7 @@ For example, the layout of the <a href="https://github.com/CS2113-AY1819S2-T08-3
 <div class="content">
 <img src="images/SDforDeleteSlot.png" alt="SDforDeleteSlot" width="800">
 </div>
-<div class="title">Figure 6. Interactions Inside the Logic Component for the <code>delete 1</code> Command</div>
+<div class="title">Figure 5. Interactions Inside the Logic Component for the <code>delete 1</code> Command</div>
 </div>
 <div class="paragraph">
 <p>&#8203;</p>
@@ -659,9 +657,9 @@ For example, the layout of the <a href="https://github.com/CS2113-AY1819S2-T08-3
 <h3 id="Design-Model"><a class="link" href="#Design-Model">4.4. Model component</a></h3>
 <div class="imageblock">
 <div class="content">
-<img src="images/ModelClassDiagram.png" alt="ModelClassDiagram" width="400">
+<img src="images/ModelComponentClassDiagram.png" alt="ModelComponentClassDiagram" width="800">
 </div>
-<div class="title">Figure 7. Overall structure of the Model Component</div>
+<div class="title">Figure 6. Overall structure of the Model Component</div>
 </div>
 <div class="paragraph">
 <p>&#8203;</p>
@@ -670,134 +668,41 @@ For example, the layout of the <a href="https://github.com/CS2113-AY1819S2-T08-3
 <p><strong>API</strong> : <a href="https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/src/planmysem/model/Model.java"><code>Model.java</code></a></p>
 </div>
 <div class="paragraph">
-<p><code>Model</code> holds the data involved with the application.
-&#8203;</p>
-</div>
-<div class="paragraph">
-<p>&#8203;</p>
-</div>
-<div class="sect3">
-<h4 id="Design-Planner"><a class="link" href="#Design-Planner">4.4.1. Planner component</a></h4>
-<div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/src/planmysem/data/Planner.java"><code>Planner.java</code></a></p>
-</div>
-<div class="paragraph">
-<p>The <code>Planner</code> component,</p>
+<p>The <code>Model</code> component</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>stores a <code>Planner</code> object that represents the entire Planner.</p>
+<p>stores the Planner data.</p>
 </li>
 <li>
-<p>stores the data of the entire application.</p>
-</li>
-<li>
-<p>stores the data of the current semester in an unmodifiable <code>Semester</code>.
+<p>does not depend on any of the other three components.
 &#8203;</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
 <p>&#8203;</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="Design-Semester"><a class="link" href="#Design-Semester">4.4.2. Semester component</a></h4>
-<div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/src/planmysem/model/semester/Semester.java"><code>Semester.java</code></a></p>
-</div>
-<div class="paragraph">
-<p>The <code>Semester</code> component,</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>stores a <code>Semester</code> object that represents the an academic semester.</p>
-</li>
-<li>
-<p>stores the data of the entire semester in an unmodifiable <code>HashMap&lt;LocalDate, Day&gt;</code>.</p>
-</li>
-<li>
-<p>Semesters essentially hold "days" in which holds slots.
-&#8203;</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>&#8203;</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="Design-Slot"><a class="link" href="#Design-Slot">4.4.3. Slot component</a></h4>
-<div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/src/planmysem/model/slot/Slot.java"><code>Slot.java</code></a></p>
-</div>
-<div class="paragraph">
-<p>The <code>Slot</code> component,</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>stores a <code>Slot</code> object that represents a time-slot similar to traditional/conventional calendar/scheduling applications.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>such as outlook or google calendar.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>stores the data of the slot details as well as start time and duration.</p>
-</li>
-</ul>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-Notice how <code>Slot</code> does not hold its end time but rather it holds the <code>duration</code>. This is simply our design choice as it is meaningless to save both variables.
-&#8203;
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>&#8203;</p>
-</div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="Design-Storage"><a class="link" href="#Design-Storage">4.5. Storage component</a></h3>
-<div class="imageblock">
-<div class="content">
-<img src="images/StorageClassDiagram.png" alt="StorageClassDiagram" width="400">
-</div>
-<div class="title">Figure 8. Structure of the Storage Component</div>
-</div>
-<div class="paragraph">
-<p>&#8203;</p>
-</div>
 <div class="paragraph">
 <p><strong>API</strong> : <a href="https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/src/planmysem/storage/Storage.java"><code>Storage.java</code></a></p>
 </div>
 <div class="paragraph">
-<p>The <code>Storage</code> component,</p>
+<p>The <code>Storage</code> component saves the Planner data in XML format and read it back.</p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p>can save <code>UserPref</code> objects in json format and read it back.</p>
-</li>
-<li>
-<p>can save the Planner data in json format and read it back.
-&#8203;</p>
-</li>
-</ul>
+<div class="paragraph">
+<p>This functionality is provided via Java Architecture for XML Binding (JAXB), a software framework that maps Java classes to XML representations.
+In summary, JAXB allows storing and retrieving data in memory in any XML format.
+More information about JAXB can be obtain from <a href="https://docs.oracle.com/javase/tutorial/jaxb/intro/index.html">Oracle</a>.</p>
+</div>
+<div class="paragraph">
+<p>To represents XML content as Java objects, "adapted" classes are used to represent and allow conversion of un-mappable objects into mappable objects.</p>
+</div>
+<div class="paragraph">
+<p>&#8203;</p>
 </div>
 <div class="paragraph">
 <p>&#8203;</p>
@@ -901,13 +806,13 @@ The figures below shows an example of the relation between academic week and the
 <div class="content">
 <img src="images/Sem1.png" alt="Sem1" width="790">
 </div>
-<div class="title">Figure 9. <span class="underline">Weeks in academic year 2018/2019, Semester 1.</span></div>
+<div class="title">Figure 7. <span class="underline">Weeks in academic year 2018/2019, Semester 1.</span></div>
 </div>
-<div id="img-view" class="imageblock">
+<div class="imageblock">
 <div class="content">
 <img src="images/Sem2.png" alt="Sem2" width="790">
 </div>
-<div class="title">Figure 10. <span class="underline">Weeks in academic year 2018/2019, Semester 2.</span></div>
+<div class="title">Figure 8. <span class="underline">Weeks in academic year 2018/2019, Semester 2.</span></div>
 </div>
 <div class="paragraph">
 <p>Hence, the information listed below can be determined from the current date.</p>
@@ -1036,25 +941,35 @@ Arguments are then parsed via 2 different methods/techniques according to the fo
 <div class="sect4">
 <h5 id="parsing-prefixed-parameters"><a class="link" href="#parsing-prefixed-parameters">Parsing Prefixed Parameters</a></h5>
 <div class="paragraph">
-<p>To retrieve the set of parameters, the function <code>private static HashMap&lt;String, Set&lt;String&gt;&gt; getParametersWithArguments(String args)</code> can be called.
-The function returns a <code>HashMap</code> data structure, specifically <code>HashMap&lt;String, Set&lt;String&gt;&gt;</code>, to hold parameters, allowing for easy, quick and efficient access to specific prefixes and its keyed in parameters; O(1) access, insertion and removal.</p>
+<p>To retrieve parameters, the function <code>private static HashMap&lt;String, Set&lt;String&gt;&gt; getParametersWithArguments(String args)</code> can be called.
+The keys of the returned <code>HashMap</code> represent prefixes while the values represent the prefix&#8217;s parameters, held in a set.
+This allows for easy, quick and efficient access to specific prefixes and its parameters; O(1) access, insertion and removal.</p>
 </div>
 <div class="paragraph">
-<p>However, this means that exceptions have to be manually taken care of, at the stage of parsing, this exception would particularly be <code>ParseException</code>.</p>
-</div>
-<div class="paragraph">
-<p>The following are cases in which <code>ParseException</code> is invoked:</p>
+<p>The results of <code>getParametersWithArguments</code> can be interpreted in these manners:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>When the returned set is <code>null</code>, then the prefix and parameters was not keyed in at all.</p>
+<p>When the returned set of parameters, to a specific prefix, is <code>null</code>, then both the prefix and parameters was not keyed in at all.</p>
 </li>
 <li>
-<p>When the returned set is not <code>null</code> but contains empty <code>strings</code> such that <code>string.isEmpty()</code>, then the prefix was keyed in but was left empty on purpose.
-&#8203;</p>
+<p>When the returned set of parameters, to a specific prefix, is not <code>null</code> but contains empty <code>strings</code> such that <code>string.isEmpty()</code> returns true, then the prefix was keyed in but the parameter was left blank.</p>
 </li>
 </ul>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+The values of the returned <code>HashMap</code> is a <code>Set</code>, hence, there is no need to handle repeated parameters of a specific prefix as they will be automatically discarded.
+&#8203;
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>&#8203;</p>
@@ -1063,13 +978,13 @@ The function returns a <code>HashMap</code> data structure, specifically <code>H
 <div class="sect4">
 <h5 id="parsing-keywords"><a class="link" href="#parsing-keywords">Parsing Keywords</a></h5>
 <div class="paragraph">
-<p>Here, keywords are thought of as parameters that are not prefixed.
+<p>to retrieve keywords, the function <code>private String getStartingArgument(String args)</code> can be called.
+Here, keywords are thought of as parameters that are not prefixed.
 In <strong>PlanMySem</strong>, keywords are utilized in command structures when they are to be used alone or when order of parameters are important.
 In such cases, there is no logical need for prefixing as the meaning of these parameters can be identified.</p>
 </div>
 <div class="paragraph">
-<p>The function <code>private String getStartingArgument(String args)</code> provides this functionality.
-Here, <code>IncorrectCommand</code> is invoked due to different circumstances:</p>
+<p>The results of <code>getStartingArgument</code> can be interpreted in these manners:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1088,7 +1003,7 @@ Here, <code>IncorrectCommand</code> is invoked due to different circumstances:</
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Additional keywords are purposefully <strong>not</strong> handled to provide ease of use and cater to user mistakes.
+Additional keywords are <strong>not</strong> handled and ignored to provide ease of use and cater to user mistakes.
 &#8203;
 </td>
 </tr>
@@ -1103,7 +1018,7 @@ Additional keywords are purposefully <strong>not</strong> handled to provide eas
 <h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">5.2.2. Design Considerations</a></h4>
 <div class="paragraph">
 <p>Here are the considerations that led to the new parsing system.
-The choices made were largely due to the fact that they provide a better user experience and ease of use.
+In both cases, choices were made were largely due to the fact that they provide a better user experience and ease of use.
 &#8203;</p>
 </div>
 <div class="paragraph">
@@ -1114,11 +1029,11 @@ The choices made were largely due to the fact that they provide a better user ex
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Accept and ignore repeated parameters when possible.</p>
+<p><strong>Alternative 1 (current choice):</strong> When possible, accept repeated parameters.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Less Computationally expensive and allows users to make minor mistakes.</p>
+<p>Pros: Less computationally expensive and allow users to make minor mistakes.</p>
 </li>
 <li>
 <p>Cons: User errors may be misinterpreted and hence wrong actions may be executed.</p>
@@ -1127,14 +1042,14 @@ The choices made were largely due to the fact that they provide a better user ex
 </div>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> Accept repeated parameters only when as necessary.</p>
+<p><strong>Alternative 2:</strong> Always accept and handle repeated parameters.</p>
 <div class="ulist">
 <ul>
 <li>
 <p>Pros: Errors are shown to the user so that the invalid command may be fixed.</p>
 </li>
 <li>
-<p>Cons: May hinder user experience, ease of use.
+<p>Cons: Force user to rewrite commands, even in the event of simple/minor mistakes, and thus may hinder user experience and ease of use.
 &#8203;</p>
 </li>
 </ul>
@@ -1171,18 +1086,13 @@ The choices made were largely due to the fact that they provide a better user ex
 <p>Pros: Less computationally expensive and short development process, able to use existing regex solutions in AB3.</p>
 </li>
 <li>
-<p>Cons: Greatly hinder user experience as order of parameters have no relation to meaning of commands.</p>
+<p>Cons: Greatly hinder user experience as order of parameters have no relation to meaning of commands.
+&#8203;</p>
 </li>
 </ul>
 </div>
 </li>
 </ul>
-</div>
-<div class="paragraph">
-<p>Alternative 1 was chosen due to the team&#8217;s priority in providing a better user experience and allow ease of use.</p>
-</div>
-<div class="paragraph">
-<p>&#8203;</p>
 </div>
 <div class="paragraph">
 <p>&#8203;</p>
@@ -1198,13 +1108,13 @@ These are some possible enhancements:</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Parse more formats of date and time.</p>
+<p>Parse a larger variety of date and time formats.</p>
 </li>
 <li>
 <p>Parse time as a single parameter instead of two.</p>
 </li>
 <li>
-<p>Enhance function calls to retrieve prepended parameters and keywords to handle trivial cases that should invoke <code>IncorrectCommand</code>.
+<p>Enhance function calls to retrieve prepended parameters and keywords to handle trivial cases that should invoke <code>ParseException</code>.
 &#8203;</p>
 </li>
 </ol>
@@ -1290,51 +1200,21 @@ Additionally, the <code>Add</code> command also allows users to input <em>tags</
 <h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">5.3.2. Design Considerations</a></h4>
 <div class="paragraph">
 <p>Here are the considerations regarding slot management.
-The choices made were largely due to computation effectiveness.
 &#8203;</p>
 </div>
 <div class="paragraph">
 <p>&#8203;</p>
 </div>
 <div class="sect4">
-<h5 id="aspect-wrapping-of-primitive-data-types-in-code-slot-code"><a class="link" href="#aspect-wrapping-of-primitive-data-types-in-code-slot-code">Aspect: Wrapping of primitive data types in <code>Slot</code></a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice):</strong> Use of "primitive" data types instead of creating and utilising wrapped objects.<br>
-E.g. <code>name</code>, <code>location</code> amd <code>description</code> are not wrapped but "primitive".</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Allows for more flexible code to account for flexible parsing (as needed in this application).</p>
-</li>
-<li>
-<p>Cons: Bigger code base and duplicated code.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Wrap "primitive" data types.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Less errors in handling invalid values.</p>
-</li>
-<li>
-<p>Cons: May cause inflexibility in writing code to account for flexible parsing.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
+<h5 id="aspect-wrapping-of-data-in-code-slot-code"><a class="link" href="#aspect-wrapping-of-data-in-code-slot-code">Aspect: Wrapping of data in <code>Slot</code></a></h5>
+<div class="paragraph">
+<p>The topic of whether to wrap all primitives and <code>Strings</code>, in Java, is contentious.
+However, in this case of <strong>PlanMySem</strong>, there are no possible invalid values for any of the data that <code>Slot</code> holds, other than the <code>/</code> character that would have already been handled by <code>parser</code>.
+For instance, any <code>String</code> is a valid <code>name</code> and the same goes for <code>location</code>, <code>description</code> and etc; wrapping these data will not achieve any narrowing of possible valid inputs.</p>
 </div>
 <div class="paragraph">
-<p>Alternative 1 was chosen as, in this case of <strong>PlanMySem</strong>, there is a need to achieve varied and flexible commands and as such,
-it is not necessary to handle invalid values with the innate <code>Model</code> objects as these are taken care of when parsing.</p>
-</div>
-<div class="paragraph">
-<p>&#8203;</p>
+<p>Hence, data in <code>Slot</code> are not wrapped. This is in accordance to the You aren&#8217;t gonna need it (YAGNI) principle.
+&#8203;</p>
 </div>
 <div class="paragraph">
 <p>&#8203;</p>
@@ -1374,10 +1254,8 @@ it is not necessary to handle invalid values with the innate <code>Model</code> 
 </div>
 <div class="paragraph">
 <p>Alternative 1 was chosen as the benefits of quick and easy access to days outweigh the disadvantages involve with forbidding slots than span over a day.
-After all, there are few cases of slots crossing the boundaries of a day, over midnight.</p>
-</div>
-<div class="paragraph">
-<p>&#8203;</p>
+After all, there are few cases of slots crossing the boundaries of a day, over midnight.
+&#8203;</p>
 </div>
 <div class="paragraph">
 <p>&#8203;</p>
@@ -1552,7 +1430,7 @@ the user.</p>
 <div class="content">
 <img src="images/ViewMonthSequenceDiagram.png" alt="ViewMonthSequenceDiagram" width="800">
 </div>
-<div class="title">Figure 11. Interactions between components for the <code>view month</code> Command</div>
+<div class="title">Figure 9. Interactions between components for the <code>view month</code> Command</div>
 </div>
 <div class="paragraph">
 <p>&#8203;</p>
@@ -2090,7 +1968,7 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <div class="content">
 <img src="images/chrome_save_as_pdf.png" alt="chrome save as pdf" width="300">
 </div>
-<div class="title">Figure 12. Saving documentation as PDF files in Chrome</div>
+<div class="title">Figure 10. Saving documentation as PDF files in Chrome</div>
 </div>
 <div class="paragraph">
 <p>&#8203;</p>
@@ -3238,4 +3116,4 @@ Expected: No <em>Slot</em> is deleted. Error details shown in the status message
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-10 18:42:16 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-11 11:47:48 UTC</div></div></div></body></html>
