@@ -74,13 +74,12 @@
 <li><a href="#user-stories">Appendix B: User Stories</a></li>
 <li><a href="#use-cases">Appendix C: Use Cases</a>
 <ul class="sectlevel2">
-<li><a href="#use-case-initialize-calendar">C.1. Use case: Initialize Calendar</a></li>
-<li><a href="#use-case-add-a-slot">C.2. Use Case: Add a slot</a></li>
-<li><a href="#use-case-list-slots">C.3. Use Case: List slots</a></li>
-<li><a href="#use-case-delete-a-slot">C.4. Use Case: Delete a slot</a></li>
-<li><a href="#use-case-edit-a-slot">C.5. Use Case: Edit a slot</a></li>
+<li><a href="#use-case-add-a-slot">C.1. Use Case: Add a slot</a></li>
+<li><a href="#use-case-list-slots">C.2. Use Case: List slots</a></li>
+<li><a href="#use-case-delete-a-slot">C.3. Use Case: Delete a slot</a></li>
+<li><a href="#use-case-edit-a-slot">C.4. Use Case: Edit a slot</a></li>
+<li><a href="#use-case-view-all-slots-in-a-day">C.5. Use Case: View all slots in a Day</a></li>
 <li><a href="#use-case-export-planner">C.6. Use Case: Export planner</a></li>
-<li><a href="#use-case-view-all-activities-in-a-day">C.7. Use Case: View all Activities in a Day</a></li>
 </ul>
 </li>
 <li><a href="#non-functional-requirements">Appendix D: Non Functional Requirements</a></li>
@@ -89,7 +88,8 @@
 <ul class="sectlevel2">
 <li><a href="#launch-and-shutdown">F.1. Launch and Shutdown</a></li>
 <li><a href="#deleting-a-slot">F.2. Deleting a slot</a></li>
-<li><a href="#saving-data">F.3. Saving data</a></li>
+<li><a href="#viewing-the-planner">F.3. Viewing the planner</a></li>
+<li><a href="#saving-data">F.4. Saving data</a></li>
 </ul>
 </li>
 </ul>
@@ -1568,8 +1568,14 @@ when following through the sequence of events. The sequence of events are as fol
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Upon calling the <code>execute</code> method of the <code>Logic</code> component, the <code>Logic</code> component would then parse the <code>view month</code>
-command.</p>
+<p>Firstly, the <code>view month</code> command is passed into the <code>execute</code> function of <code>LogicManager</code> to be parsed.</p>
+</li>
+<li>
+<p><code>LogicManager</code> then invokes the <code>parseCommand</code> function of <code>ParserManager</code>.</p>
+</li>
+<li>
+<p><code>ParserManager</code> in turn invokes the <code>parse</code> function of the appropriate parser for the <code>view</code> command which in this case,
+is <code>ViewCommandParser</code>.</p>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -1585,29 +1591,35 @@ specified in the command parameter.
 </div>
 </li>
 <li>
-<p>This results in a <code>ViewCommand</code> object which is executed with the <code>month</code> parameter passed in.</p>
+<p>After parsing is done, <code>ViewCommandParser</code> would instantiate the <code>ViewCommand</code> object which would be returned to the <code>LogicManager</code>.</p>
 </li>
 <li>
-<p>The command execution will call the <code>displayMonthView</code> method of the <code>ViewCommand</code> object which retrieves data from the
-<code>Model</code> component (i.e. retrieving data from the current <code>Semester</code>).</p>
+<p><code>LogicManager</code> is then able to invoke the <code>execute</code> function of the returned <code>ViewCommand</code> object.</p>
 </li>
 <li>
-<p>The result of the command execution is encapsulated as a <code>CommandResult</code> object which is passed back to <code>Ui</code>.</p>
+<p>In the <code>execute</code> function of the <code>ViewCommand</code> object, data will be retrieved from the <code>Model</code> component (i.e. retrieving data from the current <code>Semester</code>).</p>
 </li>
 <li>
-<p>In addition, the <code>CommandResult</code> object can also instruct the <code>Ui</code> to display results, such as displaying help to
-the user.</p>
+<p>Now that the <code>ViewCommand</code> object has the data of the current semester, it is able to invoke the <code>displayMonthView</code> method.</p>
+</li>
+<li>
+<p>With the output returned from the <code>displayMonthView</code>, the <code>CommandResult</code> object will be instantiated.</p>
+</li>
+<li>
+<p>This <code>CommandResult</code> object would be returned to the <code>LogicManager</code> which then returns the same <code>CommandResult</code> object
+back to the <code>UI</code> component.</p>
+</li>
+<li>
+<p>Finally, the <code>UI</code> component would display the contents of the <code>CommandResult</code> object to the user. For this <code>view month</code>
+command, the displayed result would be the monthly calendar view of all months in the current semester.</p>
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p>Given below is the Sequence Diagram upon executing the <code>view month</code> command.</p>
-</div>
 <div class="imageblock">
 <div class="content">
-<img src="images/ViewMonthSequenceDiagram.png" alt="ViewMonthSequenceDiagram" width="800">
+<img src="images/ViewMonthSequenceDiagram.png" alt="ViewMonthSequenceDiagram" width="900">
 </div>
-<div class="title">Figure 8. Interactions between components for the <code>view month</code> Command</div>
+<div class="title">Figure 8. Sequence Diagram upon executing the <code>view month</code> command.</div>
 </div>
 <div class="paragraph">
 <p>&#8203;</p>
@@ -2793,277 +2805,300 @@ For example, Gradle can download the dependencies automatically, which is better
 <h2 id="use-cases"><a class="link" href="#use-cases">Appendix C: Use Cases</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>(For all use cases below, the <strong>System</strong> is <code>PlanMySem</code> and the <strong>Actor</strong> is the <code>user</code>, unless specified otherwise)
+<p>For all use cases below, the <strong>System</strong> is <code>PlanMySem</code> and the <strong>Actor</strong> is the <code>user</code>, unless specified otherwise.
 &#8203;</p>
 </div>
 <div class="paragraph">
 <p>&#8203;</p>
 </div>
 <div class="sect2">
-<h3 id="use-case-initialize-calendar"><a class="link" href="#use-case-initialize-calendar">C.1. Use case: Initialize Calendar</a></h3>
+<h3 id="use-case-add-a-slot"><a class="link" href="#use-case-add-a-slot">C.1. Use Case: Add a slot</a></h3>
 <div class="ulist">
 <ul>
 <li>
 <p>MSS:</p>
-<div class="olist arabic">
-<ol class="arabic">
+<div class="ulist">
+<ul>
 <li>
-<p>User inputs the first day of school as well as which semester, 1 or 2, that the planner is meant for.</p>
+<p>1. User inputs add command followed by all the mandatory parameters.</p>
 </li>
 <li>
-<p>System generates a new timetable which is aligned with the academic semester. Weeks 1 to 13 as well as the Recess and Reading Weeks are labelled.</p>
-</li>
-</ol>
-</div>
+<p>2. System reflects the additions to the planner.</p>
 <div class="paragraph">
-<p>Use case ends.
-&#8203;</p>
+<p>Use case ends.</p>
 </div>
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p>&#8203;</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="use-case-add-a-slot"><a class="link" href="#use-case-add-a-slot">C.2. Use Case: Add a slot</a></h3>
-<div class="ulist">
-<ul>
-<li>
-<p>MSS:</p>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>User inputs add command followed by all the mandatory parameters.</p>
-</li>
-<li>
-<p>System reflects the additions to the planner.</p>
-<div class="paragraph">
-<p>User case ends.</p>
-</div>
-</li>
-</ol>
-</div>
 </li>
 <li>
 <p>Extensions:</p>
-<div class="dlist">
-<dl>
-<dt class="hdlist1"></dt>
-<dd>
+<div class="ulist">
+<ul>
+<li>
 <p>1a. System detects an error in the entered data.</p>
-<div class="dlist">
-<dl>
-<dt class="hdlist1"></dt>
-<dd>
+<div class="ulist">
+<ul>
+<li>
 <p>1a1. System outputs error message.</p>
 <div class="paragraph">
-<p>User case ends.</p>
-</div>
-</dd>
-</dl>
-</div>
-</dd>
-<dt class="hdlist1"></dt>
-<dd>
-<p>1a. System detects insufficient parameters in the entered data.</p>
-<div class="dlist">
-<dl>
-<dt class="hdlist1"></dt>
-<dd>
-<p>1a1. System outputs error message.</p>
-<div class="paragraph">
-<p>User case ends.
-&#8203;</p>
-</div>
-</dd>
-</dl>
-</div>
-</dd>
-</dl>
+<p>Use case ends.</p>
 </div>
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p>&#8203;</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="use-case-list-slots"><a class="link" href="#use-case-list-slots">C.3. Use Case: List slots</a></h3>
+</li>
+<li>
+<p>1b. System detects insufficient parameters in the entered data.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>MSS:</p>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>User inputs the command to list slots followed by the tag or name of the slot.</p>
-</li>
-<li>
-<p>System displays all slots with the specified name or tag with their indexes.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ol>
-</div>
-</li>
-<li>
-<p>Extensions:</p>
-<div class="dlist">
-<dl>
-<dt class="hdlist1"></dt>
-<dd>
-<p>1b. Planner is empty.</p>
-<div class="dlist">
-<dl>
-<dt class="hdlist1"></dt>
-<dd>
-<p>1b1. System outputs "0 slots listed" message.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</dd>
-</dl>
-</div>
-</dd>
-<dt class="hdlist1"></dt>
-<dd>
-<p>1b. Tag or name does not exist in the planner.</p>
-<div class="dlist">
-<dl>
-<dt class="hdlist1"></dt>
-<dd>
-<p>1b1. System outputs "0 slots listed" message.</p>
-<div class="paragraph">
-<p>Use case ends.
-&#8203;</p>
-</div>
-</dd>
-</dl>
-</div>
-</dd>
-</dl>
-</div>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>&#8203;</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="use-case-delete-a-slot"><a class="link" href="#use-case-delete-a-slot">C.4. Use Case: Delete a slot</a></h3>
-<div class="ulist">
-<ul>
-<li>
-<p>MSS:</p>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>User inputs the delete command followed by the index or tag of the intended slot.</p>
-</li>
-<li>
-<p>System deletes the intended slot from the planner and outputs confirmation message.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ol>
-</div>
-</li>
-<li>
-<p>Extensions:</p>
-<div class="dlist">
-<dl>
-<dt class="hdlist1"></dt>
-<dd>
-<p>1a. Tag or index does not exist in the planner.</p>
-<div class="dlist">
-<dl>
-<dt class="hdlist1"></dt>
-<dd>
-<p>1a1. System outputs error message.</p>
-<div class="paragraph">
-<p>Use case ends.
-&#8203;</p>
-</div>
-</dd>
-</dl>
-</div>
-</dd>
-</dl>
-</div>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>&#8203;</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="use-case-edit-a-slot"><a class="link" href="#use-case-edit-a-slot">C.5. Use Case: Edit a slot</a></h3>
-<div class="ulist">
-<ul>
-<li>
-<p>MSS:</p>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>User inputs command to edit a slot along with the tag or index, followed by the parameters to be changed.</p>
-</li>
-<li>
-<p>System changes the specified parameters for the slot.</p>
-</li>
-<li>
-<p>System reflects the slots as well as the perimeters changed.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ol>
-</div>
-</li>
-<li>
-<p>Extensions:</p>
-<div class="dlist">
-<dl>
-<dt class="hdlist1"></dt>
-<dd>
-<p>1a. Tag or index does not exist in the planner.</p>
-<div class="dlist">
-<dl>
-<dt class="hdlist1"></dt>
-<dd>
-<p>1a1. System outputs error message.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</dd>
-</dl>
-</div>
-</dd>
-<dt class="hdlist1"></dt>
-<dd>
-<p>1b. System detects an error in the entered data.</p>
-<div class="dlist">
-<dl>
-<dt class="hdlist1"></dt>
-<dd>
 <p>1b1. System outputs error message.</p>
 <div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</dd>
-</dl>
-</div>
-</dd>
-</dl>
+<p>Use case ends.
+&#8203;</p>
 </div>
 </li>
 </ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>&#8203;</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="use-case-list-slots"><a class="link" href="#use-case-list-slots">C.2. Use Case: List slots</a></h3>
+<div class="ulist">
+<ul>
+<li>
+<p>MSS:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1. User inputs the command to list slots followed by the tag or name of the slot.</p>
+</li>
+<li>
+<p>2. System displays all slots with the specified name or tag with their indexes.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Extensions:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1a. Planner is empty.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1a1. System outputs error message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>1b. Tag or name does not exist in the planner.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1b1. System outputs error message.</p>
+<div class="paragraph">
+<p>Use case ends.
+&#8203;</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>&#8203;</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="use-case-delete-a-slot"><a class="link" href="#use-case-delete-a-slot">C.3. Use Case: Delete a slot</a></h3>
+<div class="ulist">
+<ul>
+<li>
+<p>MSS:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1. User inputs the delete command followed by the index or tag of the intended slot.</p>
+</li>
+<li>
+<p>2. System deletes the intended slot from the planner and outputs confirmation message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Extensions:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1a. Tag or index does not exist in the planner.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1a1. System outputs error message.</p>
+<div class="paragraph">
+<p>Use case ends.
+&#8203;</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>&#8203;</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="use-case-edit-a-slot"><a class="link" href="#use-case-edit-a-slot">C.4. Use Case: Edit a slot</a></h3>
+<div class="ulist">
+<ul>
+<li>
+<p>MSS:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1. User inputs command to edit a slot along with the tag or index, followed by the parameters to be changed.</p>
+</li>
+<li>
+<p>2. System changes the specified parameters for the slot.</p>
+</li>
+<li>
+<p>3. System reflects the slots as well as the perimeters changed.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Extensions:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1a. Tag or index does not exist in the planner.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1a1. System outputs error message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>1b. System detects an error in the entered data.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1b1. System outputs error message.</p>
+<div class="paragraph">
+<p>Use case ends.
+&#8203;</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>&#8203;</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="use-case-view-all-slots-in-a-day"><a class="link" href="#use-case-view-all-slots-in-a-day">C.5. Use Case: View all slots in a Day</a></h3>
+<div class="ulist">
+<ul>
+<li>
+<p>MSS:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1. User inputs the command to view all slots along with the specific day or date in the current semester.</p>
+</li>
+<li>
+<p>2. System displays all the slots for that specified day or date.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Extensions:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1a. Specified day or date does not exist in the current semester.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1a1. System outputs error message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>1b. System detects an error in the entered data.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1b1. System outputs error message.</p>
+<div class="paragraph">
+<p>Use case ends.
+&#8203;</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>&#8203;</p>
 </div>
 </div>
 <div class="sect2">
@@ -3072,58 +3107,30 @@ For example, Gradle can download the dependencies automatically, which is better
 <ul>
 <li>
 <p>MSS:</p>
-<div class="olist arabic">
-<ol class="arabic">
+<div class="ulist">
+<ul>
 <li>
-<p>User inputs command to export the planner.</p>
+<p>1. User inputs command to export the planner.</p>
 </li>
 <li>
-<p>System converts planner to .ics format.</p>
+<p>2. System converts planner to .ics format.</p>
 </li>
 <li>
-<p>System saves .ics file in the main directory as "PlanMySem.ics".</p>
+<p>3. System saves .ics file in the main directory as "PlanMySem.ics".</p>
 </li>
 <li>
-<p>System displays confirmation message.</p>
+<p>4. System displays confirmation message.</p>
 <div class="paragraph">
-<p>Use case ends.
-&#8203;</p>
+<p>Use case ends.</p>
 </div>
 </li>
-</ol>
+</ul>
 </div>
 </li>
 </ul>
 </div>
 <div class="paragraph">
 <p>&#8203;</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="use-case-view-all-activities-in-a-day"><a class="link" href="#use-case-view-all-activities-in-a-day">C.7. Use Case: View all Activities in a Day</a></h3>
-<div class="ulist">
-<ul>
-<li>
-<p>MSS:</p>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>User inputs the command to view all slots along with the time frame.</p>
-</li>
-<li>
-<p>System displays all the slots for that specified time frame.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ol>
-</div>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p><em>{More to be added}</em>
-&#8203;</p>
 </div>
 <div class="paragraph">
 <p>&#8203;</p>
@@ -3181,12 +3188,10 @@ For example, Gradle can download the dependencies automatically, which is better
 <dd>
 <p>The Levenshtein distance is a string metric for measuring difference between two sequences.<br>
 Informally, the Levenshtein distance between two words is the minimum number of single-character edits (i.e. insertions, deletions or substitutions)
-required to change one word into the other.</p>
+required to change one word into the other.
+&#8203;</p>
 </dd>
 </dl>
-</div>
-<div class="paragraph">
-<p>&#8203;</p>
 </div>
 <div class="paragraph">
 <p>&#8203;</p>
@@ -3284,7 +3289,40 @@ Expected: No <em>Slot</em> is deleted. Error details shown in the status message
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-data"><a class="link" href="#saving-data">F.3. Saving data</a></h3>
+<h3 id="viewing-the-planner"><a class="link" href="#viewing-the-planner">F.3. Viewing the planner</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>View all <em>slots</em> for the current week</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Add <em>slots</em> using the <code>add</code> command for any day of the current week.</p>
+</li>
+<li>
+<p>Test case: <code>view week</code><br>
+Expected: A weekly calendar view with all added <em>slots</em> for the current week with a summarised title.</p>
+</li>
+<li>
+<p>Test case: <code>view week details</code><br>
+Expected: A detailed view of all added <em>slots</em> for the current week.</p>
+</li>
+<li>
+<p>Other incorrect view commands to try: <code>view</code>, <code>view week 0</code><br>
+   Expected: Error message returned which shows proper command usage or indicating an invalid input.
+&#8203;</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>&#8203;</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="saving-data"><a class="link" href="#saving-data">F.4. Saving data</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -3305,4 +3343,4 @@ Expected: No <em>Slot</em> is deleted. Error details shown in the status message
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-13 19:24:17 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-13 20:41:05 UTC</div></div></div></body></html>
