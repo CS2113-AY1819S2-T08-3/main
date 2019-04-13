@@ -19,7 +19,7 @@
 <li><a href="#edit">4.3. Editing Slots: <code>edit</code> / <code>e</code></a></li>
 <li><a href="#delete">4.4. Delete Slots: <code>delete</code> / <code>del</code> / <code>d</code></a></li>
 <li><a href="#list">4.5. Listing Slots: <code>list</code> / <code>l</code></a></li>
-<li><a href="#find">4.6. Locating Slots: <code>find</code> / <code>f</code></a></li>
+<li><a href="#find">4.6. Finding Slots: <code>find</code> / <code>f</code></a></li>
 <li><a href="#view">4.7. View the Planner : <code>view</code> / <code>v</code></a></li>
 <li><a href="#history">4.8. Listing previous input commands : <code>history</code></a></li>
 <li><a href="#undo">4.9. Undoing previous command : <code>undo</code></a></li>
@@ -673,6 +673,22 @@ Delete the second <em>slot</em> shown via the <code>list</code> command.
 Format: <code>list n/NAME</code></p>
 </div>
 <div class="paragraph">
+<p>You can also list all <em>slots</em> in the planner as well.<br>
+Format: <code>list all</code></p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Keywords are not case-sensitive. (e.g. <em>CS2113T</em> is the same as <em>cs2113t</em>)
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
 <p>Examples:</p>
 </div>
 <div class="ulist">
@@ -683,7 +699,11 @@ List all <em>slots</em> that is named <code>CS2113T Lecture</code>.</p>
 </li>
 <li>
 <p><code>list t/Lecture</code><br>
-List all <em>slots</em> that contains the tag <code>Lecture</code>.</p>
+List all <em>slots</em> that contain the tag <code>Lecture</code>.</p>
+</li>
+<li>
+<p><code>list all</code>
+List all <em>slots</em> in the planner.</p>
 </li>
 </ul>
 </div>
@@ -701,10 +721,22 @@ List all <em>slots</em> that contains the tag <code>Lecture</code>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="find"><a class="link" href="#find">4.6. Locating Slots: <code>find</code> / <code>f</code></a></h3>
+<h3 id="find"><a class="link" href="#find">4.6. Finding Slots: <code>find</code> / <code>f</code></a></h3>
 <div class="paragraph">
-<p>Find all <em>slots</em> whose name closely matches the specified keyword and displays them as a list.<br>
+<p>Find all <em>slots</em> whose name closely matches the specified keyword and displays them as a list. (Case-sensitive)<br>
 Format: <code>find n/KEYWORD</code></p>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+Keywords are case sensitive! (e.g. <em>CS2113T</em> is not the same as <em>cs2113t</em>)
+</td>
+</tr>
+</table>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -713,8 +745,22 @@ Format: <code>find n/KEYWORD</code></p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-The <code>find</code> command will attempt to return the closest matching <code>Slot</code> in the event that a match is not found.
-Do not be surprised to <em>eg. enter <code>find n/ABC</code> and get a <code>Slot</code> named `XYZ`</em> in return.
+The <code>find</code> command will return the closest matching <code>Slot</code> which contains the specified keyword. <strong>The name/tag MUST
+contain the specified keyword in order for a match to occur</strong>.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+You may want to use short keywords (e.g CS) instead of long keywords to increase the chances of finding your desired slot.<br>
+E.g. Let&#8217;s say you are finding a <code>Slot</code> named <em>Golf</em>.<br>
+<code>find n/Go</code> will detect the slot, while <code>find n/Golfs</code> will fail to detect the slot.
 </td>
 </tr>
 </table>
@@ -736,12 +782,16 @@ Find all <em>slots</em> that contain tags that closely matches <code>2113T</code
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/Find_Command_Output_1.png" alt="Find Command Output 1" width="790">
+<img src="images/Find_Command_Output.png" alt="Find Command Output" width="790">
 </div>
 <div class="title">Figure 7. <span class="underline">Output after entering <code>find n/CS</code></span></div>
 </div>
 <div class="paragraph">
-<p>&#8203;</p>
+<p>Explanation: As seen from the figure above, the output list of slots are ranked according to their degree of similarity.
+All of the <code>Slots</code> listed contain the keyword <em>'CS'</em>.<br>
+Since <em>'JSOCS'</em> has less characters, it is considered closest to the keyword <em>'CS'</em>, which has only 2 characters.<br>
+Remember the tip above when you are finding your <code>Slots</code>.
+&#8203;</p>
 </div>
 <div class="paragraph">
 <p>&#8203;</p>
@@ -892,8 +942,26 @@ View planner for the upcoming Monday.
 <h3 id="history"><a class="link" href="#history">4.8. Listing previous input commands : <code>history</code></a></h3>
 <div class="paragraph">
 <p>Lists all the commands that you have entered in reverse chronological order.<br>
-Format: <code>history</code>
-&#8203;</p>
+Format: <code>history</code></p>
+</div>
+<div class="paragraph">
+<p>An empty command history is initialised when <em>PlanMySem</em> is started. It will be
+cleared upon exiting <em>PlanMySem</em>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Invalid commands will also be logged into the command history.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>&#8203;</p>
 </div>
 <div class="paragraph">
 <p>&#8203;</p>
@@ -905,18 +973,20 @@ Format: <code>history</code>
 <p>Restores the planner to the state before the previous command was executed.<br>
 Format: <code>undo</code></p>
 </div>
-<div class="admonitionblock tip">
+<div class="admonitionblock note">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
+<i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-The <code>clear</code> command cannot be undone.
-&#8203;
+Only Add, Edit, Delete and Clear Commands are undoable.
 </td>
 </tr>
 </table>
+</div>
+<div class="paragraph">
+<p>&#8203;</p>
 </div>
 <div class="paragraph">
 <p>&#8203;</p>
@@ -926,8 +996,22 @@ The <code>clear</code> command cannot be undone.
 <h3 id="redo"><a class="link" href="#redo">4.10. Redoing the previously undone command : <code>redo</code></a></h3>
 <div class="paragraph">
 <p>Reverses the most recent <code>undo</code> command.<br>
-Format: <code>redo</code>
-&#8203;</p>
+Format: <code>redo</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Only Add, Edit, Delete and Clear Commands are redoable.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>&#8203;</p>
 </div>
 <div class="paragraph">
 <p>&#8203;</p>
@@ -1333,4 +1417,4 @@ There is no need to save manually.
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-13 15:09:50 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-13 17:29:50 UTC</div></div></div></body></html>

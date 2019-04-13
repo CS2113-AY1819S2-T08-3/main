@@ -30,10 +30,13 @@ Items can then be efficiently managed via the intuitive tagging system.<br></p>
 <i class="fa icon-important" title="Important"></i>
 </td>
 <td class="content">
-This symbol indicates important information.
+This symbol indicates important information.<br>
 </td>
 </tr>
 </table>
+</div>
+<div class="paragraph">
+<p>Also take note:<br></p>
 </div>
 <table class="tableblock frame-none grid-none spread">
 <colgroup>
@@ -47,7 +50,7 @@ This symbol indicates important information.
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code class="blue">VersionedPlanner</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Blue text with grey highlight indicates a component, class or object in the architecture of the application.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Blue text with grey highlight indicates a component, class, method or object in the architecture of the application.</p></td>
 </tr>
 </tbody>
 </table>
@@ -73,34 +76,12 @@ the relevant sections I have added to the user and developer guides in relation 
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Major enhancements</strong>:</p>
+<p><strong>Main Feature</strong>: I implemented the searching framework within the <code class="blue">Planner</code>. The searching framework
+comprises of 2 sections:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Feature 1: I added the ability to <strong>undo/redo previous commands</strong> and <strong>view the history</strong> of commands entered.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>What it does: The <code>undo</code> command allows the user to undo a previous <code>add</code>/<code>edit</code>/<code>delete</code> command. The user may reverse this command with the <code>redo</code> command.</p>
-</li>
-<li>
-<p>Justification: In the event that users have made a mistake or changed their minds about executing
-a command, the <code>undo</code> command enables them to revert to a version immediately before
-the mistaken command was executed. If they change their minds again and decide to
-execute the command after all, then the <code>redo</code> command enables them to do so easily.</p>
-</li>
-<li>
-<p>Highlights: As our group chose to morph the product from <a href="https://github.com/nusCS2113-AY1819S2/addressbook-level3">AddressBook 3</a>, we did not have a History framework in place. I took up the responsibility
-to adapt the History Framework provided in <a href="https://github.com/nusCS2113-AY1819S2/addressbook-level4">AddressBook 4</a> in order to cater to our implementation of <strong>PlanMySem</strong>.</p>
-</li>
-<li>
-<p>Credits: <a href="https://github.com/nusCS2113-AY1819S2/addressbook-level4">AddressBook 4</a> for providing the History framework.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Feature 2: I added the ability to <strong>search and list <code class="blue">Slots</code></strong> using a keyword user input.</p>
+<p><strong>List</strong>: I added the ability to <strong>search and list <code class="blue">Slots</code></strong> using a keyword user input.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -115,7 +96,7 @@ locate that specific <code class="blue">Slot</code> and view all of its informat
 </div>
 </li>
 <li>
-<p>Feature 3: I added the ability to <strong>search and find <code class="blue">Slots</code></strong> using a keyword user input.</p>
+<p><strong>Find</strong>: I added the ability to <strong>search and find <code class="blue">Slots</code></strong> using a keyword user input.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -142,10 +123,33 @@ The <code>find</code> command ends up generating a longer output list, which pot
 An in-depth analysis of design alternatives was necessary to determine the kind of string matching algorithm to implement in order to improve search accuracy.</p>
 </li>
 <li>
-<p>Credits: The string matching logic was largely dependent on <a href="#levenshtein-distance">Levenshtein Distance</a>. My implementation was adapted from <a href="https://rosettacode.org/wiki/Levenshtein_distance#Java">Rosetta Code</a>.</p>
+<p>Credits: The string matching logic was largely dependent on the <a href="#levenshtein-distance">Levenshtein Distance</a> algorithm.</p>
 </li>
 </ul>
 </div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Minor Feature</strong>: I added the ability to <strong>undo/redo previous commands</strong> and <strong>view the history</strong> of commands entered.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: The <code>undo</code> command allows the user to undo a previous <code>add</code>/<code>edit</code>/<code>delete</code> command. The user may reverse this command with the <code>redo</code> command.</p>
+</li>
+<li>
+<p>Justification: In the event that users have made a mistake or changed their minds about executing
+a command, the <code>undo</code> command enables them to revert to a version immediately before
+the mistaken command was executed. If they change their minds again and decide to
+execute the command after all, then the <code>redo</code> command enables them to do so easily.</p>
+</li>
+<li>
+<p>Highlights: As our group chose to morph the product from <a href="https://github.com/nusCS2113-AY1819S2/addressbook-level3">AddressBook 3</a>, we did not have a History framework in place. I took up the responsibility
+to adapt the History Framework provided in <a href="https://github.com/nusCS2113-AY1819S2/addressbook-level4">AddressBook 4</a> in order to cater to our implementation of <strong>PlanMySem</strong>.</p>
+</li>
+<li>
+<p>Credits: <a href="https://github.com/nusCS2113-AY1819S2/addressbook-level4">AddressBook 4</a> for providing the History framework.</p>
 </li>
 </ul>
 </div>
@@ -251,20 +255,46 @@ I have also provided clear instructions for users to use my implemented features
 <p>Below is an example of my addition to the User Guide for the <code>find</code> feature.</p>
 </div>
 <div class="sect2">
-<h3 id="locating-slots-code-find-code-code-f-code"><a class="link" href="#locating-slots-code-find-code-code-f-code">Locating Slots: <code>find</code> / <code>f</code></a></h3>
+<h3 id="finding-slots-code-find-code-code-f-code"><a class="link" href="#finding-slots-code-find-code-code-f-code">Finding Slots: <code>find</code> / <code>f</code></a></h3>
 <div class="paragraph">
-<p>Find all <code class="blue">Slots</code> whose name closely matches the specified keyword and displays them as a list.<br>
+<p>Find all <em>slots</em> whose name closely matches the specified keyword and displays them as a list. (Case-sensitive)<br>
 Format: <code>find n/KEYWORD</code></p>
 </div>
-<div class="admonitionblock important">
+<div class="admonitionblock caution">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-important" title="Important"></i>
+<i class="fa icon-caution" title="Caution"></i>
 </td>
 <td class="content">
-The <code>find</code> command will attempt to return the closest matching <code class="blue">Slot</code> in the event that a match is not found.
-Do not be surprised to <em>eg. enter <code>find n/ABC</code> and get a <code class="blue">Slot</code> named `XYZ`</em> in return.
+Keywords are case sensitive! (e.g. <em>CS2113T</em> is not the same as <em>cs2113t</em>)
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The <code>find</code> command will return the closest matching <code>Slot</code> which contains the specified keyword. <strong>The name/tag MUST
+contain the specified keyword in order for a match to occur</strong>.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Use short keywords (e.g CS) instead of long keywords to increase the chances of finding your desired slot.<br>
+E.g. Let&#8217;s say you are finding a <code>Slot</code> named <em>Golf</em>.<br>
+<code>find n/Go</code> will detect the slot, while <code>find n/Golfs</code> will fail to detect the slot. (Golf does not contain Golfs)<br>
 </td>
 </tr>
 </table>
@@ -276,18 +306,26 @@ Do not be surprised to <em>eg. enter <code>find n/ABC</code> and get a <code cla
 <ul>
 <li>
 <p><code>find n/CS</code><br>
-Find all <code class="blue">Slots</code> whose name contains <code>CS</code> (eg. CS2101, CS2113T, SOCSMeet)</p>
+Find all <em>slots</em> whose name closely matches <code>CS</code> (eg. CS2101, CS2113T, SOCSMeet)</p>
+</li>
+<li>
+<p><code>find t/2113T</code><br>
+Find all <em>slots</em> that contain tags that closely matches <code>2113T</code>.</p>
 </li>
 </ul>
 </div>
-<div id="img-find" class="imageblock">
+<div class="imageblock">
 <div class="content">
-<img src="../images/Find_Command_Output_1.png" alt="Find Command Output 1" width="790">
+<img src="../images/Find_Command_Output.png" alt="Find Command Output" width="790">
 </div>
 <div class="title">Figure 1. <span class="underline">Output after entering <code>find n/CS</code></span></div>
 </div>
 <div class="paragraph">
-<p>&#8203;</p>
+<p>Explanation: As seen from the figure above, the output list of slots are ranked according to their degree of similarity.
+All of the <code>Slots</code> listed contain the keyword <em>'CS'</em>.<br>
+Since <em>'JSOCS'</em> has less characters, it is considered closest to the keyword <em>'CS'</em>, which has only 2 characters.<br>
+Remember the tip above when you are finding your <code>Slots</code>.
+&#8203;</p>
 </div>
 <div class="paragraph">
 <p>&#8203;</p>
@@ -334,17 +372,83 @@ I have also elaborated on my design considerations in order to justify my implem
 <div class="sect3">
 <h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
 <div class="paragraph">
-<p>The find function supports searching using a single keyword.<br>
-All existing <code>Slots</code> are weighted based on their name/tag&#8217;s <a href="#levenshtein-distance">Levenshtein Distance</a> from the keyword.</p>
+<p>The find function supports searching using a single keyword.<br></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The name/tag of the <code class="blue">Slot</code> MUST contain the specified keyword in order for a match to occur. Completely different keywords
+do not constitute a match.<br>
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
-<p>A low <a href="#levenshtein-distance">Levenshtein Distance</a> is attributed to a high level of similarity between the name/tag and the keyword.
-(A value of 0 constitutes an exact match.)</p>
+<p>The matching <code class="blue">Slots</code> are then weighted based on their name/tag&#8217;s <a href="#levenshtein-distance">Levenshtein Distance</a> from the keyword.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+A low <a href="#levenshtein-distance">Levenshtein Distance</a> is attributed to a high level of similarity between the name/tag and the keyword.
+(A value of 0 constitutes an exact match.)<br>
+The maximum Levenshtein Distance set in <code class="blue">PlanMySem</code> is 20.
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>The weighted <code class="blue">Slots</code> are inserted into a <code class="blue">PriorityQueue</code> and the closest matching <code class="blue">Slots</code>
-will be polled into the output list.<br>
-&#8203;</p>
+will be polled into the output list.<br></p>
+</div>
+<div class="paragraph">
+<p>Upon executing the <code>find</code> command with valid parameters (refer to <a href="UserGuide.html#view">UserGuide.adoc</a> for <code>find</code> usage),
+a sequence of events is executed. The sequence of events illustrated in the Sequence Diagram below will be in reference to the execution
+of a <code>find n/keyword</code> command. The sequence of events are as follows:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Upon calling the <code class="blue">execute</code> method of the <code class="blue">Logic</code> component, the <code class="blue">Logic</code> component would then parse the <code>find n/keyword</code>
+command.</p>
+</li>
+<li>
+<p>This results in a <code class="blue">FindCommand</code> object which is executed with name parameter 'keyword' and null tag.</p>
+</li>
+<li>
+<p>The command execution will call the <code class="blue">getDays</code> method of the <code class="blue">FindCommand</code> object which retrieves data from the
+<code class="blue">Model</code> component (i.e. retrieving data from the current <code class="blue">Semester</code>).<br></p>
+</li>
+<li>
+<p><code class="blue">FindCommand</code> will execute the <code class="blue">getDiscoveredNames</code> method to find the closely matching <code class="blue">Slots</code> with names containing 'keyword'.</p>
+</li>
+<li>
+<p>The result of the command execution is encapsulated as a <code class="blue">CommandResult</code> object which is passed back to <code class="blue">Ui</code>.</p>
+</li>
+<li>
+<p>In addition, the <code class="blue">CommandResult</code> object can also instruct the <code class="blue">Ui</code> to display results, such as displaying help to
+the user.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Given below is the Sequence Diagram upon executing the <code>find n/keyword</code> command.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/FindSequenceDiagram.png" alt="FindSequenceDiagram" width="800">
+</div>
+<div class="title">Figure 2. Interactions between components for the <code>find n/keyword</code> Command</div>
+</div>
+<div class="paragraph">
+<p>&#8203;</p>
 </div>
 <div class="paragraph">
 <p>&#8203;</p>
@@ -369,21 +473,21 @@ will be polled into the output list.<br>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Cons</strong></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>1</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Past Implementation 1</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Positive search result by strictly matching the entered keyword</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Easy to implement.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Search must be exact, typos or an incomplete keyword will yield incorrect results. Nothing different from <code>List</code> feature.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>2</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Past Implementation 2</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Positive search result as long as name/tag contains the keyword.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Searches will detect names/tags similar to the keyword.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Output list will be longer. May become excessively long if short keyword is provided.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>3 (current implementation)</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Current Implementation</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Store the search results in a <code>PriorityQueue</code> ordered by their <a href="#levenshtein-distance">Levenshtein distances</a> from the search keyword.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Will also consider searches that are similar to the desired name/tag and will account for a typo or an incomplete keyword</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Searches are ordered by a degree of similarity, instead of the random order of names/tags in Past Implementation 2.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Adds complexities in finding and searching.</p></td>
 </tr>
 </tbody>
@@ -413,4 +517,4 @@ required to change one word into the other.</p>
 </dl>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-13 15:09:50 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-13 17:29:50 UTC</div></div></div></body></html>
