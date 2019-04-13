@@ -36,7 +36,7 @@
 <li><a href="#slot-management">5.3. Slot Management</a></li>
 <li><a href="#list-feature">5.4. List feature</a></li>
 <li><a href="#find-feature">5.5. Find feature</a></li>
-<li><a href="#view">5.6. View Month/Week/Day feature</a></li>
+<li><a href="#view">5.6. View feature</a></li>
 <li><a href="#undo-redo-feature">5.7. Undo/Redo feature</a></li>
 <li><a href="#data-encryption-decryption-feature">5.8. Data Encryption / Decryption feature</a></li>
 <li><a href="#data-exporting-exporting-feature">5.9. Data Exporting / Exporting feature</a></li>
@@ -532,9 +532,6 @@ The <code>.pptx</code> files used to create diagrams in this document can be fou
 <div class="paragraph">
 <p>&#8203;</p>
 </div>
-<div class="paragraph">
-<p>&#8203;</p>
-</div>
 <h4 id="how-the-architecture-components-interact-with-each-other" class="discrete">How the architecture components interact with each other</h4>
 <div class="paragraph">
 <p>The <em>Sequence Diagram</em> below shows how the components interact with each other for the scenario where the user issues the command <code>delete 1</code>.</p>
@@ -571,8 +568,8 @@ The <code>.pptx</code> files used to create diagrams in this document can be fou
 <p><strong>API</strong> : <a href="https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/src/planmysem/ui/Ui.java"><code>Ui.java</code></a></p>
 </div>
 <div class="paragraph">
-<p>The UI consists of a <code>MainWindow</code> that is made up of just <code>commandInput</code> and <code>outputConsole</code>.
-This application is mainly a text-based application, hence here are not many components here.</p>
+<p>The UI consists of a <code>MainWindow</code> that is made up of just a TextField <code>commandInput</code> and a TextArea <code>outputConsole</code>.
+This application is mainly a text-based application, hence there are not many components here.</p>
 </div>
 <div class="paragraph">
 <p>The <code>UI</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files that are in the <code>src/main/resources/view</code> folder.
@@ -617,7 +614,7 @@ For example, the layout of the <a href="https://github.com/CS2113-AY1819S2-T08-3
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>uses the <code>parser</code> class to parse the user command.</p>
+<p>Uses the <code>parser</code> class to parse the user command.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -699,10 +696,8 @@ In summary, JAXB allows storing and retrieving data in memory in any XML format.
 More information about JAXB can be obtain from <a href="https://docs.oracle.com/javase/tutorial/jaxb/intro/index.html">Oracle</a>.</p>
 </div>
 <div class="paragraph">
-<p>To represents XML content as Java objects, "adapted" classes are used to represent and allow conversion of un-mappable objects into mappable objects.</p>
-</div>
-<div class="paragraph">
-<p>&#8203;</p>
+<p>To represents XML content as Java objects, "adapted" classes are used to represent and allow conversion of un-mappable objects into mappable objects.
+&#8203;</p>
 </div>
 <div class="paragraph">
 <p>&#8203;</p>
@@ -798,21 +793,119 @@ Semester 1 of the academic year starts with an orientation week and will always 
 </ul>
 </div>
 <div class="paragraph">
-<p>Each week of the year will correspond to an academic week and this information will be stored in a <code>HashMap</code>. This
+<p>Each week of the year will correspond to an academic week and this information will be stored in a <code>HashMap</code> for efficient retrieval. This
 <code>HashMap</code> can be used to determine the academic week given a date (by finding out the week of the year for that date).
-The figures below shows an example of the relation between academic week and the week of the year for academic year 2018/2019.</p>
+The tables below shows an example of the relation between academic week and the week of the year for academic year 2018/2019.</p>
 </div>
-<div id="img-view" class="imageblock">
-<div class="content">
-<img src="images/Sem1.png" alt="Sem1" width="790">
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 1. Weeks in academic year 2018/2019, Semester 1.</caption>
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Academic Week</th>
+<th class="tableblock halign-left valign-top">Example (Week of the year)</th>
+<th class="tableblock halign-left valign-top">Example (Period)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Orientation Week</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">32</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6 Aug 2018 (First Monday of Aug 2018) - 12 Aug 2018</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Week 1 - 6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">33 - 38</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">13 Aug 2018 - 23 Sep 2018</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Recess Week</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">39</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">24 Sep 2018 - 30 Sep 2018</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Week 7 - 13</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">40 - 46</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1 Oct 2018 - 18 Nov 2018</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Reading Week</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">47</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">19 Nov 2018 - 25 Nov 2018</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Examination Week</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">48 - 49</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">26 Nov 2018 - 9 Dec 2018</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Vacation</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">50 - 52</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10 Dec 2018 - 30 Dec 2018</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Vacation</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1 - 2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">31 Dec 2018 - 13 Jan 2019</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>&#8203;</p>
 </div>
-<div class="title">Figure 7. <span class="underline">Weeks in academic year 2018/2019, Semester 1.</span></div>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/Sem2.png" alt="Sem2" width="790">
-</div>
-<div class="title">Figure 8. <span class="underline">Weeks in academic year 2018/2019, Semester 2.</span></div>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 2. Weeks in academic year 2018/2019, Semester 2.</caption>
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Academic Week</th>
+<th class="tableblock halign-left valign-top">Example (Week of the year)</th>
+<th class="tableblock halign-left valign-top">Example (Period)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Week 1 - 6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3 - 8</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">14 Jan 2019 - 24 Feb 2019</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Recess Week</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">9</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">25 Feb 2019 - 3 Mar 2019</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Week 7 - 13</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10 - 16</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4 Mar 2019 - 21 Apr 2019</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Reading Week</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">17</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">22 Apr 2019 - 28 Apr 2019</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Examination Week</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">18 - 19</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">29 Apr 2019 - 12 May 2019</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Vacation</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">20 - 31</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">12 weeks duration</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>&#8203;</p>
 </div>
 <div class="paragraph">
 <p>Hence, the information listed below can be determined from the current date.</p>
@@ -849,6 +942,9 @@ The figures below shows an example of the relation between academic week and the
 </div>
 <div class="sect3">
 <h4 id="design-considerations"><a class="link" href="#design-considerations">5.1.2. Design Considerations</a></h4>
+<div class="paragraph">
+<p>This section details an aspect which we carefully considered for the initialization of the <code>Planner</code> and its <code>Semester</code>.</p>
+</div>
 <div class="sect4">
 <h5 id="aspect-generation-of-academic-calendar"><a class="link" href="#aspect-generation-of-academic-calendar">Aspect: Generation of academic calendar</a></h5>
 <div class="ulist">
@@ -874,13 +970,18 @@ The figures below shows an example of the relation between academic week and the
 <p>Pros: Generation of academic calendar is efficient and not prone to calculation errors.</p>
 </li>
 <li>
-<p>Cons: Requires the pre-generated file which may be accidentally edited or deleted by the user.
-&#8203;</p>
+<p>Cons: Requires the pre-generated file which may be accidentally edited or deleted by the user.</p>
 </li>
 </ul>
 </div>
 </li>
 </ul>
+</div>
+<div class="paragraph">
+<p>We chose alternative 1 as we wanted <strong>PlanMySem</strong> to be sustainable and continue working for future dates. The cons for alternative 2 also outweighs the cons for alternative 1 as editing
+or deleting the pre-generated file could potentially break the application. Hence, we implemented alternative 1 as it is
+a more suitable choice.
+&#8203;</p>
 </div>
 <div class="paragraph">
 <p>&#8203;</p>
@@ -914,10 +1015,10 @@ Arguments are then parsed via 2 different methods/techniques according to the fo
 <p>Repeated parameters are ignored. The first parameter of the same "type" are taken as valid, the rest are discarded.</p>
 </li>
 <li>
-<p>Alternate formats of commands are implemented to give freedom of choice and cater to different types of users such as different personalities and comfort levels.</p>
+<p>Alternate formats of commands are implemented to give freedom of choice and cater to different types of users with different personalities and comfort levels.</p>
 </li>
 <li>
-<p>Shortened versions of command keywords are implemented to give ways for users to shortened commands and be more efficient.</p>
+<p>Shortened versions of command keywords are implemented to give ways for users to shorten commands and be more efficient.</p>
 </li>
 </ul>
 </div>
@@ -978,7 +1079,7 @@ The values of the returned <code>HashMap</code> is a <code>Set</code>, hence, th
 <div class="sect4">
 <h5 id="parsing-keywords"><a class="link" href="#parsing-keywords">Parsing Keywords</a></h5>
 <div class="paragraph">
-<p>to retrieve keywords, the function <code>private String getStartingArgument(String args)</code> can be called.
+<p>To retrieve keywords, the function <code>private String getStartingArgument(String args)</code> can be called.
 Here, keywords are thought of as parameters that are not prefixed.
 In <strong>PlanMySem</strong>, keywords are utilized in command structures when they are to be used alone or when order of parameters are important.
 In such cases, there is no logical need for prefixing as the meaning of these parameters can be identified.</p>
@@ -1388,9 +1489,10 @@ will be polled into the output list.<br>
 </div>
 </div>
 <div class="sect2">
-<h3 id="view"><a class="link" href="#view">5.6. View Month/Week/Day feature</a></h3>
+<h3 id="view"><a class="link" href="#view">5.6. View feature</a></h3>
 <div class="paragraph">
-<p>This feature presents the planner in different formats. This section will detail how this feature is implemented.
+<p>This feature presents the planner in different formats to the user. The available formats are the month view, week view,
+and the day view. This section will detail how this feature is implemented.
 &#8203;</p>
 </div>
 <div class="paragraph">
@@ -1399,20 +1501,36 @@ will be polled into the output list.<br>
 <div class="sect3">
 <h4 id="current-implementation-6"><a class="link" href="#current-implementation-6">5.6.1. Current Implementation</a></h4>
 <div class="paragraph">
-<p>Upon entering the <code>view</code> command with valid parameters (refer to <a href="UserGuide.html">UserGuide.adoc</a> for <code>view</code> usage), the
-following sequence of events is executed:</p>
+<p>Upon invoking the <code>view</code> command with valid parameters (refer to <a href="UserGuide.html#view">UserGuide.adoc</a> for <code>view</code> usage),
+a sequence of events is executed. For clarity, the sequence of events will be in reference to the execution
+of a <code>view month</code> command. A graphical representation is also included in the Sequence Diagram below for your reference
+when following through the sequence of events. The sequence of events are as follows:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>The <code>Parser</code> component parses the <code>view</code> command. It can be parsed into only 3 general types of views which are the
-month, week or day view.</p>
+<p>Upon calling the <code>execute</code> method of the <code>Logic</code> component, the <code>Logic</code> component would then parse the <code>view month</code>
+command.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The <code>view</code> command can be parsed into only 3 general types of views which are the month, week or day view as
+specified in the command parameter.
+</td>
+</tr>
+</table>
+</div>
 </li>
 <li>
-<p>This results in a Command object which is executed.</p>
+<p>This results in a <code>ViewCommand</code> object which is executed with the <code>month</code> parameter passed in.</p>
 </li>
 <li>
-<p>The command execution will retrieve data from the <code>Model</code> (e.g. retrieving data from the current <code>Semester</code>).</p>
+<p>The command execution will call the <code>displayMonthView</code> method of the <code>ViewCommand</code> object which retrieves data from the
+<code>Model</code> component (i.e. retrieving data from the current <code>Semester</code>).</p>
 </li>
 <li>
 <p>The result of the command execution is encapsulated as a <code>CommandResult</code> object which is passed back to <code>Ui</code>.</p>
@@ -1430,24 +1548,25 @@ the user.</p>
 <div class="content">
 <img src="images/ViewMonthSequenceDiagram.png" alt="ViewMonthSequenceDiagram" width="800">
 </div>
-<div class="title">Figure 9. Interactions between components for the <code>view month</code> Command</div>
+<div class="title">Figure 7. Interactions between components for the <code>view month</code> Command</div>
 </div>
 <div class="paragraph">
 <p>&#8203;</p>
 </div>
 <div class="paragraph">
-<p>The 3 general types of view (month, week, day) are generated by the methods <code>displayMonthView()</code>, <code>displayWeekView()</code>,
-<code>displayDetailedWeekView()</code> and <code>displayDayView()</code> from the <code>ViewCommand</code> class.</p>
+<p>The 3 general types of view (month, week, day) are generated by the methods <code>displayMonthView</code>, <code>displayWeekView</code>,
+<code>displayDetailedWeekView</code>, <code>displayDayView</code> from the <code>ViewCommand</code> class and the implementation of these methods is
+explained below.</p>
 </div>
 <div class="paragraph">
-<p><code>displayMonthView()</code> displays all the months of the current semester in a monthly calendar format. Each academic week
-of the semester is also indicated in the display. The implementation of this function can be
-broken down into 2 parts:</p>
+<p><code>displayMonthView</code> method displays all the months of the current semester in a monthly calendar format. Each academic week
+of the semester is also indicated in the display. The implementation of this method can be
+broken down into 3 parts:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Print month header and calculate required amount of whitespace before the 1st of the month.</p>
+<p>Print month header (e.g. January 2019) and calculate required amount of whitespace before the 1st of the month.</p>
 </li>
 <li>
 <p>Print all days of the month using a loop.</p>
@@ -1459,16 +1578,19 @@ broken down into 2 parts:</p>
 </ul>
 </div>
 </li>
+<li>
+<p>Repeat parts 1 and 2 for every month in the semester.</p>
+</li>
 </ol>
 </div>
 <div class="paragraph">
-<p><code>displayWeekView()</code> displays the weekly calendar format of a specified week. The implementation of this function can be
+<p><code>displayWeekView</code> method displays the weekly calendar format of a specified week. The implementation of this method can be
 broken down into the following steps:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Print academic week header.</p>
+<p>Print academic week header (e.g. Week 13 of Sem 2).</p>
 </li>
 <li>
 <p>Retrieve all days of the week and for each day, retrieve its <em>slots</em> into an <code>ArrayList</code>.</p>
@@ -1483,7 +1605,7 @@ the <code>ArrayList</code>.</p>
 </ol>
 </div>
 <div class="paragraph">
-<p><code>displayDayView()</code> displays the details of all <em>slots</em> of a specified day. The implementation of this function can be
+<p><code>displayDayView</code> method displays the details of all <em>slots</em> of a specified day. The implementation of this method can be
 broken down into 2 parts:</p>
 </div>
 <div class="olist arabic">
@@ -1497,19 +1619,19 @@ broken down into 2 parts:</p>
 </ol>
 </div>
 <div class="paragraph">
-<p><code>displayDetailedWeekView()</code> displays the details of all <em>slots</em> of a specified week since <code>displayWeekView()</code> only shows
- a formatted and summarised week view. The implementation of this function can be broken down into the following steps:</p>
+<p><code>displayDetailedWeekView</code> method displays the details of all <em>slots</em> of a specified week since <code>displayWeekView</code> only shows
+ a formatted and summarised week view. The implementation of this method can be broken down into the following steps:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Print academic week header.</p>
+<p>Print academic week header (e.g. Week 13 of Sem 2).</p>
 </li>
 <li>
 <p>Retrieve all days of the week.</p>
 </li>
 <li>
-<p>For each day, print all details of all <em>slots</em> via the <code>displayDayView()</code> method.
+<p>For each day, print all details of all <em>slots</em> via the <code>displayDayView</code> method.
 &#8203;</p>
 </li>
 </ol>
@@ -1520,6 +1642,9 @@ broken down into 2 parts:</p>
 </div>
 <div class="sect3">
 <h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">5.6.2. Design Considerations</a></h4>
+<div class="paragraph">
+<p>This section details our considerations for the implementation of the <code>view</code> feature.</p>
+</div>
 <div class="sect4">
 <h5 id="aspect-functionality-of-code-view-week-code-command"><a class="link" href="#aspect-functionality-of-code-view-week-code-command">Aspect: Functionality of <code>view week</code> command</a></h5>
 <div class="ulist">
@@ -1546,13 +1671,18 @@ broken down into 2 parts:</p>
 </li>
 <li>
 <p>Cons: The formatted week view will be too cluttered as there are too many <em>slots</em> and lots of details. Formatting is
-an issue as well as details of each <em>slot</em> can be of varying lengths.
-&#8203;</p>
+an issue as well as details of each <em>slot</em> can be of varying lengths.</p>
 </li>
 </ul>
 </div>
 </li>
 </ul>
+</div>
+<div class="paragraph">
+<p>Alternative 1 was chosen to be implemented as it gives the user freedom of choice to select the degree of details to be
+displayed in the output of the <code>view week</code> command. The output of alternative 1 is also less cluttered than alternative 2
+and thus enhances the presentability of <strong>PlanMySem</strong>.
+&#8203;</p>
 </div>
 <div class="paragraph">
 <p>&#8203;</p>
@@ -1968,7 +2098,7 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <div class="content">
 <img src="images/chrome_save_as_pdf.png" alt="chrome save as pdf" width="300">
 </div>
-<div class="title">Figure 10. Saving documentation as PDF files in Chrome</div>
+<div class="title">Figure 8. Saving documentation as PDF files in Chrome</div>
 </div>
 <div class="paragraph">
 <p>&#8203;</p>
@@ -1995,7 +2125,7 @@ Attributes left unset in the <code>build.gradle</code> file will use their <stro
 </table>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 1. List of site-wide attributes</caption>
+<caption class="title">Table 3. List of site-wide attributes</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 50%;">
@@ -2063,7 +2193,7 @@ Attributes left unset in <code>.adoc</code> files will use their <strong>default
 </table>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 2. List of per-file attributes, excluding Asciidoctor&#8217;s built-in attributes</caption>
+<caption class="title">Table 4. List of per-file attributes, excluding Asciidoctor&#8217;s built-in attributes</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 50%;">
@@ -3116,4 +3246,4 @@ Expected: No <em>Slot</em> is deleted. Error details shown in the status message
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-13 05:26:41 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-13 15:09:50 UTC</div></div></div></body></html>

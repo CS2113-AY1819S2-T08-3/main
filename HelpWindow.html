@@ -760,11 +760,50 @@ Format: <code>view month</code></p>
 </li>
 <li>
 <p>View the weekly calendar view of the current academic week.<br>
-Format: <code>view week [WEEK]</code></p>
+Format: <code>view week [WEEK]</code><br>
+<code>[WEEK]</code> is valid if it is:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Any number from 1 to 13 (as there is only week 1 to 13 in a semester).</p>
+</li>
+<li>
+<p>Any of the following text (case-insensitive): recess, reading, exam, examination.</p>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+You may add in the parameter <code>details</code> after <code>[WEEK]</code> to view the details of all <em>slots</em> with respect to the <code>[WEEK]</code>.<br>
+E.g. <code>view week 13 details</code> will allow you to view details of all <em>slots</em> in week 13!
+</td>
+</tr>
+</table>
+</div>
+</li>
+</ul>
+</div>
 </li>
 <li>
 <p>View the day view of a particular day in the academic semester.<br>
-Format: <code>view day [DATE_OR_DAY_OF_WEEK]</code></p>
+Format: <code>view day [DATE_OR_DAY_OF_WEEK]</code><br>
+<code>[DATE_OR_DAY_OF_WEEK]</code> is valid if it is:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Any number from 1 to 7 (the numbers 1 to 7 corresponds to the days Monday to Sunday respectively).</p>
+</li>
+<li>
+<p>Any of the following text (case-insensitive): Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.<br>
+The three-letter abbreviation of the days (e.g. mon, tue) is accepted as well.</p>
+</li>
+<li>
+<p>A date in the format of "dd-mm" or "dd-mm-yyyy" (e.g. 16-04 or 16-04-2019). The date must exist in the current semester.</p>
+</li>
+</ul>
+</div>
 </li>
 </ol>
 </div>
@@ -775,22 +814,10 @@ Format: <code>view day [DATE_OR_DAY_OF_WEEK]</code></p>
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-You may add in the parameter <code>details</code> after <code>[WEEK]</code> to view the details of all <em>slots</em> with respect to <code>[WEEK]</code>.<br>
-E.g. <code>view week details</code> will allow you to view details of all <em>slots</em> in the current week!
-</td>
-</tr>
-</table>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
 You may omit <code>[WEEK]</code>/<code>[DATE_OR_DAY_OF_WEEK]</code> to view the calendar with respect to the current date!<br>
-E.g. <code>view week</code> will allow you to view the current week and <code>view day</code> will allow you to view the current day!
-The expected output after successfully running <code>view week</code> is shown in the figure below.
+E.g. <code>view week</code> will allow you to view the current week and <code>view day</code> will allow you to view the current day!<br>
+If you have added <em>slots</em> to the planner, the expected output after successfully running <code>view week</code> will be similar to
+the expected output shown in the figure below.
 </td>
 </tr>
 </table>
@@ -799,10 +826,46 @@ The expected output after successfully running <code>view week</code> is shown i
 <div class="content">
 <img src="images/Ui.png" alt="Ui" width="790">
 </div>
-<div class="title">Figure 8. <span class="underline">Output after entering <code>view week</code></span></div>
+<div class="title">Figure 8. <span class="underline">Expected output after entering <code>view week</code></span></div>
 </div>
 <div class="paragraph">
-<p>Examples:</p>
+<p>&#8203;</p>
+</div>
+<div class="paragraph">
+<p>The following are some examples of the <code>view</code> command which you can try to run.</p>
+</div>
+<div class="paragraph">
+<p>Month view example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>view month</code><br>
+View planner for the months of the current academic semester.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Week view examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>view week details</code><br>
+View planner for current week of the academic calendar with details of all <em>slots</em>.</p>
+</li>
+<li>
+<p><code>view week 7</code><br>
+View planner for week 7 of the academic calendar.</p>
+</li>
+<li>
+<p><code>view week recess</code><br>
+View planner for recess week of the academic calendar.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Day view examples:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -816,23 +879,7 @@ View planner for the first of March.</p>
 </li>
 <li>
 <p><code>view day monday</code><br>
-View planner for the upcoming Monday.</p>
-</li>
-<li>
-<p><code>view week details</code><br>
-View planner for current week of the academic calendar with details of all <em>slots</em>.</p>
-</li>
-<li>
-<p><code>view week 7</code><br>
-View planner for week 7 of the academic calendar.</p>
-</li>
-<li>
-<p><code>view week recess</code><br>
-View planner for recess week of the academic calendar.</p>
-</li>
-<li>
-<p><code>view month</code><br>
-View planner for the months of the current academic semester.
+View planner for the upcoming Monday.
 &#8203;</p>
 </li>
 </ul>
@@ -1286,4 +1333,4 @@ There is no need to save manually.
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-13 05:26:41 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-13 15:09:50 UTC</div></div></div></body></html>
