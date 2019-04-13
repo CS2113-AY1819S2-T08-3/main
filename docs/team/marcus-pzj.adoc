@@ -8,6 +8,8 @@
 ---
 
 == Overview
+Hi! I am Marcus Phua and I am currently a Year 2 Computer Engineering undergraduate at the National University of Singapore (NUS).
+This is where I document my contributions to *PlanMySem*.
 
 For our Software Engineering project, my team and I were tasked with enhancing a basic command line interface address book  application. +
 
@@ -70,6 +72,14 @@ An in-depth analysis of design alternatives was necessary to determine the kind 
 *** Highlights: As our group chose to morph the product from https://github.com/nusCS2113-AY1819S2/addressbook-level3[AddressBook 3], we did not have a History framework in place. I took up the responsibility
 to adapt the History Framework provided in https://github.com/nusCS2113-AY1819S2/addressbook-level4[AddressBook 4] in order to cater to our implementation of *PlanMySem*.
 *** Credits: https://github.com/nusCS2113-AY1819S2/addressbook-level4[AddressBook 4] for providing the History framework.
+
+To get a sense of how all these features function together, the activity diagram below shows how the search workflow for a [blue]`Slot` in *PlanMySem* looks like:
+
+.[.underline]#Activity Diagram for Search workflow#
+image::FindListHistoryActivityDiagram.png[width="800"]
+
+Essentially, if the user knows the exact keyword to use to locate his/her desired [blue]`Slot`, he would use the `list` command.
+Otherwise, the `find` command is recommended for use. As a parallel process, [blue]`CommandHistory` records the user input and saves it to [blue]`Planner's` history.
 
 * *Code contributed*: [https://nuscs2113-ay1819s2.github.io/dashboard-beta/#search=marcus-pzj&sort=displayName&since=2019-02-10&until=2019-04-01&timeframe=day&reverse=false&groupSelect=groupByRepos&breakdown=false&tabAuthor=marcus-pzj&tabRepo=CS2113-AY1819S2-T08-3_main_master[RepoSense]] [https://github.com/CS2113-AY1819S2-T08-3/main/pulls?q=is%3Apr+author%3Amarcus-pzj+is%3Aclosed[Pull Requests]]
 
@@ -170,7 +180,7 @@ The matching [blue]`Slots` are then weighted based on their name/tag's <<levensh
 [TIP]
 A low <<levenshtein-distance,Levenshtein Distance>> is attributed to a high level of similarity between the name/tag and the keyword.
 (A value of 0 constitutes an exact match.) +
-The maximum Levenshtein Distance set in [blue]`PlanMySem` is 20.
+The maximum Levenshtein Distance set in *PlanMySem* is 20.
 
 The weighted [blue]`Slots` are inserted into a [blue]`PriorityQueue` and the closest matching [blue]`Slots`
 will be polled into the output list. +
