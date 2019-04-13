@@ -208,8 +208,6 @@ Each of the four components
 //image::OverallClassDiagram.png[width="800"]
 {zwsp}
 
-{zwsp}
-
 [discrete]
 ==== How the architecture components interact with each other
 
@@ -233,8 +231,8 @@ image::UiComponentClassDiagram.png[width="800"]
 
 *API* : link:{repoURL}/src/planmysem/ui/Ui.java[`Ui.java`]
 
-The UI consists of a `MainWindow` that is made up of just `commandInput` and `outputConsole`.
-This application is mainly a text-based application, hence here are not many components here.
+The UI consists of a `MainWindow` that is made up of just a TextField `commandInput` and a TextArea `outputConsole`.
+This application is mainly a text-based application, hence there are not many components here.
 
 The `UI` component uses JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder.
 For example, the layout of the link:{repoURL}/src/planmysem/ui/MainWindow.java[`MainWindow`] is specified in link:{repoURL}/src/main/resources/view/MainWindow.fxml[`MainWindow.fxml`]
@@ -260,7 +258,7 @@ link:{repoURL}/src/planmysem/logic/Logic.java[`Logic.java`]
 
 the `Logic` component,
 
-.  uses the `parser` class to parse the user command.
+.  Uses the `parser` class to parse the user command.
 **  This results in a `Command` object which is executed.
 .  The command execution can affect the `Model` (e.g. adding a _Slot_).
 .  The result of the command execution is encapsulated as a `CommandResult` object which is passed back to `Ui`.
@@ -302,7 +300,6 @@ In summary, JAXB allows storing and retrieving data in memory in any XML format.
 More information about JAXB can be obtain from https://docs.oracle.com/javase/tutorial/jaxb/intro/index.html[Oracle].
 
 To represents XML content as Java objects, "adapted" classes are used to represent and allow conversion of un-mappable objects into mappable objects.
-
 {zwsp}
 
 {zwsp}
@@ -354,16 +351,44 @@ Semester 1 of the academic year starts with an orientation week and will always 
 * The vacation between semester 1 and 2 has 5 weeks.
 * The vacation between academic years will have 12 or 13 weeks depending on the starting week of the next academic year.
 
-Each week of the year will correspond to an academic week and this information will be stored in a `HashMap`. This
+Each week of the year will correspond to an academic week and this information will be stored in a `HashMap` for efficient retrieval. This
 `HashMap` can be used to determine the academic week given a date (by finding out the week of the year for that date).
-The figures below shows an example of the relation between academic week and the week of the year for academic year 2018/2019.
+The tables below shows an example of the relation between academic week and the week of the year for academic year 2018/2019.
 
-[#img-view]
-.[.underline]#Weeks in academic year 2018/2019, Semester 1.#
-image::Sem1.png[width="790"]
+.Weeks in academic year 2018/2019, Semester 1.
+[width="100%",cols="5%,5%,<10%",options="header"]
+|=======================================================================
+|Academic Week |Example (Week of the year) |Example (Period)
+|Orientation Week |32 |6 Aug 2018 (First Monday of Aug 2018) - 12 Aug 2018
+|Week 1 - 6 |33 - 38 |13 Aug 2018 - 23 Sep 2018
+|Recess Week |39 |24 Sep 2018 - 30 Sep 2018
+|Week 7 - 13 |40 - 46 |1 Oct 2018 - 18 Nov 2018
+|Reading Week |47 |19 Nov 2018 - 25 Nov 2018
+|Examination Week |48 - 49 |26 Nov 2018 - 9 Dec 2018
+|Vacation |50 - 52 |10 Dec 2018 - 30 Dec 2018
+|Vacation |1 - 2 |31 Dec 2018 - 13 Jan 2019
+|=======================================================================
+{zwsp}
 
-.[.underline]#Weeks in academic year 2018/2019, Semester 2.#
-image::Sem2.png[width="790"]
+.Weeks in academic year 2018/2019, Semester 2.
+[width="100%",cols="5%,5%,<10%",options="header"]
+|=======================================================================
+|Academic Week |Example (Week of the year) |Example (Period)
+|Week 1 - 6 |3 - 8 |14 Jan 2019 - 24 Feb 2019
+|Recess Week|9 |25 Feb 2019 - 3 Mar 2019
+|Week 7 - 13 |10 - 16 |4 Mar 2019 - 21 Apr 2019
+|Reading Week |17 |22 Apr 2019 - 28 Apr 2019
+|Examination Week |18 - 19 |29 Apr 2019 - 12 May 2019
+|Vacation |20 - 31 |12 weeks duration
+|=======================================================================
+{zwsp}
+
+//[#img-view]
+//.[.underline]#Weeks in academic year 2018/2019, Semester 1.#
+//image::Sem1.png[width="790"]
+//
+//.[.underline]#Weeks in academic year 2018/2019, Semester 2.#
+//image::Sem2.png[width="790"]
 
 Hence, the information listed below can be determined from the current date.
 
@@ -381,6 +406,8 @@ These information would be assigned to the `Semester` object upon initialization
 
 ==== Design Considerations
 
+This section details an aspect which we carefully considered for the initialization of the `Planner` and its `Semester`.
+
 ===== Aspect: Generation of academic calendar
 
 * *Alternative 1 (current choice):* Generate academic calendar by performing calculations from the current date.
@@ -390,6 +417,10 @@ These information would be assigned to the `Semester` object upon initialization
 * *Alternative 2:* Retrieve academic calendar from a pre-generated file.
 ** Pros: Generation of academic calendar is efficient and not prone to calculation errors.
 ** Cons: Requires the pre-generated file which may be accidentally edited or deleted by the user.
+
+We chose alternative 1 as we wanted *PlanMySem* to be sustainable and continue working for future dates. The cons for alternative 2 also outweighs the cons for alternative 1 as editing
+or deleting the pre-generated file could potentially break the application. Hence, we implemented alternative 1 as it is
+a more suitable choice.
 {zwsp}
 
 {zwsp}
@@ -410,8 +441,8 @@ Arguments are then parsed via 2 different methods/techniques according to the fo
 
 * Ordering of parameters are ignored when possible.
 * Repeated parameters are ignored. The first parameter of the same "type" are taken as valid, the rest are discarded.
-* Alternate formats of commands are implemented to give freedom of choice and cater to different types of users such as different personalities and comfort levels.
-* Shortened versions of command keywords are implemented to give ways for users to shortened commands and be more efficient.
+* Alternate formats of commands are implemented to give freedom of choice and cater to different types of users with different personalities and comfort levels.
+* Shortened versions of command keywords are implemented to give ways for users to shorten commands and be more efficient.
 
 Hence, parameters in *PlanMySem* can be categorised into 2 categories:
 
@@ -440,7 +471,7 @@ The values of the returned `HashMap` is a `Set`, hence, there is no need to hand
 
 ===== Parsing Keywords
 
-to retrieve keywords, the function `private String getStartingArgument(String args)` can be called.
+To retrieve keywords, the function `private String getStartingArgument(String args)` can be called.
 Here, keywords are thought of as parameters that are not prefixed.
 In *PlanMySem*, keywords are utilized in command structures when they are to be used alone or when order of parameters are important.
 In such cases, there is no logical need for prefixing as the meaning of these parameters can be identified.
@@ -646,22 +677,29 @@ the names/tags contain the keyword.
 {zwsp}
 
 [[view]]
-=== View Month/Week/Day feature
+=== View feature
 
-This feature presents the planner in different formats. This section will detail how this feature is implemented.
+This feature presents the planner in different formats to the user. The available formats are the month view, week view,
+and the day view. This section will detail how this feature is implemented.
 {zwsp}
 
 {zwsp}
 
 ==== Current Implementation
 
-Upon entering the `view` command with valid parameters (refer to <<UserGuide#, UserGuide.adoc>> for `view` usage), the
-following sequence of events is executed:
+Upon invoking the `view` command with valid parameters (refer to <<UserGuide#view, UserGuide.adoc>> for `view` usage),
+a sequence of events is executed. For clarity, the sequence of events will be in reference to the execution
+of a `view month` command. A graphical representation is also included in the Sequence Diagram below for your reference
+when following through the sequence of events. The sequence of events are as follows:
 
-1. The `Parser` component parses the `view` command. It can be parsed into only 3 general types of views which are the
-month, week or day view.
-2. This results in a Command object which is executed.
-3. The command execution will retrieve data from the `Model` (e.g. retrieving data from the current `Semester`).
+1. Upon calling the `execute` method of the `Logic` component, the `Logic` component would then parse the `view month`
+command.
+[NOTE]
+The `view` command can be parsed into only 3 general types of views which are the month, week or day view as
+specified in the command parameter.
+2. This results in a `ViewCommand` object which is executed with the `month` parameter passed in.
+3. The command execution will call the `displayMonthView` method of the `ViewCommand` object which retrieves data from the
+`Model` component (i.e. retrieving data from the current `Semester`).
 4. The result of the command execution is encapsulated as a `CommandResult` object which is passed back to `Ui`.
 5. In addition, the `CommandResult` object can also instruct the `Ui` to display results, such as displaying help to
 the user.
@@ -672,43 +710,47 @@ Given below is the Sequence Diagram upon executing the `view month` command.
 image::ViewMonthSequenceDiagram.png[width="800"]
 {zwsp}
 
-The 3 general types of view (month, week, day) are generated by the methods `displayMonthView()`, `displayWeekView()`,
-`displayDetailedWeekView()` and `displayDayView()` from the `ViewCommand` class.
+The 3 general types of view (month, week, day) are generated by the methods `displayMonthView`, `displayWeekView`,
+`displayDetailedWeekView`, `displayDayView` from the `ViewCommand` class and the implementation of these methods is
+explained below.
 
-`displayMonthView()` displays all the months of the current semester in a monthly calendar format. Each academic week
-of the semester is also indicated in the display. The implementation of this function can be
-broken down into 2 parts:
+`displayMonthView` method displays all the months of the current semester in a monthly calendar format. Each academic week
+of the semester is also indicated in the display. The implementation of this method can be
+broken down into 3 parts:
 
-1. Print month header and calculate required amount of whitespace before the 1st of the month.
+1. Print month header (e.g. January 2019) and calculate required amount of whitespace before the 1st of the month.
 2. Print all days of the month using a loop.
    * Append academic week after each Saturday or last day of month.
+3. Repeat parts 1 and 2 for every month in the semester.
 
-`displayWeekView()` displays the weekly calendar format of a specified week. The implementation of this function can be
+`displayWeekView` method displays the weekly calendar format of a specified week. The implementation of this method can be
 broken down into the following steps:
 
-1. Print academic week header.
+1. Print academic week header (e.g. Week 13 of Sem 2).
 2. Retrieve all days of the week and for each day, retrieve its _slots_ into an `ArrayList`.
 3. For each day, print the _slot_ details (only start time, end time and a shortened title) and remove the _slot_ from
 the `ArrayList`.
 4. Repeat step 3 until the `ArrayList` of _slots_ for each day is empty.
 
-`displayDayView()` displays the details of all _slots_ of a specified day. The implementation of this function can be
+`displayDayView` method displays the details of all _slots_ of a specified day. The implementation of this method can be
 broken down into 2 parts:
 
 1. Retrieve all _slots_ for the specified day.
 2. Print all details of each _slot_ found.
 
-`displayDetailedWeekView()` displays the details of all _slots_ of a specified week since `displayWeekView()` only shows
- a formatted and summarised week view. The implementation of this function can be broken down into the following steps:
+`displayDetailedWeekView` method displays the details of all _slots_ of a specified week since `displayWeekView` only shows
+ a formatted and summarised week view. The implementation of this method can be broken down into the following steps:
 
-1. Print academic week header.
+1. Print academic week header (e.g. Week 13 of Sem 2).
 2. Retrieve all days of the week.
-3. For each day, print all details of all _slots_ via the `displayDayView()` method.
+3. For each day, print all details of all _slots_ via the `displayDayView` method.
 {zwsp}
 
 {zwsp}
 
 ==== Design Considerations
+
+This section details our considerations for the implementation of the `view` feature.
 
 ===== Aspect: Functionality of `view week` command
 
@@ -720,6 +762,10 @@ broken down into 2 parts:
 ** Pros: Efficient for the user as user is only required to enter a single command to view all details of all _slots_.
 ** Cons: The formatted week view will be too cluttered as there are too many _slots_ and lots of details. Formatting is
 an issue as well as details of each _slot_ can be of varying lengths.
+
+Alternative 1 was chosen to be implemented as it gives the user freedom of choice to select the degree of details to be
+displayed in the output of the `view week` command. The output of alternative 1 is also less cluttered than alternative 2
+and thus enhances the presentability of *PlanMySem*.
 {zwsp}
 
 {zwsp}

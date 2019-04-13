@@ -344,24 +344,51 @@ View the planner in a month/week/day view.
 1. View the monthly calendar view of the current academic semester. +
 Format: `view month`
 2. View the weekly calendar view of the current academic week. +
-Format: `view week [WEEK]`
-3. View the day view of a particular day in the academic semester. +
-Format: `view day [DATE_OR_DAY_OF_WEEK]`
+Format: `view week [WEEK]` +
+`[WEEK]` is valid if it is:
 
+* Any number from 1 to 13 (as there is only week 1 to 13 in a semester).
+* Any of the following text (case-insensitive): recess, reading, exam, examination.
 [TIP]
-You may add in the parameter `details` after `[WEEK]` to view the details of all _slots_ with respect to `[WEEK]`. +
-E.g. `view week details` will allow you to view details of all _slots_ in the current week!
+You may add in the parameter `details` after `[WEEK]` to view the details of all _slots_ with respect to the `[WEEK]`. +
+E.g. `view week 13 details` will allow you to view details of all _slots_ in week 13!
+
+3. View the day view of a particular day in the academic semester. +
+Format: `view day [DATE_OR_DAY_OF_WEEK]` +
+`[DATE_OR_DAY_OF_WEEK]` is valid if it is:
+* Any number from 1 to 7 (the numbers 1 to 7 corresponds to the days Monday to Sunday respectively).
+* Any of the following text (case-insensitive): Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday. +
+The three-letter abbreviation of the days (e.g. mon, tue) is accepted as well.
+* A date in the format of "dd-mm" or "dd-mm-yyyy" (e.g. 16-04 or 16-04-2019). The date must exist in the current semester.
 
 [TIP]
 You may omit `[WEEK]`/`[DATE_OR_DAY_OF_WEEK]` to view the calendar with respect to the current date! +
-E.g. `view week` will allow you to view the current week and `view day` will allow you to view the current day!
-The expected output after successfully running `view week` is shown in the figure below.
+E.g. `view week` will allow you to view the current week and `view day` will allow you to view the current day! +
+If you have added _slots_ to the planner, the expected output after successfully running `view week` will be similar to
+the expected output shown in the figure below.
 
 [#img-view]
-.[.underline]#Output after entering `view week`#
+.[.underline]#Expected output after entering `view week`#
 image::Ui.png[width="790"]
+{zwsp}
 
-Examples:
+The following are some examples of the `view` command which you can try to run.
+
+Month view example:
+
+* `view month` +
+View planner for the months of the current academic semester.
+
+Week view examples:
+
+* `view week details` +
+View planner for current week of the academic calendar with details of all _slots_.
+* `view week 7` +
+View planner for week 7 of the academic calendar.
+* `view week recess` +
+View planner for recess week of the academic calendar.
+
+Day view examples:
 
 * `view day` +
 View planner for the current date.
@@ -369,14 +396,6 @@ View planner for the current date.
 View planner for the first of March.
 * `view day monday` +
 View planner for the upcoming Monday.
-* `view week details` +
-View planner for current week of the academic calendar with details of all _slots_.
-* `view week 7` +
-View planner for week 7 of the academic calendar.
-* `view week recess` +
-View planner for recess week of the academic calendar.
-* `view month` +
-View planner for the months of the current academic semester.
 {zwsp}
 
 {zwsp}

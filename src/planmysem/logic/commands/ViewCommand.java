@@ -50,7 +50,7 @@ public class ViewCommand extends Command {
             + " week details"
             + "\n\tView day example: "
             + "\n\t\tExample 1: " + COMMAND_WORD
-            + " day 01/03/2019"
+            + " day 01-03-2019"
             + "\n\t\tExample 2: " + COMMAND_WORD
             + " day monday"
             + "\n\t\tExample 3: " + COMMAND_WORD
