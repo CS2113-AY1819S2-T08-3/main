@@ -664,7 +664,7 @@ command.
 6. In addition, the `CommandResult` object can also instruct the `Ui` to display results, such as displaying help to
 the user.
 
-Given below is the Sequence Diagram upon executing the `find n/keyword` command.
+To give a graphical summary of the above process, a Sequence Diagram detailing the execution of the `find n/keyword` command is provided below.
 
 .Interactions between components for the `find n/keyword` Command
 image::FindSequenceDiagram.png[width="800"]

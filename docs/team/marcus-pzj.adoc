@@ -93,11 +93,13 @@ to adapt the History Framework provided in https://github.com/nusCS2113-AY1819S2
 I have also provided clear instructions for users to use my implemented features._
 |===
 
-- https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/UserGuide.adoc#list[`list`] +
-- https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/UserGuide.adoc#find[`find`] +
-- https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/UserGuide.adoc#history[`history`] +
-- https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/UserGuide.adoc#undo[`undo`] +
-- https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/UserGuide.adoc#redo[`redo`]
+Here are the links to my contributed sections in the User Guide:
+
+- List Command: https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/UserGuide.adoc#list[`list`] +
+- Find Command: https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/UserGuide.adoc#find[`find`] +
+- History Command: https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/UserGuide.adoc#history[`history`] +
+- Undo Command: https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/UserGuide.adoc#undo[`undo`] +
+- Redo Command: https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/UserGuide.adoc#redo[`redo`]
 
 Below is an example of my addition to the User Guide for the `find` feature.
 
@@ -145,10 +147,12 @@ I have also elaborated on my design considerations in order to justify my implem
 In addition, I was tasked with collating and polishing the User Stories which were generated during the ideation phase of the project._
 |===
 
-- https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/DeveloperGuide.adoc#list-feature[`list`]
-- https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/DeveloperGuide.adoc#find-feature[`find`]
-- https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/DeveloperGuide.adoc#undo-redo-feature[`undo` & `redo`]
-- https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/DeveloperGuide.adoc#user-stories[User Stories]
+Here are the links to my contributed sections in the Developer Guide:
+
+- List Command: https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/DeveloperGuide.adoc#list-feature[`list`]
+- Find Command: https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/DeveloperGuide.adoc#find-feature[`find`]
+- Undo & Redo Command: https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/DeveloperGuide.adoc#undo-redo-feature[`undo` & `redo`]
+- User Stories: https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/DeveloperGuide.adoc#user-stories[User Stories]
 
 Below is an example of my addition to the Developer Guide for the `find` feature.
 
@@ -185,7 +189,7 @@ command.
 6. In addition, the [blue]`CommandResult` object can also instruct the [blue]`Ui` to display results, such as displaying help to
 the user.
 
-Given below is the Sequence Diagram upon executing the `find n/keyword` command.
+To give a graphical summary of the above process, a Sequence Diagram detailing the execution of the `find n/keyword` command is provided below.
 
 .Interactions between components for the `find n/keyword` Command
 image::FindSequenceDiagram.png[width="800"]
