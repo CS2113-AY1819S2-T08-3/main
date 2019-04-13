@@ -104,6 +104,7 @@ public class ViewCommand extends Command {
 
     /**
      * Display all months for the semester.
+     * Solution below adapted from https://introcs.cs.princeton.edu/java/21function/Calendar.java.html
      */
     private String displayMonthView(Semester currentSemester) {
         HashMap<LocalDate, Day> allDays = currentSemester.getDays();
