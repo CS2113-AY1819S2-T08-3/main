@@ -175,7 +175,7 @@ When you are ready to start coding,
 === Architecture
 
 .Architecture Diagram
-image::Architecture.png[width="800"]
+image::ArchitectureDiagram.png[width="800"]
 {zwsp}
 
 The *_Architecture Diagram_* given above explains the high-level design of the App. Given below is a quick overview of each component.
@@ -202,10 +202,10 @@ Each of the four components
 * Defines its _API_ in an `interface` with the same name as the Component.
 * Exposes its functionality using a `{Component Name}Manager` class.
 
-For example, the `Logic` component (see the class diagram given below) defines its API in the `Logic.java` interface and exposes its functionality using the `Logic.java` class.
-
-.Class Diagram of overall application.
-image::OverallClassDiagram.png[width="800"]
+//For example, the `Logic` component (see the class diagram given below) defines its API in the `Logic.java` interface and exposes its functionality using the `Logic.java` class.
+//
+//.Class Diagram of overall application.
+//image::OverallClassDiagram.png[width="800"]
 {zwsp}
 
 {zwsp}
@@ -228,13 +228,13 @@ The sections below give more details of each component.
 === UI component
 
 .Structure of the UI Component
-image::UiClassDiagram.png[width="400"]
+image::UiComponentClassDiagram.png[width="800"]
 {zwsp}
 
 *API* : link:{repoURL}/src/planmysem/ui/Ui.java[`Ui.java`]
 
 The UI consists of a `MainWindow` that is made up of just `commandInput` and `outputConsole`.
-This application is mainly a text-based application, hence here are not much componenets here.
+This application is mainly a text-based application, hence here are not many components here.
 
 The `UI` component uses JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder.
 For example, the layout of the link:{repoURL}/src/planmysem/ui/MainWindow.java[`MainWindow`] is specified in link:{repoURL}/src/main/resources/view/MainWindow.fxml[`MainWindow.fxml`]
@@ -252,14 +252,16 @@ The `UI` component,
 
 [[fig-LogicClassDiagram]]
 .Structure of the Logic Component
-image::LogicClassDiagram.png[width="800"]
+image::LogicComponentClassDiagram.png[width="800"]
 {zwsp}
 
 *API* :
 link:{repoURL}/src/planmysem/logic/Logic.java[`Logic.java`]
 
-.  `Logic` uses the `parser` class to parse the user command.
-.  This results in a `Command` object which is executed.
+the `Logic` component,
+
+.  uses the `parser` class to parse the user command.
+**  This results in a `Command` object which is executed.
 .  The command execution can affect the `Model` (e.g. adding a _Slot_).
 .  The result of the command execution is encapsulated as a `CommandResult` object which is passed back to `Ui`.
 .  In addition, the `CommandResult` object can also instruct the `Ui` to display results, such as displaying help to the user.
@@ -276,74 +278,31 @@ image::SDforDeleteSlot.png[width="800"]
 === Model component
 
 .Overall structure of the Model Component
-image::ModelClassDiagram.png[width="400"]
+image::ModelComponentClassDiagram.png[width="800"]
 {zwsp}
 
 *API* : link:{repoURL}/src/planmysem/model/Model.java[`Model.java`]
 
-`Model` holds the data involved with the application.
-{zwsp}
+The `Model` component
 
-{zwsp}
-
-[[Design-Planner]]
-==== Planner component
-
-*API* : link:{repoURL}/src/planmysem/data/Planner.java[`Planner.java`]
-
-The `Planner` component,
-
-* stores a `Planner` object that represents the entire Planner.
-* stores the data of the entire application.
-* stores the data of the current semester in an unmodifiable `Semester`.
-{zwsp}
-
-{zwsp}
-
-[[Design-Semester]]
-==== Semester component
-
-*API* : link:{repoURL}/src/planmysem/model/semester/Semester.java[`Semester.java`]
-
-The `Semester` component,
-
-* stores a `Semester` object that represents the an academic semester.
-* stores the data of the entire semester in an unmodifiable `HashMap<LocalDate, Day>`.
-* Semesters essentially hold "days" in which holds slots.
-{zwsp}
-
-{zwsp}
-
-[[Design-Slot]]
-==== Slot component
-
-*API* : link:{repoURL}/src/planmysem/model/slot/Slot.java[`Slot.java`]
-
-The `Slot` component,
-
-* stores a `Slot` object that represents a time-slot similar to traditional/conventional calendar/scheduling applications.
-** such as outlook or google calendar.
-* stores the data of the slot details as well as start time and duration.
-
-[NOTE]
-Notice how `Slot` does not hold its end time but rather it holds the `duration`. This is simply our design choice as it is meaningless to save both variables.
+* stores the Planner data.
+* does not depend on any of the other three components.
 {zwsp}
 
 {zwsp}
 
 [[Design-Storage]]
 === Storage component
-
-.Structure of the Storage Component
-image::StorageClassDiagram.png[width="400"]
-{zwsp}
-
 *API* : link:{repoURL}/src/planmysem/storage/Storage.java[`Storage.java`]
 
-The `Storage` component,
+The `Storage` component saves the Planner data in XML format and read it back.
 
-* can save `UserPref` objects in json format and read it back.
-* can save the Planner data in json format and read it back.
+This functionality is provided via Java Architecture for XML Binding (JAXB), a software framework that maps Java classes to XML representations.
+In summary, JAXB allows storing and retrieving data in memory in any XML format.
+More information about JAXB can be obtain from https://docs.oracle.com/javase/tutorial/jaxb/intro/index.html[Oracle].
+
+To represents XML content as Java objects, "adapted" classes are used to represent and allow conversion of un-mappable objects into mappable objects.
+
 {zwsp}
 
 {zwsp}
@@ -403,7 +362,6 @@ The figures below shows an example of the relation between academic week and the
 .[.underline]#Weeks in academic year 2018/2019, Semester 1.#
 image::Sem1.png[width="790"]
 
-[#img-view]
 .[.underline]#Weeks in academic year 2018/2019, Semester 2.#
 image::Sem2.png[width="790"]
 
@@ -457,41 +415,43 @@ Arguments are then parsed via 2 different methods/techniques according to the fo
 
 Hence, parameters in *PlanMySem* can be categorised into 2 categories:
 
-1. Prefixed parameters such as `n/NAME`, `st/START_TIME`, `des/DESCRIPTION`, etc.
-2. Non-Prefixed parameters, A.K.A. keywords, such as `INDEX`, `TYPE_OF_VIEW`. etc.
+. Prefixed parameters such as `n/NAME`, `st/START_TIME`, `des/DESCRIPTION`, etc.
+. Non-Prefixed parameters, A.K.A. keywords, such as `INDEX`, `TYPE_OF_VIEW`. etc.
 {zwsp}
 
 {zwsp}
 
 ===== Parsing Prefixed Parameters
 
-To retrieve the set of parameters, the function `private static HashMap<String, Set<String>> getParametersWithArguments(String args)` can be called.
-The function returns a `HashMap` data structure, specifically `HashMap<String, Set<String>>`, to hold parameters, allowing for easy, quick and efficient access to specific prefixes and its keyed in parameters; O(1) access, insertion and removal.
+To retrieve parameters, the function `private static HashMap<String, Set<String>> getParametersWithArguments(String args)` can be called.
+The keys of the returned `HashMap` represent prefixes while the values represent the prefix's parameters, held in a set.
+This allows for easy, quick and efficient access to specific prefixes and its parameters; O(1) access, insertion and removal.
 
-However, this means that exceptions have to be manually taken care of, at the stage of parsing, this exception would particularly be `ParseException`.
+The results of `getParametersWithArguments` can be interpreted in these manners:
 
-The following are cases in which `ParseException` is invoked:
+* When the returned set of parameters, to a specific prefix, is `null`, then both the prefix and parameters was not keyed in at all.
+* When the returned set of parameters, to a specific prefix, is not `null` but contains empty `strings` such that `string.isEmpty()` returns true, then the prefix was keyed in but the parameter was left blank.
 
-* When the returned set is `null`, then the prefix and parameters was not keyed in at all.
-* When the returned set is not `null` but contains empty `strings` such that `string.isEmpty()`, then the prefix was keyed in but was left empty on purpose.
+[IMPORTANT]
+The values of the returned `HashMap` is a `Set`, hence, there is no need to handle repeated parameters of a specific prefix as they will be automatically discarded.
 {zwsp}
 
 {zwsp}
 
 ===== Parsing Keywords
 
+to retrieve keywords, the function `private String getStartingArgument(String args)` can be called.
 Here, keywords are thought of as parameters that are not prefixed.
 In *PlanMySem*, keywords are utilized in command structures when they are to be used alone or when order of parameters are important.
 In such cases, there is no logical need for prefixing as the meaning of these parameters can be identified.
 
-The function `private String getStartingArgument(String args)` provides this functionality.
-Here, `IncorrectCommand` is invoked due to different circumstances:
+The results of `getStartingArgument` can be interpreted in these manners:
 
 * When the keyword is null, then the parameter was not keyed in.
 * When the keyword data type does not match the intended, then the parameter was keyed in wrongly or is mis-ordered.
 
 [NOTE]
-Additional keywords are purposefully *not* handled to provide ease of use and cater to user mistakes.
+Additional keywords are *not* handled and ignored to provide ease of use and cater to user mistakes.
 {zwsp}
 
 {zwsp}
@@ -499,20 +459,20 @@ Additional keywords are purposefully *not* handled to provide ease of use and ca
 ==== Design Considerations
 
 Here are the considerations that led to the new parsing system.
-The choices made were largely due to the fact that they provide a better user experience and ease of use.
+In both cases, choices were made were largely due to the fact that they provide a better user experience and ease of use.
 {zwsp}
 
 {zwsp}
 
 ===== Aspect: Handling repeated parameters
 
-* *Alternative 1 (current choice):* Accept and ignore repeated parameters when possible.
-** Pros: Less Computationally expensive and allows users to make minor mistakes.
+* *Alternative 1 (current choice):* When possible, accept repeated parameters.
+** Pros: Less computationally expensive and allow users to make minor mistakes.
 ** Cons: User errors may be misinterpreted and hence wrong actions may be executed.
 
-* *Alternative 2:* Accept repeated parameters only when as necessary.
+* *Alternative 2:* Always accept and handle repeated parameters.
 ** Pros: Errors are shown to the user so that the invalid command may be fixed.
-** Cons: May hinder user experience, ease of use.
+** Cons: Force user to rewrite commands, even in the event of simple/minor mistakes, and thus may hinder user experience and ease of use.
 {zwsp}
 
 {zwsp}
@@ -526,9 +486,6 @@ The choices made were largely due to the fact that they provide a better user ex
 * *Alternative 2:* Accept only a specific ordering of parameters.
 ** Pros: Less computationally expensive and short development process, able to use existing regex solutions in AB3.
 ** Cons: Greatly hinder user experience as order of parameters have no relation to meaning of commands.
-
-Alternative 1 was chosen due to the team's priority in providing a better user experience and allow ease of use.
-
 {zwsp}
 
 {zwsp}
@@ -538,9 +495,9 @@ Alternative 1 was chosen due to the team's priority in providing a better user e
 Though the current implementation has much flexibility, there is more that can be done to elevate user experience to the next level.
 These are some possible enhancements:
 
-1. Parse more formats of date and time.
+1. Parse a larger variety of date and time formats.
 2. Parse time as a single parameter instead of two.
-3. Enhance function calls to retrieve prepended parameters and keywords to handle trivial cases that should invoke `IncorrectCommand`.
+3. Enhance function calls to retrieve prepended parameters and keywords to handle trivial cases that should invoke `ParseException`.
 {zwsp}
 
 {zwsp}
@@ -579,25 +536,17 @@ The `Edit` and `Delete` command then makes use of the _tagging_ system to then s
 ==== Design Considerations
 
 Here are the considerations regarding slot management.
-The choices made were largely due to computation effectiveness.
 {zwsp}
 
 {zwsp}
 
-===== Aspect: Wrapping of primitive data types in `Slot`
+===== Aspect: Wrapping of data in `Slot`
 
-* *Alternative 1 (current choice):* Use of "primitive" data types instead of creating and utilising wrapped objects. +
-E.g. `name`, `location` amd `description` are not wrapped but "primitive".
-** Pros: Allows for more flexible code to account for flexible parsing (as needed in this application).
-** Cons: Bigger code base and duplicated code.
+The topic of whether to wrap all primitives and `Strings`, in Java, is contentious.
+However, in this case of *PlanMySem*, there are no possible invalid values for any of the data that `Slot` holds, other than the `/` character that would have already been handled by `parser`.
+For instance, any `String` is a valid `name` and the same goes for `location`, `description` and etc; wrapping these data will not achieve any narrowing of possible valid inputs.
 
-* *Alternative 2:* Wrap "primitive" data types.
-** Pros: Less errors in handling invalid values.
-** Cons: May cause inflexibility in writing code to account for flexible parsing.
-
-Alternative 1 was chosen as, in this case of *PlanMySem*, there is a need to achieve varied and flexible commands and as such,
-it is not necessary to handle invalid values with the innate `Model` objects as these are taken care of when parsing.
-
+Hence, data in `Slot` are not wrapped. This is in accordance to the You aren't gonna need it (YAGNI) principle.
 {zwsp}
 
 {zwsp}
@@ -614,14 +563,13 @@ it is not necessary to handle invalid values with the innate `Model` objects as 
 
 Alternative 1 was chosen as the benefits of quick and easy access to days outweigh the disadvantages involve with forbidding slots than span over a day.
 After all, there are few cases of slots crossing the boundaries of a day, over midnight.
-
 {zwsp}
 
 {zwsp}
 
 ==== Future Implementation
 
-===== Create a class to hold `Days`, instead of utilising a `HashMap`
+===== Create a class to represent `Days`, instead of utilising a `HashMap`
 
 Currently, `Days` are held in a HashMap of key `LocalDate` and value `Day`. While this works without any loss in performance, this causes duplication of code and removes some key concepts of abstraction.
 For example, there are code blocks dedicated to retrieving days or slots that could have been placed into this new class. This is an issue as these code have nothing to do with for instance, `Semester` but they are placed there.

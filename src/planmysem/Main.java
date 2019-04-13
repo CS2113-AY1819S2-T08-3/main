@@ -6,8 +6,8 @@ import javafx.stage.Stage;
 import planmysem.logic.LogicManager;
 import planmysem.storage.Storage;
 import planmysem.storage.StorageFile;
-import planmysem.ui.Gui;
 import planmysem.ui.Stoppable;
+import planmysem.ui.UiManager;
 
 /**
  * Main entry point to the application.
@@ -26,8 +26,8 @@ public class Main extends Application implements Stoppable {
     @Override
     public void start(Stage primaryStage) throws Exception {
         Storage storageFile = new StorageFile();
-        Gui gui = new Gui(new LogicManager(storageFile), VERSION);
-        gui.start(primaryStage, this);
+        UiManager uiManager = new UiManager(new LogicManager(storageFile), VERSION);
+        uiManager.start(primaryStage, this);
     }
 
     @Override

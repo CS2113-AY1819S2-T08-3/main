@@ -97,10 +97,10 @@ Using tags to tag _slots_ will make tasks easier for you in the future. Performi
 
 Recommended uses for tags:
 
-1. Tag modules. E.g. "CS2113T", "CS2101".
-2. Tag type of lesson. E.g. "Lecture", "Tutorial", "Lab".
-3. Tag type of activities. E.g. "Sports", "Seminar", "Talk".
-4. Tag difficulty of task. E.g. "Tough", "Simple", "Trivial".
+. Tag modules. E.g. "CS2113T", "CS2101".
+. Tag type of lesson. E.g. "Lecture", "Tutorial", "Lab".
+. Tag type of activities. E.g. "Sports", "Seminar", "Talk".
+. Tag difficulty of task. E.g. "Tough", "Simple", "Trivial".
 
 *Recursion System*
 
@@ -213,6 +213,10 @@ Do the same but without any recursion, instead place the _slot_ the coming monda
 
 [TIP]
 You may add single _slots_ by omitting the `r/` identifiers and its parameters.
+
+[NOTE]
+*PlanMySem* does not dictate your scheduling preferences.
+As such, you may even add identical slots or slots with overlapping start and end times to help plan for tentative/unconfirmed events.
 {zwsp}
 
 {zwsp}
@@ -311,7 +315,6 @@ Find all _slots_ whose name closely matches `CS` (eg. CS2101, CS2113T, SOCSMeet)
 Find all _slots_ that contain tags that closely matches `2113T`.
 
 // TODO: need to change picture
-[#img-find]
 .[.underline]#Output after entering `find n/CS`#
 image::Find_Command_Output_1.png[width="790"]
 {zwsp}
@@ -427,7 +430,7 @@ The exported file is named "PlanMySem.ics" and is saved in the main directory.
 The .ics file can be imported into other calendar apps that support .ics files such as Google Calendar. +
 [#img-exportFile]
 .[.underline]#Location of PlanMySem.ics file#
-image::Export_Command_Directory_1.png[width="790"]
+image::Export_Command_Directory_1.png[width="800"]
 ====
 
 [WARNING]
