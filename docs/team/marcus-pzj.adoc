@@ -27,7 +27,7 @@ Also take note: +
 [frame=none]
 |===
 |`list` | A grey highlight (called a mark-up) indicates that this is a command that can be inputted into the command line and executed by the application.
-|[blue]`VersionedPlanner`| Blue text with grey highlight indicates a component, class or object in the architecture of the application.
+|[blue]`VersionedPlanner`| Blue text with grey highlight indicates a component, class, method or object in the architecture of the application.
 |===
 
 My role was to design and write the codes for the `list`, `find`, `history`, `undo` and `redo` features.
@@ -42,8 +42,26 @@ the relevant sections I have added to the user and developer guides in relation 
 
 This section shows a summary of my coding, documentation, and other helpful contributions to the team project. +
 
-* *Major enhancements*:
-** Feature 1: I added the ability to *undo/redo previous commands* and *view the history* of commands entered.
+* *Main Feature*: I implemented the searching framework within the [blue]`Planner`. The searching framework
+comprises of 2 sections:
+
+** **List**: I added the ability to *search and list [blue]`Slots`* using a keyword user input.
+*** What it does: The `list` command *generates a list* containing all [blue]`Slots` whose name/tag *directly matches* the specified keyword (not case-sensitive).
+*** Justification: After the user has added [blue]`Slots` to their planner, they may want to be able to view information regarding
+a [blue]`Slot` that they have added. If the user wants to find out the dates, start times, end times, venues and descriptions pertaining to a specific [blue]`Slot`, they can use the `list` command to
+locate that specific [blue]`Slot` and view all of its information in a list.
+
+** **Find**: I added the ability to *search and find [blue]`Slots`* using a keyword user input.
+*** What it does: The `find` command *generates a list* containing all [blue]`Slots` whose name *closely matches* the specified keyword and displays them as a list.
+*** Justification: Unlike the `list` command, the `find` command will also consider searches that are similar to the desired name/tag. This is to account for a typo or an incomplete keyword, which can happen often while the user is typing.
+Additionally, the user may not remember the exact name he has added to the planner, and hence, the `find` command provides a higher chance for the user to locate their desired [blue]`Slot`.
+[IMPORTANT]
+The `find` command ends up generating a longer output list, which potentially contains many [blue]`Slots`, which may not be optimal for the user to skim through. Thus, I provide users with the option to use the `list` command to specifically pinpoint their desired [blue]`Slot` to list.
+*** Highlights: It was challenging to provide an optimal string matching algorithm that accurately weighs the closeness of strings.
+An in-depth analysis of design alternatives was necessary to determine the kind of string matching algorithm to implement in order to improve search accuracy.
+*** Credits: The string matching logic was largely dependent on the <<levenshtein-distance,Levenshtein Distance>> algorithm.
+
+* *Minor Feature*: I added the ability to *undo/redo previous commands* and *view the history* of commands entered.
 *** What it does: The `undo` command allows the user to undo a previous `add`/`edit`/`delete` command. The user may reverse this command with the `redo` command.
 *** Justification: In the event that users have made a mistake or changed their minds about executing
                   a command, the `undo` command enables them to revert to a version immediately before
@@ -52,22 +70,6 @@ This section shows a summary of my coding, documentation, and other helpful cont
 *** Highlights: As our group chose to morph the product from https://github.com/nusCS2113-AY1819S2/addressbook-level3[AddressBook 3], we did not have a History framework in place. I took up the responsibility
 to adapt the History Framework provided in https://github.com/nusCS2113-AY1819S2/addressbook-level4[AddressBook 4] in order to cater to our implementation of *PlanMySem*.
 *** Credits: https://github.com/nusCS2113-AY1819S2/addressbook-level4[AddressBook 4] for providing the History framework.
-
-** Feature 2: I added the ability to *search and list [blue]`Slots`* using a keyword user input.
-*** What it does: The `list` command *generates a list* containing all [blue]`Slots` whose name/tag *directly matches* the specified keyword (not case-sensitive).
-*** Justification: After the user has added [blue]`Slots` to their planner, they may want to be able to view information regarding
-a [blue]`Slot` that they have added. If the user wants to find out the dates, start times, end times, venues and descriptions pertaining to a specific [blue]`Slot`, they can use the `list` command to
-locate that specific [blue]`Slot` and view all of its information in a list.
-
-** Feature 3: I added the ability to *search and find [blue]`Slots`* using a keyword user input.
-*** What it does: The `find` command *generates a list* containing all [blue]`Slots` whose name *closely matches* the specified keyword and displays them as a list.
-*** Justification: Unlike the `list` command, the `find` command will also consider searches that are similar to the desired name/tag. This is to account for a typo or an incomplete keyword, which can happen often while the user is typing.
-Additionally, the user may not remember the exact name he has added to the planner, and hence, the `find` command provides a higher chance for the user to locate their desired [blue]`Slot`.
-[IMPORTANT]
-The `find` command ends up generating a longer output list, which potentially contains many [blue]`Slots`, which may not be optimal for the user to skim through. Thus, I provide users with the option to use the `list` command to specifically pinpoint their desired [blue]`Slot` to list.
-*** Highlights: It was challenging to provide an optimal string matching algorithm that accurately weighs the closeness of strings.
-An in-depth analysis of design alternatives was necessary to determine the kind of string matching algorithm to implement in order to improve search accuracy.
-*** Credits: The string matching logic was largely dependent on <<levenshtein-distance,Levenshtein Distance>>. My implementation was adapted from https://rosettacode.org/wiki/Levenshtein_distance#Java[Rosetta Code].
 
 * *Code contributed*: [https://nuscs2113-ay1819s2.github.io/dashboard-beta/#search=marcus-pzj&sort=displayName&since=2019-02-10&until=2019-04-01&timeframe=day&reverse=false&groupSelect=groupByRepos&breakdown=false&tabAuthor=marcus-pzj&tabRepo=CS2113-AY1819S2-T08-3_main_master[RepoSense]] [https://github.com/CS2113-AY1819S2-T08-3/main/pulls?q=is%3Apr+author%3Amarcus-pzj+is%3Aclosed[Pull Requests]]
 
@@ -99,22 +101,37 @@ I have also provided clear instructions for users to use my implemented features
 
 Below is an example of my addition to the User Guide for the `find` feature.
 
-=== Locating Slots: `find` / `f`
-Find all [blue]`Slots` whose name closely matches the specified keyword and displays them as a list. +
+=== Finding Slots: `find` / `f`
+Find all _slots_ whose name closely matches the specified keyword and displays them as a list. (Case-sensitive) +
 Format: `find n/KEYWORD`
 
-[IMPORTANT]
-The `find` command will attempt to return the closest matching [blue]`Slot` in the event that a match is not found.
-Do not be surprised to _eg. enter `find n/ABC` and get a [blue]`Slot` named `XYZ`_ in return.
+[CAUTION]
+Keywords are case sensitive! (e.g. _CS2113T_ is not the same as _cs2113t_)
+
+[NOTE]
+The `find` command will return the closest matching `Slot` which contains the specified keyword. **The name/tag MUST
+contain the specified keyword in order for a match to occur**.
+
+[TIP]
+Use short keywords (e.g CS) instead of long keywords to increase the chances of finding your desired slot. +
+E.g. Let's say you are finding a `Slot` named _Golf_. +
+`find n/Go` will detect the slot, while `find n/Golfs` will fail to detect the slot. (Golf does not contain Golfs) +
 
 Example:
 
 * `find n/CS` +
-Find all [blue]`Slots` whose name contains `CS` (eg. CS2101, CS2113T, SOCSMeet)
+Find all _slots_ whose name closely matches `CS` (eg. CS2101, CS2113T, SOCSMeet)
 
-[#img-find]
+* `find t/2113T` +
+Find all _slots_ that contain tags that closely matches `2113T`.
+
 .[.underline]#Output after entering `find n/CS`#
-image::Find_Command_Output_1.png[width="790"]
+image::Find_Command_Output.png[width="790"]
+
+Explanation: As seen from the figure above, the output list of slots are ranked according to their degree of similarity.
+All of the `Slots` listed contain the keyword _'CS'_. +
+Since _'JSOCS'_ has less characters, it is considered closest to the keyword _'CS'_, which has only 2 characters. +
+Remember the tip above when you are finding your `Slots`.
 {zwsp}
 
 {zwsp}
@@ -139,13 +156,39 @@ Below is an example of my addition to the Developer Guide for the `find` feature
 
 ==== Current Implementation
 The find function supports searching using a single keyword. +
-All existing `Slots` are weighted based on their name/tag's <<levenshtein-distance,Levenshtein Distance>> from the keyword.
 
+[NOTE]
+The name/tag of the [blue]`Slot` MUST contain the specified keyword in order for a match to occur. Completely different keywords
+do not constitute a match. +
+
+The matching [blue]`Slots` are then weighted based on their name/tag's <<levenshtein-distance,Levenshtein Distance>> from the keyword.
+
+[TIP]
 A low <<levenshtein-distance,Levenshtein Distance>> is attributed to a high level of similarity between the name/tag and the keyword.
-(A value of 0 constitutes an exact match.)
+(A value of 0 constitutes an exact match.) +
+The maximum Levenshtein Distance set in [blue]`PlanMySem` is 20.
 
 The weighted [blue]`Slots` are inserted into a [blue]`PriorityQueue` and the closest matching [blue]`Slots`
 will be polled into the output list. +
+
+Upon executing the `find` command with valid parameters (refer to <<UserGuide#view, UserGuide.adoc>> for `find` usage),
+a sequence of events is executed. The sequence of events illustrated in the Sequence Diagram below will be in reference to the execution
+of a `find n/keyword` command. The sequence of events are as follows:
+
+1. Upon calling the [blue]`execute` method of the [blue]`Logic` component, the [blue]`Logic` component would then parse the `find n/keyword`
+command.
+2. This results in a [blue]`FindCommand` object which is executed with name parameter 'keyword' and null tag.
+3. The command execution will call the [blue]`getDays` method of the [blue]`FindCommand` object which retrieves data from the
+[blue]`Model` component (i.e. retrieving data from the current [blue]`Semester`). +
+4. [blue]`FindCommand` will execute the [blue]`getDiscoveredNames` method to find the closely matching [blue]`Slots` with names containing 'keyword'.
+5. The result of the command execution is encapsulated as a [blue]`CommandResult` object which is passed back to [blue]`Ui`.
+6. In addition, the [blue]`CommandResult` object can also instruct the [blue]`Ui` to display results, such as displaying help to
+the user.
+
+Given below is the Sequence Diagram upon executing the `find n/keyword` command.
+
+.Interactions between components for the `find n/keyword` Command
+image::FindSequenceDiagram.png[width="800"]
 {zwsp}
 
 {zwsp}
@@ -156,9 +199,9 @@ will be polled into the output list. +
 
 |===
 |**No.**|**Alternatives** |**Pros** |**Cons**
-|**1** |Positive search result by strictly matching the entered keyword |Easy to implement. |Search must be exact, typos or an incomplete keyword will yield incorrect results. Nothing different from `List` feature.
-|**2** |Positive search result as long as name/tag contains the keyword.|Searches will detect names/tags similar to the keyword. |Output list will be longer. May become excessively long if short keyword is provided.
-|**3 (current implementation)** |Store the search results in a `PriorityQueue` ordered by their <<levenshtein-distance,Levenshtein distances>> from the search keyword.|Will also consider searches that are similar to the desired name/tag and will account for a typo or an incomplete keyword|Adds complexities in finding and searching.
+|**Past Implementation 1** |Positive search result by strictly matching the entered keyword |Easy to implement. |Search must be exact, typos or an incomplete keyword will yield incorrect results. Nothing different from `List` feature.
+|**Past Implementation 2** |Positive search result as long as name/tag contains the keyword.|Searches will detect names/tags similar to the keyword. |Output list will be longer. May become excessively long if short keyword is provided.
+|**Current Implementation** |Store the search results in a `PriorityQueue` ordered by their <<levenshtein-distance,Levenshtein distances>> from the search keyword.|Searches are ordered by a degree of similarity, instead of the random order of names/tags in Past Implementation 2.|Adds complexities in finding and searching.
 |===
 {zwsp}
 

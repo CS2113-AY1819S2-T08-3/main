@@ -23,7 +23,7 @@ image::marcus-pzj.png[width="150", align="left"]
 {empty}[https://github.com/marcus-pzj[Github]] [<<marcus-pzj#, Portfolio>>]
 
 Role: Developer +
-Responsibilities: List, Find, Undo, Redo, History commands and Auto-Complete feature.
+Responsibilities: List, Find, Undo, Redo, and History commands.
 
 '''
 
@@ -32,7 +32,7 @@ image::macchazuki.png[width="150", align="left"]
 {empty}[https://github.com/macchazuki[Github]] [<<macchazuki#, Portfolio>>]
 
 Role: Developer +
-Responsibilities: Encryption, Decryption, Import, Export and Generate Summary feature.
+Responsibilities: Encryption, Decryption, Import and Export feature.
 
 '''
 

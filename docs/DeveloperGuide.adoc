@@ -644,17 +644,30 @@ The matching `Slots` are then weighted based on their name/tag's <<levenshtein-d
 
 [TIP]
 A low <<levenshtein-distance,Levenshtein Distance>> is attributed to a high level of similarity between the name/tag and the keyword.
-(A value of 0 constitutes an exact match.)
-
+(A value of 0 constitutes an exact match.) +
+The maximum Levenshtein Distance set in `PlanMySem` is 20.
 
 The weighted `Slots` are inserted into a `PriorityQueue` and the closest matching `Slots`
 will be polled into the output list. +
 
-Given below is the Sequence Diagram upon executing the `view month` command.
+Upon executing the `find` command with valid parameters (refer to <<UserGuide#view, UserGuide.adoc>> for `find` usage),
+a sequence of events is executed. The sequence of events illustrated in the Sequence Diagram below will be in reference to the execution
+of a `find n/keyword` command. The sequence of events are as follows:
+
+1. Upon calling the `execute` method of the `Logic` component, the `Logic` component would then parse the `find n/keyword`
+command.
+2. This results in a `FindCommand` object which is executed with name parameter 'keyword' and null tag.
+3. The command execution will call the `getDays` method of the `FindCommand` object which retrieves data from the
+`Model` component (i.e. retrieving data from the current `Semester`). +
+4. `FindCommand` will execute the `getDiscoveredNames` method to find the closely matching `Slots` with names containing 'keyword'.
+5. The result of the command execution is encapsulated as a `CommandResult` object which is passed back to `Ui`.
+6. In addition, the `CommandResult` object can also instruct the `Ui` to display results, such as displaying help to
+the user.
+
+Given below is the Sequence Diagram upon executing the `find n/keyword` command.
 
 .Interactions between components for the `find n/keyword` Command
 image::FindSequenceDiagram.png[width="800"]
-{zwsp}
 {zwsp}
 
 {zwsp}
@@ -662,16 +675,12 @@ image::FindSequenceDiagram.png[width="800"]
 ==== Design Considerations
 
 ===== Aspect: What constitutes a positive search result in `find` command
-* **Alternative 1:** Positive search result by strictly matching the entered keyword
-** Pros: Easy to implement.
-** Cons: Search must be exact, typos or an incomplete keyword will yield incorrect results. Nothing different from `List` feature.
-* **Alternative 2:** Positive search result as long as name/tag contains the keyword.
-** Pros: Searches will detect names/tags similar to the keyword.
-** Cons: Output list will be longer. May become excessively long if short keyword is provided.
-* **Alternative 3 (current implementation):** Store the search results in a `List` ordered by their <<levenshtein-distance,Levenshtein distances>> from the search keyword, given that
-the names/tags contain the keyword.
-** Pros: Searches are ordered by a degree of similarity, instead of the random order of names/tags in Alternative 2.
-** Cons: Added complexities in finding.
+|===
+|**No.**|**Alternatives** |**Pros** |**Cons**
+|**Past Implementation 1** |Positive search result by strictly matching the entered keyword |Easy to implement. |Search must be exact, typos or an incomplete keyword will yield incorrect results. Nothing different from `List` feature.
+|**Past Implementation 2** |Positive search result as long as name/tag contains the keyword.|Searches will detect names/tags similar to the keyword. |Output list will be longer. May become excessively long if short keyword is provided.
+|**Current Implementation** |Store the search results in a `PriorityQueue` ordered by their <<levenshtein-distance,Levenshtein distances>> from the search keyword.|Searches are ordered by a degree of similarity, instead of the random order of names/tags in Past Implementation 2.|Adds complexities in finding and searching.
+|===
 {zwsp}
 
 {zwsp}

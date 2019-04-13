@@ -319,7 +319,7 @@ The `find` command will return the closest matching `Slot` which contains the sp
 contain the specified keyword in order for a match to occur**.
 
 [TIP]
-Use short keywords (e.g CS) instead of long keywords to increase the chances of finding your desired slot. +
+You may want to use short keywords (e.g CS) instead of long keywords to increase the chances of finding your desired slot. +
 E.g. Let's say you are finding a `Slot` named _Golf_. +
 `find n/Go` will detect the slot, while `find n/Golfs` will fail to detect the slot.
 
@@ -333,6 +333,10 @@ Find all _slots_ that contain tags that closely matches `2113T`.
 
 .[.underline]#Output after entering `find n/CS`#
 image::Find_Command_Output.png[width="790"]
+Explanation: As seen from the figure above, the output list of slots are ranked according to their degree of similarity.
+All of the `Slots` listed contain the keyword _'CS'_. +
+Since _'JSOCS'_ has less characters, it is considered closest to the keyword _'CS'_, which has only 2 characters. +
+Remember the tip above when you are finding your `Slots`.
 {zwsp}
 
 {zwsp}
