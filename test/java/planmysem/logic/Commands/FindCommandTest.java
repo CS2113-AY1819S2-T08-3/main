@@ -59,12 +59,7 @@ public class FindCommandTest {
 
     private SlotBuilder slotBuilder = new SlotBuilder();
 
-    private static final String LONG_STRING = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, " +
-            "sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. " +
-            "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip " +
-            "ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore " +
-            "eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui " +
-            "officia deserunt mollit anim id est laborum";
+    private static final String LONG_STRING = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, ";
 
     private static final CommandHistory EMPTY_COMMAND_HISTORY = new CommandHistory();
 
@@ -145,10 +140,13 @@ public class FindCommandTest {
         model.addSlot(LocalDate.of(2019, 02, 05), slotBuilder.slotTwo());
 
         Map<LocalDate, Pair<ReadOnlyDay, ReadOnlySlot>> list = new TreeMap<>();
+        list.put(pair6.getKey(), pair6.getValue());
+        list.put(pair5.getKey(), pair5.getValue());
         list.put(pair4.getKey(), pair4.getValue());
         list.put(pair3.getKey(), pair3.getValue());
         list.put(pair2.getKey(), pair2.getValue());
         list.put(pair1.getKey(), pair1.getValue());
+
         model.setLastShownList(list);
 
         expectedModel = new ModelManager();

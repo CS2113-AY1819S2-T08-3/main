@@ -19,7 +19,9 @@ Items can then be efficiently managed via the intuitive tagging system. +
 
 Note the following symbols and formatting used in this document:
 [IMPORTANT]
-This symbol indicates important information.
+This symbol indicates important information. +
+
+Also take note: +
 
 [grid=none]
 [frame=none]

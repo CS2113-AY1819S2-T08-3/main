@@ -10,11 +10,14 @@ import planmysem.common.Clock;
 import planmysem.logic.CommandHistory;
 import planmysem.logic.commands.AddCommand;
 import planmysem.logic.commands.Command;
+import planmysem.logic.commands.CommandResult;
 import planmysem.logic.commands.UndoCommand;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static planmysem.logic.Commands.CommandTestUtil.assertCommandFailure;
 import static planmysem.logic.Commands.CommandTestUtil.assertCommandSuccess;
 
+import planmysem.logic.parser.ParserManager;
 import planmysem.model.Model;
 import planmysem.model.ModelManager;
 import planmysem.model.recurrence.Recurrence;
@@ -118,5 +121,17 @@ public class UndoCommandTest {
 
         // no undoable states in model
         assertCommandFailure(new UndoCommand(), model, commandHistory, UndoCommand.MESSAGE_FAILURE);
+    }
+
+    /**
+     *  Parser Tests
+     */
+
+    @Test
+    public void execute_Valid_RedoCommand_ParserManager() throws Exception {
+        ParserManager parserManager = new ParserManager();
+        Command actualUndoCommand = parserManager.parseCommand("undo");
+        CommandResult expectedUndoCommandOutput = new UndoCommand().execute(model, commandHistory);
+        assertEquals(expectedUndoCommandOutput, actualUndoCommand.execute(model, commandHistory));
     }
 }

@@ -282,13 +282,22 @@ Delete the second _slot_ shown via the `list` command.
 Lists all _slots_ whose name/tag directly matches the specified keyword (not case-sensitive). +
 Format: `list n/NAME`
 
+You can also list all _slots_ in the planner as well. +
+Format: `list all`
+
+[TIP]
+Keywords are not case-sensitive. (e.g. _CS2113T_ is the same as _cs2113t_)
+
 Examples:
 
 * `list n/CS2113T Lecture` +
 List all _slots_ that is named `CS2113T Lecture`.
 
 * `list t/Lecture` +
-List all _slots_ that contains the tag `Lecture`.
+List all _slots_ that contain the tag `Lecture`.
+
+* `list all`
+List all _slots_ in the planner.
 
 [#img-list]
 .[.underline]#Output after entering `list t/Lecture`#
@@ -298,13 +307,21 @@ image::List_Command_Output_1.png[width="790"]
 {zwsp}
 
 [[find]]
-=== Locating Slots: `find` / `f`
-Find all _slots_ whose name closely matches the specified keyword and displays them as a list. +
+=== Finding Slots: `find` / `f`
+Find all _slots_ whose name closely matches the specified keyword and displays them as a list. (Case-sensitive) +
 Format: `find n/KEYWORD`
 
+[CAUTION]
+Keywords are case sensitive! (e.g. _CS2113T_ is not the same as _cs2113t_)
+
 [NOTE]
-The `find` command will attempt to return the closest matching `Slot` in the event that a match is not found.
-Do not be surprised to _eg. enter `find n/ABC` and get a `Slot` named `XYZ`_ in return.
+The `find` command will return the closest matching `Slot` which contains the specified keyword. **The name/tag MUST
+contain the specified keyword in order for a match to occur**.
+
+[TIP]
+Use short keywords (e.g CS) instead of long keywords to increase the chances of finding your desired slot. +
+E.g. Let's say you are finding a `Slot` named _Golf_. +
+`find n/Go` will detect the slot, while `find n/Golfs` will fail to detect the slot.
 
 Example:
 
@@ -314,9 +331,8 @@ Find all _slots_ whose name closely matches `CS` (eg. CS2101, CS2113T, SOCSMeet)
 * `find t/2113T` +
 Find all _slots_ that contain tags that closely matches `2113T`.
 
-// TODO: need to change picture
 .[.underline]#Output after entering `find n/CS`#
-image::Find_Command_Output_1.png[width="790"]
+image::Find_Command_Output.png[width="790"]
 {zwsp}
 
 {zwsp}
@@ -369,6 +385,13 @@ View planner for the months of the current academic semester.
 === Listing previous input commands : `history`
 Lists all the commands that you have entered in reverse chronological order. +
 Format: `history`
+
+An empty command history is initialised when _PlanMySem_ is started. It will be
+cleared upon exiting _PlanMySem_.
+
+[NOTE]
+Invalid commands will also be logged into the command history.
+
 {zwsp}
 
 {zwsp}
@@ -378,8 +401,9 @@ Format: `history`
 Restores the planner to the state before the previous command was executed. +
 Format: `undo`
 
-[TIP]
-The `clear` command cannot be undone.
+[NOTE]
+Only Add, Edit, Delete and Clear Commands are undoable.
+
 {zwsp}
 
 {zwsp}
@@ -388,6 +412,10 @@ The `clear` command cannot be undone.
 === Redoing the previously undone command : `redo`
 Reverses the most recent `undo` command. +
 Format: `redo`
+
+[NOTE]
+Only Add, Edit, Delete and Clear Commands are redoable.
+
 {zwsp}
 
 {zwsp}

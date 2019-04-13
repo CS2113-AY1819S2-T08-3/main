@@ -10,11 +10,16 @@ import planmysem.common.Clock;
 import planmysem.logic.CommandHistory;
 import planmysem.logic.commands.AddCommand;
 import planmysem.logic.commands.Command;
+import planmysem.logic.commands.CommandResult;
 import planmysem.logic.commands.RedoCommand;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static planmysem.common.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static planmysem.logic.Commands.CommandTestUtil.assertCommandFailure;
 import static planmysem.logic.Commands.CommandTestUtil.assertCommandSuccess;
 
+import planmysem.logic.parser.ParserManager;
+import planmysem.logic.parser.exceptions.ParseException;
 import planmysem.model.Model;
 import planmysem.model.ModelManager;
 import planmysem.model.recurrence.Recurrence;
@@ -125,4 +130,15 @@ public class RedoCommandTest {
         assertCommandFailure(new RedoCommand(), model, commandHistory, RedoCommand.MESSAGE_FAILURE);
     }
 
+    /**
+     * Parser Test
+     */
+
+    @Test
+    public void execute_Valid_RedoCommand_ParserManager() throws Exception {
+        ParserManager parserManager = new ParserManager();
+        Command actualRedoCommand = parserManager.parseCommand("redo");
+        CommandResult expectedRedoCommandOutput = new RedoCommand().execute(model, commandHistory);
+        assertEquals(expectedRedoCommandOutput, actualRedoCommand.execute(model, commandHistory));
+    }
 }
