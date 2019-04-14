@@ -2,33 +2,65 @@
 :site-section: AboutUs
 :imagesDir: ../images
 :stylesDir: ../stylesheets
+ifdef::env-github[]
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:experimental:
+endif::[]
+:repoURL: https://github.com/CS2113-AY1819S2-T08-3/main/blob/master
+
+
 
 == PROJECT: PlanMySem
 
----
+My team and I were tasked with enhancing a basic command line interface addressbook application, https://github.com/CS2113-AY1819S2-T08-3/main[AddressBook Level 3], for our Software Engineering project. +
 
-== About the project
+We chose to morph it into a student planner called *PlanMySem*. This planner is made specially for NUS students and staff, containing features that will help them manage their school schedules more easily. +
 
-My team and I were tasked with enhancing a basic command line interface addressbook for our
-Software Engineering project. We chose to morph it into a student planner for NUS students. This planner is automatically synchronised according to the NUS academic calendar for the current semester and enables easy creation, editing and deleting of items.
-
+*PlanMySem* is automatically synchronised according to the current semester of the NUS academic calendar.
 Special weeks such as recess week and reading week are taken into account within our unique recursion system.
-This allows NUS students to easily keep track of school related matters such as classes, deadlines and examinations.
-Items can also be efficiently managed via the intuitive tagging system.
+
+This allows students and staff to easily keep track of school related matters such as classes, deadlines and examinations.
+These activities can also be efficiently managed via the intuitive tagging system. The user can then view his schedule for the day or week (shown in Fig. 1), or view the current semester.
+
+[#img-view]
+.[.underline]#Example of viewing the current week#
+image::Ui.png[width="790"]
 {zwsp}
 
 {zwsp}
+
+== Overview
+
+The next sections will illustrate my enhancements in more detail as well as my various contributions to the project.
+
+Kindly take note that throughout this portfolio, there will be various icons used as described as such.
+
+[TIP]
+This is a tip. Follow these suggested tips to make your life much simpler when using *PlanMySem*!
+
+[NOTE]
+This is a note. These are things for you to take note of when using *PlanMySem*.
+
+[IMPORTANT]
+This is a sign-post dictating important information. These are information that you will surely need to know to use *PlanMySem* efficiently.
+
+[CAUTION]
+This is a sign-post informing caution. Please take note of these items and exercise some care.
 
 == Summary of contributions
+This section shows a summary of the features I have implemented in *PlanMySem* as well as some details regarding the implementation.
 
 * *Major enhancement 1*: I added the ability to *import .ics files*
 ** What it does: allows the user to import .ics files obtained from this or other applications.
-[NOTE]
+[TIP]
 .ics stands for a iCalendar file format. .ics files are one of the most commonly used calendar formats in applications such as Google Calendar and Outlook.
 ** Justification: This feature improves the product significantly because the user can import existing appointments on other calendar applications into PlanMySem, allowing him to combine external appointments with his school schedule.
 ** Highlights: This enhancement works with existing as well as future commands. In particular, this enhancement works hand-in-hand with 2 features that I will go into detail later: exporting and data and encryption.
 An in-depth analysis of the add command was necessary to understand how slots are added into our planner as I had to add multiple slots into the planner at once.
-* *Code contributed*: [https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/src/planmysem/logic/commands/ImportCommand.java]
+** Code available https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/src/planmysem/logic/commands/ImportCommand.java[here]
 {zwsp}
 
 * *Major enhancement 2*: I added the ability to *export .ics files*
@@ -37,71 +69,86 @@ An in-depth analysis of the add command was necessary to understand how slots ar
 ** Highlights: This enhancement works with existing as well as future commands. In particular, this enhancement works hand-in-hand with the import feature described above. This allows the user to export a file that can be imported into PlanMySem on another device.
 This enhancement also allows the user to obtain a readable file as the data will be encrypted (discussed later). +
 An in-depth analysis of how the planner stores slots was necessary in order to extract their details to be exported.
-* *Code contributed*: [https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/src/planmysem/logic/commands/ExportCommand.java]
+** Code available https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/src/planmysem/logic/commands/ExportCommand.java[here]
 {zwsp}
 
-* *Major enhancement 3*: I added data encryption of the storage file.
+* *Minor enhancement*: I added data encryption of the storage file.
 ** What it does: the planner automatically encrypts the data before saving it into a .txt file. This data is then decrypted before being loaded by the application.
 ** Justification: This feature improves the product because the user's schedule data will not be able to easily obtained by others.
 ** Highlights: This enhancement works with existing as well as future commands. In particular, this enhancement works hand-in-hand with the import and export functions. As we have decided to encrypt the raw data file, the user will not be able to obtain the raw data of his planner. +
 As a result, the export function allows the user to obtain a read-able text file when he wishes to. +
 This enhancement also allows the user to obtain a readable file as the data will be encrypted (discussed later). +
 An in-depth analysis of how the planner data is stored was necessary to identify where encryption and decryption should be done on the data. Also, a general understanding of ciphers and data encryption was necessary in implementation of this enhancement.
+** Code available https://github.com/CS2113-AY1819S2-T08-3/main/tree/master/src/planmysem/storage[here]
 
-* *Code contributed*: [https://github.com/CS2113-AY1819S2-T08-3/main/tree/master/src/planmysem/storage]
-
+* *Code contributed*:
+    ** View my RepoSense contribution analysis: https://nuscs2113-ay1819s2.github.io/dashboard-beta/#search=macchazuki&sort=displayName&since=2019-02-10&until=2019-03-26&timeframe=day&reverse=false&groupSelect=groupByRepos&breakdown=false&tabAuthor=seanieyap&tabRepo=CS2113-AY1819S2-T08-3_main_master&repoSort=true[here]
 * *Other contributions*:
 
 ** Documentation:
-*** Wrote Use Cases on the Developer Guide: [https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/DeveloperGuide.adoc]
+*** Wrote Use Cases on the Developer Guide: https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/DeveloperGuide.adoc[here]
 
 == Contributions to the User Guide
 
-
 |===
 |_Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users._ +
-- https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/UserGuide.adoc#encrypt +
-- https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/UserGuide.adoc#import +
-- https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/UserGuide.adoc#export +
+- https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/UserGuide.adoc#encrypt[Data Encryption] +
+- https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/UserGuide.adoc#import[Importing files] +
+- https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/UserGuide.adoc#export[Exporting files] +
 
-Below is an example of my contributions for the import and export features. +
+|===
 
+[[encrypt]]
+=== Encrypting/decrypting data files
+Planner data is automatically encrypted before saving and decrypted before loading. You do not need to encrypt or decrypt the data manually.
 {zwsp}
-[[import]]
-Importing .ics formatted files 'import filename' +
-You can import an .ics file into the planner.
-Format: `import filename` +
-[NOTE] +
-The .ics file can be imported into other calendar apps that support .ics files such as Google Calendar. The file to be imported has to be located in the PlanMySem main directory. +
-
-{zwsp}
-[WARNING] +
-For .ics files that are created from other calendar applications, events with recurrence will not be recursed in our
-application. Events that are outside of the current school semester will also not be imported.
 
 {zwsp}
 
 [[export]]
-Exporting .ics formatted files: `export` +
-You can export the planner as a .ics file. +
+=== Exporting .ics formatted files: `export`
+You can export the planner as a .ics file.
+Format: `export [fn/FILE_NAME]/`
 
-[NOTE] +
-The exported file is named "PlanMySem.ics" and is saved in the main directory.
+[#img-export]
+.[.underline]#Output after entering `export`#
+image::Export_Command_Output_1.png[width="420"]
+
+[NOTE]
+====
+The default name of the exported file is "PlanMySem.ics" and is saved in the main directory.
 The .ics file can be imported into other calendar apps that support .ics files such as Google Calendar. +
+[#img-exportFile]
+.[.underline]#Location of PlanMySem.ics file#
+image::Export_Command_Directory_1.png[width="790"]
+====
 
-[WARNING] +
-Exporting will REMOVE all tags in the planner.
+[TIP]
+A file with the ICS file extension is an iCalendar file.
+These are plain text files that include calendar event details like a description, beginning and ending times, location, etc.
+{zwsp}
 
+{zwsp}
 
-|===
+[[import]]
+=== Importing native .ics files `import`
+You can import a .ics file generated by *PlanMySem* into the current planner.
+Format: `import [fn/FILE_NAME]/`
+
+[WARNING]
+====
+This feature is to allow transfer of data between *PlanMySem* on different devices. This feature is NOT for importing non-native .ics files.
+====
+{zwsp}
+
 
 == Contributions to the Developer Guide
 
 |===
 |_Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project._ +
-- https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/DeveloperGuide.adoc#data-encryption-decryption-feature +
-- https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/DeveloperGuide.adoc#data-exporting-exporting-feature +
-- https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/DeveloperGuide.adoc#use-cases +
+- https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/DeveloperGuide.adoc#data-encryption-decryption-feature[Data Encryption] +
+- https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/DeveloperGuide.adoc#data-exporting-exporting-feature[Exporting files] +
+- https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/DeveloperGuide.adoc#use-cases[Use cases] +
 
 Below is an example of my contributions in design considerations.
 
