@@ -300,7 +300,7 @@ public class ListCommandTest {
                 selectedSlots.add(new Pair<>(entry.getKey(), new Pair<>(entry.getValue(), slot)));
             }
         }
-
+        selectedSlots.sort((p1, p2) -> p1.getKey().compareTo(p2.getKey()));
         assertEquals(String.format(MESSAGE_SUCCESS, selectedSlots.size(),
                 Messages.craftListMessage(selectedSlots)), commandResult.getFeedbackToUser());
     }
