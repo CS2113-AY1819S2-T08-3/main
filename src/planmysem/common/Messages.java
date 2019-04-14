@@ -116,8 +116,6 @@ public class Messages {
      * Craft list message.
      */
     public static String craftListMessage(List<Pair<LocalDate, Pair<ReadOnlyDay, ReadOnlySlot>>> selectedSlots) {
-        selectedSlots.sort((p1, p2) -> p1.getKey().compareTo(p2.getKey()));
-
         StringBuilder sb = new StringBuilder();
 
         int count = 1;

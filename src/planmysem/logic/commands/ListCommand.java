@@ -75,7 +75,7 @@ public class ListCommand extends Command {
         if (selectedSlots.isEmpty()) {
             return new CommandResult(MESSAGE_SUCCESS_NONE);
         }
-
+        selectedSlots.sort((p1, p2) -> p1.getKey().compareTo(p2.getKey()));
         model.setLastShownList(selectedSlots);
 
         return new CommandResult(String.format(MESSAGE_SUCCESS, selectedSlots.size(),
