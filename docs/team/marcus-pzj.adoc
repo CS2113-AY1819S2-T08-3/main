@@ -191,18 +191,28 @@ of a `find n/keyword` command. The sequence of events are as follows:
 
 1. Upon calling the [blue]`execute` method of the [blue]`Logic` component, the [blue]`Logic` component would then parse the `find n/keyword`
 command.
-2. This results in a [blue]`FindCommand` object which is executed with name parameter 'keyword' and null tag.
-3. The command execution will call the [blue]`getDays` method of the [blue]`FindCommand` object which retrieves data from the
+2. [blue]`LogicManager` then invokes the [blue]`parseCommand` function of [blue]`ParserManager`.
+3. [blue]`ParserManager` in turn invokes the [blue]`parse` function of the appropriate parser for the `find` command which in this case,
+is [blue]`FindCommandParser`.
+4. After parsing is done, [blue]`FindCommandParser` would instantiate the [blue]`FindCommand` object which would be returned to the [blue]`LogicManager`.
+5. [blue]`LogicManager` is then able to invoke the [blue]`execute` function of the returned [blue]`FindCommand` object.
+6. The command execution will call the [blue]`getDays` method of the [blue]`FindCommand` object which retrieves data from the
 [blue]`Model` component (i.e. retrieving data from the current [blue]`Semester`). +
-4. [blue]`FindCommand` will execute the [blue]`getDiscoveredNames` method to find the closely matching [blue]`Slots` with names containing 'keyword'.
-5. The result of the command execution is encapsulated as a [blue]`CommandResult` object which is passed back to [blue]`Ui`.
-6. In addition, the [blue]`CommandResult` object can also instruct the [blue]`Ui` to display results, such as displaying help to
+7. [blue]`FindCommand` will execute the [blue]`getDiscoveredNames` method to find the closely matching [blue]`Slots` with names containing 'keyword'.
+8. The result of the command execution is encapsulated as a [blue]`CommandResult` object which is passed back to [blue]`Ui`.
+9. In addition, the [blue]`CommandResult` object can also instruct the [blue]`Ui` to display results, such as displaying help to
 the user.
 
 To give a graphical summary of the above process, a Sequence Diagram detailing the execution of the `find n/keyword` command is provided below.
 
-.Interactions between components for the `find n/keyword` Command
+.Sequence of Interactions between Components for the `find n/keyword` Command
 image::FindSequenceDiagram.png[width="800"]
+
+The Communication Diagram below summarises the data links between the various objects in the `find` command.
+
+.Data Interactions between Components for the `find n/keyword` Command
+image::FindCommunicationDiagram.png[width="800"]
+
 {zwsp}
 
 {zwsp}
