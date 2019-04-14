@@ -1466,7 +1466,17 @@ of a <code>find n/keyword</code> command. The sequence of events are as follows:
 command.</p>
 </li>
 <li>
-<p>This results in a <code>FindCommand</code> object which is executed with name parameter 'keyword' and null tag.</p>
+<p><code>LogicManager</code> then invokes the <code>parseCommand</code> function of <code>ParserManager</code>.</p>
+</li>
+<li>
+<p><code>ParserManager</code> in turn invokes the <code>parse</code> function of the appropriate parser for the <code>find</code> command which in this case,
+is <code>FindCommandParser</code>.</p>
+</li>
+<li>
+<p>After parsing is done, <code>FindCommandParser</code> would instantiate the <code>FindCommand</code> object which would be returned to the <code>LogicManager</code>.</p>
+</li>
+<li>
+<p><code>LogicManager</code> is then able to invoke the <code>execute</code> function of the returned <code>FindCommand</code> object.</p>
 </li>
 <li>
 <p>The command execution will call the <code>getDays</code> method of the <code>FindCommand</code> object which retrieves data from the
@@ -1491,7 +1501,16 @@ the user.</p>
 <div class="content">
 <img src="images/FindSequenceDiagram.png" alt="FindSequenceDiagram" width="800">
 </div>
-<div class="title">Figure 7. Interactions between components for the <code>find n/keyword</code> Command</div>
+<div class="title">Figure 7. Sequence of Interactions between Components for the <code>find n/keyword</code> Command</div>
+</div>
+<div class="paragraph">
+<p>The Communication Diagram below summarises the data links between the various objects in the <code>find</code> command.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/FindCommunicationDiagram.png" alt="FindCommunicationDiagram" width="800">
+</div>
+<div class="title">Figure 8. Data Interactions between Components for the <code>find n/keyword</code> Command</div>
 </div>
 <div class="paragraph">
 <p>&#8203;</p>
@@ -1619,7 +1638,7 @@ command, the displayed result would be the monthly calendar view of all months i
 <div class="content">
 <img src="images/ViewMonthSequenceDiagram.png" alt="ViewMonthSequenceDiagram" width="900">
 </div>
-<div class="title">Figure 8. Sequence Diagram upon executing the <code>view month</code> command.</div>
+<div class="title">Figure 9. Sequence Diagram upon executing the <code>view month</code> command.</div>
 </div>
 <div class="paragraph">
 <p>&#8203;</p>
@@ -2169,7 +2188,7 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <div class="content">
 <img src="images/chrome_save_as_pdf.png" alt="chrome save as pdf" width="300">
 </div>
-<div class="title">Figure 9. Saving documentation as PDF files in Chrome</div>
+<div class="title">Figure 10. Saving documentation as PDF files in Chrome</div>
 </div>
 <div class="paragraph">
 <p>&#8203;</p>
@@ -3343,4 +3362,4 @@ Expected: A detailed view of all added <em>slots</em> for the current week.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 05:56:55 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 07:28:09 UTC</div></div></div></body></html>

@@ -447,7 +447,17 @@ of a <code>find n/keyword</code> command. The sequence of events are as follows:
 command.</p>
 </li>
 <li>
-<p>This results in a <code class="blue">FindCommand</code> object which is executed with name parameter 'keyword' and null tag.</p>
+<p><code class="blue">LogicManager</code> then invokes the <code class="blue">parseCommand</code> function of <code class="blue">ParserManager</code>.</p>
+</li>
+<li>
+<p><code class="blue">ParserManager</code> in turn invokes the <code class="blue">parse</code> function of the appropriate parser for the <code>find</code> command which in this case,
+is <code class="blue">FindCommandParser</code>.</p>
+</li>
+<li>
+<p>After parsing is done, <code class="blue">FindCommandParser</code> would instantiate the <code class="blue">FindCommand</code> object which would be returned to the <code class="blue">LogicManager</code>.</p>
+</li>
+<li>
+<p><code class="blue">LogicManager</code> is then able to invoke the <code class="blue">execute</code> function of the returned <code class="blue">FindCommand</code> object.</p>
 </li>
 <li>
 <p>The command execution will call the <code class="blue">getDays</code> method of the <code class="blue">FindCommand</code> object which retrieves data from the
@@ -472,7 +482,16 @@ the user.</p>
 <div class="content">
 <img src="../images/FindSequenceDiagram.png" alt="FindSequenceDiagram" width="800">
 </div>
-<div class="title">Figure 3. Interactions between components for the <code>find n/keyword</code> Command</div>
+<div class="title">Figure 3. Sequence of Interactions between Components for the <code>find n/keyword</code> Command</div>
+</div>
+<div class="paragraph">
+<p>The Communication Diagram below summarises the data links between the various objects in the <code>find</code> command.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/FindCommunicationDiagram.png" alt="FindCommunicationDiagram" width="800">
+</div>
+<div class="title">Figure 4. Data Interactions between Components for the <code>find n/keyword</code> Command</div>
 </div>
 <div class="paragraph">
 <p>&#8203;</p>
@@ -544,4 +563,4 @@ required to change one word into the other.</p>
 </dl>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 05:56:55 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 07:28:09 UTC</div></div></div></body></html>
