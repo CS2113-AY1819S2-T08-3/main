@@ -11,6 +11,7 @@ import java.security.cert.CertificateException;
 import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
 
+//Solution below adapted from https://www.baeldung.com/java-keystore
 /**
  * Manages storage and loading of secret key.
  */

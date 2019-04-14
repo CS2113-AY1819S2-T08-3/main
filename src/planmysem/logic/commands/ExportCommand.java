@@ -7,7 +7,9 @@ import java.io.IOException;
 import planmysem.logic.CommandHistory;
 import planmysem.logic.commands.exceptions.CommandException;
 import planmysem.model.Model;
+import planmysem.model.Planner;
 import planmysem.model.semester.IcsSemester;
+import planmysem.model.semester.Semester;
 
 /**
  * Exports the calendar into a .ics file.
@@ -29,10 +31,12 @@ public class ExportCommand extends Command {
 
     @Override
     public CommandResult execute(Model model, CommandHistory commandHistory) throws CommandException {
-        IcsSemester semester = new IcsSemester(model.getPlanner().getSemester());
+        Planner planner = model.getPlanner();
+        Semester semester = planner.getSemester();
+        IcsSemester icsSemester = new IcsSemester(semester);
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(fileName + ".ics"));
-            writer.write(semester.toString());
+            writer.write(icsSemester.toString());
             writer.close();
         } catch (IOException e) {
             throw new CommandException(MESSAGE_FAILED);

@@ -10,8 +10,9 @@ import javax.xml.bind.DatatypeConverter;
 
 import planmysem.common.exceptions.IllegalValueException;
 
+//Solution below adapted from https://www.baeldung.com/java-cipher-class
 /**
- * Encrypts and decrypts a string using AES
+ * Contains methods to encrypt and decrypt strings
  */
 public class Encryptor {
 

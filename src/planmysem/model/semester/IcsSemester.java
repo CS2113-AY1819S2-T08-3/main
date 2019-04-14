@@ -15,9 +15,9 @@ public class IcsSemester {
     private String icsCalendar;
 
     /**
-     * Converts a given Slot into this class for .ics use.
+     * Converts the semester into this class for .ics use.
      *
-     * @param source Slot object to be converted into .ics format.
+     * @param source Semester object to be converted into .ics format.
      */
     public IcsSemester(Semester source) {
         DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyyMMdd'T'HHmmss");
