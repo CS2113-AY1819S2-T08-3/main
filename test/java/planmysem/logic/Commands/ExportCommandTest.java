@@ -27,7 +27,6 @@ public class ExportCommandTest {
 
     @Rule
     public TemporaryFolder tempFolder = new TemporaryFolder();
-
     private String tempFolderPath;
     private Model model;
     private Model expectedModel;

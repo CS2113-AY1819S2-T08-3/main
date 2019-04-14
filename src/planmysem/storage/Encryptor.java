@@ -10,7 +10,6 @@ import javax.xml.bind.DatatypeConverter;
 
 import planmysem.common.exceptions.IllegalValueException;
 
-//Solution below adapted from https://www.baeldung.com/java-cipher-class
 /**
  * Contains methods to encrypt and decrypt strings
  */
@@ -18,16 +17,24 @@ public class Encryptor {
 
     private static int ivSize = 16;
 
+    public static String encrypt(String toEncrypt, String keyStorage) {
+        return executeEncrypt(toEncrypt, keyStorage);
+    }
+
+    public static String encrypt(String toEncrypt) {
+        return executeEncrypt(toEncrypt, "KeyStorage.jceks");
+    }
+
     /**
      * Encrypts string using the AES algorithm
-     *
      * @param toEncrypt string to be encrypted
+     * @param keyStorage string .jceks file to load from.
      * @return encrypted string
      */
-    public static String encrypt(String toEncrypt) {
+    private static String executeEncrypt(String toEncrypt, String keyStorage) {
         try {
             //Load key from KeyStore.
-            SecretKey key = KeyStorage.load();
+            SecretKey key = KeyStorage.load(keyStorage);
             SecretKeySpec skeySpec = new SecretKeySpec(key.getEncoded(), "AES");
 
             // Generating IV.
@@ -50,18 +57,27 @@ public class Encryptor {
         } catch (Exception ex) {
             return null;
         }
+
     }
 
+    public static String decrypt(String toDecrypt, String keyStorage) throws IllegalValueException {
+        return executeDecrypt(toDecrypt, keyStorage);
+    }
+
+    public static String decrypt(String toDecrypt) throws IllegalValueException {
+        return executeDecrypt(toDecrypt, "KeyStorage.jceks");
+    }
     /**
      * Decrypts a string using the AES algorithm
      *
      * @param toDecrypt string to be decrypted
+     * @param keyStorage string .jceks file to load from.
      * @return decrypted string
      */
-    public static String decrypt(String toDecrypt) throws IllegalValueException {
+    private static String executeDecrypt(String toDecrypt, String keyStorage) throws IllegalValueException {
         try {
             //Load key from KeyStore.
-            SecretKey key = KeyStorage.load();
+            SecretKey key = KeyStorage.load(keyStorage);
             SecretKeySpec skeySpec = new SecretKeySpec(key.getEncoded(), "AES");
 
             //Decode to bytes.
@@ -86,4 +102,5 @@ public class Encryptor {
             throw new IllegalValueException("Error decrypting file. Reinitializing semester.");
         }
     }
+
 }
