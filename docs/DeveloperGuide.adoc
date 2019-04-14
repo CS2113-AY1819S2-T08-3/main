@@ -946,41 +946,76 @@ image::UndoRedoActivityDiagram.png[width="650"]
 //** Cons: Requires dealing with commands that have already been undone: We must remember to skip these commands. Violates Single Responsibility Principle and Separation of Concerns as `HistoryManager` now needs to do two different things.
 // end::undoredo[]
 
+=== Data Exporting / Exporting feature
+
+This feature exports the Planner into a .ics file. This section will detail how this feature is implemented.
+{zwsp}
+
+{zwsp}
+
+==== Current Implementation
+
+Upon entering the `export` command with valid parameters (refer to <<UserGuide#, UserGuide.adoc>> for `export` usage), the
+following sequence of events is executed:
+
+1. The `ParserManager` parses the `export` command and calls the `parse` method in `ExportCommandParser`.
+2. The `ExportCommandParser` then constructs a `ExportCommand` object with a filename.
+3. The Command object is returned and execution will get the current `Semester` from `Model`
+4. The `IcsSemester` is then constructed using `Semester` and converted to a `String`.
+5. The `String` is then written to a file with the filename parsed.
+5. The result of the command execution, `CommandResult`, will then returned to `Ui`.
+
+Given below is the Sequence Diagram upon executing the `export` command.
+
+.Sequence of implementation for the `export` Command
+image::ExportCommandSequenceDiagram.PNG[width="800"]
+
+{zwsp}
+The `ExportCommandParser` will check whether the optional filename parameter was input. If this parameter is included, the input filename is used. Else, if no other characters have been input (e.g. "export"), the default "PlanMySem" is used as the filename.
+This process can be seen from the activity diagram in the figure below.
+
+.Activity diagram showing the workflows for `export` Command
+image::ExportCommandActivityDiagram.PNG[width="800"]
+
+{zwsp}
+
+==== Design Considerations
+
+This portion explains alternative implementations as well as the rationale behind my chosen method.
+
+===== Aspect: Using a .ics library
+
+* **Alternative 1 (current choice):** Writing my own .ics file.
+** Pros: No need to include and understand how to use the external library.
+** Cons: Difficult to read and work with .ics formatting.
+* **Alternative 2:** Using iCal4j library to read and write .ics files.
+** Pros: No need to manually format data into .ics format.
+** Cons: Difficult to translate our recursion system to the .ics RRULE system.
+
+Reason for current choice: Using the library will allow `PlanMySem` to easily import non-native .ics files. However, this would require changes to `Model` as currently the recurrence for slots is not saved. +
+
+In addition, as our application is a specially designed planner for NUS matters, I felt that it was unnecessary to have the same slots on multiple applications. +
+
+Hence, I chose to code the reading and writing of .ics files and add a disclaimer that importing of non-native .ics files is likely to cause errors.
+{zwsp}
+
+{zwsp}
+
 === Data Encryption / Decryption feature
 
 The storage file "PlanMySem.txt" is encrypted to prevent easy access of the user's calendar.
-We are encrypting and decrypting the data using the Java Cypher class.
-This feature is implemented through creating a Encryptor that contains encrypt and decrypt methods. The encrypt method takes a String object as an argument and returns a encrypted String object. The decrypt method takes in a String object as an argument and returns the decrypted message as a String object.
 
-The encryption is done using AES/CBC/PKCS5Padding. The key used for encryption/decryption is generated randomly and stored in a file named "KeyStorage.jceks". No password is required from the user to retrieve this key, but a password input can be added in the KeyStorage.java class to improve security. +
+==== Current Implementation
+
+We are encrypting and decrypting the data using the Java `Cipher`.
+This feature is implemented through the `Encryptor` that contains the encrypt and decrypt methods. The encrypt method takes a `String` as an argument and returns a encrypted String object. The decrypt method takes in a String object as an argument and returns the decrypted message as a String object.
+
+The encryption is done using AES/CBC/PKCS5Padding. The key used for encryption/decryption is generated through various device parameters such as username, operating system (OS) and java runtime version. The secret key generated is stored in a file named "KeyStorage.jceks". No password is required from the user to retrieve this key, but a password input can be added to `KeyStorage` to improve security. +
 
 A initialization vector (IV) is required for the Cipher Block Chain (CBC) mode of encryption. A random IV is generated and appended at the beginning of the data before being stored. The IV is then retrieved from the same file to decrypt the data.
 
-Encryption of the data is done automatically before the file is saved. In the implementation, the AdaptedPlanner object is first marshaled into a StringWriter before being encrypted and written into the file. This is to ensure that the data is JAXB formatted and the save algorithm is unaffected.
-Similarly, decryption of the data is done automatically before it is loaded. In the implementation, the file is read and decrypted and parsed into a StringReader object. The StringReader object is then un-marshaled and loaded. This is to ensure that the file is converted back into a JAXB object before being loaded and the load algorithm is unaffected.
-{zwsp}
-
-{zwsp}
-
-=== Data Exporting / Exporting feature
-
-The user can export the current planner into a .ics file to use in external calendar applications. The .ics file will contain the names of the slots in the SUMMARY field and the descriptions in the DESCRIPTION field. This command automatically exports into the main directory and names the file “PlanMySem.ics”. Future updates can include user input to allow saving the file in another directory and naming the file.
-We have chosen to use the iCalendar format due to its popularity and its use in applications such as Google Calendar, Microsoft Outlook and NUSmods.
-
-In our implementation, we have chosen not to export the tags into the .ics file. This is because iCalendar does not have in-built tag fields. This means that other applications that import .ics will not be able to use the tags.
-{zwsp}
-
-{zwsp}
-
-===== Aspect: Exporting tags into .ics file.
-
-* **Alternative 1 (current choice):** Ignore tags when exporting.
-** Pros: Easier to implement as iCalendar does not have in-built tag fields.
-** Cons: Not all the information about the slots will be retained.
-** Reason for choice: We do not have much control over other applications, and importing and exporting .ics within *PlanMySem* can be done using the storage .txt file.
-* **Alternative 2:** Use the notes field and a tag identifier to save the tags.
-** Pros: All the information from the semester will be exported.
-** Cons: Requires other applications to be coded to read these tag identifiers and also to store and use the tags in their functions.
+Encryption of the data is done automatically before the file is saved. In the implementation, the AdaptedPlanner is first marshaled into a `StringWriter` before being encrypted and written into the file. This is to ensure that the data is JAXB formatted and the save algorithm is unaffected.
+Similarly, decryption of the data is done automatically before it is loaded. In the implementation, the file is read and decrypted and parsed into a `StringReader`. The `StringReader` is then un-marshaled and loaded. This is to ensure that the file is converted back into a JAXB object before being loaded and the load algorithm is unaffected.
 {zwsp}
 
 {zwsp}
@@ -988,8 +1023,8 @@ In our implementation, we have chosen not to export the tags into the .ics file.
 [[Implementation-Configuration]]
 === Configuration
 
-// TODO: Julian please fill this section
-//Certain properties of the application can be controlled (e.g user prefs file location, logging level) through the configuration file (default: `config.json`).
+==== User Preferences [COMING IN 2.0]
+The files generated by *PlanMySem* are also named "PlanMySem" and are saved in user's PlanMySem folder by default. This default filename and file path can be changed via the the configuration file (default: `config.json`). +
 There is no need for manual configuration of the `Semester` as it is initialized dynamically as mentioned in
 <<Planner-Initialization>>.
 {zwsp}
@@ -1569,8 +1604,8 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 
 [appendix]
 == Use Cases
-
-For all use cases below, the *System* is `PlanMySem` and the *Actor* is the `user`, unless specified otherwise.
+This section describes the Use Cases for some of our implemented features.
+(For all use cases below, the *System* is `PlanMySem` and the *Actor* is the `user`, unless specified otherwise)
 {zwsp}
 
 {zwsp}
@@ -1684,7 +1719,18 @@ Use case ends.
 ** 4. System displays confirmation message.
 +
 Use case ends.
-
+* Extensions:
+:: 1a. A filename is included in the command.
+::: 1ai. The filename is valid.
+:::: 1ai.1. System converts planner to .ics format.
+:::: 1ai.2. System saves .ics file in the respective directory.
+:::: 1ai.3. System displays confirmation message.
++
+Use case ends.
+::: 1aii. The filename is invalid
+:::: 1aii.1 System outputs error message.
++
+Use case ends.
 //=== Use Case: Add a Category
 //. User inputs command to add a new category along with the name of the new category.
 //. System reflects the addition made to the list of Categories.

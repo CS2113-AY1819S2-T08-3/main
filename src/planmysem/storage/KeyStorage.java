@@ -27,27 +27,29 @@ public class KeyStorage {
     + System.getProperty("java.compiler")).hashCode()).toCharArray();
 
     /**
-     * Loads the secret key from the key store.
+     * Loads the secret key from the specified key store.
+     * @param fileName String .jceks file to load from.
      */
-    public static SecretKey load () throws Exception {
+    public static SecretKey load (String fileName) throws Exception {
 
         //Initialize keystore.
         KeyStore ks = KeyStore.getInstance("JCEKS");
         SecretKey secretKey;
         try {
-            ks.load(new FileInputStream("KeyStorage.jceks"), password);
+            ks.load(new FileInputStream(fileName), password);
             secretKey = (SecretKey) ks.getKey("secret-key", password);
 
         } catch (IOException | CertificateException | UnrecoverableKeyException ex) {
-            secretKey = generateSecretKey();
+            secretKey = generateSecretKey(fileName);
         }
         return secretKey;
     }
 
     /**
-     * Generates a SecretKey and saves it into a KeyStorage.jceks file.
+     * Generates a SecretKey and saves it in the specified file.
+     * @param fileName String .jceks file to save to.
      */
-    private static SecretKey generateSecretKey() throws Exception {
+    private static SecretKey generateSecretKey(String fileName) throws Exception {
         //Initialize keystore.
         KeyStore ks = KeyStore.getInstance("JCEKS");
 
@@ -62,7 +64,7 @@ public class KeyStorage {
         ks.load(null, null);
         ks.setEntry("secret-key", secret, passwordParam);
 
-        FileOutputStream fos = new FileOutputStream("KeyStorage.jceks");
+        FileOutputStream fos = new FileOutputStream(fileName);
         ks.store(fos, password);
 
         return secretKey;

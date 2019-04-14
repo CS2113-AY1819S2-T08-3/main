@@ -26,7 +26,7 @@ In summary, *PlanMySem* offers the following features:
 //* Optimized for you if you prefer to work with a Command Line Interface (CLI) and/or are learning to work more efficiently with CLI tools.
 //* Utilizes minimal resources on your machine while still allowing you to view your schedules swiftly.
 
-This application was developed as part of CS2113T, a software engineering module in the National University of Singapore (NUS), and consisted of 4 partners, <<marcus-pzj#, Marcus>>, <<macchazuki#, Jullian>>, <<dingheng4448#, Ding Heng>>
+This application was developed as part of CS2113T, a software engineering module in the National University of Singapore (NUS), and consisted of 4 partners, <<marcus-pzj#, Marcus>>, <<macchazuki#, Julian>>, <<dingheng4448#, Ding Heng>>
 and myself; in which I served as the team lead. I was responsible for the slot management feature (add, edit and delete commands) and the structure of the codebase.
 
 == Overview

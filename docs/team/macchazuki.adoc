@@ -2,33 +2,62 @@
 :site-section: AboutUs
 :imagesDir: ../images
 :stylesDir: ../stylesheets
+ifdef::env-github[]
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:experimental:
+endif::[]
+:repoURL: https://github.com/CS2113-AY1819S2-T08-3/main/blob/master
+
+
 
 == PROJECT: PlanMySem
 
----
+My team and I were tasked with enhancing a basic command line interface addressbook application, https://github.com/CS2113-AY1819S2-T08-3/main[AddressBook Level 3], for our Software Engineering project. +
 
-== About the project
+We chose to morph it into a student planner called *PlanMySem*. This planner is made specially for NUS students and staff, containing features that will help them manage their school schedules more easily. +
 
-My team and I were tasked with enhancing a basic command line interface addressbook for our
-Software Engineering project. We chose to morph it into a student planner for NUS students. This planner is automatically synchronised according to the NUS academic calendar for the current semester and enables easy creation, editing and deleting of items.
-
+*PlanMySem* is automatically synchronised according to the current semester of the NUS academic calendar.
 Special weeks such as recess week and reading week are taken into account within our unique recursion system.
-This allows NUS students to easily keep track of school related matters such as classes, deadlines and examinations.
-Items can also be efficiently managed via the intuitive tagging system.
+
+This allows students and staff to easily keep track of school related matters such as classes, deadlines and examinations.
+These activities can also be efficiently managed via the intuitive tagging system. The user can then view his schedule for the day or week (shown in the figure below), or view the current semester.
+
+[#img-view]
+.[.underline]#Example of viewing the current week#
+image::Ui.png[width="790"]
 {zwsp}
 
 {zwsp}
+
+== Overview
+
+The next sections will illustrate my enhancements in more detail as well as my various contributions to the project.
+
+Kindly take note that throughout this portfolio, there will be various icons used as described as such.
+
+[TIP]
+This is a tip. Follow these suggested tips to make your life much simpler when using *PlanMySem*!
+
+[NOTE]
+This is a note. These are things for you to take note of when using *PlanMySem*.
+
+[CAUTION]
+This is a sign-post informing caution. Please take note of these items and exercise some care.
 
 == Summary of contributions
+This section shows a summary of the features I have implemented in *PlanMySem* as well as some details regarding the implementation.
 
 * *Major enhancement 1*: I added the ability to *import .ics files*
 ** What it does: allows the user to import .ics files obtained from this or other applications.
-[NOTE]
+[TIP]
 .ics stands for a iCalendar file format. .ics files are one of the most commonly used calendar formats in applications such as Google Calendar and Outlook.
 ** Justification: This feature improves the product significantly because the user can import existing appointments on other calendar applications into PlanMySem, allowing him to combine external appointments with his school schedule.
 ** Highlights: This enhancement works with existing as well as future commands. In particular, this enhancement works hand-in-hand with 2 features that I will go into detail later: exporting and data and encryption.
 An in-depth analysis of the add command was necessary to understand how slots are added into our planner as I had to add multiple slots into the planner at once.
-* *Code contributed*: [https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/src/planmysem/logic/commands/ImportCommand.java]
+** Code available https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/src/planmysem/logic/commands/ImportCommand.java[here]
 {zwsp}
 
 * *Major enhancement 2*: I added the ability to *export .ics files*
@@ -37,101 +66,188 @@ An in-depth analysis of the add command was necessary to understand how slots ar
 ** Highlights: This enhancement works with existing as well as future commands. In particular, this enhancement works hand-in-hand with the import feature described above. This allows the user to export a file that can be imported into PlanMySem on another device.
 This enhancement also allows the user to obtain a readable file as the data will be encrypted (discussed later). +
 An in-depth analysis of how the planner stores slots was necessary in order to extract their details to be exported.
-* *Code contributed*: [https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/src/planmysem/logic/commands/ExportCommand.java]
+** Code available https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/src/planmysem/logic/commands/ExportCommand.java[here]
 {zwsp}
 
-* *Major enhancement 3*: I added data encryption of the storage file.
+* *Minor enhancement*: I added data encryption of the storage file.
 ** What it does: the planner automatically encrypts the data before saving it into a .txt file. This data is then decrypted before being loaded by the application.
 ** Justification: This feature improves the product because the user's schedule data will not be able to easily obtained by others.
 ** Highlights: This enhancement works with existing as well as future commands. In particular, this enhancement works hand-in-hand with the import and export functions. As we have decided to encrypt the raw data file, the user will not be able to obtain the raw data of his planner. +
 As a result, the export function allows the user to obtain a read-able text file when he wishes to. +
 This enhancement also allows the user to obtain a readable file as the data will be encrypted (discussed later). +
 An in-depth analysis of how the planner data is stored was necessary to identify where encryption and decryption should be done on the data. Also, a general understanding of ciphers and data encryption was necessary in implementation of this enhancement.
+** Code available https://github.com/CS2113-AY1819S2-T08-3/main/tree/master/src/planmysem/storage[here]
 
-* *Code contributed*: [https://github.com/CS2113-AY1819S2-T08-3/main/tree/master/src/planmysem/storage]
-
+* *Code contributed*:
+    ** View my RepoSense contribution analysis: https://nuscs2113-ay1819s2.github.io/dashboard-beta/#=undefined&search=macchazuki[here]
 * *Other contributions*:
 
 ** Documentation:
-*** Wrote Use Cases on the Developer Guide: [https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/DeveloperGuide.adoc]
+*** Wrote Use Cases on the Developer Guide: https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/DeveloperGuide.adoc[here]
 
 == Contributions to the User Guide
 
-
 |===
 |_Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users._ +
-- https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/UserGuide.adoc#encrypt +
-- https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/UserGuide.adoc#import +
-- https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/UserGuide.adoc#export +
+- https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/UserGuide.adoc#encrypt[Data Encryption] +
+- https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/UserGuide.adoc#import[Importing files] +
+- https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/UserGuide.adoc#export[Exporting files] +
 
-Below is an example of my contributions for the import and export features. +
+|===
 
+[[encrypt]]
+=== Encrypting/decrypting data files
+Planner data is automatically encrypted before saving and decrypted before loading. You do not need to encrypt or decrypt the data manually.
 {zwsp}
-[[import]]
-Importing .ics formatted files 'import filename' +
-You can import an .ics file into the planner.
-Format: `import filename` +
-[NOTE] +
-The .ics file can be imported into other calendar apps that support .ics files such as Google Calendar. The file to be imported has to be located in the PlanMySem main directory. +
-
-{zwsp}
-[WARNING] +
-For .ics files that are created from other calendar applications, events with recurrence will not be recursed in our
-application. Events that are outside of the current school semester will also not be imported.
 
 {zwsp}
 
 [[export]]
-Exporting .ics formatted files: `export` +
-You can export the planner as a .ics file. +
+=== Exporting .ics formatted files: `export`
+You can export the planner as a .ics file.
+Format: `export [fn/FILE_NAME]/`
 
-[NOTE] +
-The exported file is named "PlanMySem.ics" and is saved in the main directory.
+[#img-export]
+.[.underline]#Output after entering `export`#
+image::Export_Command_Output_1.png[width="420"]
+
+[NOTE]
+====
+The default name of the exported file is "PlanMySem.ics" and is saved in the main directory.
 The .ics file can be imported into other calendar apps that support .ics files such as Google Calendar. +
+[#img-exportFile]
+.[.underline]#Location of PlanMySem.ics file#
+image::Export_Command_Directory_1.png[width="790"]
+====
 
-[WARNING] +
-Exporting will REMOVE all tags in the planner.
+[TIP]
+A file with the ICS file extension is an iCalendar file.
+These are plain text files that include calendar event details like a description, beginning and ending times, location, etc.
+{zwsp}
 
+{zwsp}
 
-|===
+[[import]]
+=== Importing native .ics files `import`
+You can import a .ics file generated by *PlanMySem* into the current planner.
+Format: `import [fn/FILE_NAME]/`
+
+[CAUTION]
+====
+This feature is to allow transfer of data between *PlanMySem* on different devices. This feature is NOT for importing non-native .ics files.
+====
+{zwsp}
+
 
 == Contributions to the Developer Guide
 
 |===
 |_Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project._ +
-- https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/DeveloperGuide.adoc#data-encryption-decryption-feature +
-- https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/DeveloperGuide.adoc#data-exporting-exporting-feature +
-- https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/DeveloperGuide.adoc#use-cases +
-
-Below is an example of my contributions in design considerations.
-
-Data Exporting / Exporting feature
-
-The user can export the current planner into a .ics file to use in external calendar applications. The .ics file will contain the names of the slots in the SUMMARY field and the descriptions in the DESCRIPTION field. This command automatically exports into the main directory and names the file “PlanMySem.ics”. Future updates can include user input to allow saving the file in another directory and naming the file.
-
-We have chosen to use the iCalendar format due to its popularity and it’s use in applications such as Google Calendar, Microsoft Outlook and NUSmods.
-
-In our implementation, we have chosen not to export the tags into the .ics file. This is because iCalendar does not have in-built tag fields. This means that other applications that import .ics will not be able to use the tags.
-{zwsp}
-
-{zwsp}
-
-**Aspect: Exporting tags into .ics file.**
-
-**Alternative 1 (current choice):** Ignore tags when exporting.
-
-** Pros: Easier to implement as iCalendar does not have in-built tag fields.**
-
-Cons: Not all the information about the slots will be retained.
-
-**Reason for choice: We do not have much control over other applications, and importing and exporting .ics within *PlanMySem* can be done using the storageFile .txt file.**
-
-**Alternative 2:** Use the notes field and a tag identifier to save the tags.
-
-** Pros: All the information from the semester will be exported.**
-
-Cons: Requires other applications to be coded to read these tag identifiers and also to store and use the tags in their functions.
+- https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/DeveloperGuide.adoc#data-exporting-exporting-feature[Exporting files] +
+- https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/DeveloperGuide.adoc#data-encryption-decryption-feature[Data Encryption] +
+- https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/DeveloperGuide.adoc#use-cases[Use cases] +
 |===
+=== Data Exporting / Exporting feature
+
+This feature exports the Planner into a .ics file. This section will detail how this feature is implemented.
+{zwsp}
+
+{zwsp}
+
+==== Current Implementation
+
+Upon entering the `export` command with valid parameters (refer to <<UserGuide#, UserGuide.adoc>> for `export` usage), the
+following sequence of events is executed:
+
+1. The `ParserManager` parses the `export` command and calls the `parse` method in `ExportCommandParser`.
+2. The `ExportCommandParser` then constructs a `ExportCommand` object with a filename.
+3. The Command object is returned and execution will get the current `Semester` from `Model`
+4. The `IcsSemester` is then constructed using `Semester` and converted to a `String`.
+5. The `String` is then written to a file with the filename parsed.
+5. The result of the command execution, `CommandResult`, will then returned to `Ui`.
+
+Given below is the Sequence Diagram upon executing the `export` command.
+
+.Sequence of implementation for the `export` Command
+image::ExportCommandSequenceDiagram.PNG[width="800"]
+
+{zwsp}
+The `ExportCommandParser` will check whether the optional filename parameter was input. If this parameter is included, the input filename is used. Else, if no other characters have been input (e.g. "export"), the default "PlanMySem" is used as the filename.
+This process can be seen from the activity diagram in the figure below.
+
+.Activity diagram showing the workflows for `export` Command
+image::ExportCommandActivityDiagram.PNG[width="800"]
+
+{zwsp}
+
+==== Design Considerations
+
+This portion explains alternative implementations as well as the rationale behind my chosen method.
+
+===== Aspect: Using a .ics library
+
+* **Alternative 1 (current choice):** Writing my own .ics file.
+** Pros: No need to include and understand how to use the external library.
+** Cons: Difficult to read and work with .ics formatting.
+* **Alternative 2:** Using iCal4j library to read and write .ics files.
+** Pros: No need to manually format data into .ics format.
+** Cons: Difficult to translate our recursion system to the .ics RRULE system.
+
+Reason for current choice: Using the library will allow `PlanMySem` to easily import non-native .ics files. However, this would require changes to `Model` as currently the recurrence for slots is not saved. +
+
+In addition, as our application is a specially designed planner for NUS matters, I felt that it was unnecessary to have the same slots on multiple applications. +
+
+Hence, I chose to code the reading and writing of .ics files and add a disclaimer that importing of non-native .ics files is likely to cause errors.
+{zwsp}
+
+{zwsp}
+
+=== Data Encryption / Decryption feature
+
+The storage file "PlanMySem.txt" is encrypted to prevent easy access of the user's calendar.
+
+==== Current Implementation
+
+We are encrypting and decrypting the data using the Java `Cipher`.
+This feature is implemented through the `Encryptor` that contains the encrypt and decrypt methods. The encrypt method takes a `String` as an argument and returns a encrypted String object. The decrypt method takes in a String object as an argument and returns the decrypted message as a String object.
+
+The encryption is done using AES/CBC/PKCS5Padding. The key used for encryption/decryption is generated through various device parameters such as username, operating system (OS) and java runtime version. The secret key generated is stored in a file named "KeyStorage.jceks". No password is required from the user to retrieve this key, but a password input can be added to `KeyStorage` to improve security. +
+
+A initialization vector (IV) is required for the Cipher Block Chain (CBC) mode of encryption. A random IV is generated and appended at the beginning of the data before being stored. The IV is then retrieved from the same file to decrypt the data.
+
+Encryption of the data is done automatically before the file is saved. In the implementation, the AdaptedPlanner is first marshaled into a `StringWriter` before being encrypted and written into the file. This is to ensure that the data is JAXB formatted and the save algorithm is unaffected.
+Similarly, decryption of the data is done automatically before it is loaded. In the implementation, the file is read and decrypted and parsed into a `StringReader`. The `StringReader` is then un-marshaled and loaded. This is to ensure that the file is converted back into a JAXB object before being loaded and the load algorithm is unaffected.
+{zwsp}
+
+{zwsp}
+
+[[Implementation-Configuration]]
+=== Configuration
+
+==== User Preferences [COMING IN 2.0]
+The files generated by *PlanMySem* are also named "PlanMySem" and are saved in user's PlanMySem folder by default. This default filename and file path can be changed via the the configuration file (default: `config.json`). +
+There is no need for manual configuration of the `Semester` as it is initialized dynamically as mentioned in
+<<Planner-Initialization>>.
+{zwsp}
+
+{zwsp}
+
+
+=== Use Case: Export planner
+* MSS:
+** 1. User inputs command to export the planner.
+** 2. System converts planner to .ics format.
+** 3. System saves .ics file in the main directory as "PlanMySem.ics".
+** 4. System displays confirmation message.
++
+Use case ends.
+* Extensions:
+:: 1a. A filename is included in the command
+:: 2a. System converts planner to .ics format.
+:: 3a. System saves .ics file in the respective directory w.
+:: 4a. System displays confirmation message.
++
+Use case ends.
 
 == PROJECT: PlanMySem
 

@@ -3,17 +3,27 @@ package planmysem.storage;
 import static org.junit.Assert.assertTrue;
 
 import java.io.File;
-import java.nio.file.Files;
 
+import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.TemporaryFolder;
 
 public class KeyStorageTest {
 
+    @Rule
+    public TemporaryFolder tempFolder = new TemporaryFolder();
+    private String tempFolderPath;
+
+    @Before
+    public void setup() {
+        tempFolderPath = tempFolder.getRoot().getPath() + "Test.jceks";
+    }
+
     @Test
     public void load_keyStore_fileInvalid() throws Exception {
-        Files.deleteIfExists(new File("KeyStorage.jceks").toPath());
-        KeyStorage.load();
+        KeyStorage.load(tempFolderPath);
 
-        assertTrue(new File("KeyStorage.jceks").exists());
+        assertTrue(new File(tempFolderPath).exists());
     }
 }

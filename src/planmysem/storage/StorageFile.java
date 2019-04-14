@@ -103,7 +103,8 @@ public class StorageFile implements Storage {
             final AdaptedPlanner loaded;
             //decrypts
             if (isEncrypted) {
-                StringReader decryptedData = new StringReader(Encryptor.decrypt(fileReader.readLine()));
+                StringReader decryptedData;
+                decryptedData = new StringReader(Encryptor.decrypt(fileReader.readLine()));
                 loaded = (AdaptedPlanner) unmarshaller.unmarshal(decryptedData);
             } else {
                 loaded = (AdaptedPlanner) unmarshaller.unmarshal(fileReader);
