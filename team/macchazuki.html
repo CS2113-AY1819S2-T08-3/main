@@ -3,21 +3,28 @@
 <link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="../index.html">PlanMySem</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="../UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="../DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link active" href="../AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="../ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/CS2113-AY1819S2-T08-3/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Julian Lim - Project Portfolio</h1></div><div id="content"><div class="sect1">
 <h2 id="project-planmysem"><a class="link" href="#project-planmysem">PROJECT: PlanMySem</a></h2>
 <div class="sectionbody">
-<hr>
-</div>
-</div>
-<div class="sect1">
-<h2 id="about-the-project"><a class="link" href="#about-the-project">About the project</a></h2>
-<div class="sectionbody">
 <div class="paragraph">
-<p>My team and I were tasked with enhancing a basic command line interface addressbook for our
-Software Engineering project. We chose to morph it into a student planner for NUS students. This planner is automatically synchronised according to the NUS academic calendar for the current semester and enables easy creation, editing and deleting of items.</p>
+<p>My team and I were tasked with enhancing a basic command line interface addressbook application, <a href="https://github.com/CS2113-AY1819S2-T08-3/main">AddressBook Level 3</a>, for our Software Engineering project.<br></p>
 </div>
 <div class="paragraph">
-<p>Special weeks such as recess week and reading week are taken into account within our unique recursion system.
-This allows NUS students to easily keep track of school related matters such as classes, deadlines and examinations.
-Items can also be efficiently managed via the intuitive tagging system.
-&#8203;</p>
+<p>We chose to morph it into a student planner called <strong>PlanMySem</strong>. This planner is made specially for NUS students and staff, containing features that will help them manage their school schedules more easily.<br></p>
+</div>
+<div class="paragraph">
+<p><strong>PlanMySem</strong> is automatically synchronised according to the current semester of the NUS academic calendar.
+Special weeks such as recess week and reading week are taken into account within our unique recursion system.</p>
+</div>
+<div class="paragraph">
+<p>This allows students and staff to easily keep track of school related matters such as classes, deadlines and examinations.
+These activities can also be efficiently managed via the intuitive tagging system. The user can then view his schedule for the day or week (shown in the figure below), or view the current semester.</p>
+</div>
+<div id="img-view" class="imageblock">
+<div class="content">
+<img src="../images/Ui.png" alt="Ui" width="790">
+</div>
+<div class="title">Figure 1. <span class="underline">Example of viewing the current week</span></div>
+</div>
+<div class="paragraph">
+<p>&#8203;</p>
 </div>
 <div class="paragraph">
 <p>&#8203;</p>
@@ -25,8 +32,58 @@ Items can also be efficiently managed via the intuitive tagging system.
 </div>
 </div>
 <div class="sect1">
+<h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The next sections will illustrate my enhancements in more detail as well as my various contributions to the project.</p>
+</div>
+<div class="paragraph">
+<p>Kindly take note that throughout this portfolio, there will be various icons used as described as such.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+This is a tip. Follow these suggested tips to make your life much simpler when using <strong>PlanMySem</strong>!
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+This is a note. These are things for you to take note of when using <strong>PlanMySem</strong>.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+This is a sign-post informing caution. Please take note of these items and exercise some care.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="summary-of-contributions"><a class="link" href="#summary-of-contributions">Summary of contributions</a></h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>This section shows a summary of the features I have implemented in <strong>PlanMySem</strong> as well as some details regarding the implementation.</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
@@ -35,11 +92,11 @@ Items can also be efficiently managed via the intuitive tagging system.
 <ul>
 <li>
 <p>What it does: allows the user to import .ics files obtained from this or other applications.</p>
-<div class="admonitionblock note">
+<div class="admonitionblock tip">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-note" title="Note"></i>
+<i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
 .ics stands for a iCalendar file format. .ics files are one of the most commonly used calendar formats in applications such as Google Calendar and Outlook.
@@ -55,12 +112,12 @@ Items can also be efficiently managed via the intuitive tagging system.
 <p>Highlights: This enhancement works with existing as well as future commands. In particular, this enhancement works hand-in-hand with 2 features that I will go into detail later: exporting and data and encryption.
 An in-depth analysis of the add command was necessary to understand how slots are added into our planner as I had to add multiple slots into the planner at once.</p>
 </li>
+<li>
+<p>Code available <a href="https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/src/planmysem/logic/commands/ImportCommand.java">here</a>
+&#8203;</p>
+</li>
 </ul>
 </div>
-</li>
-<li>
-<p><strong>Code contributed</strong>: [<a href="https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/src/planmysem/logic/commands/ImportCommand.java" class="bare">https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/src/planmysem/logic/commands/ImportCommand.java</a>]
-&#8203;</p>
 </li>
 <li>
 <p><strong>Major enhancement 2</strong>: I added the ability to <strong>export .ics files</strong></p>
@@ -77,15 +134,15 @@ An in-depth analysis of the add command was necessary to understand how slots ar
 This enhancement also allows the user to obtain a readable file as the data will be encrypted (discussed later).<br>
 An in-depth analysis of how the planner stores slots was necessary in order to extract their details to be exported.</p>
 </li>
+<li>
+<p>Code available <a href="https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/src/planmysem/logic/commands/ExportCommand.java">here</a>
+&#8203;</p>
+</li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Code contributed</strong>: [<a href="https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/src/planmysem/logic/commands/ExportCommand.java" class="bare">https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/src/planmysem/logic/commands/ExportCommand.java</a>]
-&#8203;</p>
-</li>
-<li>
-<p><strong>Major enhancement 3</strong>: I added data encryption of the storage file.</p>
+<p><strong>Minor enhancement</strong>: I added data encryption of the storage file.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -100,11 +157,21 @@ As a result, the export function allows the user to obtain a read-able text file
 This enhancement also allows the user to obtain a readable file as the data will be encrypted (discussed later).<br>
 An in-depth analysis of how the planner data is stored was necessary to identify where encryption and decryption should be done on the data. Also, a general understanding of ciphers and data encryption was necessary in implementation of this enhancement.</p>
 </li>
+<li>
+<p>Code available <a href="https://github.com/CS2113-AY1819S2-T08-3/main/tree/master/src/planmysem/storage">here</a></p>
+</li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Code contributed</strong>: [<a href="https://github.com/CS2113-AY1819S2-T08-3/main/tree/master/src/planmysem/storage" class="bare">https://github.com/CS2113-AY1819S2-T08-3/main/tree/master/src/planmysem/storage</a>]</p>
+<p><strong>Code contributed</strong>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>View my RepoSense contribution analysis: <a href="https://nuscs2113-ay1819s2.github.io/dashboard-beta/#=undefined&amp;search=macchazuki">here</a></p>
+</li>
+</ul>
+</div>
 </li>
 <li>
 <p><strong>Other contributions</strong>:</p>
@@ -115,7 +182,7 @@ An in-depth analysis of how the planner data is stored was necessary to identify
 <div class="ulist">
 <ul>
 <li>
-<p>Wrote Use Cases on the Developer Guide: [<a href="https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/DeveloperGuide.adoc" class="bare">https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/DeveloperGuide.adoc</a>]</p>
+<p>Wrote Use Cases on the Developer Guide: <a href="https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/DeveloperGuide.adoc">here</a></p>
 </li>
 </ul>
 </div>
@@ -137,33 +204,97 @@ An in-depth analysis of how the planner data is stored was necessary to identify
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users.</em><br>
-- <a href="https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/UserGuide.adoc#encrypt" class="bare">https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/UserGuide.adoc#encrypt</a><br>
-- <a href="https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/UserGuide.adoc#import" class="bare">https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/UserGuide.adoc#import</a><br>
-- <a href="https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/UserGuide.adoc#export" class="bare">https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/UserGuide.adoc#export</a><br></p>
-<p class="tableblock">Below is an example of my contributions for the import and export features.<br></p>
-<p class="tableblock">&#8203;
-<a id="import"></a>
-Importing .ics formatted files 'import filename'<br>
-You can import an .ics file into the planner.
-Format: <code>import filename</code><br>
-[NOTE]<br>
-The .ics file can be imported into other calendar apps that support .ics files such as Google Calendar. The file to be imported has to be located in the PlanMySem main directory.<br></p>
-<p class="tableblock">&#8203;
-[WARNING]<br>
-For .ics files that are created from other calendar applications, events with recurrence will not be recursed in our
-application. Events that are outside of the current school semester will also not be imported.</p>
-<p class="tableblock">&#8203;</p>
-<p class="tableblock"><a id="export"></a>
-Exporting .ics formatted files: <code>export</code><br>
-You can export the planner as a .ics file.<br></p>
-<p class="tableblock">[NOTE]<br>
-The exported file is named "PlanMySem.ics" and is saved in the main directory.
-The .ics file can be imported into other calendar apps that support .ics files such as Google Calendar.<br></p>
-<p class="tableblock">[WARNING]<br>
-Exporting will REMOVE all tags in the planner.</p></td>
+- <a href="https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/UserGuide.adoc#encrypt">Data Encryption</a><br>
+- <a href="https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/UserGuide.adoc#import">Importing files</a><br>
+- <a href="https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/UserGuide.adoc#export">Exporting files</a><br></p></td>
 </tr>
 </tbody>
 </table>
+<div class="sect2">
+<h3 id="encrypt"><a class="link" href="#encrypt">Encrypting/decrypting data files</a></h3>
+<div class="paragraph">
+<p>Planner data is automatically encrypted before saving and decrypted before loading. You do not need to encrypt or decrypt the data manually.
+&#8203;</p>
+</div>
+<div class="paragraph">
+<p>&#8203;</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="export"><a class="link" href="#export">Exporting .ics formatted files: <code>export</code></a></h3>
+<div class="paragraph">
+<p>You can export the planner as a .ics file.
+Format: <code>export [fn/FILE_NAME]/</code></p>
+</div>
+<div id="img-export" class="imageblock">
+<div class="content">
+<img src="../images/Export_Command_Output_1.png" alt="Export Command Output 1" width="420">
+</div>
+<div class="title">Figure 2. <span class="underline">Output after entering <code>export</code></span></div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The default name of the exported file is "PlanMySem.ics" and is saved in the main directory.
+The .ics file can be imported into other calendar apps that support .ics files such as Google Calendar.<br></p>
+</div>
+<div id="img-exportFile" class="imageblock">
+<div class="content">
+<img src="../images/Export_Command_Directory_1.png" alt="Export Command Directory 1" width="790">
+</div>
+<div class="title">Figure 3. <span class="underline">Location of PlanMySem.ics file</span></div>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+A file with the ICS file extension is an iCalendar file.
+These are plain text files that include calendar event details like a description, beginning and ending times, location, etc.
+&#8203;
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>&#8203;</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="import"><a class="link" href="#import">Importing native .ics files <code>import</code></a></h3>
+<div class="paragraph">
+<p>You can import a .ics file generated by <strong>PlanMySem</strong> into the current planner.
+Format: <code>import [fn/FILE_NAME]/</code></p>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>This feature is to allow transfer of data between <strong>PlanMySem</strong> on different devices. This feature is NOT for importing non-native .ics files.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>&#8203;</p>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -176,27 +307,223 @@ Exporting will REMOVE all tags in the planner.</p></td>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project.</em><br>
-- <a href="https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/DeveloperGuide.adoc#data-encryption-decryption-feature" class="bare">https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/DeveloperGuide.adoc#data-encryption-decryption-feature</a><br>
-- <a href="https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/DeveloperGuide.adoc#data-exporting-exporting-feature" class="bare">https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/DeveloperGuide.adoc#data-exporting-exporting-feature</a><br>
-- <a href="https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/DeveloperGuide.adoc#use-cases" class="bare">https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/DeveloperGuide.adoc#use-cases</a><br></p>
-<p class="tableblock">Below is an example of my contributions in design considerations.</p>
-<p class="tableblock">Data Exporting / Exporting feature</p>
-<p class="tableblock">The user can export the current planner into a .ics file to use in external calendar applications. The .ics file will contain the names of the slots in the SUMMARY field and the descriptions in the DESCRIPTION field. This command automatically exports into the main directory and names the file “PlanMySem.ics”. Future updates can include user input to allow saving the file in another directory and naming the file.</p>
-<p class="tableblock">We have chosen to use the iCalendar format due to its popularity and it’s use in applications such as Google Calendar, Microsoft Outlook and NUSmods.</p>
-<p class="tableblock">In our implementation, we have chosen not to export the tags into the .ics file. This is because iCalendar does not have in-built tag fields. This means that other applications that import .ics will not be able to use the tags.
-&#8203;</p>
-<p class="tableblock">&#8203;</p>
-<p class="tableblock"><strong>Aspect: Exporting tags into .ics file.</strong></p>
-<p class="tableblock"><strong>Alternative 1 (current choice):</strong> Ignore tags when exporting.</p>
-<p class="tableblock"><strong> Pros: Easier to implement as iCalendar does not have in-built tag fields.</strong></p>
-<p class="tableblock">Cons: Not all the information about the slots will be retained.</p>
-<p class="tableblock"><strong>Reason for choice: We do not have much control over other applications, and importing and exporting .ics within <strong>PlanMySem</strong> can be done using the storageFile .txt file.</strong></p>
-<p class="tableblock"><strong>Alternative 2:</strong> Use the notes field and a tag identifier to save the tags.</p>
-<p class="tableblock"><strong> Pros: All the information from the semester will be exported.</strong></p>
-<p class="tableblock">Cons: Requires other applications to be coded to read these tag identifiers and also to store and use the tags in their functions.</p></td>
+- <a href="https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/DeveloperGuide.adoc#data-exporting-exporting-feature">Exporting files</a><br>
+- <a href="https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/DeveloperGuide.adoc#data-encryption-decryption-feature">Data Encryption</a><br>
+- <a href="https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/DeveloperGuide.adoc#use-cases">Use cases</a><br></p></td>
 </tr>
 </tbody>
 </table>
+<div class="sect2">
+<h3 id="data-exporting-exporting-feature"><a class="link" href="#data-exporting-exporting-feature">Data Exporting / Exporting feature</a></h3>
+<div class="paragraph">
+<p>This feature exports the Planner into a .ics file. This section will detail how this feature is implemented.
+&#8203;</p>
+</div>
+<div class="paragraph">
+<p>&#8203;</p>
+</div>
+<div class="sect3">
+<h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
+<div class="paragraph">
+<p>Upon entering the <code>export</code> command with valid parameters (refer to <a href="UserGuide.html">UserGuide.adoc</a> for <code>export</code> usage), the
+following sequence of events is executed:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The <code>ParserManager</code> parses the <code>export</code> command and calls the <code>parse</code> method in <code>ExportCommandParser</code>.</p>
+</li>
+<li>
+<p>The <code>ExportCommandParser</code> then constructs a <code>ExportCommand</code> object with a filename.</p>
+</li>
+<li>
+<p>The Command object is returned and execution will get the current <code>Semester</code> from <code>Model</code></p>
+</li>
+<li>
+<p>The <code>IcsSemester</code> is then constructed using <code>Semester</code> and converted to a <code>String</code>.</p>
+</li>
+<li>
+<p>The <code>String</code> is then written to a file with the filename parsed.</p>
+</li>
+<li>
+<p>The result of the command execution, <code>CommandResult</code>, will then returned to <code>Ui</code>.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Given below is the Sequence Diagram upon executing the <code>export</code> command.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ExportCommandSequenceDiagram.PNG" alt="ExportCommandSequenceDiagram" width="800">
+</div>
+<div class="title">Figure 4. Sequence of implementation for the <code>export</code> Command</div>
+</div>
+<div class="paragraph">
+<p>&#8203;
+The <code>ExportCommandParser</code> will check whether the optional filename parameter was input. If this parameter is included, the input filename is used. Else, if no other characters have been input (e.g. "export"), the default "PlanMySem" is used as the filename.
+This process can be seen from the activity diagram in the figure below.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ExportCommandActivityDiagram.PNG" alt="ExportCommandActivityDiagram" width="800">
+</div>
+<div class="title">Figure 5. Activity diagram showing the workflows for <code>export</code> Command</div>
+</div>
+<div class="paragraph">
+<p>&#8203;</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
+<div class="paragraph">
+<p>This portion explains alternative implementations as well as the rationale behind my chosen method.</p>
+</div>
+<div class="sect4">
+<h5 id="aspect-using-a-ics-library"><a class="link" href="#aspect-using-a-ics-library">Aspect: Using a .ics library</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Writing my own .ics file.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: No need to include and understand how to use the external library.</p>
+</li>
+<li>
+<p>Cons: Difficult to read and work with .ics formatting.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Using iCal4j library to read and write .ics files.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: No need to manually format data into .ics format.</p>
+</li>
+<li>
+<p>Cons: Difficult to translate our recursion system to the .ics RRULE system.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Reason for current choice: Using the library will allow <code>PlanMySem</code> to easily import non-native .ics files. However, this would require changes to <code>Model</code> as currently the recurrence for slots is not saved.<br></p>
+</div>
+<div class="paragraph">
+<p>In addition, as our application is a specially designed planner for NUS matters, I felt that it was unnecessary to have the same slots on multiple applications.<br></p>
+</div>
+<div class="paragraph">
+<p>Hence, I chose to code the reading and writing of .ics files and add a disclaimer that importing of non-native .ics files is likely to cause errors.
+&#8203;</p>
+</div>
+<div class="paragraph">
+<p>&#8203;</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="data-encryption-decryption-feature"><a class="link" href="#data-encryption-decryption-feature">Data Encryption / Decryption feature</a></h3>
+<div class="paragraph">
+<p>The storage file "PlanMySem.txt" is encrypted to prevent easy access of the user&#8217;s calendar.</p>
+</div>
+<div class="sect3">
+<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">Current Implementation</a></h4>
+<div class="paragraph">
+<p>We are encrypting and decrypting the data using the Java <code>Cipher</code>.
+This feature is implemented through the <code>Encryptor</code> that contains the encrypt and decrypt methods. The encrypt method takes a <code>String</code> as an argument and returns a encrypted String object. The decrypt method takes in a String object as an argument and returns the decrypted message as a String object.</p>
+</div>
+<div class="paragraph">
+<p>The encryption is done using AES/CBC/PKCS5Padding. The key used for encryption/decryption is generated through various device parameters such as username, operating system (OS) and java runtime version. The secret key generated is stored in a file named "KeyStorage.jceks". No password is required from the user to retrieve this key, but a password input can be added to <code>KeyStorage</code> to improve security.<br></p>
+</div>
+<div class="paragraph">
+<p>A initialization vector (IV) is required for the Cipher Block Chain (CBC) mode of encryption. A random IV is generated and appended at the beginning of the data before being stored. The IV is then retrieved from the same file to decrypt the data.</p>
+</div>
+<div class="paragraph">
+<p>Encryption of the data is done automatically before the file is saved. In the implementation, the AdaptedPlanner is first marshaled into a <code>StringWriter</code> before being encrypted and written into the file. This is to ensure that the data is JAXB formatted and the save algorithm is unaffected.
+Similarly, decryption of the data is done automatically before it is loaded. In the implementation, the file is read and decrypted and parsed into a <code>StringReader</code>. The <code>StringReader</code> is then un-marshaled and loaded. This is to ensure that the file is converted back into a JAXB object before being loaded and the load algorithm is unaffected.
+&#8203;</p>
+</div>
+<div class="paragraph">
+<p>&#8203;</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">Configuration</a></h3>
+<div class="sect3">
+<h4 id="user-preferences-coming-in-2-0"><a class="link" href="#user-preferences-coming-in-2-0">User Preferences [COMING IN 2.0]</a></h4>
+<div class="paragraph">
+<p>The files generated by <strong>PlanMySem</strong> are also named "PlanMySem" and are saved in user&#8217;s PlanMySem folder by default. This default filename and file path can be changed via the the configuration file (default: <code>config.json</code>).<br>
+There is no need for manual configuration of the <code>Semester</code> as it is initialized dynamically as mentioned in
+<a href="#Planner-Initialization">[Planner-Initialization]</a>.
+&#8203;</p>
+</div>
+<div class="paragraph">
+<p>&#8203;</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="use-case-export-planner"><a class="link" href="#use-case-export-planner">Use Case: Export planner</a></h3>
+<div class="ulist">
+<ul>
+<li>
+<p>MSS:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1. User inputs command to export the planner.</p>
+</li>
+<li>
+<p>2. System converts planner to .ics format.</p>
+</li>
+<li>
+<p>3. System saves .ics file in the main directory as "PlanMySem.ics".</p>
+</li>
+<li>
+<p>4. System displays confirmation message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Extensions:</p>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"></dt>
+<dd>
+<p>1a. A filename is included in the command</p>
+</dd>
+<dt class="hdlist1"></dt>
+<dd>
+<p>2a. System converts planner to .ics format.</p>
+</dd>
+<dt class="hdlist1"></dt>
+<dd>
+<p>3a. System saves .ics file in the respective directory w.</p>
+</dd>
+<dt class="hdlist1"></dt>
+<dd>
+<p>4a. System displays confirmation message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</dd>
+</dl>
+</div>
+</li>
+</ul>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -204,4 +531,4 @@ Exporting will REMOVE all tags in the planner.</p></td>
 <div class="sectionbody">
 <hr>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 07:28:09 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 08:31:45 UTC</div></div></div></body></html>

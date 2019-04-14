@@ -38,8 +38,8 @@
 <li><a href="#find-feature">5.5. Find feature</a></li>
 <li><a href="#view">5.6. View feature</a></li>
 <li><a href="#undo-redo-feature">5.7. Undo/Redo feature</a></li>
-<li><a href="#data-encryption-decryption-feature">5.8. Data Encryption / Decryption feature</a></li>
-<li><a href="#data-exporting-exporting-feature">5.9. Data Exporting / Exporting feature</a></li>
+<li><a href="#data-exporting-exporting-feature">5.8. Data Exporting / Exporting feature</a></li>
+<li><a href="#data-encryption-decryption-feature">5.9. Data Encryption / Decryption feature</a></li>
 <li><a href="#Implementation-Configuration">5.10. Configuration</a></li>
 </ul>
 </li>
@@ -2029,75 +2029,140 @@ If the <code>currentStatePointer</code> is at index <code>plannerStateList.size(
 </div>
 </div>
 <div class="sect2">
-<h3 id="data-encryption-decryption-feature"><a class="link" href="#data-encryption-decryption-feature">5.8. Data Encryption / Decryption feature</a></h3>
+<h3 id="data-exporting-exporting-feature"><a class="link" href="#data-exporting-exporting-feature">5.8. Data Exporting / Exporting feature</a></h3>
 <div class="paragraph">
-<p>The storage file "PlanMySem.txt" is encrypted to prevent easy access of the user&#8217;s calendar.
-We are encrypting and decrypting the data using the Java Cypher class.
-This feature is implemented through creating a Encryptor that contains encrypt and decrypt methods. The encrypt method takes a String object as an argument and returns a encrypted String object. The decrypt method takes in a String object as an argument and returns the decrypted message as a String object.</p>
+<p>This feature exports the Planner into a .ics file. This section will detail how this feature is implemented.
+&#8203;</p>
 </div>
 <div class="paragraph">
-<p>The encryption is done using AES/CBC/PKCS5Padding. The key used for encryption/decryption is generated randomly and stored in a file named "KeyStorage.jceks". No password is required from the user to retrieve this key, but a password input can be added in the KeyStorage.java class to improve security.<br></p>
+<p>&#8203;</p>
+</div>
+<div class="sect3">
+<h4 id="current-implementation-8"><a class="link" href="#current-implementation-8">5.8.1. Current Implementation</a></h4>
+<div class="paragraph">
+<p>Upon entering the <code>export</code> command with valid parameters (refer to <a href="UserGuide.html">UserGuide.adoc</a> for <code>export</code> usage), the
+following sequence of events is executed:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The <code>ParserManager</code> parses the <code>export</code> command and calls the <code>parse</code> method in <code>ExportCommandParser</code>.</p>
+</li>
+<li>
+<p>The <code>ExportCommandParser</code> then constructs a <code>ExportCommand</code> object with a filename.</p>
+</li>
+<li>
+<p>The Command object is returned and execution will get the current <code>Semester</code> from <code>Model</code></p>
+</li>
+<li>
+<p>The <code>IcsSemester</code> is then constructed using <code>Semester</code> and converted to a <code>String</code>.</p>
+</li>
+<li>
+<p>The <code>String</code> is then written to a file with the filename parsed.</p>
+</li>
+<li>
+<p>The result of the command execution, <code>CommandResult</code>, will then returned to <code>Ui</code>.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Given below is the Sequence Diagram upon executing the <code>export</code> command.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ExportCommandSequenceDiagram.PNG" alt="ExportCommandSequenceDiagram" width="800">
+</div>
+<div class="title">Figure 10. Sequence of implementation for the <code>export</code> Command</div>
+</div>
+<div class="paragraph">
+<p>&#8203;
+The <code>ExportCommandParser</code> will check whether the optional filename parameter was input. If this parameter is included, the input filename is used. Else, if no other characters have been input (e.g. "export"), the default "PlanMySem" is used as the filename.
+This process can be seen from the activity diagram in the figure below.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ExportCommandActivityDiagram.PNG" alt="ExportCommandActivityDiagram" width="800">
+</div>
+<div class="title">Figure 11. Activity diagram showing the workflows for <code>export</code> Command</div>
+</div>
+<div class="paragraph">
+<p>&#8203;</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-7"><a class="link" href="#design-considerations-7">5.8.2. Design Considerations</a></h4>
+<div class="paragraph">
+<p>This portion explains alternative implementations as well as the rationale behind my chosen method.</p>
+</div>
+<div class="sect4">
+<h5 id="aspect-using-a-ics-library"><a class="link" href="#aspect-using-a-ics-library">Aspect: Using a .ics library</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Writing my own .ics file.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: No need to include and understand how to use the external library.</p>
+</li>
+<li>
+<p>Cons: Difficult to read and work with .ics formatting.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Using iCal4j library to read and write .ics files.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: No need to manually format data into .ics format.</p>
+</li>
+<li>
+<p>Cons: Difficult to translate our recursion system to the .ics RRULE system.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Reason for current choice: Using the library will allow <code>PlanMySem</code> to easily import non-native .ics files. However, this would require changes to <code>Model</code> as currently the recurrence for slots is not saved.<br></p>
+</div>
+<div class="paragraph">
+<p>In addition, as our application is a specially designed planner for NUS matters, I felt that it was unnecessary to have the same slots on multiple applications.<br></p>
+</div>
+<div class="paragraph">
+<p>Hence, I chose to code the reading and writing of .ics files and add a disclaimer that importing of non-native .ics files is likely to cause errors.
+&#8203;</p>
+</div>
+<div class="paragraph">
+<p>&#8203;</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="data-encryption-decryption-feature"><a class="link" href="#data-encryption-decryption-feature">5.9. Data Encryption / Decryption feature</a></h3>
+<div class="paragraph">
+<p>The storage file "PlanMySem.txt" is encrypted to prevent easy access of the user&#8217;s calendar.</p>
+</div>
+<div class="sect3">
+<h4 id="current-implementation-9"><a class="link" href="#current-implementation-9">5.9.1. Current Implementation</a></h4>
+<div class="paragraph">
+<p>We are encrypting and decrypting the data using the Java <code>Cipher</code>.
+This feature is implemented through the <code>Encryptor</code> that contains the encrypt and decrypt methods. The encrypt method takes a <code>String</code> as an argument and returns a encrypted String object. The decrypt method takes in a String object as an argument and returns the decrypted message as a String object.</p>
+</div>
+<div class="paragraph">
+<p>The encryption is done using AES/CBC/PKCS5Padding. The key used for encryption/decryption is generated through various device parameters such as username, operating system (OS) and java runtime version. The secret key generated is stored in a file named "KeyStorage.jceks". No password is required from the user to retrieve this key, but a password input can be added to <code>KeyStorage</code> to improve security.<br></p>
 </div>
 <div class="paragraph">
 <p>A initialization vector (IV) is required for the Cipher Block Chain (CBC) mode of encryption. A random IV is generated and appended at the beginning of the data before being stored. The IV is then retrieved from the same file to decrypt the data.</p>
 </div>
 <div class="paragraph">
-<p>Encryption of the data is done automatically before the file is saved. In the implementation, the AdaptedPlanner object is first marshaled into a StringWriter before being encrypted and written into the file. This is to ensure that the data is JAXB formatted and the save algorithm is unaffected.
-Similarly, decryption of the data is done automatically before it is loaded. In the implementation, the file is read and decrypted and parsed into a StringReader object. The StringReader object is then un-marshaled and loaded. This is to ensure that the file is converted back into a JAXB object before being loaded and the load algorithm is unaffected.
+<p>Encryption of the data is done automatically before the file is saved. In the implementation, the AdaptedPlanner is first marshaled into a <code>StringWriter</code> before being encrypted and written into the file. This is to ensure that the data is JAXB formatted and the save algorithm is unaffected.
+Similarly, decryption of the data is done automatically before it is loaded. In the implementation, the file is read and decrypted and parsed into a <code>StringReader</code>. The <code>StringReader</code> is then un-marshaled and loaded. This is to ensure that the file is converted back into a JAXB object before being loaded and the load algorithm is unaffected.
 &#8203;</p>
-</div>
-<div class="paragraph">
-<p>&#8203;</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="data-exporting-exporting-feature"><a class="link" href="#data-exporting-exporting-feature">5.9. Data Exporting / Exporting feature</a></h3>
-<div class="paragraph">
-<p>The user can export the current planner into a .ics file to use in external calendar applications. The .ics file will contain the names of the slots in the SUMMARY field and the descriptions in the DESCRIPTION field. This command automatically exports into the main directory and names the file “PlanMySem.ics”. Future updates can include user input to allow saving the file in another directory and naming the file.
-We have chosen to use the iCalendar format due to its popularity and its use in applications such as Google Calendar, Microsoft Outlook and NUSmods.</p>
-</div>
-<div class="paragraph">
-<p>In our implementation, we have chosen not to export the tags into the .ics file. This is because iCalendar does not have in-built tag fields. This means that other applications that import .ics will not be able to use the tags.
-&#8203;</p>
-</div>
-<div class="paragraph">
-<p>&#8203;</p>
-</div>
-<div class="sect4">
-<h5 id="aspect-exporting-tags-into-ics-file"><a class="link" href="#aspect-exporting-tags-into-ics-file">Aspect: Exporting tags into .ics file.</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice):</strong> Ignore tags when exporting.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Easier to implement as iCalendar does not have in-built tag fields.</p>
-</li>
-<li>
-<p>Cons: Not all the information about the slots will be retained.</p>
-</li>
-<li>
-<p>Reason for choice: We do not have much control over other applications, and importing and exporting .ics within <strong>PlanMySem</strong> can be done using the storage .txt file.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Use the notes field and a tag identifier to save the tags.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: All the information from the semester will be exported.</p>
-</li>
-<li>
-<p>Cons: Requires other applications to be coded to read these tag identifiers and also to store and use the tags in their functions.
-&#8203;</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
 </div>
 <div class="paragraph">
 <p>&#8203;</p>
@@ -2106,13 +2171,17 @@ We have chosen to use the iCalendar format due to its popularity and its use in 
 </div>
 <div class="sect2">
 <h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">5.10. Configuration</a></h3>
+<div class="sect3">
+<h4 id="user-preferences-coming-in-2-0"><a class="link" href="#user-preferences-coming-in-2-0">5.10.1. User Preferences [COMING IN 2.0]</a></h4>
 <div class="paragraph">
-<p>There is no need for manual configuration of the <code>Semester</code> as it is initialized dynamically as mentioned in
+<p>The files generated by <strong>PlanMySem</strong> are also named "PlanMySem" and are saved in user&#8217;s PlanMySem folder by default. This default filename and file path can be changed via the the configuration file (default: <code>config.json</code>).<br>
+There is no need for manual configuration of the <code>Semester</code> as it is initialized dynamically as mentioned in
 <a href="#Planner-Initialization">Section 5.1, &#8220;Initialization of the Planner and its Semester&#8221;</a>.
 &#8203;</p>
 </div>
 <div class="paragraph">
 <p>&#8203;</p>
+</div>
 </div>
 </div>
 </div>
@@ -2188,7 +2257,7 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <div class="content">
 <img src="images/chrome_save_as_pdf.png" alt="chrome save as pdf" width="300">
 </div>
-<div class="title">Figure 10. Saving documentation as PDF files in Chrome</div>
+<div class="title">Figure 12. Saving documentation as PDF files in Chrome</div>
 </div>
 <div class="paragraph">
 <p>&#8203;</p>
@@ -2824,7 +2893,8 @@ For example, Gradle can download the dependencies automatically, which is better
 <h2 id="use-cases"><a class="link" href="#use-cases">Appendix C: Use Cases</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>For all use cases below, the <strong>System</strong> is <code>PlanMySem</code> and the <strong>Actor</strong> is the <code>user</code>, unless specified otherwise.
+<p>This section describes the Use Cases for some of our implemented features.
+(For all use cases below, the <strong>System</strong> is <code>PlanMySem</code> and the <strong>Actor</strong> is the <code>user</code>, unless specified otherwise)
 &#8203;</p>
 </div>
 <div class="paragraph">
@@ -3146,6 +3216,59 @@ For example, Gradle can download the dependencies automatically, which is better
 </ul>
 </div>
 </li>
+<li>
+<p>Extensions:</p>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"></dt>
+<dd>
+<p>1a. A filename is included in the command.</p>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"></dt>
+<dd>
+<p>1ai. The filename is valid.</p>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"></dt>
+<dd>
+<p>1ai.1. System converts planner to .ics format.</p>
+</dd>
+<dt class="hdlist1"></dt>
+<dd>
+<p>1ai.2. System saves .ics file in the respective directory.</p>
+</dd>
+<dt class="hdlist1"></dt>
+<dd>
+<p>1ai.3. System displays confirmation message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</dd>
+</dl>
+</div>
+</dd>
+<dt class="hdlist1"></dt>
+<dd>
+<p>1aii. The filename is invalid</p>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"></dt>
+<dd>
+<p>1aii.1 System outputs error message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</dd>
+</dl>
+</div>
+</dd>
+</dl>
+</div>
+</dd>
+</dl>
+</div>
+</li>
 </ul>
 </div>
 <div class="paragraph">
@@ -3362,4 +3485,4 @@ Expected: A detailed view of all added <em>slots</em> for the current week.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 07:28:09 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 08:31:45 UTC</div></div></div></body></html>
