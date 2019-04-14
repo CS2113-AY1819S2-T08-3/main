@@ -81,12 +81,12 @@ image::FindListHistoryActivityDiagram.png[width="800"]
 Essentially, if the user knows the exact keyword to use to locate his/her desired [blue]`Slot`, he would use the `list` command.
 Otherwise, the `find` command is recommended for use. As a parallel process, [blue]`CommandHistory` records the user input and saves it to [blue]`Planner's` history.
 
-* *Code contributed*: [https://nuscs2113-ay1819s2.github.io/dashboard-beta/#search=marcus-pzj&sort=displayName&since=2019-02-10&until=2019-04-01&timeframe=day&reverse=false&groupSelect=groupByRepos&breakdown=false&tabAuthor=marcus-pzj&tabRepo=CS2113-AY1819S2-T08-3_main_master[RepoSense]] [https://github.com/CS2113-AY1819S2-T08-3/main/pulls?q=is%3Apr+author%3Amarcus-pzj+is%3Aclosed[Pull Requests]]
+* *Code contributed*: [https://nuscs2113-ay1819s2.github.io/dashboard-beta/#search=marcus-pzj&sort=displayName&since=2019-02-10&until=2019-04-14&timeframe=day&reverse=false&groupSelect=groupByRepos&breakdown=false&tabAuthor=marcus-pzj&tabRepo=CS2113-AY1819S2-T08-3_main_master&repoSort=true[RepoSense]] [https://github.com/CS2113-AY1819S2-T08-3/main/pulls?q=is%3Apr+author%3Amarcus-pzj+is%3Aclosed[Pull Requests]]
 
 * *Other contributions*:
 
 ** Project management:
-*** I managed releases from version 1.1 to 1.3, which are all of the https://github.com/CS2113-AY1819S2-T08-3/main/releases[releases] on GitHub.
+*** I managed releases from version 1.1 to 1.4, which are all of the https://github.com/CS2113-AY1819S2-T08-3/main/releases[releases] on GitHub.
 ** Enhancement to existing features:
 *** I wrote additional tests for existing features to increase coverage.
 ** Documentation:
@@ -161,7 +161,7 @@ Here are the links to my contributed sections in the Developer Guide:
 
 - List Command: https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/DeveloperGuide.adoc#list-feature[`list`]
 - Find Command: https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/DeveloperGuide.adoc#find-feature[`find`]
-- Undo & Redo Command: https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/DeveloperGuide.adoc#undo-redo-feature[`undo` & `redo`]
+- Undo & Redo Command: https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/DeveloperGuide.adoc#undoredo-feature[`undo` & `redo`]
 - User Stories: https://github.com/CS2113-AY1819S2-T08-3/main/blob/master/docs/DeveloperGuide.adoc#user-stories[User Stories]
 
 Below is an example of my addition to the Developer Guide for the `find` feature.
@@ -185,7 +185,7 @@ The maximum Levenshtein Distance set in *PlanMySem* is 20.
 The weighted [blue]`Slots` are inserted into a [blue]`PriorityQueue` and the closest matching [blue]`Slots`
 will be polled into the output list. +
 
-Upon executing the `find` command with valid parameters (refer to <<UserGuide#view, UserGuide.adoc>> for `find` usage),
+Upon executing the `find` command with valid parameters,
 a sequence of events is executed. The sequence of events illustrated in the Sequence Diagram below will be in reference to the execution
 of a `find n/keyword` command. The sequence of events are as follows:
 
