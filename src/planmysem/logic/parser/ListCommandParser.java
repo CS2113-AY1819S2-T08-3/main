@@ -28,7 +28,7 @@ public class ListCommandParser implements Parser<ListCommand> {
         String option = getStartingArgument(args);
 
         if (option != null && option.equalsIgnoreCase("all")) {
-            return new ListCommand(option);
+            return new ListCommand();
         }
         if (name == null && tag == null) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, ListCommand.MESSAGE_USAGE));

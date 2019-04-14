@@ -44,7 +44,7 @@ public class ListCommand extends Command {
         this.isListAll = false;
     }
 
-    public ListCommand(String option) throws ParseException {
+    public ListCommand() {
         this.keyword = null;
         this.isListByName = false;
         this.isListAll = true;
