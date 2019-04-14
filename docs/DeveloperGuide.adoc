@@ -959,14 +959,14 @@ following sequence of events is executed:
 Given below is the Sequence Diagram upon executing the `export` command.
 
 .Sequence of implementation for the `export` Command
-image::ExportCommandSequenceDiagram.png[width="800"]
+image::ExportCommandSequenceDiagram.PNG[width="800"]
 
 {zwsp}
 The `ExportCommandParser` will check whether the optional filename parameter was input. If this parameter is included, the input filename is used. Else, if no other characters have been input (e.g. "export"), the default "PlanMySem" is used as the filename.
 This process can be seen from the activity diagram in the figure below.
 
 .Activity diagram showing the workflows for `export` Command
-image::ExportCommandActivityDiagram.png[width="800"]
+image::ExportCommandActivityDiagram.PNG[width="800"]
 
 {zwsp}
 
