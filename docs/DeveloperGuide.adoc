@@ -1720,13 +1720,17 @@ Use case ends.
 +
 Use case ends.
 * Extensions:
-:: 1a. A filename is included in the command
-:: 2a. System converts planner to .ics format.
-:: 3a. System saves .ics file in the respective directory w.
-:: 4a. System displays confirmation message.
+:: 1a. A filename is included in the command.
+::: 1ai. The filename is valid.
+:::: 1ai.1. System converts planner to .ics format.
+:::: 1ai.2. System saves .ics file in the respective directory.
+:::: 1ai.3. System displays confirmation message.
 +
 Use case ends.
-
+::: 1aii. The filename is invalid
+:::: 1aii.1 System outputs error message.
++
+Use case ends.
 //=== Use Case: Add a Category
 //. User inputs command to add a new category along with the name of the new category.
 //. System reflects the addition made to the list of Categories.
