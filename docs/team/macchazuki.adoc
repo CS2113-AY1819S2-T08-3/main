@@ -15,7 +15,7 @@ endif::[]
 
 == PROJECT: PlanMySem
 
-My team and I were tasked with enhancing a basic command line interface addressbook application, https://github.com/CS2113-AY1819S2-T08-3/main[AddressBook Level 3], for our Software Engineering project. +
+My team and I were tasked with enhancing a basic command line interface addressbook application, https://github.com/nusCS2113-AY1819S2/addressbook-level3[AddressBook Level 3], for our Software Engineering project. +
 
 We chose to morph it into a student planner called *PlanMySem*. This planner is made specially for NUS students and staff, containing features that will help them manage their school schedules more easily. +
 
