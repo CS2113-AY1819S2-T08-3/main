@@ -22,12 +22,21 @@ public class SlotBuilder {
         String name = "CS2113T Tutorial";
         String location = "COM2 04-11";
         String description = "Topic: Sequence Diagram";
-        LocalTime startTime = LocalTime.parse("08:00");
-        LocalTime endTime = LocalTime.parse("09:00");
+        LocalTime startTime = LocalTime.parse("06:00");
+        LocalTime endTime = LocalTime.parse("07:00");
         Set<String> tags = new HashSet<>(Arrays.asList("CS2113T", "Tutorial"));
         return new Slot(name, location, description, startTime, endTime, tags);
     }
 
+    public Slot slotTwo() {
+        String name = "CS2113T";
+        String location = "COM2 04-11";
+        String description = "Topic: Sequence Diagram";
+        LocalTime startTime = LocalTime.parse("10:00");
+        LocalTime endTime = LocalTime.parse("11:00");
+        Set<String> tags = new HashSet<>(Arrays.asList("CS2113T", "Tutorial"));
+        return new Slot(name, location, description, startTime, endTime, tags);
+    }
     /**
      * Generates a slot full of null values.
      */

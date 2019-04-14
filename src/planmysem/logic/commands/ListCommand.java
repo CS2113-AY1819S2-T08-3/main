@@ -17,8 +17,6 @@ import planmysem.model.semester.ReadOnlyDay;
 import planmysem.model.slot.ReadOnlySlot;
 import planmysem.model.slot.Slot;
 
-
-
 /**
  * Displays a list of all slots in the planner whose name matches the argument keyword.
  * Keyword matching is case sensitive.
@@ -34,7 +32,7 @@ public class ListCommand extends Command {
             + "directly matches the specified keyword (not case-sensitive)."
             + "\n\tMandatory Parameters: n/NAME or t/TAG... or o/OPTION"
             + "\n\tExample: " + COMMAND_WORD + " n/CS1010"
-            + "\n\tExample: " + COMMAND_WORD + " o/all";
+            + "\n\tExample: " + COMMAND_WORD + " all";
 
     private final String keyword;
     private final boolean isListByName;
@@ -49,10 +47,6 @@ public class ListCommand extends Command {
     public ListCommand(String option) throws ParseException {
         this.keyword = null;
         this.isListByName = false;
-        if (!option.equalsIgnoreCase("all")) {
-            throw new ParseException(String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT,
-                    ListCommand.MESSAGE_USAGE));
-        }
         this.isListAll = true;
     }
 

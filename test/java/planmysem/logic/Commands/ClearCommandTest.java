@@ -30,6 +30,7 @@ public class ClearCommandTest {
     public void execute_emptyPlanner_success() {
         Model model = new ModelManager();
         Model expectedModel = new ModelManager();
+        expectedModel.commit();
 
         assertCommandSuccess(new ClearCommand(), model, commandHistory, ClearCommand.MESSAGE_SUCCESS, expectedModel);
     }
@@ -38,6 +39,7 @@ public class ClearCommandTest {
     public void execute_nonEmptyPlanner_success() throws Exception {
         Model model = new ModelManager(new Planner());
         Model expectedModel = new ModelManager(new Planner());
+        expectedModel.commit();
 
         model.addSlot(
                 LocalDate.of(2019, 1, 21),

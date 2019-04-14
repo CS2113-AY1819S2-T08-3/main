@@ -17,6 +17,7 @@ public class ClearCommand extends Command {
     @Override
     public CommandResult execute(Model model, CommandHistory commandHistory) {
         model.clearSlots();
+        model.commit();
         return new CommandResult(MESSAGE_SUCCESS);
     }
 }

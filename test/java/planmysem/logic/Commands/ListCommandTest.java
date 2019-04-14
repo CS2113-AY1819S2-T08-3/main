@@ -157,6 +157,16 @@ public class ListCommandTest {
         assertEquals(actualListCommand.getKeyword(), expectedListCommand.getKeyword());
     }
 
+    @Test
+    public void execute_parseAll() throws ParseException {
+        ListCommandParser listCommandParser = new ListCommandParser();
+        ListCommand expectedListCommand = new ListCommand("all");
+
+        ListCommand actualListCommand = listCommandParser.parse("all");
+
+        assertEquals(actualListCommand.getKeyword(), expectedListCommand.getKeyword());
+    }
+
     /**
      * Constructor Tests
      */

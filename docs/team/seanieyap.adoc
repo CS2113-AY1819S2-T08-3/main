@@ -14,7 +14,6 @@ endif::[]
 == PROJECT: PlanMySem
 
 Hello ! My name is Sean Yap and I am currently a Year 3 undergraduate and resident of Tembusu College at the National University of Singapore (NUS).
-
 This portfolio documents my contributions to *PlanMySem*, an application that was morphed from https://github.com/CS2113-AY1819S2-T08-3/main[AddressBook Level 3]
 into a scheduling/calendar application that caters to NUS students and staff.
 
@@ -51,56 +50,41 @@ This is a sign-post informing caution. Please take note of these items and exerc
 == Summary of contributions
 This section shows a summary of my coding, documentation, and other helpful contributions to the team project.
 
-* *Major enhancements*:
-    ** Item 1: A Slot management system, including the recursion and tagging system, of *PlanMySem*.
-        *** What it does: Slot management composes of the three interactions that users are able to perform regarding slots.
-            As such, slot management consists of the execution of the add, edit and delete commands and its functions.
-        *** Justification: Slot management is the most crucial feature of *PlanMySem*, it is also the highlight of the application.
-            Without so, the planner cannot be manipulated nor interacted with.
-        *** Highlights: This enhancement involved many variables and data types due to the nature of slots and its details.
-            As such, this enhancement involved a large amount of cases, same was the came as with its tests. Additionally, to cater
-            for greater user experience and ease of use, several variations of each functions were done up.
-            For example, slots can be editing via tags or index.
+* *Main Feature*: Slot management system, including the recursion and tagging system, of *PlanMySem*.
+    ** What it does: Slot management composes of the three interactions that users are able to perform regarding slots.
+        As such, slot management consists of the execution of the add, edit and delete commands and its functions.
+    ** Justification: Slot management is the most crucial feature of *PlanMySem*, it is also the highlight of the application.
+        Without so, the planner cannot be manipulated nor interacted with.
+    ** Highlights: This enhancement involved many variables and data types due to the nature of slots and its details.
+        As such, this enhancement involved a large amount of cases, same was the came as with its tests. Additionally, to cater
+        for greater user experience and ease of use, several variations of each functions were done up.
+        For example, slots can be editing via tags or index.
 
-    ** Item 2: A new unique parsing system to replace the existing system for both prefixed parameters and keywords.
-        *** What it does: It parses commands input by the user and determines the user intention, hence determining what action
-            is to be taken by the application.
-        *** Justification: A new parser with flexible reading of prefixed parameters allows for unordered parameters instead of fixed ordering
-            in the old parse. This way, new parser allow for greater ease of use and overall user experience.
-        *** Highlights: The implementation of this feature required taking care of numerous cases in an effective manner. It
-            was a tedious and slow process but necessary.
-
-* *Minor enhancement*:
-    ** Item 1: A clock system to manage dates and time more efficiently as with the nature of a planner application, the application is very time sensitive.
+* *Minor Features*:
+    ** A new unique parsing system to replace the existing system for both prefixed parameters and keywords.
+    ** A clock system to manage dates and time more efficiently as with the nature of a planner application, the application is very time sensitive.
 
 * *Code contributed*:
     ** View my RepoSense contribution analysis: [https://nuscs2113-ay1819s2.github.io/dashboard-beta/#search=&sort=displayName&since=2019-02-10&until=2019-03-26&timeframe=day&reverse=false&groupSelect=groupByRepos&breakdown=false&tabAuthor=seanieyap&tabRepo=CS2113-AY1819S2-T08-3_main_master[here]]
     ** View my Pull Requests: [https://github.com/CS2113-AY1819S2-T08-3/main/pulls?q=is%3Apr+author%3Aseanieyap+is%3Aclosed[here]]
 
 * *Other contributions*:
-    ** Project Management:
-        *** I was involved with the conception of *PlanMySem* up till the release of version 1.3. These releases can be viewed [https://github.com/CS2113-AY1819S2-T08-3/main/releases[here]]
-    ** Testing:
-        *** I wrote tests for all code in trying to achieve the most code coverage and ensure reliability of my code.
-        Most of classes belonging to my features have 100% code coverage. At this time of writing, the code coverage for the entire codebase of *PlanMySem* is 86%.
-    ** Community:
-        ***
+    ** Project Management: I was involved with the conception of *PlanMySem* and managed the codebase up till the release of version 1.4. These releases can be viewed https://github.com/CS2113-AY1819S2-T08-3/main/releases[here].
+    ** Testing: I wrote tests for all code in trying to achieve the most code coverage and ensure reliability of my code.
+        Most of classes belonging to my features have 100% code coverage. At this time of writing, the code coverage for the entire codebase of *PlanMySem* is 91%.
+    ** Documentation: I updated the User Guide and Developer's Guide regarding all items related to the features that I am in charge of and the design.
+    ** Community: I reviewed Pull Requests and provided non-trivial review comments for some requests. These Pull Requests can be viewed https://github.com/CS2113-AY1819S2-T08-3/main/pulls?q=is%3Apr+is%3Aclosed+reviewed-by%3Aseanieyap[here].
     ** Tools: Integrated all AddressBook Level 4 continuous Integration and continuous Deployment tools
-        *** continuous Integration tools:
-        **** [https://travis-ci.org/CS2113-AY1819S2-T08-3/main[Travis-CI]]
-        **** [https://ci.appveyor.com/project/seanieyap/main-r8jp5[AppVeyor]]
-        *** continuous Deployment tools:
-        **** [https://app.netlify.com/sites/planmysem/deploys[Netlify]]
-        *** Test Coverage History & Statistics tools:
-        **** [https://coveralls.io/github/CS2113-AY1819S2-T08-3/main?branch=master[Coveralls]]
-        *** Automated code reviews and code analytics tools:
-        **** [https://app.codacy.com/project/CS2113T-T08-3/main/dashboard[Codacy]]
+        *** Continuous Integration tools: https://travis-ci.org/CS2113-AY1819S2-T08-3/main[Travis-CI], https://ci.appveyor.com/project/seanieyap/main-r8jp5[AppVeyor]
+        *** Continuous Deployment tools: https://app.netlify.com/sites/planmysem/deploys[Netlify]
+        *** Test Coverage History & Statistics tools: https://coveralls.io/github/CS2113-AY1819S2-T08-3/main?branch=master[Coveralls]
+        *** Automated code reviews and code analytics tools: https://app.codacy.com/project/CS2113T-T08-3/main/dashboard[Codacy]
 
 == Contributions to the User Guide
 This section shows some of my contributions to the User Guide.
 They not only showcase my ability to write documentation targeting end-users but also make user-centric design choices.
 
-My contributions here can be summarised into 2 sections, features and adding slots.
+My contributions here can be summarised into 2 sections, features and adding, editing and deleting slots.
 
 === Features
 Under the Features section, I contributed to explaining the Tagging and Recursion system that I designed.
@@ -111,12 +95,12 @@ Unlike other commercial calendar/scheduling/planner software, *PlanMySem* makes 
 
 Using tags to tag _slots_ will make tasks easier for you in the future. Performing tasks such as viewing, deleting and editing _slots_ will be more efficient.
 
-Recommended uses for tags:
-
-1. Tag modules. E.g. "CS2113T", "CS2101".
-2. Tag type of lesson. E.g. "Lecture", "Tutorial", "Lab".
-3. Tag type of activities. E.g. "Sports", "Seminar", "Talk".
-4. Tag difficulty of task. E.g. "Tough", "Simple", "Trivial".
+//Recommended uses for tags:
+//
+//1. Tag modules. E.g. "CS2113T", "CS2101".
+//2. Tag type of lesson. E.g. "Lecture", "Tutorial", "Lab".
+//3. Tag type of activities. E.g. "Sports", "Seminar", "Talk".
+//4. Tag difficulty of task. E.g. "Tough", "Simple", "Trivial".
 
 *Recursion System*
 
@@ -143,7 +127,6 @@ The table of Identifiers and Parameters and their descriptions (Table 1) below i
     |`KEYWORD` |Text that are part of the name of a _slot_ |Text |`n/CS`
 |`l/` |`LOCATION` |Location of a _slot_ |Text |`l/COM2 04-22`
 |`des/` |`DESCRIPTION` |Description of a _slot_ |Text |`des/Topic: Abstraction`
-|`t/` |`TAG` |Tag of a _slot_ |Text |`t/Lab`
 5+|_Further rows are omitted due to space constrains_
 |=======================================================================
 
@@ -174,7 +157,7 @@ Here, the recursion parameters enable a single command to place 13 slots on all 
 
 [#img-add]
 .[.underline]#Output after entering `add n/CS2113T Lecture d/mon st/8:00 am et/9:00 am des/Topic: Software Engineering t/CS2113T t/Lecture r/normal r/past`#
-image::Add_Command_Output_1.png[width="400"]
+image::Add_Command_Output_1.png[width="600"]
 
 * `add n/CS2113T Lecture d/mon st/8:00 am et/9:00 am des/Topic: Software Engineering t/CS2113T t/Lecture r/recess r/reading r/past` +
 Do the same but instead of "normal" weeks, do the opposite of the norm and recurse the _slot_ on both recess and reading week.
@@ -184,8 +167,12 @@ Do the same but without any recursion, instead place the _slot_ the coming monda
 
 [TIP]
 You may add single _slots_ by omitting the `r/` identifiers and its parameters.
-{zwsp}
-_Here, the Editing and Deleting slots features are omitted._
+
+[NOTE]
+*PlanMySem* does not dictate your scheduling preferences.
+As such, you may even add identical slots or slots with overlapping start and end times to help plan for tentative/unconfirmed events.
+
+_Here, the editing and deleting slots features are omitted._
 
 == Contributions to the Developer Guide
 This section shows some of my contributions to the Developer Guide.
@@ -203,19 +190,19 @@ Under the design section, I wrote documentation and created UML diagrams to expl
 For instance, I documented the design of the architecture and its 4 innate components.
 
 .Architecture Diagram
-image::Architecture.png[width="400"]
+image::ArchitectureDiagram.png[width="600"]
 
 The *_Architecture Diagram_* given above explains the high-level design of the App. Given below is a quick overview of each component.
 
 [TIP]
 The `.pptx` files used to create diagrams in this document can be found in the link:{repoURL}/docs/diagrams/[diagrams] folder. To update a diagram, modify the diagram in the pptx file, select the objects of the diagram, and choose `Save as picture`.
 
-//`Main` has only one class called link:{repoURL}/src/planmysem/Main.java[`Main`]. It is responsible for,
-//
-//* At app launch: Initializes the components in the correct sequence, and connects them up with each other.
-//* At shut down: Shuts down the components and invokes cleanup method where necessary.
-//
-//<<Design-Common,*`Common`*>> represents a collection of classes used by multiple other components.
+`Main` has only one class called link:{repoURL}/src/planmysem/Main.java[`Main`]. It is responsible for,
+
+* At app launch: Initializes the components in the correct sequence, and connects them up with each other.
+* At shut down: Shuts down the components and invokes cleanup method where necessary.
+
+<<Design-Common,*`Common`*>> represents a collection of classes used by multiple other components.
 
 The following class plays an important role at the architecture level, the App consists of four components:
 
@@ -229,53 +216,18 @@ Each of the four components
 * Defines its _API_ in an `interface` with the same name as the Component.
 * Exposes its functionality using a `{Component Name}Manager` class.
 
-//For example, the `Logic` component (see the class diagram given below) defines its API in the `Logic.java` interface and exposes its functionality using the `Logic.java` class.
-//
-//.Class Diagram of overall application.
-//image::OverallClassDiagram.png[width="400"]
-
-//
-//[discrete]
-//==== How the architecture components interact with each other
-//
-//The _Sequence Diagram_ below shows how the components interact with each other for the scenario where the user issues the command `delete 1`.
-//
-//.Component interactions for `delete 1` command
-//image::SDforDeleteSlot.png[width="300"]
-//
-//The sections below give more details of each component.
-
-//[[Design-Ui]]
-//==== UI component
-//
-//.Structure of the UI Component
-//image::UiClassDiagram.png[width="300"]
-//
-//*API* : link:{repoURL}/src/planmysem/ui/Ui.java[`Ui.java`]
-//
-//The UI consists of a `MainWindow` that is made up of just `commandInput` and `outputConsole`.
-//This application is mainly a text-based application, hence here are not much componenets here.
-//
-//The `UI` component uses JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder.
-//For example, the layout of the link:{repoURL}/src/planmysem/ui/MainWindow.java[`MainWindow`] is specified in link:{repoURL}/src/main/resources/view/MainWindow.fxml[`MainWindow.fxml`]
-//
-//The `UI` component,
-//
-//* Executes user commands read from `commandInput`, using the `Logic` component.
-//* Displays `commandResult` to the user via `outputConsole`.
-
-[[Design-Logic]]
 ==== Logic component
 
-[[fig-LogicClassDiagram]]
 .Structure of the Logic Component
-image::LogicClassDiagram.png[width="400"]
+image::LogicComponentClassDiagram.png[width="600"]
 
 *API* :
 link:{repoURL}/src/planmysem/logic/Logic.java[`Logic.java`]
 
-.  `Logic` uses the `parser` class to parse the user command.
-.  This results in a `Command` object which is executed.
+The `Logic` component,
+
+.  uses the `parser` class to parse the user command.
+**  This results in a `Command` object which is executed.
 .  The command execution can affect the `Model` (e.g. adding a _Slot_).
 .  The result of the command execution is encapsulated as a `CommandResult` object which is passed back to `Ui`.
 .  In addition, the `CommandResult` object can also instruct the `Ui` to display results, such as displaying help to the user.
@@ -286,64 +238,6 @@ Given below is the Sequence Diagram for interactions within the `Logic` componen
 image::SDforDeleteSlot.png[width="600"]
 
 _Here, the other 3 major components are omitted._
-
-//[[Design-Model]]
-//==== Model component
-//
-//.Overall structure of the Model Component
-//image::ModelClassDiagram.png[width="300"]
-//
-//*API* : link:{repoURL}/src/planmysem/model/Model.java[`Model.java`]
-//
-//
-//[[Design-Planner]]
-//==== Planner component
-//
-//*API* : link:{repoURL}/src/planmysem/data/Planner.java[`Planner.java`]
-//
-//The `Planner` component,
-//
-//* stores a `Planner` object that represents the entire Planner.
-//* stores the data of the entire application.
-//* stores the data of the current semester in an unmodifiable `Semester`.
-//
-//[[Design-Semester]]
-//==== Semester component
-//
-//*API* : link:{repoURL}/src/planmysem/model/semester/Semester.java[`Semester.java`]
-//
-//The `Semester` component,
-//
-//* stores a `Semester` object that represents the an academic semester.
-//* stores the data of the entire semester in an unmodifiable `HashMap<LocalDate, Day>`.
-//* Semesters essentially hold "days" in which holds slots.
-//
-//[[Design-Slot]]
-//==== Slot component
-//
-//*API* : link:{repoURL}/src/planmysem/model/slot/Slot.java[`Slot.java`]
-//
-//The `Slot` component,
-//
-//* stores a `Slot` object that represents a time-slot similar to traditional/conventional calendar/scheduling applications.
-//** such as outlook or google calendar.
-//* stores the data of the slot details as well as start time and duration.
-//
-//[NOTE]
-//Notice how `Slot` does not hold its end time but rather it holds the `duration`. This is simply our design choice as it is meaningless to save both variables.
-
-//[[Design-Storage]]
-//==== Storage component
-//
-//.Structure of the Storage Component
-//image::StorageClassDiagram.png[width="200"]
-//
-//*API* : link:{repoURL}/src/planmysem/storage/Storage.java[`Storage.java`]
-//
-//The `Storage` component,
-//
-//* can save `UserPref` objects in json format and read it back.
-//* can save the Planner data in json format and read it back.
 
 === Slot Management
 
@@ -375,23 +269,15 @@ The `Edit` and `Delete` command then makes use of the _tagging_ system to then s
 Here are the considerations regarding slot management.
 The choices made were largely due to computation effectiveness.
 
-===== Aspect: Wrapping of primitive data types in `Slot`
+====== Aspect: Wrapping of data in `Slot`
 
-* *Alternative 1 (current choice):* Use of "primitive" data types instead of creating and utilising wrapped objects. +
-E.g. `name`, `location` amd `description` are not wrapped but "primitive".
-** Pros: Allows for more flexible code to account for flexible parsing (as needed in this application).
-** Cons: Bigger code base and duplicated code.
+The topic of whether to wrap all primitives and `Strings`, in Java, is contentious.
+However, in this case of *PlanMySem*, there are no possible invalid values for any of the data that `Slot` holds, other than the `/` character that would have already been handled by `parser`.
+For instance, any `String` is a valid `name` and the same goes for `location`, `description` and etc; wrapping these data will not achieve any narrowing of possible valid inputs.
 
-* *Alternative 2:* Wrap "primitive" data types.
-** Pros: Less errors in handling invalid values.
-** Cons: May cause inflexibility in writing code to account for flexible parsing.
+Hence, data in `Slot` are not wrapped. This is in accordance to the You aren't gonna need it (YAGNI) principle.
 
-Alternative 1 was chosen as, in this case of *PlanMySem*, there is a need to achieve varied and flexible commands and as such,
-it is not necessary to handle invalid values with the innate `Model` objects as these are taken care of when parsing.
-
-Additionally, doing these actions when parsing, though bloats code, allows for more varied responses to the user and improves user experience.
-
-===== Aspect: Storing and accessing `Slots`
+====== Aspect: Storing and accessing `Slots`
 
 * *Alternative 1 (current implementation):* Use of `Map`, such as `HashMap` to store `Days` that store `Slots`.
 ** Pros: `HashMap` allows for easier and faster, O(1) access time, access of particular `Day` according to date.
@@ -404,22 +290,20 @@ Additionally, doing these actions when parsing, though bloats code, allows for m
 Alternative 1 was chosen as the benefits of quick and easy access to days outweigh the disadvantages involve with forbidding slots than span over a day.
 After all, there are few cases of slots crossing the boundaries of a day, over midnight.
 
-_Here, the future implementations are omitted._
+==== Future Implementation
 
-//==== Future Implementation
+===== Create a class to represent `Days`, instead of utilising a `HashMap`
 
-//===== Create a class to hold `Days`, instead of utilising a `HashMap`
-//
-//Currently, `Days` are held in a HashMap of key `LocalDate` and value `Day`. While this works without any loss in performance, this causes duplication of code and removes some key concepts of abstraction.
-//For example, there are code blocks dedicated to retrieving days or slots that could have been placed into this new class. This is an issue as these code have nothing to do with for instance, `Semester` but they are placed there.
-//
-//Therefore, this needs to be implemented in the future to achieve less coupling, more cohesion and respect the Single Responsibility Principle (SRP), Open-Closed Principle (OCP) and Separation of Concerns Principle (SoC).
-//
-//===== `Planner` to hold multiple `Semesters`
-//
-//While *PlanMySem* now allow users to work on the current semester, it is unable to cater to future semesters. For instance when a semester is about to end, users are not able to plan ahead for the coming semester.
-//
-//This is an issue that plagues user experience and is a significant problem. To solve this issue, `Planner` needs to hold multiple semesters in a `List` and more features need to be included to allow saving, loading and switching of semesters and etc.
+Currently, `Days` are held in a HashMap of key `LocalDate` and value `Day`. While this works without any loss in performance, this causes duplication of code and removes some key concepts of abstraction.
+For example, there are code blocks dedicated to retrieving days or slots that could have been placed into this new class. This is an issue as these code have nothing to do with for instance, `Semester` but they are placed there.
+
+Therefore, this needs to be implemented in the future to achieve less coupling, more cohesion and respect the Single Responsibility Principle (SRP), Open-Closed Principle (OCP) and Separation of Concerns Principle (SoC).
+
+===== `Planner` to hold multiple `Semesters`
+
+While *PlanMySem* now allow users to work on the current semester, it is unable to cater to future semesters. For instance when a semester is about to end, users are not able to plan ahead for the coming semester.
+
+This is an issue that plagues user experience and is a significant problem. To solve this issue, `Planner` needs to hold multiple semesters in a `List` and more features need to be included to allow saving, loading and switching of semesters and etc.
 
 
 === Parser / Command Format and Structure
@@ -440,66 +324,66 @@ Arguments are then parsed via 2 different methods/techniques according to the fo
 
 Hence, parameters in *PlanMySem* can be categorised into 2 categories:
 
-1. Prefixed parameters such as `n/NAME`, `st/START_TIME`, `des/DESCRIPTION`, etc.
-2. Non-Prefixed parameters, A.K.A. keywords, such as `INDEX`, `TYPE_OF_VIEW`. etc.
+. Prefixed parameters such as `n/NAME`, `st/START_TIME`, `des/DESCRIPTION`, etc.
+. Non-Prefixed parameters, A.K.A. keywords, such as `INDEX`, `TYPE_OF_VIEW`. etc.
 
-_Here, the explanation of parsing prefixed parameters and keywords are omitted._
+====== Parsing Prefixed Parameters
 
-//====== Parsing Prefixed Parameters
+To retrieve parameters, the function `private static HashMap<String, Set<String>> getParametersWithArguments(String args)` can be called.
+The keys of the returned `HashMap` represent prefixes while the values represent the prefix's parameters, held in a set.
+This allows for easy, quick and efficient access to specific prefixes and its parameters; O(1) access, insertion and removal.
+
+The results of `getParametersWithArguments` can be interpreted in these manners:
+
+* When the returned set of parameters, to a specific prefix, is `null`, then both the prefix and parameters was not keyed in at all.
+* When the returned set of parameters, to a specific prefix, is not `null` but contains empty `strings` such that `string.isEmpty()` returns true, then the prefix was keyed in but the parameter was left blank.
+
+[IMPORTANT]
+The values of the returned `HashMap` is a `Set`, hence, there is no need to handle repeated parameters of a specific prefix as they will be automatically discarded.
+
+====== Parsing Keywords
+
+Here, keywords are thought of as parameters that are not prefixed.
+In *PlanMySem*, keywords are utilized in command structures when they are to be used alone or when order of parameters are important.
+In such cases, there is no logical need for prefixing as the meaning of these parameters can be identified.
+
+The function `private String getStartingArgument(String args)` provides this functionality.
+Here, `IncorrectCommand` is invoked due to different circumstances:
+
+* When the keyword is null, then the parameter was not keyed in.
+* When the keyword data type does not match the intended, then the parameter was keyed in wrongly or is mis-ordered.
+
+[NOTE]
+Additional keywords are purposefully *not* handled to provide ease of use and cater to user mistakes.
+
+_Here, the design considerations and future implementations are omitted._
+
+//==== Design Considerations
 //
-//To retrieve the set of parameters, the function `private static HashMap<String, Set<String>> getParametersWithArguments(String args)` can be called.
-//The function returns a `HashMap` data structure, specifically `HashMap<String, Set<String>>`, to hold parameters, allowing for easy, quick and efficient access to specific prefixes and its keyed in parameters; O(1) access, insertion and removal.
+//Here are the considerations that led to the new parsing system.
+//The choices made were largely due to the fact that they provide a better user experience and ease of use.
 //
-//However, this means that exceptions have to be manually taken care of, at the stage of parsing, this exception would particularly be `ParseException`.
+//===== Aspect: Handling repeated parameters
 //
-//The following are cases in which `ParseException` is invoked:
+//* *Alternative 1 (current choice):* When possible, accept repeated parameters.
+//** Pros: Less computationally expensive and allow users to make minor mistakes.
+//** Cons: User errors may be misinterpreted and hence wrong actions may be executed.
 //
-//* When the returned set is `null`, then the prefix and parameters was not keyed in at all.
-//* When the returned set is not `null` but contains empty `strings` such that `string.isEmpty()`, then the prefix was keyed in but was left empty on purpose.
+//* *Alternative 2:* Always accept and handle repeated parameters.
+//** Pros: Errors are shown to the user so that the invalid command may be fixed.
+//** Cons: Force user to rewrite commands, even in the event of simple/minor mistakes, and thus may hinder user experience and ease of use.
 //
-//====== Parsing Keywords
+//===== Aspect: Handling order of parameters
 //
-//Here, keywords are thought of as parameters that are not prefixed.
-//In *PlanMySem*, keywords are utilized in command structures when they are to be used alone or when order of parameters are important.
-//In such cases, there is no logical need for prefixing as the meaning of these parameters can be identified.
+//* *Alternative 1 (current choice):* Parse parameters without regards to order.
+//** Pros: Greater user experience due to greater ease of use.
+//** Cons: More computationally expensive and tougher development process due to more cases to care for, requires manual parsing.
 //
-//The function `private String getStartingArgument(String args)` provides this functionality.
-//Here, `IncorrectCommand` is invoked due to different circumstances:
+//* *Alternative 2:* Accept only a specific ordering of parameters.
+//** Pros: Less computationally expensive and short development process, able to use existing regex solutions in AB3.
+//** Cons: Greatly hinder user experience as order of parameters have no relation to meaning of commands.
 //
-//* When the keyword is null, then the parameter was not keyed in.
-//* When the keyword data type does not match the intended, then the parameter was keyed in wrongly or is mis-ordered.
-//
-//[NOTE]
-//Additional keywords are purposefully *not* handled to provide ease of use and cater to user mistakes.
-
-==== Design Considerations
-
-Here are the considerations that led to the new parsing system.
-The choices made were largely due to the fact that they provide a better user experience and ease of use.
-
-===== Aspect: Handling repeated parameters
-
-* *Alternative 1 (current choice):* Accept and ignore repeated parameters when possible.
-** Pros: Less Computationally expensive and allows users to make minor mistakes.
-** Cons: User errors may be misinterpreted and hence wrong actions may be executed.
-
-* *Alternative 2:* Accept repeated parameters only when as necessary.
-** Pros: Errors are shown to the user so that the invalid command may be fixed.
-** Cons: May hinder user experience, ease of use.
-
-===== Aspect: Handling order of parameters
-
-* *Alternative 1 (current choice):* Parse parameters without regards to order.
-** Pros: Greater user experience due to greater ease of use.
-** Cons: More computationally expensive and tougher development process due to more cases to care for, requires manual parsing.
-
-* *Alternative 2:* Accept only a specific ordering of parameters.
-** Pros: Less computationally expensive and short development process, able to use existing regex solutions in AB3.
-** Cons: Greatly hinder user experience as order of parameters have no relation to meaning of commands.
-
-Alternative 1 was chosen due to the team's priority in providing a better user experience and allow ease of use.
-
-_Here, the future implementations are omitted._
+//Alternative 1 was chosen due to the team's priority in providing a better user experience and allow ease of use.
 
 //==== Future Implementation
 //

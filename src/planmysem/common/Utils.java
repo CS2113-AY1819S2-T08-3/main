@@ -206,9 +206,6 @@ public class Utils {
     }
 
     /**
-     * Adapted from:
-     * https://rosettacode.org/wiki/Levenshtein_distance#Java
-     *
      * Computes Levenshtein Distance from strings
      */
     public static int getLevenshteinDistance (String lhsIn, String rhsIn) {

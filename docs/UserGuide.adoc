@@ -97,10 +97,10 @@ Using tags to tag _slots_ will make tasks easier for you in the future. Performi
 
 Recommended uses for tags:
 
-1. Tag modules. E.g. "CS2113T", "CS2101".
-2. Tag type of lesson. E.g. "Lecture", "Tutorial", "Lab".
-3. Tag type of activities. E.g. "Sports", "Seminar", "Talk".
-4. Tag difficulty of task. E.g. "Tough", "Simple", "Trivial".
+. Tag modules. E.g. "CS2113T", "CS2101".
+. Tag type of lesson. E.g. "Lecture", "Tutorial", "Lab".
+. Tag type of activities. E.g. "Sports", "Seminar", "Talk".
+. Tag difficulty of task. E.g. "Tough", "Simple", "Trivial".
 
 *Recursion System*
 
@@ -282,13 +282,22 @@ Delete the second _slot_ shown via the `list` command.
 Lists all _slots_ whose name/tag directly matches the specified keyword (not case-sensitive). +
 Format: `list n/NAME`
 
+You can also list all _slots_ in the planner as well. +
+Format: `list all`
+
+[TIP]
+Keywords are not case-sensitive. (e.g. _CS2113T_ is the same as _cs2113t_)
+
 Examples:
 
 * `list n/CS2113T Lecture` +
 List all _slots_ that is named `CS2113T Lecture`.
 
 * `list t/Lecture` +
-List all _slots_ that contains the tag `Lecture`.
+List all _slots_ that contain the tag `Lecture`.
+
+* `list all`
+List all _slots_ in the planner.
 
 [#img-list]
 .[.underline]#Output after entering `list t/Lecture`#
@@ -298,13 +307,21 @@ image::List_Command_Output_1.png[width="790"]
 {zwsp}
 
 [[find]]
-=== Locating Slots: `find` / `f`
-Find all _slots_ whose name closely matches the specified keyword and displays them as a list. +
+=== Finding Slots: `find` / `f`
+Find all _slots_ whose name closely matches the specified keyword and displays them as a list. (Case-sensitive) +
 Format: `find n/KEYWORD`
 
+[CAUTION]
+Keywords are case sensitive! (e.g. _CS2113T_ is not the same as _cs2113t_)
+
 [NOTE]
-The `find` command will attempt to return the closest matching `Slot` in the event that a match is not found.
-Do not be surprised to _eg. enter `find n/ABC` and get a `Slot` named `XYZ`_ in return.
+The `find` command will return the closest matching `Slot` which contains the specified keyword. **The name/tag MUST
+contain the specified keyword in order for a match to occur**.
+
+[TIP]
+You may want to use short keywords (e.g CS) instead of long keywords to increase the chances of finding your desired slot. +
+E.g. Let's say you are finding a `Slot` named _Golf_. +
+`find n/Go` will detect the slot, while `find n/Golfs` will fail to detect the slot.
 
 Example:
 
@@ -314,9 +331,12 @@ Find all _slots_ whose name closely matches `CS` (eg. CS2101, CS2113T, SOCSMeet)
 * `find t/2113T` +
 Find all _slots_ that contain tags that closely matches `2113T`.
 
-// TODO: need to change picture
 .[.underline]#Output after entering `find n/CS`#
-image::Find_Command_Output_1.png[width="790"]
+image::Find_Command_Output.png[width="790"]
+Explanation: As seen from the figure above, the output list of slots are ranked according to their degree of similarity.
+All of the `Slots` listed contain the keyword _'CS'_. +
+Since _'JSOCS'_ has less characters, it is considered closest to the keyword _'CS'_, which has only 2 characters. +
+Remember the tip above when you are finding your `Slots`.
 {zwsp}
 
 {zwsp}
@@ -328,24 +348,51 @@ View the planner in a month/week/day view.
 1. View the monthly calendar view of the current academic semester. +
 Format: `view month`
 2. View the weekly calendar view of the current academic week. +
-Format: `view week [WEEK]`
-3. View the day view of a particular day in the academic semester. +
-Format: `view day [DATE_OR_DAY_OF_WEEK]`
+Format: `view week [WEEK]` +
+`[WEEK]` is valid if it is:
 
+* Any number from 1 to 13 (as there is only week 1 to 13 in a semester).
+* Any of the following text (case-insensitive): recess, reading, exam, examination.
 [TIP]
-You may add in the parameter `details` after `[WEEK]` to view the details of all _slots_ with respect to `[WEEK]`. +
-E.g. `view week details` will allow you to view details of all _slots_ in the current week!
+You may add in the parameter `details` after `[WEEK]` to view the details of all _slots_ with respect to the `[WEEK]`. +
+E.g. `view week 13 details` will allow you to view details of all _slots_ in week 13!
+
+3. View the day view of a particular day in the academic semester. +
+Format: `view day [DATE_OR_DAY_OF_WEEK]` +
+`[DATE_OR_DAY_OF_WEEK]` is valid if it is:
+* Any number from 1 to 7 (the numbers 1 to 7 corresponds to the days Monday to Sunday respectively).
+* Any of the following text (case-insensitive): Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday. +
+The three-letter abbreviation of the days (e.g. mon, tue) is accepted as well.
+* A date in the format of "dd-mm" or "dd-mm-yyyy" (e.g. 16-04 or 16-04-2019). The date must exist in the current semester.
 
 [TIP]
 You may omit `[WEEK]`/`[DATE_OR_DAY_OF_WEEK]` to view the calendar with respect to the current date! +
-E.g. `view week` will allow you to view the current week and `view day` will allow you to view the current day!
-The expected output after successfully running `view week` is shown in the figure below.
+E.g. `view week` will allow you to view the current week and `view day` will allow you to view the current day! +
+If you have added _slots_ to the planner, the expected output after successfully running `view week` will be similar to
+the expected output shown in the figure below.
 
 [#img-view]
-.[.underline]#Output after entering `view week`#
+.[.underline]#Expected output after entering `view week`#
 image::Ui.png[width="790"]
+{zwsp}
 
-Examples:
+The following are some examples of the `view` command which you can try to run.
+
+Month view example:
+
+* `view month` +
+View planner for the months of the current academic semester.
+
+Week view examples:
+
+* `view week details` +
+View planner for current week of the academic calendar with details of all _slots_.
+* `view week 7` +
+View planner for week 7 of the academic calendar.
+* `view week recess` +
+View planner for recess week of the academic calendar.
+
+Day view examples:
 
 * `view day` +
 View planner for the current date.
@@ -353,14 +400,6 @@ View planner for the current date.
 View planner for the first of March.
 * `view day monday` +
 View planner for the upcoming Monday.
-* `view week details` +
-View planner for current week of the academic calendar with details of all _slots_.
-* `view week 7` +
-View planner for week 7 of the academic calendar.
-* `view week recess` +
-View planner for recess week of the academic calendar.
-* `view month` +
-View planner for the months of the current academic semester.
 {zwsp}
 
 {zwsp}
@@ -369,6 +408,13 @@ View planner for the months of the current academic semester.
 === Listing previous input commands : `history`
 Lists all the commands that you have entered in reverse chronological order. +
 Format: `history`
+
+An empty command history is initialised when _PlanMySem_ is started. It will be
+cleared upon exiting _PlanMySem_.
+
+[NOTE]
+Invalid commands will also be logged into the command history.
+
 {zwsp}
 
 {zwsp}
@@ -378,8 +424,9 @@ Format: `history`
 Restores the planner to the state before the previous command was executed. +
 Format: `undo`
 
-[TIP]
-The `clear` command cannot be undone.
+[NOTE]
+Only Add, Edit, Delete and Clear Commands are undoable.
+
 {zwsp}
 
 {zwsp}
@@ -388,6 +435,10 @@ The `clear` command cannot be undone.
 === Redoing the previously undone command : `redo`
 Reverses the most recent `undo` command. +
 Format: `redo`
+
+[NOTE]
+Only Add, Edit, Delete and Clear Commands are redoable.
+
 {zwsp}
 
 {zwsp}
@@ -414,7 +465,7 @@ The default name of the exported file is "PlanMySem.ics" and is saved in the mai
 The .ics file can be imported into other calendar apps that support .ics files such as Google Calendar. +
 [#img-exportFile]
 .[.underline]#Location of PlanMySem.ics file#
-image::Export_Command_Directory_1.png[width="790"]
+image::Export_Command_Directory_1.png[width="800"]
 ====
 
 [TIP]

@@ -33,7 +33,7 @@ public class FindCommand extends Command {
     private static final String MESSAGE_SUCCESS = "%1$s Slots listed.\n%2$s";
     private static final String MESSAGE_SUCCESS_NONE = "0 Slots listed.\n";
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds all slots whose name "
-            + "contains the specified keywords (not case-sensitive)."
+            + "contains the specified keywords (case-sensitive)."
             + "\n\tMandatory Parameters: n/NAME or t/TAG..."
             + "\n\tExample: " + COMMAND_WORD + " n/CS1010";
 
@@ -77,9 +77,7 @@ public class FindCommand extends Command {
                 } else {
                     Set<String> tagSet = slot.getTags();
                     for (String tag : tagSet) {
-                        if (tagSet.contains(tag)) {
-                            generateDiscoveredNames(keyword, tag, entry, slot);
-                        }
+                        generateDiscoveredNames(keyword, tag, entry, slot);
                     }
                 }
             }
@@ -111,10 +109,13 @@ public class FindCommand extends Command {
     */
     private void generateDiscoveredNames(String keyword, String compareString,
                                          Map.Entry<LocalDate, Day> entry, Slot slot) {
+
+        // Pattern Matching: Check for presence of keyword in name/tag
         if (!Pattern.matches(".*" + keyword + ".*", compareString)) {
             return;
         }
 
+        //calculate Levenshtein Distance if a match is found
         int dist = Utils.getLevenshteinDistance(keyword, compareString);
         WeightedName distNameTrie = new WeightedName(entry, slot, entry.getKey(), dist);
 

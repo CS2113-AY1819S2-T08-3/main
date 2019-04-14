@@ -8,14 +8,21 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 import planmysem.common.Clock;
 import planmysem.logic.CommandHistory;
+import planmysem.logic.commands.AddCommand;
 import planmysem.logic.commands.Command;
+import planmysem.logic.commands.CommandResult;
 import planmysem.logic.commands.RedoCommand;
 
-import static planmysem.logic.commands.RedoCommand.MESSAGE_FAILURE;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static planmysem.common.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static planmysem.logic.Commands.CommandTestUtil.assertCommandFailure;
+import static planmysem.logic.Commands.CommandTestUtil.assertCommandSuccess;
 
-import planmysem.logic.commands.exceptions.CommandException;
+import planmysem.logic.parser.ParserManager;
+import planmysem.logic.parser.exceptions.ParseException;
 import planmysem.model.Model;
 import planmysem.model.ModelManager;
+import planmysem.model.recurrence.Recurrence;
 import planmysem.model.semester.Day;
 import planmysem.model.semester.ReadOnlyDay;
 import planmysem.model.slot.ReadOnlySlot;
@@ -23,7 +30,9 @@ import planmysem.testutil.SlotBuilder;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 import java.util.TreeMap;
 
 public class RedoCommandTest {
@@ -97,20 +106,39 @@ public class RedoCommandTest {
         list.put(pair1.getKey(), pair1.getValue());
         model.setLastShownList(list);
 
-        expectedModel = new ModelManager();
-        expectedModel.addSlot(LocalDate.of(2019, 02, 01), slotBuilder.generateSlot(1));
-        expectedModel.addSlot(LocalDate.of(2019, 02, 02), slotBuilder.generateSlot(2));
-        expectedModel.addSlot(LocalDate.of(2019, 02, 03), slotBuilder.generateSlot(3));
-        expectedModel.addSlot(LocalDate.of(2019, 02, 04), slotBuilder.generateSlot(3));
-        expectedModel.setLastShownList(model.getLastShownList());
+        expectedModel = model;
+
+        Set<String> recurrenceStrings = new HashSet<>();
+        recurrenceStrings.add("normal");
+        recurrenceStrings.add("reading");
+        Recurrence recurrence = new Recurrence(recurrenceStrings, 1);
+
+        Command addSlotModel = new AddCommand(slotBuilder.generateSlot(1), recurrence);
+        addSlotModel.execute(model,commandHistory);
+        addSlotModel.execute(expectedModel,commandHistory);
+        model.undo();
+        expectedModel.undo();
     }
 
     @Test
-    public void execute_Redo_Invalid() throws Exception{
-        Model modelBlank = new ModelManager();
-        Command redo = new RedoCommand();
-        thrown.expect(CommandException.class);
-        thrown.expectMessage((MESSAGE_FAILURE));
-        redo.execute(modelBlank, commandHistory);
+    public void execute() {
+        // single redoable state in model
+        expectedModel.redo();
+        assertCommandSuccess(new RedoCommand(), model, commandHistory, RedoCommand.MESSAGE_SUCCESS, expectedModel);
+
+        // no redoable state in model
+        assertCommandFailure(new RedoCommand(), model, commandHistory, RedoCommand.MESSAGE_FAILURE);
+    }
+
+    /**
+     * Parser Test
+     */
+
+    @Test
+    public void execute_Valid_RedoCommand_ParserManager() throws Exception {
+        ParserManager parserManager = new ParserManager();
+        Command actualRedoCommand = parserManager.parseCommand("redo");
+        CommandResult expectedRedoCommandOutput = new RedoCommand().execute(model, commandHistory);
+        assertEquals(expectedRedoCommandOutput, actualRedoCommand.execute(model, commandHistory));
     }
 }

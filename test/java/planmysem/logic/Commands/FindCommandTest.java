@@ -52,16 +52,14 @@ public class FindCommandTest {
     private Pair<LocalDate, Pair<ReadOnlyDay, ReadOnlySlot>> pair2;
     private Pair<LocalDate, Pair<ReadOnlyDay, ReadOnlySlot>> pair3;
     private Pair<LocalDate, Pair<ReadOnlyDay, ReadOnlySlot>> pair4;
+    private Pair<LocalDate, Pair<ReadOnlyDay, ReadOnlySlot>> pair5;
+    private Pair<LocalDate, Pair<ReadOnlyDay, ReadOnlySlot>> pair6;
+
     private CommandHistory commandHistory = new CommandHistory();
 
     private SlotBuilder slotBuilder = new SlotBuilder();
 
-    private static final String LONG_STRING = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, " +
-            "sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. " +
-            "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip " +
-            "ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore " +
-            "eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui " +
-            "officia deserunt mollit anim id est laborum";
+    private static final String LONG_STRING = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, ";
 
     private static final CommandHistory EMPTY_COMMAND_HISTORY = new CommandHistory();
 
@@ -113,16 +111,42 @@ public class FindCommandTest {
                         slotBuilder.generateSlot(3)
                 )
         );
+        pair5 = new Pair<>(
+                LocalDate.of(2019, 02, 05),
+                new Pair<>(
+                        new Day(
+                                DayOfWeek.MONDAY,
+                                "Week 4"
+                        ),
+                        slotBuilder.slotOne()
+                )
+        );
+        pair6 = new Pair<>(
+                LocalDate.of(2019, 02, 05),
+                new Pair<>(
+                        new Day(
+                                DayOfWeek.MONDAY,
+                                "Week 4"
+                        ),
+                        slotBuilder.slotTwo()
+                )
+        );
+
         model.addSlot(LocalDate.of(2019, 02, 01), slotBuilder.generateSlot(1));
         model.addSlot(LocalDate.of(2019, 02, 02), slotBuilder.generateSlot(2));
         model.addSlot(LocalDate.of(2019, 02, 03), slotBuilder.generateSlot(3));
         model.addSlot(LocalDate.of(2019, 02, 04), slotBuilder.generateSlot(3));
+        model.addSlot(LocalDate.of(2019, 02, 05), slotBuilder.slotOne());
+        model.addSlot(LocalDate.of(2019, 02, 05), slotBuilder.slotTwo());
 
         Map<LocalDate, Pair<ReadOnlyDay, ReadOnlySlot>> list = new TreeMap<>();
+        list.put(pair6.getKey(), pair6.getValue());
+        list.put(pair5.getKey(), pair5.getValue());
         list.put(pair4.getKey(), pair4.getValue());
         list.put(pair3.getKey(), pair3.getValue());
         list.put(pair2.getKey(), pair2.getValue());
         list.put(pair1.getKey(), pair1.getValue());
+
         model.setLastShownList(list);
 
         expectedModel = new ModelManager();
@@ -130,6 +154,8 @@ public class FindCommandTest {
         expectedModel.addSlot(LocalDate.of(2019, 02, 02), slotBuilder.generateSlot(2));
         expectedModel.addSlot(LocalDate.of(2019, 02, 03), slotBuilder.generateSlot(3));
         expectedModel.addSlot(LocalDate.of(2019, 02, 04), slotBuilder.generateSlot(3));
+        expectedModel.addSlot(LocalDate.of(2019, 02, 05), slotBuilder.slotOne());
+        expectedModel.addSlot(LocalDate.of(2019, 02, 05), slotBuilder.slotTwo());
         expectedModel.setLastShownList(model.getLastShownList());
     }
 
@@ -313,7 +339,7 @@ public class FindCommandTest {
     }
 
     @Test
-    public void execute_slotAcceptedByModel_FindNameNotExact() throws Exception {
+    public void execute_slotAcceptedByModel_FindNameNotExact() {
         String nameToTest = slotBuilder.generateSlot(1).getName().concat("NotTheSame");
 
         CommandResult commandResult = new FindCommand(nameToTest, null).execute(model, commandHistory);
@@ -358,7 +384,7 @@ public class FindCommandTest {
     }
 
     @Test
-    public void execute_slotAcceptedByModel_FindTagNotExact() throws Exception {
+    public void execute_slotAcceptedByModel_FindTagNotExact() {
         Set<String> tags = slotBuilder.generateSlot(1).getTags();
         String tagToTest = tags.iterator().next();
         tagToTest = tagToTest.concat("NotTheSame");
@@ -408,7 +434,7 @@ public class FindCommandTest {
     }
 
     @Test
-    public void execute_slotAcceptedByModel_FindTagNotFound() throws Exception {
+    public void execute_slotAcceptedByModel_FindTagNotFound() {
         String tagToTest = LONG_STRING;
 
         CommandResult commandResult = new FindCommand(null, tagToTest).execute(model, commandHistory);
@@ -500,5 +526,99 @@ public class FindCommandTest {
         assertEquals(String.format(MESSAGE_SUCCESS, selectedSlots.size(),
                 Messages.craftListMessageWeighted(selectedSlots)), commandResult.getFeedbackToUser());
 
+    }
+
+    /**
+     * Comparator Tests
+     */
+
+    @Test
+    public void execute_compare_OrderName() {
+        String nameToTest = "slot";
+
+        CommandResult commandResult = new FindCommand(nameToTest, null).execute(model, commandHistory);
+
+        List<WeightedName> selectedSlots = new ArrayList<>();
+        Queue<WeightedName> weightedNames = new PriorityQueue<>(new Comparator<>() {
+            @Override
+            public int compare(WeightedName p1, WeightedName p2) {
+                String n1 = p1.getName();
+                String n2 = p2.getName();
+                int d1 = p1.getDist();
+                int d2 = p2.getDist();
+                LocalDate date1 = p1.getDate();
+                LocalDate date2 = p2.getDate();
+
+                if (d1 != d2) {
+                    return d1 - d2; //order by distance
+                } else if (!n1.equalsIgnoreCase(n2)) {
+                    return n1.compareTo(n2); //order by name
+                } else {
+                    return date1.compareTo(date2); //order by date
+                }
+            }
+        });
+
+        for (Map.Entry<LocalDate, Day> entry : model.getDays().entrySet()) {
+            for (Slot slot : entry.getValue().getSlots()) {
+                if (!Pattern.matches(".*" + nameToTest + ".*", slot.getName())) {
+                    return;
+                }
+                int dist = Utils.getLevenshteinDistance(nameToTest, slot.getName());
+                WeightedName distNameTrie = new WeightedName(entry, slot, entry.getKey(), dist);
+                weightedNames.add(distNameTrie);
+            }
+        }
+
+        while (!weightedNames.isEmpty() && weightedNames.peek().getDist() < 10) {
+            selectedSlots.add(weightedNames.poll());
+        }
+        assertEquals(String.format(MESSAGE_SUCCESS, selectedSlots.size(),
+                Messages.craftListMessageWeighted(selectedSlots)), commandResult.getFeedbackToUser());
+    }
+
+    @Test
+    public void execute_compare_OrderDistance() {
+        String nameToTest = "CS2113T";
+
+        CommandResult commandResult = new FindCommand(nameToTest, null).execute(model, commandHistory);
+
+        List<WeightedName> selectedSlots = new ArrayList<>();
+        Queue<WeightedName> weightedNames = new PriorityQueue<>(new Comparator<>() {
+            @Override
+            public int compare(WeightedName p1, WeightedName p2) {
+                String n1 = p1.getName();
+                String n2 = p2.getName();
+                int d1 = p1.getDist();
+                int d2 = p2.getDist();
+                LocalDate date1 = p1.getDate();
+                LocalDate date2 = p2.getDate();
+
+                if (d1 != d2) {
+                    return d1 - d2; //order by distance
+                } else if (!n1.equalsIgnoreCase(n2)) {
+                    return n1.compareTo(n2); //order by name
+                } else {
+                    return date1.compareTo(date2); //order by date
+                }
+            }
+        });
+
+        for (Map.Entry<LocalDate, Day> entry : model.getDays().entrySet()) {
+            for (Slot slot : entry.getValue().getSlots()) {
+                if (!Pattern.matches(".*" + nameToTest + ".*", slot.getName())) {
+                    return;
+                }
+                int dist = Utils.getLevenshteinDistance(nameToTest, slot.getName());
+                WeightedName distNameTrie = new WeightedName(entry, slot, entry.getKey(), dist);
+                weightedNames.add(distNameTrie);
+            }
+        }
+
+        while (!weightedNames.isEmpty() && weightedNames.peek().getDist() < 10) {
+            selectedSlots.add(weightedNames.poll());
+        }
+        assertEquals(String.format(MESSAGE_SUCCESS, selectedSlots.size(),
+                Messages.craftListMessageWeighted(selectedSlots)), commandResult.getFeedbackToUser());
     }
 }
