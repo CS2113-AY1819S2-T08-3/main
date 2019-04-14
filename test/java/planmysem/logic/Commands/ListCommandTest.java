@@ -160,7 +160,7 @@ public class ListCommandTest {
     @Test
     public void execute_parseAll() throws ParseException {
         ListCommandParser listCommandParser = new ListCommandParser();
-        ListCommand expectedListCommand = new ListCommand("all");
+        ListCommand expectedListCommand = new ListCommand();
 
         ListCommand actualListCommand = listCommandParser.parse("all");
 
@@ -224,7 +224,7 @@ public class ListCommandTest {
     }
 
     @Test
-    public void execute_slotAcceptedByModel_ListTagSuccessful() throws Exception {
+    public void execute_slotAcceptedByModel_ListTagSuccessful() {
         Set<String> tags = slotBuilder.generateSlot(1).getTags();
         String tagToTest = tags.iterator().next();
 
@@ -248,7 +248,7 @@ public class ListCommandTest {
     }
 
     @Test
-    public void execute_slotAcceptedByModel_ListNameNotFound() throws Exception {
+    public void execute_slotAcceptedByModel_ListNameNotFound() {
         String nameToTest = slotBuilder.generateSlot(1).getName().concat("NotTheSame");
 
         CommandResult commandResult = new ListCommand(nameToTest, null).execute(model, commandHistory);
@@ -266,7 +266,7 @@ public class ListCommandTest {
     }
 
     @Test
-    public void execute_slotAcceptedByModel_ListTagNotFound() throws Exception {
+    public void execute_slotAcceptedByModel_ListTagNotFound() {
         Set<String> tags = slotBuilder.generateSlot(1).getTags();
         String tagToTest = tags.iterator().next();
         tagToTest = tagToTest.concat("NotTheSame");
@@ -289,9 +289,9 @@ public class ListCommandTest {
     }
 
     @Test
-    public void execute_listAll() throws Exception{
+    public void execute_listAll() {
 
-        CommandResult commandResult = new ListCommand("all").execute(model, commandHistory);
+        CommandResult commandResult = new ListCommand().execute(model, commandHistory);
 
         final List<Pair<LocalDate, Pair<ReadOnlyDay, ReadOnlySlot>>> selectedSlots = new ArrayList<>();
 

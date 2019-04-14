@@ -650,7 +650,7 @@ The maximum Levenshtein Distance set in `PlanMySem` is 20.
 The weighted `Slots` are inserted into a `PriorityQueue` and the closest matching `Slots`
 will be polled into the output list. +
 
-Upon executing the `find` command with valid parameters (refer to <<UserGuide#view, UserGuide.adoc>> for `find` usage),
+Upon executing the `find` command with valid parameters,
 a sequence of events is executed. The sequence of events illustrated in the Sequence Diagram below will be in reference to the execution
 of a `find n/keyword` command. The sequence of events are as follows:
 

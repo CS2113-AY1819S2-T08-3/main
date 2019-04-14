@@ -193,12 +193,13 @@ This portion explains alternative implementations as well as the rationale behin
 ** Cons: Difficult to translate our recursion system to the .ics RRULE system.
 
 Reason for current choice: Using the library will allow `PlanMySem` to easily import non-native .ics files. However, this would require changes to `Model` as currently the recurrence for slots is not saved. +
+
 In addition, as our application is a specially designed planner for NUS matters, I felt that it was unnecessary to have the same slots on multiple applications. +
 
 Hence, I chose to code the reading and writing of .ics files and add a disclaimer that importing of non-native .ics files is likely to cause errors.
-{zwsp}
 
 {zwsp}
+
 
 === Data Encryption / Decryption feature
 

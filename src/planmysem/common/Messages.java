@@ -108,7 +108,7 @@ public class Messages {
             sb.append("\n");
             count++;
         }
-        sb.append("\n To view more information about the slot, try the 'view day' command!");
+        sb.append("\n To view more information about a particular slot, try the 'view day' command!");
         return sb.toString();
     }
 
@@ -138,7 +138,7 @@ public class Messages {
             sb.append("\n");
             count++;
         }
-        sb.append("\n To view more information about the slot, try the 'view day' command!");
+        sb.append("\n To view more information about a particular slot, try the 'view day' command!");
         return sb.toString();
     }
 
